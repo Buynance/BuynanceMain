@@ -9,11 +9,21 @@
     %style 
       body {font-family: 'Source Sans Pro', sans-serif; font-size: 18px;}
       input {height: 50px; width: 300px; font-size: 30px; line-height: 50px;}
+      a {text-decoration: none; color: blue;}
+      a:hover {background: none; color: blue; text-decoration: underline;}
   %body
     .row{style: "margin: auto 20px 50px 20px;"}
-      .pull-left= image_tag "logo.jpg", height: "80"
+      = link_to "http://buynance.com" do
+        .pull-left= image_tag "logo.jpg", height: "80"
       .pull-right{style: "padding-top: 20px;"}
         <b>Call Us</b>: 888-888-8888
     .container
       = yield
+      %div{style: "margin-top: 80px;"}
+      %hr
+      .row
+        .text-center
+          = link_to "Produced by Yuliya Glazman", "http://www.linkedin.com/pub/yuliya-glazman/46/778/37b/"
+          <br/>
+          Questions? E-Mail Us #{link_to "info@buynance.com", "mailto:info@buynance.com"}
     = render "layouts/analytics"
