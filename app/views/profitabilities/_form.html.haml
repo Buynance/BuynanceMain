@@ -8,11 +8,11 @@
             %li= msg
 
     .field
-      = f.label "How much is your merchant cash company collecting everyday (USD)?"
+      = f.label "How much is your merchant cash company collecting everyday?"
       <br/><br/>
       = f.text_field :daily_cash_collection_amount, value: (@saved_profitability.daily_cash_collection_amount if @saved_profitability), placeholder: "5000", class: "text-center"
     .field{style: "margin-top: 50px;"}
-      = f.label "What is your gross proﬁt margin (%)?"
+      = f.label "What is your gross proﬁt margin percentage?"
       <br/><br/>
       = f.text_field :gross_profit_margin, value: (@saved_profitability.gross_profit_margin if @saved_profitability), placeholder: "20", class: "text-center"
     .actions{style: "margin-top: 50px;"}

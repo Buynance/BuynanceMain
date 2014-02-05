@@ -1,7 +1,7 @@
 !!!
 %html
   %head
-    %title BuynanceProfitCalculator
+    %title Merchant Cash Advance Profitability Calculator
     %link{href: "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600", rel: "stylesheet", type: "text/css"}/
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
@@ -10,8 +10,10 @@
       body {font-family: 'Source Sans Pro', sans-serif; font-size: 18px;}
       input {height: 50px; width: 300px; font-size: 30px; line-height: 50px;}
   %body
+    .row{style: "margin: auto 20px 50px 20px;"}
+      .pull-left= image_tag "logo.jpg", height: "80"
+      .pull-right{style: "padding-top: 20px;"}
+        <b>Call Us</b>: 888-888-8888
     .container
-      .row
-        = image_tag "logo.jpg"
       = yield
     = render "layouts/analytics"
