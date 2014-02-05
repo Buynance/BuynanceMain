@@ -1,0 +1,22 @@
+defaults: &defaults
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  host: localhost
+  user: admin
+  password: password
+
+development:
+  <<: *defaults
+  database: Buynance_dev
+
+test: &test
+  <<: *defaults
+  database: Buynance_test
+
+production:
+  <<: *defaults
+  database: Buynance_prod
+
+cucumber:
+  <<: *test
