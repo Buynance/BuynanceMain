@@ -8,7 +8,8 @@ gem 'rails', '4.0.2'
 gem 'pg'
 gem 'haml-rails'
 gem 'protected_attributes'
-
+gem 'bootstrap-sass', '~> 3.1.0.1'
+gem 'rails_12factor'
 # Use SCSS for stylesheets
 gem 'sass-rails', '~> 4.0.0'
 
