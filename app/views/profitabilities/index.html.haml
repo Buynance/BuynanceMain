@@ -1,0 +1,23 @@
+%h1 Listing profitabilities
+
+%table
+  %tr
+    %th Daily cash collection amount
+    %th Gross profit margin
+    %th Projected daily profit
+    %th
+    %th
+    %th
+
+  - @profitabilities.each do |profitability|
+    %tr
+      %td= profitability.daily_cash_collection_amount
+      %td= profitability.gross_profit_margin
+      %td= profitability.projected_daily_profit
+      %td= link_to 'Show', profitability
+      %td= link_to 'Edit', edit_profitability_path(profitability)
+      %td= link_to 'Destroy', profitability, :method => :delete, :data => { :confirm => 'Are you sure?' }
+
+%br
+
+= link_to 'New Profitability', new_profitability_path

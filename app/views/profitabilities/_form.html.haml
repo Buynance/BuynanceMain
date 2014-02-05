@@ -1,0 +1,27 @@
+.text-center
+  = form_for @profitability do |f|
+    - if @profitability.errors.any?
+      #error_explanation
+        %h2= "#{pluralize(@profitability.errors.count, "error")} prohibited this profitability from being saved:"
+        %ul
+          - @profitability.errors.full_messages.each do |msg|
+            %li= msg
+
+    .field
+      = f.label "How much is your merchant cash company collecting everyday (USD)?"
+      <br/><br/>
+      = f.text_field :daily_cash_collection_amount, value: (@saved_profitability.daily_cash_collection_amount if @saved_profitability), placeholder: "5000", class: "text-center"
+    .field{style: "margin-top: 50px;"}
+      = f.label "What is your gross proﬁt margin (%)?"
+      <br/><br/>
+      = f.text_field :gross_profit_margin, value: (@saved_profitability.gross_profit_margin if @saved_profitability), placeholder: "20", class: "text-center"
+    .actions{style: "margin-top: 50px;"}
+      = f.submit "GET RESULTS", class: "btn btn-primary btn-lg"
+    - if @saved_profitability
+      .row{style: "margin-top: 50px;"}
+        Your Projected Daily Proﬁt Is:
+        .figure{class: ("red" if @saved_profitability.projected_daily_profit < 0)}= number_to_currency @saved_profitability.projected_daily_profit, precision: 0
+      
+      .row{style: "margin-top: 50px;"}
+        - if @saved_profitability.projected_daily_profit < 0
+          .btn.btn-success.btn-lg CLICK HERE TO GET A BETTER DEAL
