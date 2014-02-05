@@ -17,7 +17,7 @@
       = f.text_field :gross_profit_margin, value: (@saved_profitability ? @saved_profitability.gross_profit_margin : 20), placeholder: "20", class: "text-center", required: true
     .actions{style: "margin-top: 50px;"}
       = f.submit "GET RESULTS", class: "btn btn-primary btn-lg"
-      - if !@saved_profitability
+      - if @saved_profitability
         <br/><br/>
         <strong>Notice</strong>: <i>Calculations based on the assumption that your provider <br/>is collecting 20% of your average daily deposits.</i>
     - if @saved_profitability
