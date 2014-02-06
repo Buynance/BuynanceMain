@@ -20,7 +20,7 @@ text-decoration:underline
 
 
 .text-red {
-  color:#da0033;
+  color:#da0033 !important;
 }
 
 .text-green{
