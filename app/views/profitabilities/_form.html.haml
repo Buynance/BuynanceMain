@@ -33,7 +33,7 @@
   .row.result-box
     .col-md-6.col-md-offset-3.form-style
       %h3 Your gross profit margin is
-      %h2.text-greem= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 0
+      %h2.text-green= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 0
       %br/
       %h3 Your projected monthly profit is
       %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
