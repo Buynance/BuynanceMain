@@ -23,6 +23,7 @@ class Profitability < ActiveRecord::Base
 
   def calculate_daily_profit
     @pay_back = 0.2
+    self.gross_profit_margin = (monthly_cash_collection_amount - total_monthly_bills)/monthly_cash_collection_amount
     self.projected_monthly_profit = ((monthly_cash_collection_amount - total_monthly_bills)/30 - (30 * daily_merchant_cash_advance)/20.8)*30
   end
 end

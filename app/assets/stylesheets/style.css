@@ -9,7 +9,7 @@ background:#f5f5f5
 
 a {
 text-decoration:none;
-color:blue
+color:#1aa5b2
 }
 
 a:hover {
@@ -21,6 +21,10 @@ text-decoration:underline
 
 .text-red {
   color:#da0033;
+}
+
+.text-green{
+  color:#04b500;
 }
 
 .row {
@@ -46,11 +50,11 @@ background:#fff
 }
 
 .phone-number {
-padding-top:20px
+padding-top:25px
 }
 
 .phone-number p {
-font-size:1em
+font-size:.9em
 }
 
 .green-btn {
@@ -124,3 +128,4 @@ color:#fff
 .result-box h2 {
   text-align: center;
 }
+

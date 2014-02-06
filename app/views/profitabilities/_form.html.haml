@@ -2,6 +2,7 @@
 .row.main-title-wrap
   .col-md-6.col-md-offset-3
     %h1.main-title Start Calculation
+    = render "layouts/shared"
 .row
   .col-md-6.col-md-offset-3.form-style
     %h3.form-header Start Calculating
@@ -14,17 +15,17 @@
               %li= msg
       %div{style: "margin:0;padding:0;display:inline"}
 
-      = f.label "How much money does your business earn each month-before you pay the bills?"
-      = f.text_field :monthly_cash_collection_amount, value: (@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 15000), class: "text-center form-control", required: true
+      %label{:for => :monthly_cash_collection_amount} 
+        How much money does your business earn each<br/> month-before you pay the bills?
+      = f.text_field :monthly_cash_collection_amount, value: (@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 40000), class: "text-center form-control", required: true
       
       = f.label "How much are your total monthly bills?"
-      = f.text_field :total_monthly_bills, value: (@saved_profitability ? @saved_profitability.total_monthly_bills : 12000), class: "text-center form-control", required: true
+      = f.text_field :total_monthly_bills, value: (@saved_profitability ? @saved_profitability.total_monthly_bills : 30000), class: "text-center form-control", required: true
 
       = f.label "How much is your merchant cash advance company collecting daily?"
-      = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : 252), class: "text-center form-control", required: true
-
-      = f.label "What is your gross profit margin percentage?"
-      = f.text_field :gross_profit_margin, value: (@saved_profitability ? @saved_profitability.gross_profit_margin : 20), class: "text-center form-control", required: true
+      %label{:for => :daily_merchant_cash_advance} 
+        How much is your current merchant <br/>cash advance company collecting daily?
+      = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : 200), class: "text-center form-control", required: true
       
       .actions
         = f.submit "GET RESULTS", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
@@ -32,10 +33,11 @@
 - if @saved_profitability
   .row.result-box
     .col-md-6.col-md-offset-3.form-style
-      is collecting 20% of your average daily deposits.
+      %h3 Your gross profit margin is
+      %h2.text-greem= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 0
       %br/
-      Your Projected Average Daily Profit Is:
-      / .figure{class: ("red" if @saved_profitability.projected_monthly_profit < 0)}
-      %h2.text-red= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
+      %h3 Your projected monthly profit is
+      %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
+      %br/
       - if @saved_profitability.projected_monthly_profit < 0
         = link_to "CLICK HERE TO GET A BETTER DEAL", "http://www.buynance.com/get-started/", class: "btn btn-primary btn-lg btn-lg btn-block teal-btn"
