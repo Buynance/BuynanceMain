@@ -28,3 +28,37 @@
       .row{style: "margin-top: 50px;"}
         - if @saved_profitability.projected_daily_profit < 0
           = link_to "CLICK HERE TO GET A BETTER DEAL", "http://www.buynance.com/get-started/", class: ".btn btn-success btn-lg"
+
+.row.main-title-wrap
+  .col-md-6.col-md-offset-3
+    %h1.main-title Start Calculation
+.row
+  .col-md-6.col-md-offset-3.form-style
+    %h3.form-header Start Calculating
+    %form#new_profitability.new_profitability{"accept-charset" => "UTF-8", action: "/profitabilities", method: "post"}
+      %div{style: "margin:0;padding:0;display:inline"}
+        %input{name: "utf8", type: "hidden", value: "✓"}/
+        %input{name: "authenticity_token", type: "hidden", value: "BR9g/V6ThV2Cfmq6kAK1baMmkiYiEJYTRXsMidn+H2o="}/
+      %label{for: "profitability_How much is your merchant cash company collecting everyday"}
+        How much money does your business earn
+        = succeed "each" do
+          %br/
+      %input#profitability_daily_cash_collection_amount.text-center.form-control{name: "profitability[daily_cash_collection_amount]", required: "required", type: "text", value: "15000"}/
+      %label{for: "How much are your total monthly bills"} How much are your total monthly bills?
+      %input#total_monthly_bills.text-center.form-control{name: "profitability[daily_cash_collection_amount]", required: "required", type: "text", value: "12000"}/
+      %label{for: "How much is your merchant cash advance company collecting daily"}
+        How much is your merchant
+        = succeed "cash" do
+          %br/
+      %input#cash_advance_collecting.text-center.form-control{name: "cash_advance_collecting", required: "required", type: "text", value: "252"}/
+      %label{for: "profitability_What is your gross proï¬\u0081t margin percentage"} What is your gross profit margin percentage?
+      %input#profitability_gross_profit_margin.text-center.form-control{name: "profitability[gross_profit_margin]", placeholder: "20", required: "required", type: "text", value: "20"}/
+      .actions
+        %input.btn.btn-primary.btn-lg.btn-lg.btn-block.green-btn{name: "commit", type: "submit", value: "GET RESULTS"}/
+.row.result-box
+  .col-md-6.col-md-offset-3.form-style
+    is collecting 20% of your average daily deposits.
+    %br/
+    Your Projected Average Daily Profit Is:
+    %h2.text-red -$2,500
+    %input.btn.btn-primary.btn-lg.btn-lg.btn-block.teal-btn{name: "commit", type: "submit", value: "CLICK HERE TO GET A BETTER DEAL"}/
