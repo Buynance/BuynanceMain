@@ -18,7 +18,7 @@ class ProfitabilitiesControllerTest < ActionController::TestCase
 
   test "should create profitability" do
     assert_difference('Profitability.count') do
-      post :create, profitability: { daily_cash_collection_amount: @profitability.daily_cash_collection_amount, gross_profit_margin: @profitability.gross_profit_margin, projected_daily_profit: @profitability.projected_daily_profit }
+      post :create, profitability: { monthly_cash_collection_amount: @profitability.monthly_cash_collection_amount, gross_profit_margin: @profitability.gross_profit_margin, projected_monthly_profit: @profitability.projected_monthly_profit }
     end
 
     assert_redirected_to profitability_path(assigns(:profitability))
@@ -35,7 +35,7 @@ class ProfitabilitiesControllerTest < ActionController::TestCase
   end
 
   test "should update profitability" do
-    patch :update, id: @profitability, profitability: { daily_cash_collection_amount: @profitability.daily_cash_collection_amount, gross_profit_margin: @profitability.gross_profit_margin, projected_daily_profit: @profitability.projected_daily_profit }
+    patch :update, id: @profitability, profitability: { monthly_cash_collection_amount: @profitability.monthly_cash_collection_amount, gross_profit_margin: @profitability.gross_profit_margin, projected_monthly_profit: @profitability.projected_monthly_profit }
     assert_redirected_to profitability_path(assigns(:profitability))
   end
 

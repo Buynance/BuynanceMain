@@ -2,22 +2,24 @@
 #
 # Table name: profitabilities
 #
-#  id                           :integer          not null, primary key
-#  daily_cash_collection_amount :float
-#  gross_profit_margin          :float
-#  projected_daily_profit       :float
-#  created_at                   :datetime
-#  updated_at                   :datetime
+#  id                             :integer          not null, primary key
+#  monthly_cash_collection_amount :float
+#  gross_profit_margin            :float
+#  projected_monthly_profit       :float
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  total_monthly_bills            :float
+#  daily_merchant_cash_advance    :float
 #
 
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
 
 one:
-  daily_cash_collection_amount: 1.5
+  monthly_cash_collection_amount: 1.5
   gross_profit_margin: 1.5
-  projected_daily_profit: 1.5
+  projected_monthly_profit: 1.5
 
 two:
-  daily_cash_collection_amount: 1.5
+  monthly_cash_collection_amount: 1.5
   gross_profit_margin: 1.5
-  projected_daily_profit: 1.5
+  projected_monthly_profit: 1.5

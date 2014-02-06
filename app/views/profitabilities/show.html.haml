@@ -2,13 +2,13 @@
 
 %p
   %b Daily cash collection amount:
-  = @profitability.daily_cash_collection_amount
+  = @profitability.monthly_cash_collection_amount
 %p
   %b Gross profit margin:
   = @profitability.gross_profit_margin
 %p
   %b Projected daily profit:
-  = @profitability.projected_daily_profit
+  = @profitability.projected_monthly_profit
 
 = link_to 'Edit', edit_profitability_path(@profitability)
 \|

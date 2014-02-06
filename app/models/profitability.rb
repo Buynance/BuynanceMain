@@ -2,25 +2,27 @@
 #
 # Table name: profitabilities
 #
-#  id                           :integer          not null, primary key
-#  daily_cash_collection_amount :float
-#  gross_profit_margin          :float
-#  projected_daily_profit       :float
-#  created_at                   :datetime
-#  updated_at                   :datetime
+#  id                             :integer          not null, primary key
+#  monthly_cash_collection_amount :float
+#  gross_profit_margin            :float
+#  projected_monthly_profit       :float
+#  created_at                     :datetime
+#  updated_at                     :datetime
+#  total_monthly_bills            :float
+#  daily_merchant_cash_advance    :float
 #
 
 class Profitability < ActiveRecord::Base
-  attr_accessible :daily_cash_collection_amount, :gross_profit_margin, 
-    :projected_daily_profit
+  attr_accessible :monthly_cash_collection_amount, :gross_profit_margin, 
+    :total_monthly_bills, :daily_merchant_cash_advance, :projected_monthly_profit
 
-  validates :daily_cash_collection_amount, :gross_profit_margin, 
-    :projected_daily_profit, presence: true
+  validates :monthly_cash_collection_amount, :gross_profit_margin, 
+    :total_monthly_bills, :daily_merchant_cash_advance, :projected_monthly_profit, presence: true
 
   before_validation :calculate_daily_profit
 
   def calculate_daily_profit
     @pay_back = 0.2
-    self.projected_daily_profit = (daily_cash_collection_amount/@pay_back)*(gross_profit_margin/100) - daily_cash_collection_amount
+    self.projected_monthly_profit = ((monthly_cash_collection_amount - total_monthly_bills)/30 - (30 * daily_merchant_cash_advance)/20.8)*30
   end
 end

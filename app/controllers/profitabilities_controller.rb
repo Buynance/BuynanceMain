@@ -70,6 +70,6 @@ class ProfitabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profitability_params
-      params.require(:profitability).permit(:daily_cash_collection_amount, :gross_profit_margin, :projected_daily_profit)
+      params.require(:profitability).permit(:monthly_cash_collection_amount, :gross_profit_margin, :projected_monthly_profit, :total_monthly_bills, :daily_merchant_cash_advance)
     end
 end

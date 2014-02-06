@@ -1,33 +1,3 @@
-.text-center
-  = form_for @profitability do |f|
-    - if @profitability.errors.any?
-      #error_explanation
-        %h2= "#{pluralize(@profitability.errors.count, "error")} prohibited this profitability from being saved:"
-        %ul
-          - @profitability.errors.full_messages.each do |msg|
-            %li= msg
-
-    .field
-      = f.label "How much is your merchant cash company collecting everyday?"
-      <br/><br/>
-      = f.text_field :daily_cash_collection_amount, value: (@saved_profitability ? @saved_profitability.daily_cash_collection_amount : 5000), class: "text-center", required: true
-    .field{style: "margin-top: 50px;"}
-      = f.label "What is your gross proﬁt margin percentage?"
-      <br/><br/>
-      = f.text_field :gross_profit_margin, value: (@saved_profitability ? @saved_profitability.gross_profit_margin : 20), placeholder: "20", class: "text-center", required: true
-    .actions{style: "margin-top: 50px;"}
-      = f.submit "GET RESULTS", class: "btn btn-primary btn-lg"
-      - if @saved_profitability
-        <br/><br/>
-        <strong>Notice</strong>: <i>Calculations based on the assumption that your provider <br/>is collecting 20% of your average daily deposits.</i>
-    - if @saved_profitability
-      .row{style: "margin-top: 50px;"}
-        Your Projected Average Daily Proﬁt Is:
-        .figure{class: ("red" if @saved_profitability.projected_daily_profit < 0)}= number_to_currency @saved_profitability.projected_daily_profit, precision: 0
-      
-      .row{style: "margin-top: 50px;"}
-        - if @saved_profitability.projected_daily_profit < 0
-          = link_to "CLICK HERE TO GET A BETTER DEAL", "http://www.buynance.com/get-started/", class: ".btn btn-success btn-lg"
 
 .row.main-title-wrap
   .col-md-6.col-md-offset-3
@@ -35,30 +5,37 @@
 .row
   .col-md-6.col-md-offset-3.form-style
     %h3.form-header Start Calculating
-    %form#new_profitability.new_profitability{"accept-charset" => "UTF-8", action: "/profitabilities", method: "post"}
+    = form_for @profitability, class: "new_profitability", id: "new_profitability" do |f|
+      - if @profitability.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@profitability.errors.count, "error")} prohibited this profitability from being saved:"
+          %ul
+            - @profitability.errors.full_messages.each do |msg|
+              %li= msg
       %div{style: "margin:0;padding:0;display:inline"}
-        %input{name: "utf8", type: "hidden", value: "✓"}/
-        %input{name: "authenticity_token", type: "hidden", value: "BR9g/V6ThV2Cfmq6kAK1baMmkiYiEJYTRXsMidn+H2o="}/
-      %label{for: "profitability_How much is your merchant cash company collecting everyday"}
-        How much money does your business earn
-        = succeed "each" do
-          %br/
-      %input#profitability_daily_cash_collection_amount.text-center.form-control{name: "profitability[daily_cash_collection_amount]", required: "required", type: "text", value: "15000"}/
-      %label{for: "How much are your total monthly bills"} How much are your total monthly bills?
-      %input#total_monthly_bills.text-center.form-control{name: "profitability[daily_cash_collection_amount]", required: "required", type: "text", value: "12000"}/
-      %label{for: "How much is your merchant cash advance company collecting daily"}
-        How much is your merchant
-        = succeed "cash" do
-          %br/
-      %input#cash_advance_collecting.text-center.form-control{name: "cash_advance_collecting", required: "required", type: "text", value: "252"}/
-      %label{for: "profitability_What is your gross proï¬\u0081t margin percentage"} What is your gross profit margin percentage?
-      %input#profitability_gross_profit_margin.text-center.form-control{name: "profitability[gross_profit_margin]", placeholder: "20", required: "required", type: "text", value: "20"}/
+
+      = f.label "How much money does your business earn each month-before you pay the bills?"
+      = f.text_field :monthly_cash_collection_amount, value: (@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 15000), class: "text-center form-control", required: true
+      
+      = f.label "How much are your total monthly bills?"
+      = f.text_field :total_monthly_bills, value: (@saved_profitability ? @saved_profitability.total_monthly_bills : 12000), class: "text-center form-control", required: true
+
+      = f.label "How much is your merchant cash advance company collecting daily?"
+      = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : 252), class: "text-center form-control", required: true
+
+      = f.label "What is your gross profit margin percentage?"
+      = f.text_field :gross_profit_margin, value: (@saved_profitability ? @saved_profitability.gross_profit_margin : 20), class: "text-center form-control", required: true
+      
       .actions
-        %input.btn.btn-primary.btn-lg.btn-lg.btn-block.green-btn{name: "commit", type: "submit", value: "GET RESULTS"}/
-.row.result-box
-  .col-md-6.col-md-offset-3.form-style
-    is collecting 20% of your average daily deposits.
-    %br/
-    Your Projected Average Daily Profit Is:
-    %h2.text-red -$2,500
-    %input.btn.btn-primary.btn-lg.btn-lg.btn-block.teal-btn{name: "commit", type: "submit", value: "CLICK HERE TO GET A BETTER DEAL"}/
+        = f.submit "GET RESULTS", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
+
+- if @saved_profitability
+  .row.result-box
+    .col-md-6.col-md-offset-3.form-style
+      is collecting 20% of your average daily deposits.
+      %br/
+      Your Projected Average Daily Profit Is:
+      / .figure{class: ("red" if @saved_profitability.projected_monthly_profit < 0)}
+      %h2.text-red= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
+      - if @saved_profitability.projected_monthly_profit < 0
+        = link_to "CLICK HERE TO GET A BETTER DEAL", "http://www.buynance.com/get-started/", class: "btn btn-primary btn-lg btn-lg btn-block teal-btn"

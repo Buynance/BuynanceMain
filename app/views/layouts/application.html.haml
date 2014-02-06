@@ -7,16 +7,20 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = favicon_link_tag "favicon.ico"
+    %style 
+      a:hover {border: 0px none transparent; outline: none; text-decoration: none;}
   %body
     .row.header
       .container-fluid
         .col-md-3.pull-left
           = link_to "http://buynance.com" do
             .pull-left= image_tag "logo.jpg", height: "60"
-        .col-md-3.pull-right.phone-number
+        .col-md-3.pull-right.phone-number.text-center
           %p
             %strong Call Us:
             888-888-8888
+            %span{style: "margin-top: 5px;"}
+              = render "layouts/shared"
     .container
       = yield
       %hr/
