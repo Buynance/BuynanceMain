@@ -22,7 +22,6 @@
       = f.label "How much are your total monthly bills?"
       = f.text_field :total_monthly_bills, value: (@saved_profitability ? @saved_profitability.total_monthly_bills : 30000), class: "text-center form-control", required: true
 
-      = f.label "How much is your merchant cash advance company collecting daily?"
       %label{:for => :daily_merchant_cash_advance} 
         How much is your current merchant <br/>cash advance company collecting daily?
       = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : 200), class: "text-center form-control", required: true
