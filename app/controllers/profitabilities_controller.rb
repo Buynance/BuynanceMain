@@ -1,5 +1,6 @@
 class ProfitabilitiesController < ApplicationController
   before_action :set_profitability, only: [:show, :edit, :update, :destroy]
+  before_filter :standardize_params, only: [:create]
 
   # GET /profitabilities
   # GET /profitabilities.json
@@ -25,6 +26,7 @@ class ProfitabilitiesController < ApplicationController
   # POST /profitabilities
   # POST /profitabilities.json
   def create
+    prs = profitability_params
     @profitability = Profitability.new(profitability_params)
 
     respond_to do |format|
@@ -70,6 +72,14 @@ class ProfitabilitiesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def profitability_params
-      params.require(:profitability).permit(:monthly_cash_collection_amount, :gross_profit_margin, :projected_monthly_profit, :total_monthly_bills, :daily_merchant_cash_advance)
+      params.require(:profitability).permit(:monthly_cash_collection_amount, :gross_profit_margin,
+                                            :projected_monthly_profit, :total_monthly_bills, :daily_merchant_cash_advance)
+    end
+
+    # remove $
+    def standardize_params
+      params[:profitability][:monthly_cash_collection_amount].gsub!( /\$/, '')
+      params[:profitability][:total_monthly_bills].gsub!( /\$/, '')
+      params[:profitability][:daily_merchant_cash_advance].gsub!( /\$/, '')
     end
 end
