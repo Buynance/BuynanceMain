@@ -5,7 +5,7 @@ ruby '2.1.0'
 gem 'rails', '4.0.2'
 
 # Use sqlite3 as the database for Active Record
-gem 'pg'
+# gem 'pg'
 gem 'haml-rails'
 gem 'protected_attributes'
 gem 'bootstrap-sass', '~> 3.1.0.1'
@@ -40,6 +40,11 @@ group :development do
   gem 'better_errors'
   gem 'binding_of_caller'
   gem 'quiet_assets'
+  gem 'sqlite3'
+end
+
+group :production do
+  gem 'pg'
 end
 
 # Use ActiveModel has_secure_password
