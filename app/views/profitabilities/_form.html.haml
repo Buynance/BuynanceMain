@@ -18,17 +18,18 @@
       %label{:for => :monthly_cash_collection_amount} 
         How much money does your business earn each<br/> month before you pay the bills?
       = f.text_field :monthly_cash_collection_amount,
-                    value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 50000), :precision => 0),
+                    value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : '$50000'), :precision => 0),
                     class: "text-center form-control ", required: true
       
       = f.label "How much are your total monthly bills?"
       = f.text_field :total_monthly_bills,
-                    value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : 40000), :precision => 0),
+                    value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : '$40000'), :precision => 0),
                     class: "text-center form-control", required: true
 
       %label{:for => :daily_merchant_cash_advance} 
         How much is your current merchant <br/>cash advance company collecting daily?
-      = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : 280), class: "text-center form-control", required: true
+      = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280'),
+      class: "text-center form-control", required: true
 
       .actions
         = f.submit "GET RESULTS", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
