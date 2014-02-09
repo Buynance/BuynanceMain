@@ -27,7 +27,9 @@ class Profitability < ActiveRecord::Base
     self.projected_monthly_profit = ((monthly_cash_collection_amount - total_monthly_bills)/30 - (30 * daily_merchant_cash_advance)/20.8)*30
 
     # total_month_fully_profitable_again
-    if projected_monthly_profit < 0
+    if monthly_cash_collection_amount == total_monthly_bills
+      self.total_month_fully_profitable_again = -1   # don't care
+    elsif projected_monthly_profit < 0
       val1 = projected_monthly_profit < -1 ? 6 : projected_monthly_profit > 1 ? 0 : 0
       val2 = projected_monthly_profit.abs * 6 / (monthly_cash_collection_amount - total_monthly_bills)
       self.total_month_fully_profitable_again = (val1 + val2).abs.ceil

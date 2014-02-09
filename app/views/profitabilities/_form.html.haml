@@ -19,7 +19,8 @@
         How much money does your business earn each<br/> month-before you pay the bills?
       = f.text_field :monthly_cash_collection_amount,
                     value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 40000), :precision => 0),
-                    class: "text-center form-control", required: true
+                    class: "text-center form-control",
+                    placeholder: "$40000", required: true
       
       = f.label "How much are your total monthly bills?"
       = f.text_field :total_monthly_bills,
@@ -45,9 +46,10 @@
       %br/
 
       - if @saved_profitability.projected_monthly_profit < 0
-        %h3 This is the total number of months it will take for you to be fully profitable again
-        %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
-        %br/
+        - if @saved_profitability.total_month_fully_profitable_again != -1
+          %h3 This is the total number of months it will take for you to be fully profitable again
+          %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
+          %br/
 
         = link_to "CLICK GET 114% OFF YOUR NEXT CASH ADVANCE", "http://www.buynance.com/get-started/", class: "btn btn-primary  btn-lg btn-block teal-btn"
 
