@@ -17,10 +17,14 @@
 
       %label{:for => :monthly_cash_collection_amount} 
         How much money does your business earn each<br/> month-before you pay the bills?
-      = f.text_field :monthly_cash_collection_amount, value: (@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 40000), class: "text-center form-control", required: true
+      = f.text_field :monthly_cash_collection_amount,
+                    value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : 40000), :precision => 0),
+                    class: "text-center form-control", required: true
       
       = f.label "How much are your total monthly bills?"
-      = f.text_field :total_monthly_bills, value: (@saved_profitability ? @saved_profitability.total_monthly_bills : 30000), class: "text-center form-control", required: true
+      = f.text_field :total_monthly_bills,
+                    value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : 30000), :precision => 0),
+                    class: "text-center form-control", required: true
 
       %label{:for => :daily_merchant_cash_advance} 
         How much is your current merchant <br/>cash advance company collecting daily?
@@ -33,10 +37,17 @@
   .row.result-box
     .col-md-6.col-md-offset-3.form-style
       %h3 Your gross profit margin is
-      %h2.text-green= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 0
+      %h2.text-green= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 1
       %br/
+
       %h3 Your projected monthly profit is
       %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
       %br/
+
       - if @saved_profitability.projected_monthly_profit < 0
-        = link_to "CLICK HERE TO GET A BETTER DEAL", "http://www.buynance.com/get-started/", class: "btn btn-primary btn-lg btn-lg btn-block teal-btn"
+        %h3 This is the total number of months it will take for you to be fully profitable again
+        %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
+        %br/
+
+        = link_to "CLICK GET 114% OFF YOUR NEXT CASH ADVANCE", "http://www.buynance.com/get-started/", class: "btn btn-primary  btn-lg btn-block teal-btn"
+
