@@ -31,7 +31,7 @@ class Profitability < ActiveRecord::Base
       self.total_month_fully_profitable_again = -1   # don't care
     elsif projected_monthly_profit < 0
       val1 = projected_monthly_profit < -1 ? 6 : projected_monthly_profit > 1 ? 0 : 0
-      val2 = projected_monthly_profit.abs * 6 / (monthly_cash_collection_amount - total_monthly_bills)
+      val2 = (projected_monthly_profit * 6 / (monthly_cash_collection_amount - total_monthly_bills)).abs
       self.total_month_fully_profitable_again = (val1 + val2).abs.ceil
     else
       self.total_month_fully_profitable_again = 0
