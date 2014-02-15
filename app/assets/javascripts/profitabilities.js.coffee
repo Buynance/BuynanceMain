@@ -37,10 +37,10 @@ $(document).ready ->
 
     #isValid = monthly_cash_collected_node.checkValidity()
     #is_chrome = window.chrome
-    isFirefox = typeof InstallTrigger !== 'undefined'
+    #isFirefox = (typeof InstallTrigger !== 'undefined')
 
-    if(!isValid and isFirefox)
-      $(button_node).click()
+    #if(!isValid and isFirefox)
+    #  $(button_node).click()
 
   $("#profitability_total_monthly_bills").blur ->
     monthly_cash_collected_node = document.getElementById("profitability_monthly_cash_collection_amount");
@@ -57,10 +57,10 @@ $(document).ready ->
     if(monthly_bill == 0)
       monthly_bill_node.setCustomValidity("Please enter a valid value");        
       
-    isFirefox = typeof InstallTrigger !== 'undefined';  
+    #isFirefox = (typeof InstallTrigger !== 'undefined')  
     #isValid = monthly_bill_node.checkValidity()	
     #is_chrome = window.chrome
 
-    if(!isValid and isFirefox)
-     $(button_node).click()
+    #if(!isValid and isFirefox)
+    # $(button_node).click()
 
