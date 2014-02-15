@@ -23,9 +23,9 @@ $(document).ready ->
 
     monthly_cash_collected = ~~($(this).val().replace("$", ""))
     console.log("1 -"+monthly_cash_collected+" 2-"+monthly_bill)
-    monthly_bill_node.setCustomValidity("");
-    monthly_bill_node.attr("max", monthly_cash_collected)
+
     if(monthly_cash_collected < monthly_bill)
+      monthly_bill_node.setCustomValidity("");
       $(this).attr("min", monthly_bill)
       monthly_cash_collected_node.setCustomValidity("Monthly earnings should not be less than the total monthly bills")
     else
@@ -47,9 +47,9 @@ $(document).ready ->
     monthly_bill_node = document.getElementById("profitability_total_monthly_bills");
     
     monthly_bill = ~~($(this).val().replace("$",""))
-    monthly_cash_collected_node.setCustomValidity("")
-    monthly_cash_collected_node.attr("min", monthly_bill)
+    console.log("1 -"+monthly_cash_collected+" 2-"+monthly_bill)
     if(monthly_cash_collected < monthly_bill)
+      monthly_cash_collected_node.setCustomValidity("")
       $(this).attr("max", monthly_cash_collected)
       monthly_bill_node.setCustomValidity("Total Monthly bills should not be greater than monthly earnings");        
     else
