@@ -3,6 +3,8 @@ source 'https://rubygems.org'
 # Buynancendle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 
+
+
 # Use sqlite3 as the database for Active Record
 # gem 'pg'
 gem 'haml-rails'
@@ -78,3 +80,5 @@ end
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+
+ruby 1.9.3
