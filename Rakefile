@@ -3,4 +3,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-BuynanceProfitCalculator::Application.load_tasks
+Buynance::Application.load_tasks

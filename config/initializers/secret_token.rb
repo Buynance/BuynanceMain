@@ -9,4 +9,4 @@
 
 # Make sure your secret_key_base is kept private
 # if you're sharing your code publicly.
-BuynanceProfitCalculator::Application.config.secret_key_base = 'c872451228ca4efd2f6638765bfdae996f17fcd017a0f139390400b463cc6e1d7478437d16a866ab03b1f12a6b3d54578da5c4d7cf4c608a14ecf5050d06c269'
+Buynance::Application.config.secret_key_base = 'c872451228ca4efd2f6638765bfdae996f17fcd017a0f139390400b463cc6e1d7478437d16a866ab03b1f12a6b3d54578da5c4d7cf4c608a14ecf5050d06c269'

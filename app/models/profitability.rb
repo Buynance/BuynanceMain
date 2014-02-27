@@ -19,6 +19,8 @@ class Profitability < ActiveRecord::Base
   validates :monthly_cash_collection_amount, :gross_profit_margin, :total_month_fully_profitable_again,
     :total_monthly_bills, :daily_merchant_cash_advance, :projected_monthly_profit, presence: true
 
+  validate :monthly_cash_should_be_greater_than_monthly_bills
+
   before_validation :calculate_daily_profit
 
   def calculate_daily_profit
@@ -36,7 +38,32 @@ class Profitability < ActiveRecord::Base
     else
       self.total_month_fully_profitable_again = 0
     end
-
-
   end
+
+  def create_anonymous_user(ip)
+    ip = '96.239.74.242' if ip == '127.0.0.1'
+    new_user = AnonymousUser.find_or_initialize_by(ip: ip)
+    new_user.ip = ip if (new_user.ip.nil? || new_user.ip.empty?)
+    new_user.first_request = DateTime.now if (new_user.first_request.nil? || new_user.first_request.to_s.empty?)
+    new_user.last_request = DateTime.now
+    new_user.request_count = 0 if new_user.request_count.nil?
+    new_user.request_count = new_user.request_count + 1
+    new_user.state = "" if (new_user.state.nil? || new_user.state.empty?)
+    is_set_location = (new_user.city.nil? || new_user.country.nil? || new_user.state.nil?) #|| new_user.city.empty? || new_user.country.empty? || new_user.state.empty?)
+    if (is_set_location)
+      location = AnonymousUser.get_location(ip)
+      new_user.city = location[:city] if (new_user.city.nil? || new_user.city.empty?)
+      new_user.state = location[:state] if (new_user.state.nil? || new_user.state.empty?)
+      new_user.country = location[:country] if (new_user.country.nil? || new_user.country.empty?)
+    else
+      puts "=============================Can not find db or record for #{ip}"
+    end
+      new_user.save
+  end
+
+  private
+
+    def monthly_cash_should_be_greater_than_monthly_bills
+      errors.add(:total_monthly_bills, "should be less that the monthly cash collected") if total_monthly_bills > monthly_cash_collection_amount
+    end
 end

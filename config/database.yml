@@ -13,7 +13,10 @@ development:
   timeout: 10000
 
 test: &test
-  <<: *defaults
+  adapter: sqlite3
+  database: db/development.sqlite3
+  pool: 5
+  timeout: 10000
   database: Buynance_test
 
 production:

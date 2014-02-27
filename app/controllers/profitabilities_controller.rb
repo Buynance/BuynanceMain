@@ -27,10 +27,16 @@ class ProfitabilitiesController < ApplicationController
   # POST /profitabilities.json
   def create
     prs = profitability_params
-    @profitability = Profitability.new(profitability_params)
 
+    @profitability = Profitability.new(profitability_params)
+    @is_daily_merchant_cash_advance_error = @profitability.errors.include?(:daily_merchant_cash_advance)
+    @is_monthly_cash_collection_amount_error = @profitability.errors.include?(:monthly_cash_collection_amount)
+    @is_total_monthly_bills_error = @profitability.errors.include?(:total_monthly_bills)
+    
     respond_to do |format|
       if @profitability.save
+        AnonymousUserWorker.perform_async(request.remote_ip, @profitability.id)
+        #@profitability.create_anonymous_user(request.remote_ip)
         format.html { redirect_to new_profitability_path(id: @profitability.id), notice: 'Profitability was successfully created.' }
         format.json { render action: 'show', status: :created, location: @profitability }
       else

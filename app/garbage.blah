@@ -1,0 +1,80 @@
+       #maxlength: 9
+        #min: 1
+
+        #max: ~~($("#profitability_monthly_cash_collection_amount").val().replace("$", ""))
+   ### messages:
+      monthly_cash_collected:
+        digit: "The value must be a number"
+        min: $.format("The value must atleast equal {0}")
+      total_monthly_bills:
+        digit: "The value must be a number"
+        min: "The value must be greater than zero"
+        max: $.format("The value must be less than {0}")###
+  ###
+  # empty textfield when user clicks on
+  monthly_cash_collected = 50000
+  monthly_bill = 40000
+  daily_amount_collected = 280
+
+  button_node = document.getElementById("hidden_button")
+  
+  $('#profitability_monthly_cash_collection_amount, #profitability_total_monthly_bills, #profitability_daily_merchant_cash_advance').click ->
+    $(this).val('');
+
+  $("#profitability_monthly_cash_collection_amount").blur -> 
+    monthly_cash_collected_node = document.getElementById("profitability_monthly_cash_collection_amount")
+    monthly_bill_node = document.getElementById("profitability_total_monthly_bills")
+
+    monthly_cash_collected = ~~($(this).val().replace("$", ""))
+    console.log("1 -"+monthly_cash_collected+" 2-"+monthly_bill)
+    $(monthly_bill_node).attr("max", monthly_bill)
+    if(monthly_cash_collected < monthly_bill)
+      monthly_bill_node.setCustomValidity("");
+      $(this).attr("min", monthly_bill)
+      monthly_cash_collected_node.setCustomValidity("Monthly earnings should not be less than the total monthly bills")
+    else
+      if (monthly_bill != 0)
+      	monthly_bill_node.setCustomValidity("")
+      monthly_cash_collected_node.setCustomValidity("")
+    if(monthly_cash_collected == 0)
+      monthly_cash_collected_node.setCustomValidity("Please enter a valid value");
+      
+      
+
+    #isValid = monthly_cash_collected_node.checkValidity()
+    #is_chrome = window.chrome
+    #isFirefox = (typeof InstallTrigger !== 'undefined')
+
+    #if(!isValid and isFirefox)
+    #  $(button_node).click()
+
+  $("#profitability_total_monthly_bills").blur ->
+    monthly_cash_collected_node = document.getElementById("profitability_monthly_cash_collection_amount");
+    monthly_bill_node = document.getElementById("profitability_total_monthly_bills");
+    
+    monthly_bill = ~~($(this).val().replace("$",""))
+    $(monthly_cash_collected_node).attr("min", monthly_bill)
+    if(monthly_cash_collected < monthly_bill)
+      monthly_cash_collected_node.setCustomValidity("")
+      $(this).attr("max", monthly_cash_collected)
+      monthly_bill_node.setCustomValidity("Total Monthly bills should not be greater than monthly earnings");        
+    else
+      if(monthly_cash_collected != 0)	
+      	monthly_cash_collected_node.setCustomValidity("")
+      monthly_bill_node.setCustomValidity("")
+    if(monthly_bill == 0)
+      monthly_bill_node.setCustomValidity("Please enter a valid value");        
+      
+    #isFirefox = (typeof InstallTrigger !== 'undefined')  
+    #isValid = monthly_bill_node.checkValidity()	
+    #is_chrome = window.chrome
+
+    #if(!isValid and isFirefox)
+    # $(button_node).click()
+
+  $("#profitability_daily_merchant_cash_advance").blur ->
+    daily_merchant_cash_advance_node = document.getElementById("profitability_daily_merchant_cash_advance")
+    daily_merchant_cash_advance = ~~($(daily_merchant_cash_advance_node).val().replace("$", ""))
+    console.log(daily_merchant_cash_advance)
+    $(daily_merchant_cash_advance_node).val(daily_merchant_cash_advance)
+   ###

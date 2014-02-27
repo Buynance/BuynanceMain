@@ -7,7 +7,9 @@
 $(window).load  ->
   if included_result
     $("html, body").animate({ scrollTop: $(document).height() }, 1000)
-
+  $('#profitability_monthly_cash_collection_amount, #profitability_total_monthly_bills, #profitability_daily_merchant_cash_advance').click ->
+    $(this).val('');
+  
 $(document).ready ->
   # empty textfield when user clicks on
   monthly_cash_collected = 50000
@@ -30,19 +32,10 @@ $(document).ready ->
       monthly_cash_collected_node.setCustomValidity("Monthly earnings should not be less than the total monthly bills")
     else
       if (monthly_bill != 0)
-      	monthly_bill_node.setCustomValidity("")
+        monthly_bill_node.setCustomValidity("")
       monthly_cash_collected_node.setCustomValidity("")
     if(monthly_cash_collected == 0)
       monthly_cash_collected_node.setCustomValidity("Please enter a valid value");
-      
-      
-
-    #isValid = monthly_cash_collected_node.checkValidity()
-    #is_chrome = window.chrome
-    #isFirefox = (typeof InstallTrigger !== 'undefined')
-
-    #if(!isValid and isFirefox)
-    #  $(button_node).click()
 
   $("#profitability_total_monthly_bills").blur ->
     monthly_cash_collected_node = document.getElementById("profitability_monthly_cash_collection_amount");
@@ -56,16 +49,9 @@ $(document).ready ->
       $(this).attr("max", monthly_cash_collected)
       monthly_bill_node.setCustomValidity("Total Monthly bills should not be greater than monthly earnings");        
     else
-      if(monthly_cash_collected != 0)	
-      	monthly_cash_collected_node.setCustomValidity("")
+      if(monthly_cash_collected != 0) 
+        monthly_cash_collected_node.setCustomValidity("")
       monthly_bill_node.setCustomValidity("")
     if(monthly_bill == 0)
       monthly_bill_node.setCustomValidity("Please enter a valid value");        
       
-    #isFirefox = (typeof InstallTrigger !== 'undefined')  
-    #isValid = monthly_bill_node.checkValidity()	
-    #is_chrome = window.chrome
-
-    #if(!isValid and isFirefox)
-    # $(button_node).click()
-
