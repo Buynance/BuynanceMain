@@ -1,0 +1,49 @@
+%p#notice
+  = notice
+
+.web_body
+  .row.main-title-wrap
+    .col-md-6.col-md-offset-3
+      %h1.main-title Sign Up
+  .row
+    .col-md-6.col-md-offset-3.form-style
+      %h3.form-header Please Tell Us A Bit About Yourself
+      = form_for @business, url: wizard_path do |f|
+        - if @business.errors.any? 
+          .error_messages
+            %h2
+              = pluralize(@business.errors.count, "error") 
+              prohibited this business from being saved:
+            %ul
+              - @business.errors.full_messages.each do |msg|
+                %li 
+                  = msg
+        %label{class: "control-label", :for => :owner_first_name}
+          Owners First Name
+        = f.text_field :owner_first_name, class: "text-center form-control "
+        %label{class: "control-label", :for => :owner_last_name}
+          Owners Last Name
+        = f.text_field :owner_last_name, class: "text-center form-control "
+        %label{class: "control-label", :for => :name}
+          Business Name
+        = f.text_field :name, class: "text-center form-control "
+        %label{class: "control-label", :for => :phone_number}
+          Business Phone
+        = f.text_field :phone_number, class: "text-center form-control "
+        %label{class: "control-label", :for => :street_address_one}
+          Business Address Line One
+        = f.text_field :street_address_one, class: "text-center form-control "
+        %label{class: "control-label", :for => :street_address_two}
+          Business Address Line Two
+        = f.text_field :street_address_two, class: "text-center form-control "
+        %label{class: "control-label", :for => :city}
+          Business City
+        = f.text_field :city, class: "text-center form-control "
+        %label{class: "control-label", :for => :state}
+          Business State
+        = f.text_field :state, class: "text-center form-control "
+        %label{class: "control-label", :for => :is_paying_back}
+          Are You Currently Paying Back a Merchant Cash Advance
+        = f.check_box :is_paying_back, class: "form-control "
+        .action
+          =f.submit "Continue"

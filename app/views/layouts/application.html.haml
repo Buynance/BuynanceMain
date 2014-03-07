@@ -1,4 +1,5 @@
-%html
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
   %head
     %title Merchant Cash Advance Profitability Calculator
     = include_gon(:init => true)
@@ -7,30 +8,33 @@
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = favicon_link_tag "favicon.ico"
-    %style 
-      a:hover {border: 0px none transparent; outline: none; text-decoration: none;}
   %body
-    .row.header
-      .container-fluid
-        .col-md-3.pull-left
-          = link_to "http://buynance.com" do
-            .pull-left= image_tag "logo.jpg", height: "60"
-        .col-md-3.pull-right.phone-number.text-center
-          %p
-            %strong Call Us:
-            888-211-1768
-    .container
-      = yield
-      %hr/
-      .row
-        .container
-          .col-md-12
-            %p.text-center
-              Designed by 
-              %a{href: "http://www.jayballentine.com"} Jay Ballentine
-              | Produced by
-              %a{href: "http://www.linkedin.com/pub/yuliya-glazman/46/778/37b/"} Yuliya Glazman
-            %p.text-center
-              Questions? E-Mail Us
-              %a{href: "mailto:info@buynance.com"} info@buynance.com
-    = render "layouts/analytics"
+    .container-fluid
+      #header
+        .row
+          #logo.col-sm-4
+            .image
+              = image_tag("logo.jpg", class: "logo")
+          #nav.col-sm-8
+            .row
+              %ul
+                %li.blog.col-sm-1
+                %li.fight.col-sm-3
+                  %a{href: "#"} WHY WE FIGHT
+                %li.blog.col-sm-1
+                  %a{href: "#"} BLOG
+                %li.phone.col-sm-3
+                  = image_tag("call.jpg")
+                %li.chat.col-sm-2
+                  - if current_business
+                    %button.btn.btn-login{type: "button", href: "#"} Account
+                  - else
+                    %button.btn.btn-login{type: "button", href: "/signup"} 
+                      %a{href: "/signup"} 
+                        Sign Up
+                %li.col-sm-2
+                  - if current_business
+                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/logout"} LOGOUT
+                  - else
+                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/login"} LOGIN
+    = yield

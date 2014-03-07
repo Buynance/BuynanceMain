@@ -8,7 +8,6 @@ gem 'rails', '4.0.2'
 # Use sqlite3 as the database for Active Record
 # gem 'pg'
 gem 'haml-rails'
-gem 'protected_attributes'
 gem 'bootstrap-sass', '~> 3.1.0.1'
 gem 'rails_12factor'
 # Use SCSS for stylesheets
@@ -46,6 +45,13 @@ gem 'slim'
 
 gem 'gon'
 
+gem 'authlogic'
+gem 'scrypt'
+
+gem 'wicked'
+
+gem 'mandrill-api'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -58,6 +64,7 @@ group :development do
   gem 'sqlite3'
   gem 'rspec-rails'
   gem "factory_girl_rails", :require => false
+  gem 'html2haml'
 end
 
 group :production do

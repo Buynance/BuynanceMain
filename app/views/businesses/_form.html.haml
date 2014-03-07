@@ -1,0 +1,30 @@
+#notice
+  = notice
+%label{class: "control-label", :for => :earned_one_month_ago} 
+  How much did your business earn last 
+  = x_months_ago_string(1).downcase + "?"
+= f.text_field :earned_one_month_ago, class: "text-center form-control "
+
+%label{class: "control-label", :for => :earned_three_month_ago} 
+  How much did your business earn last  
+  = x_months_ago_string(2).downcase + "?"
+= f.text_field :earned_two_months_ago, class: "text-center form-control "
+
+%label{class: "control-label", :for => :earned_three_month_ago} 
+  How much did your business earn last  
+  = x_months_ago_string(3).downcase + "?"
+= f.text_field :earned_three_months_ago, class: "text-center form-control "
+
+%label{class: "control-label", :for => :earned_one_month_ago} 
+  Email
+= f.text_field :email, class: "text-center form-control "
+
+%label{class: "control-label", :for => :earned_one_month_ago} 
+  Password
+= f.password_field :password, class: "text-center form-control "
+
+%label{class: "control-label", :for => :earned_one_month_ago} 
+  Password Confirmation
+= f.password_field :password_confirmation, class: "text-center form-control "
+
+= f.submit "Next Step"

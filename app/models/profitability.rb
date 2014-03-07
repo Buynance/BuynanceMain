@@ -13,9 +13,7 @@
 #
 
 class Profitability < ActiveRecord::Base
-  attr_accessible :monthly_cash_collection_amount, :gross_profit_margin, :total_month_fully_profitable_again,
-    :total_monthly_bills, :daily_merchant_cash_advance, :projected_monthly_profit
-
+  
   validates :monthly_cash_collection_amount, :gross_profit_margin, :total_month_fully_profitable_again,
     :total_monthly_bills, :daily_merchant_cash_advance, :projected_monthly_profit, presence: true
 
