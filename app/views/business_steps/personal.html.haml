@@ -44,6 +44,7 @@
         = f.text_field :state, class: "text-center form-control "
         %label{class: "control-label", :for => :is_paying_back}
           Are You Currently Paying Back a Merchant Cash Advance
-        = f.check_box :is_paying_back, class: "form-control "
+        = f.check_box :is_paying_back
+
         .action
           =f.submit "Continue"

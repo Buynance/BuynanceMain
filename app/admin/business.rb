@@ -52,6 +52,10 @@ ActiveAdmin.register Business do
         row :last_login_ip
         row :created_at
         row :updated_at
+        row :passed_personal_information
+        row :is_finished_application
+        row :is_paying_back
+        row :activation_code
       end
       active_admin_comments
     end

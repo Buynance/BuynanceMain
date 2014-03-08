@@ -72,4 +72,5 @@ class ApplicationController < ActionController::Base
     def month_to_string(x)
       Date::MONTHNAMES[x]
     end
+
 end

@@ -1,7 +1,9 @@
+require 'securerandom'
+
 class Business < ActiveRecord::Base
   has_many :offers
   validates :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :email, presence: true
-  
+  before_create :init
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_authentic do |c|
@@ -35,5 +37,14 @@ class Business < ActiveRecord::Base
 
   def deliver_average_email!
     BusinessMailer.average_less_than(self).deliver!
+  end
+
+  def init 
+    self.is_paying_back = false if self.is_paying_back.nil?
+    self.activation_code = generate_activation_code
+  end
+
+  def generate_activation_code
+    return SecureRandom.hex
   end
 end

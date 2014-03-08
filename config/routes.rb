@@ -14,13 +14,14 @@ Buynance::Application.routes.draw do
 
   resources :business_sessions
 
-  match 'login' => "business_sessions#new",      :as => :login, :via => :get
-  match 'logout' => "business_sessions#destroy", :as => :logout, :via => :get
+  get 'login' => "business_sessions#new",      :as => :login
+  get 'logout' => "business_sessions#destroy", :as => :logout
 
 
-  match 'signup' => 'businesses#new', :as => :signup, :via => :get
+  get 'signup' => 'businesses#new', :as => :signup
+  get 'account' => 'businesses#show', :as => :account
 
-  match '/activate/:activation_code', :controller => 'activations', :action => 'create', via: :post
+  match 'activate/:activation_code' => "businesses#activate", via: :get
   
   mount Sidekiq::Web, at: "/sidekiq"
   # The priority is based upon order of creation: first created -> highest priority.

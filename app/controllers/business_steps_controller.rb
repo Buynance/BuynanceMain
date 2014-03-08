@@ -11,21 +11,32 @@ class BusinessStepsController < ApplicationController
 
 	def update
 		@business = current_business
-		if step == :personal
-			params[:business][:passed_personal_information] = true 
-			if !params[:business][:is_paying_back]
-				params[:business][:is_finished_application]  = true
+		if @business.update(business_params)
+			if step == :personal
+				puts "=================Updating Personal"
+				puts "================== Is Paying Back #{@business.is_paying_back}"
+				@business.passed_personal_information = true 
+				if !@business.is_paying_back
+					@business.is_paying_back = false
+					puts "================Not paying back, account updated"
+					@business.is_finished_application = true
+					flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+	 				@business.deliver_activation_instructions!
+	 				puts "=============== Emailed Activation after personal"
+				end
+			elsif step == :past_merchants
+				@business.is_paying_back = true
+				puts "=================Updating PAst Merchants"
+				@business.passed_merchant_history = true
+				@business.is_finished_application = true
 				flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
- 				@business.deliver_activation_instructions!
+	 			@business.deliver_activation_instructions!
+	 			puts "==================Emailed activation after past merchant"
 			end
+
 		end
-		if step == :past_merchants
-			params[:business][:passed_merchant_history] = true
-			params[:business][:is_finished_application] = true
-			flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
- 			@business.deliver_activation_instructions!
-		end
-		@business.update(business_params)
+		
+		
 		render_wizard @business
 	end
 
