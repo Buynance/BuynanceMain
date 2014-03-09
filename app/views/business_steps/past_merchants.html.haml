@@ -2,33 +2,37 @@
 // HTML convert to bootstrap
 // Add a choice for them to insert other
 .web_body
-  .row
-    #signup-form.col-md-6.col-md-offset-3.form-style
-      %h3.form-header Prior Merchant Cash Advance History
-      = form_for @business, url: wizard_path do |f|
-        - if @business.errors.any? 
-          .error_messages
-            %h2
-              = pluralize(@business.errors.count, "error") 
-              prohibited this business from being saved:
-            %ul
-              - @business.errors.full_messages.each do |msg|
-                %li 
-                  = msg
-        %label{class: "control-label", :for => :previous_merchant}
-          Which company are you currently recieving and advance from?
-        %select{class: "form-control text-center", name: "previous_merchant"}
-          - CashAdvanceCompany.all.each do |m|
-            %option{value: m.name} 
-              = m.name
-          %option{value: "other"}
-            Other   
+  #signup-form.container 
+    .row.main-title-wrap
+      .col-md-6.col-md-offset-3
+        %h1
+    .row    
+      .col-md-6.col-md-offset-3.form-style
+        %h3.form-header Prior Merchant Cash Advance History
+        = form_for @business, url: wizard_path do |f|
+          - if @business.errors.any? 
+            .error_messages
+              %h2
+                = pluralize(@business.errors.count, "error") 
+                prohibited this business from being saved:
+              %ul
+                - @business.errors.full_messages.each do |msg|
+                  %li 
+                    = msg
+          %label{class: "control-label", :for => :previous_merchant}
+            Which company are you currently recieving and advance from?
+          %select{class: "form-control text-center", name: "previous_merchant"}
+            - CashAdvanceCompany.all.each do |m|
+              %option{value: m.name} 
+                = m.name
+            %option{value: "other"}
+              Other   
 
-        %label{class: "control-label", :for => :total_previous_payback_amount}
-          Total Cash Advance Amount
-        = f.text_field :total_previous_payback_amount, class: "text-center form-control "
-        %label{class: "control-label", :for => :total_previous_payback_balance}
-          Amount Paid
-        = f.text_field :total_previous_payback_balance, class: "text-center form-control "
-        .action
-          =f.submit "Continue"
+          %label{class: "control-label", :for => :total_previous_payback_amount}
+            Total Cash Advance Amount
+          = f.text_field :total_previous_payback_amount, class: "text-center form-control "
+          %label{class: "control-label", :for => :total_previous_payback_balance}
+            Amount Paid
+          = f.text_field :total_previous_payback_balance, class: "text-center form-control "
+          .action
+            =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

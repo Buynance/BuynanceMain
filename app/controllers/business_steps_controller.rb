@@ -12,6 +12,8 @@ class BusinessStepsController < ApplicationController
 
 	def update
 		@business = current_business
+		business_params[:is_paying_back] = !zero?(Integer(business_params[:is_paying_back]))
+		puts "#{business_params[:is_paying_back]}-#{!zero?(Integer(business_params[:is_paying_back]))}"
 		if @business.update(business_params)
 			if step == :personal
 				puts "=================Updating Personal"

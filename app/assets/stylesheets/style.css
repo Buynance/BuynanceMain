@@ -1,8 +1,5 @@
-.container {
-	min-height: 100%;
-	height: auto;
-	padding-left: 0px;
-	padding-right: 0px;
+#signup-form.container {
+	width: 1170px;
 }
 
 .main_body {
@@ -105,13 +102,9 @@ color:#526170;
 line-height:1.4em;
 margin-bottom: 20px;
 font-family:'Source Sans Pro',sans-serif;
-font-size:18px;
-height: 100%;
 }
 
-#signup-form .form-style .form-control {
-	height: auto;
-}
+
 
 .form-style .form-control {
 height: 100%;
