@@ -1,5 +1,6 @@
 ActiveAdmin.register Business do
 
+=begin
   index do
     column :id
     column :name
@@ -22,6 +23,7 @@ ActiveAdmin.register Business do
     column :failed_login_count
     column :last_request_at
   end
+=end
 
   show do |business|
       attributes_table do
