@@ -9,6 +9,7 @@ class BusinessSessionsController < ApplicationController
   def create
     @business_session = BusinessSession.new(params[:business_session])
     if @business_session.save
+      current_business = Business.find_by_id(@business_session.record.id)
       flash[:notice] = "Login successful!"
       if (current_business.is_finished_application)
         if(!current_business.is_email_confirmed)

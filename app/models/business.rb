@@ -3,6 +3,9 @@ require 'securerandom'
 class Business < ActiveRecord::Base
   has_many :offers
   validates :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :email, presence: true
+  validates_numericality_of :earned_one_month_ago, :message => "The amount your business earned a month ago should be a number"
+  validates_numericality_of :earned_two_months_ago, :message => "The amount your business earned a month ago should be a number"
+  validates_numericality_of :earned_three_months_ago, :message => "The amount your business earned a month ago should be a number"
   before_create :init
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable

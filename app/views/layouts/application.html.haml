@@ -2,47 +2,43 @@
 %html{xmlns: "http://www.w3.org/1999/xhtml"}
   %head
     %title Merchant Cash Advance Profitability Calculator
-    = include_gon(:init => true)
     %link{href: "//fonts.googleapis.com/css?family=Source+Sans+Pro:400,600", rel: "stylesheet", type: "text/css"}/
     = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
     = javascript_include_tag "application", "data-turbolinks-track" => true
     = csrf_meta_tags
     = favicon_link_tag "favicon.ico"
   %body
-    .container-fluid
-      #header
-        .row
-          #logo.col-sm-4
-            .image
-              = image_tag("logo.jpg", class: "logo")
-          #nav.col-sm-8
-            .row
-              %ul
-                %li.blog.col-sm-1
-                %li.fight.col-sm-3
-                  %a{href: "#"} WHY WE FIGHT
-                %li.blog.col-sm-1
-                  %a{href: "#"} BLOG
-                %li.phone.col-sm-3
-                  = image_tag("call.jpg")
-                %li.chat.col-sm-2
-                  - if current_business
-                    %button.btn.btn-login{type: "button", href: "#"} 
-                      %a{href: '/account'}
-                        Account
-                  - else
-                    %button.btn.btn-login{type: "button", href: "/signup"}
-                      %a{href: "/signup"} 
-                        Sign Up
-                %li.col-sm-2
-                  - if current_business
-                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/logout"} 
-                      %a{href: '/logout'}
-                        LOGOUT
-                  - else
-                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/login"} 
-                      %a{href: '/login'}
-                        LOGIN
+    #header.container-fluid
+      #logo.col-sm-4
+        .image
+          = link_to image_tag("logo.jpg", class: "logo", href: "/"), root_url
+      #nav.col-sm-8
+        .row-fluid
+          %ul
+            %li.fight.col-sm-2
+              %a{href: "#why"} WHY WE FIGHT
+            %li.blog.col-sm-2
+              %a{href: "#"} BLOG
+            %li.phone.col-sm-3
+              = image_tag("call.jpg")
+            %li.chat.col-sm-3
+              - if current_business
+                %button.btn.btn-green{type: "button", href: "#"} 
+                  %a{href: '/account'}
+                    Account
+              - else
+                %button.btn.btn-green{type: "button", href: "#"} 
+                  %a{href: '/signup'}
+                    SIGNUP
+            %li.login.col-sm-2
+              - if current_business
+                %button.btn.btn-green{type: "button", href: "#"} 
+                  %a{href: '/logout'}
+                    LOGOUT
+              - else
+                %button.btn.btn-green{type: "button", href: "#"} 
+                  %a{href: '/login'}
+                    LOGIN
     = yield
 
     = render :partial => 'layouts/footer'

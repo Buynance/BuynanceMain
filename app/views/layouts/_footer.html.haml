@@ -1,6 +1,4 @@
-.footer_divider
-  %img{src: "img/line.jpg"}/
-.container
+.container{style: "padding-top: 20px;"}
   .footer.row
     .useful_links.col-xs-3
       .section
@@ -42,31 +40,31 @@
           %ul.nav.nav-stacked
             %li
               %a{href: "#"}
-                %img{height: "18", src: "img/facebook.jpg", width: "17"}/
+                = image_tag("facebook.jpg")
                 %span.text Facebook
             %li{style: "list-style: none; display: inline"}
               %hr/
             %li
               %a{href: "#"}
-                %img{height: "18", src: "img/twitter.jpg", width: "17"}/
+                = image_tag("twitter.jpg")
                 %span.text Twitter
             %li{style: "list-style: none; display: inline"}
               %hr/
             %li
               %a{href: "#"}
-                %img{height: "18", src: "img/google.jpg", width: "17"}/
+                = image_tag("google.jpg")
                 %span.text Google Plus
             %li{style: "list-style: none; display: inline"}
               %hr/
             %li
               %a{href: "#"}
-                %img{height: "18", src: "img/linkedin.jpg", width: "17"}/
+                = image_tag("linkedin.jpg")
                 %span.text Linkedin
             %li{style: "list-style: none; display: inline"}
               %hr/
             %li
               %a{href: "#"}
-                %img{height: "18", src: "img/youtube.jpg", width: "17"}/
+                = image_tag("youtube.jpg")
                 %span.text YouTube
     .locate_help.col-xs-3
       .section
@@ -89,17 +87,17 @@
             %ul.nav.nav-stacked
               %li
                 %a{href: "#"}
-                  %img{height: "17", src: "img/phone.jpg", width: "20"}/
+                  = image_tag("phone.jpg")
                   %span.text +1-888-211-1768
               %li{style: "list-style: none; display: inline"}
                 %hr/
               %li
                 %a{href: "#"}
-                  %img{height: "16", src: "img/mail.jpg", width: "20"}/
+                  = image_tag("mail.jpg")
                   %span.text info@buynance.com
     .map.col-xs-3
       .image
         %a{href: "https://mapsengine.google.com/map/u/0/edit?mid=zwAAYEsfDXF8.kMHkc1NF3iMY"}
-          %img{src: "img/map.jpg"}/
+          = image_tag("map.jpg")
       .copy
         © 2014, Buynance
