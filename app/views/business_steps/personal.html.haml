@@ -1,10 +1,6 @@
 .web_body
-  .row.main-title-wrap
-    .col-md-6.col-md-offset-3
-      %h1.main-title Sign Up
-  .row
-    .col-md-6.col-md-offset-3.form-style
-      %h3.form-header Please Tell Us A Bit About Yourself
+  #signup-form.col-md-6.col-md-offset-3.form-style
+      %h3.form-header Tell Us A Bit About You
       - if @business.errors.any?
         %div{class: "alert alert-danger"}
           %ul{style: "list-style: none;"}
@@ -12,16 +8,16 @@
               %li= msg
       = form_for @business, url: wizard_path do |f|
         %label{class: "control-label", :for => :owner_first_name}
-          Owners First Name
+          Your First Name
         = f.text_field :owner_first_name, class: "text-center form-control "
         %label{class: "control-label", :for => :owner_last_name}
-          Owners Last Name
+          Your Last Name
         = f.text_field :owner_last_name, class: "text-center form-control "
         %label{class: "control-label", :for => :name}
           Business Name
         = f.text_field :name, class: "text-center form-control "
         %label{class: "control-label", :for => :phone_number}
-          Business Phone
+          Business Phone Number
         = f.text_field :phone_number, class: "text-center form-control "
         %label{class: "control-label", :for => :street_address_one}
           Business Address Line One

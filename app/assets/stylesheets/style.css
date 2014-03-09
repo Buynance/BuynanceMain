@@ -4,6 +4,7 @@
 	padding-left: 0px;
 	padding-right: 0px;
 }
+
 .main_body {
 	background-color:#ffffff;
 	margin-bottom: 30px;
@@ -24,9 +25,9 @@ a, a:visited, a:hover, a:active {
 }
 
 .web_body {
-background:#f5f5f5;
-min-height: 75%;
-height: auto;
+  background:#f5f5f5;
+  min-height: 75%;
+  height: auto;
 }
 
 
@@ -106,6 +107,10 @@ margin-bottom: 20px;
 font-family:'Source Sans Pro',sans-serif;
 font-size:18px;
 height: 100%;
+}
+
+#signup-form .form-style .form-control {
+	height: auto;
 }
 
 .form-style .form-control {

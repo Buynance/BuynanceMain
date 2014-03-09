@@ -75,4 +75,8 @@ class ApplicationController < ActionController::Base
       Date::MONTHNAMES[x]
     end
 
+    def zero?(num)
+      return (num == 0)
+    end
+
 end

@@ -1,17 +1,10 @@
 // Todo
 // HTML convert to bootstrap
 // Add a choice for them to insert other
-
-%p#notice
-  = notice
-
 .web_body
-  .row.main-title-wrap
-    .col-md-6.col-md-offset-3
-      %h1.main-title Sign Up
   .row
-    .col-md-6.col-md-offset-3.form-style
-      %h3.form-header Past Merchants
+    #signup-form.col-md-6.col-md-offset-3.form-style
+      %h3.form-header Prior Merchant Cash Advance History
       = form_for @business, url: wizard_path do |f|
         - if @business.errors.any? 
           .error_messages
@@ -32,10 +25,10 @@
             Other   
 
         %label{class: "control-label", :for => :total_previous_payback_amount}
-          Total cash advance amount
+          Total Cash Advance Amount
         = f.text_field :total_previous_payback_amount, class: "text-center form-control "
         %label{class: "control-label", :for => :total_previous_payback_balance}
-          Current Balance
+          Amount Paid
         = f.text_field :total_previous_payback_balance, class: "text-center form-control "
         .action
           =f.submit "Continue"
