@@ -5,26 +5,7 @@ class BusinessesController < ApplicationController
   before_filter :require_no_business, :only => [:new, :create]
 
   def new 
-    if(require_no_business)
       @business = Business.new
-    else
-      @business = current_business
-      if (@business.is_finished_application)
-        flash[:notice] = "You already have an account"
-        redirect_to root_path
-      else
-        redirect_to business_steps_path
-        ###
-        #if @business.passed_personal_information && @business.is_paying_back
-        #  redirect_to business_steps_path(:past_merchants)
-        #else 
-        #  if @business.passed_recent_earnings
-        #    redirect_to business_steps_path(:personal)
-        #  end
-        #end
-        ###
-      end
-    end
   end
 
   def create
@@ -50,6 +31,8 @@ class BusinessesController < ApplicationController
     @business = current_business
     if !@business.is_email_confirmed
       if !@business.is_averaged_over_minimum
+        render :action => :not_qualified
+      elsif !@business.has_paid_enough
         render :action => :not_qualified
       elsif !@business.is_finished_application
         flash[:notice] = "You need to finish your application before you continue"

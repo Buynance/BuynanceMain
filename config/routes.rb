@@ -19,7 +19,7 @@ Buynance::Application.routes.draw do
 
 
   get 'signup' => 'businesses#new', :as => :signup
-  get 'account' => 'businesses#show', :as => :account
+  get 'account' => 'businesses#show'
 
   match 'activate/:activation_code' => "businesses#activate", via: :get
   

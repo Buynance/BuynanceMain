@@ -27,14 +27,22 @@
                   = image_tag("call.jpg")
                 %li.chat.col-sm-2
                   - if current_business
-                    %button.btn.btn-login{type: "button", href: "#"} Account
+                    %button.btn.btn-login{type: "button", href: "#"} 
+                      %a{href: '/account'}
+                        Account
                   - else
-                    %button.btn.btn-login{type: "button", href: "/signup"} 
+                    %button.btn.btn-login{type: "button", href: "/signup"}
                       %a{href: "/signup"} 
                         Sign Up
                 %li.col-sm-2
                   - if current_business
-                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/logout"} LOGOUT
+                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/logout"} 
+                      %a{href: '/logout'}
+                        LOGOUT
                   - else
-                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/login"} LOGIN
+                    %button.btn.btn-login{type: "button", href: "#{Rails.root}/login"} 
+                      %a{href: '/login'}
+                        LOGIN
     = yield
+
+    = render :partial => 'layouts/footer'

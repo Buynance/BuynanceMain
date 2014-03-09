@@ -1,5 +1,6 @@
 class BusinessSessionsController < ApplicationController
   before_filter :require_business, :only => :destroy
+  before_filter :require_no_business, :only => [:new, :create]
 
   def new
     @business_session = BusinessSession.new
@@ -9,11 +10,11 @@ class BusinessSessionsController < ApplicationController
     @business_session = BusinessSession.new(params[:business_session])
     if @business_session.save
       flash[:notice] = "Login successful!"
-      if (@current_business.is_finished_application)
-        if(@current_business.is_email_confirmed)
+      if (current_business.is_finished_application)
+        if(!current_business.is_email_confirmed)
           flash[:notice] = "Please Activate Your Account"
         end
-        redirect_back_or_default account_url(@current_business)
+        redirect_back_or_default account_url(current_business)
       else
         redirect_to new_business_path
       end   

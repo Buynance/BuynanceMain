@@ -10,10 +10,6 @@ class Business < ActiveRecord::Base
     c.login_field = 'email'
   end # block optional
 
-  def get_average_last_three_months_earnings
-    (self.earned_one_month_ago + self.earned_two_months_ago + self.earned_three_months_ago) / 3
-  end
-
   def is_averaged_over_minimum
     minimum = 12000
     return true if get_average_last_three_months_earnings >= minimum
@@ -39,12 +35,36 @@ class Business < ActiveRecord::Base
     BusinessMailer.average_less_than(self).deliver!
   end
 
-  def init 
-    self.is_paying_back = false if self.is_paying_back.nil?
-    self.activation_code = generate_activation_code
+  def has_paid_enough
+    return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
+    return false
   end
 
-  def generate_activation_code
-    return SecureRandom.hex
-  end
+  private
+
+    def init 
+      self.total_previous_payback_balance = 0
+      self.total_previous_payback_amount = 0
+      self.is_paying_back = false if self.is_paying_back.nil?
+      self.activation_code = generate_activation_code
+    end
+
+    def get_average_last_three_months_earnings
+      (self.earned_one_month_ago + self.earned_two_months_ago + self.earned_three_months_ago) / 3
+    end
+
+    def is_previous_funding_atleast(decimal_percent)
+      return true if (self.total_previous_payback_balance / self.total_previous_payback_amount) >= decimal_percent
+      return false
+    end
+
+    def is_payback_amount_set
+      return false if self.total_previous_payback_balance * self.total_previous_payback_amount == 0
+      return true
+    end
+
+    def generate_activation_code
+      return SecureRandom.hex
+    end
+  
 end

@@ -5,6 +5,8 @@ font-size:18px
 
 .web_body {
 background:#f5f5f5;
+min-height: 50%;
+height: auto;
 }
 
 a {

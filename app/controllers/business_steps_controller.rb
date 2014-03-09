@@ -1,6 +1,7 @@
 class BusinessStepsController < ApplicationController
 	include Wicked::Wizard
 	steps :personal, :past_merchants
+	before_filter :require_business
 
 	def show
 		@business = current_business
@@ -29,9 +30,11 @@ class BusinessStepsController < ApplicationController
 				puts "=================Updating PAst Merchants"
 				@business.passed_merchant_history = true
 				@business.is_finished_application = true
-				flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
-	 			@business.deliver_activation_instructions!
-	 			puts "==================Emailed activation after past merchant"
+				if @business.has_paid_enough
+					flash[:notice] = "Your account has been created. Please check your e-mail for your account activation instructions!"
+	 				@business.deliver_activation_instructions!
+	 				puts "==================Emailed activation after past merchant"
+				end
 			end
 
 		end
@@ -45,6 +48,6 @@ class BusinessStepsController < ApplicationController
 	end
 
 	def business_params
-    	params.require(:business).permit(:id, :name, :email, :password, :password_confirmation, :owner_first_name, :owner_last_name, :open_date, :is_authenticated, :is_accepting, :is_accept_credit_cards, :phone_number, :street_address_one, :street_address_two, :city, :state, :zip_code, :is_paying_back, :previous_merchant_id, :total_previous_payback_amount, :total_previous_payback_balance, :is_email_confirmed, :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :owner_first_name, :owner_last_name, :is_finished_application, :passed_merchant_history, :passed_personal_information)
+    	params.require(:business).permit(:id, :name, :email, :password, :password_confirmation, :owner_first_name, :owner_last_name, :open_date, :is_authenticated, :is_accepting, :is_accept_credit_cards, :phone_number, :street_address_one, :street_address_two, :city, :state, :zip_code, :is_paying_back, :previous_merchant_id, :total_previous_payback_amount, :total_previous_payback_balance, :is_email_confirmed, :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :owner_first_name, :owner_last_name, :is_finished_application, :passed_merchant_history, :passed_personal_information, :most_recent_funder)
     end
 end

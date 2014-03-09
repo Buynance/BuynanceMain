@@ -43,12 +43,14 @@ class ApplicationController < ActionController::Base
       logger.debug "ApplicationController::require_no_business"
       if current_business
         store_location
-        flash[:notice] = "You must be logged out to access this page"
-       # redirect_to home_index_path
+        if (current_business.is_finished_application)
+          flash[:notice] = "You can not login twice, please logout if you want to login"
+          redirect_to account_url
+        else
+          redirect_to business_steps_path
+        end
         return false
       end
-      flash[:notice] = ""
-      return true
     end
 
     def store_location
