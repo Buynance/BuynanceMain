@@ -57,7 +57,7 @@ class Business < ActiveRecord::Base
     end
 
     def is_previous_funding_atleast(decimal_percent)
-      return true if !is_payback_amount_set || (1 - (self.total_previous_payback_balance / self.total_previous_payback_amount)) >= decimal_percent
+      return true if   (1-(self.total_previous_payback_balance.to_f / self.total_previous_payback_amount)) > decimal_percent
       return false
     end
 

@@ -7,8 +7,6 @@
 $(window).load  ->
   if included_result
     $("html, body").animate({ scrollTop: $(document).height() }, 1000)
-  $('#profitability_monthly_cash_collection_amount, #profitability_total_monthly_bills, #profitability_daily_merchant_cash_advance').click ->
-    $(this).val('');
   
 $(document).ready ->
    $('.selectpicker').selectpicker();
@@ -19,6 +17,7 @@ $(document).ready ->
   
   $('#profitability_monthly_cash_collection_amount, #profitability_total_monthly_bills, #profitability_daily_merchant_cash_advance').click ->
     $(this).val('');
+  
 
   $("#profitability_monthly_cash_collection_amount").blur -> 
     monthly_cash_collected_node = document.getElementById("profitability_monthly_cash_collection_amount")
