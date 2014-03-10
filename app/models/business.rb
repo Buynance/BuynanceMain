@@ -39,8 +39,8 @@ class Business < ActiveRecord::Base
   end
 
   def has_paid_enough
-    return false if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
-    return true
+    return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
+    return false
   end
 
   private
@@ -57,12 +57,12 @@ class Business < ActiveRecord::Base
     end
 
     def is_previous_funding_atleast(decimal_percent)
-      return true if (self.total_previous_payback_balance / self.total_previous_payback_amount) >= decimal_percent
+      return true if !is_payback_amount_set || (1 - (self.total_previous_payback_balance / self.total_previous_payback_amount)) >= decimal_percent
       return false
     end
 
     def is_payback_amount_set
-      return false if self.total_previous_payback_balance * self.total_previous_payback_amount == 0
+      return false if self.total_previous_payback_balance == 0 || self.total_previous_payback_amount == 0
       return true
     end
 

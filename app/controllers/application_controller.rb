@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery 
+  before_filter :make_action_mailer_use_request_host_and_protocol
   helper_method :current_business_session, :current_business, :require_business, :x_months_ago_string, :zero?
 
 
@@ -78,5 +79,11 @@ class ApplicationController < ActionController::Base
     def zero?(num)
       return (num == 0)
     end
+
+    def make_action_mailer_use_request_host_and_protocol
+      ActionMailer::Base.default_url_options[:protocol] = request.protocol
+      ActionMailer::Base.default_url_options[:host] = request.host_with_port
+    end
+
 
 end

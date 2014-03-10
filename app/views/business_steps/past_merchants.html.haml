@@ -20,8 +20,8 @@
                   %li 
                     = msg
           %label{class: "control-label", :for => :previous_merchant}
-            Which company are you currently recieving and advance from?
-          %select{class: "form-control text-center", name: "previous_merchant"}
+            Which company are you currently receiving and advance from?
+          %select{class: "form-control text-center selectpicker", name: "previous_merchant"}
             - CashAdvanceCompany.all.each do |m|
               %option{value: m.name} 
                 = m.name
@@ -29,10 +29,10 @@
               Other   
 
           %label{class: "control-label", :for => :total_previous_payback_amount}
-            Total Cash Advance Amount
+            How much was your total payback amount?
           = f.text_field :total_previous_payback_amount, class: "text-center form-control "
           %label{class: "control-label", :for => :total_previous_payback_balance}
-            Amount Paid
+            How much is your current balance?
           = f.text_field :total_previous_payback_balance, class: "text-center form-control "
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

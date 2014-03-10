@@ -1,3 +1,4 @@
+
 .container{style: "padding-top: 20px;"}
   .footer.row
     .useful_links.col-xs-3
@@ -7,7 +8,11 @@
         .body
           %ul.nav.nav-stacked
             %li
-              %a{href: "#"} Home
+              - if current_page?(root_url)
+                %a{href: "#"} Home
+              - else
+                %a{href: "/#"} Home
+              
             %li{style: "list-style: none; display: inline"}
               %hr/
             %li
@@ -76,7 +81,7 @@
             %p
               Merchant Ally
               %br/
-              228 pARK aVE s # 67313
+              228 Park Ave s # 67313
               %br/
               New York, NY 10003-1502
               %br/
@@ -94,7 +99,7 @@
               %li
                 %a{href: "#"}
                   = image_tag("mail.jpg")
-                  %span.text info@buynance.com
+                  %span.text{style: "font-size: 10px;"} info@buynance.com
     .map.col-xs-3
       .image
         %a{href: "https://mapsengine.google.com/map/u/0/edit?mid=zwAAYEsfDXF8.kMHkc1NF3iMY"}

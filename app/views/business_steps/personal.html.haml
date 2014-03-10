@@ -38,11 +38,6 @@
           = f.text_field :state, class: "text-center form-control "
           %label{class: "control-label", :for => :previous_merchant}
             Are You Currently Paying Back a Merchant Cash Advance
-          %select{class: "form-control text-center", style: "text-indent: 5px;", :name => "business[is_paying_back]"}
-            %option{value: "0"} 
-              = "No"
-            %option{value: "1"}
-              = "Yes" 
-
+          = f.select :is_paying_back, options_for_select({"Yes" => 1, "No" => 0}),{}, {:class => "selectpicker"}
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

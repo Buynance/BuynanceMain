@@ -18,7 +18,6 @@ class BusinessesController < ApplicationController
         session[:business_id] = @business.id
         redirect_to business_steps_path
       else
-        @business.deliver_average_email!
         redirect_to business_path(@business.id)
       end
     else

@@ -11,6 +11,7 @@ $(window).load  ->
     $(this).val('');
   
 $(document).ready ->
+   $('.selectpicker').selectpicker();
   # empty textfield when user clicks on
   monthly_cash_collected = 50000
   monthly_bill = 40000
