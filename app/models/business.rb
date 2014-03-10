@@ -14,7 +14,7 @@ class Business < ActiveRecord::Base
   end # block optional
 
   def is_averaged_over_minimum
-    minimum = 12000
+    minimum = 15000
     return true if get_average_last_three_months_earnings >= minimum
     return false
   end

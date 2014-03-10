@@ -36,8 +36,17 @@
           %label{class: "control-label", :for => :state}
             Business State
           = f.text_field :state, class: "text-center form-control "
+          %label{class: "control-label", :for => :business_type}
+            What do you sell?
+          = f.text_field :business_type, class: "text-center form-control "
+          %label{class: "control-label", :for => :approximate_credit_score}
+            What is your current credit score? (Or best guess)
+          = f.text_field :approximate_credit_score, class: "text-center form-control "
+          %label{class: "control-label", :for => :is_tax_lien}
+            Are You Currently Paying Back a Merchant Cash Advance
+          = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           %label{class: "control-label", :for => :previous_merchant}
             Are You Currently Paying Back a Merchant Cash Advance
-          = f.select :is_paying_back, options_for_select({"Yes" => 1, "No" => 0}),{}, {:class => "selectpicker"}
+          = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

@@ -5,7 +5,7 @@
 # scroll to bottom when show result
 
 $(window).load  ->
-  if included_result
+  if typeof(included_result) != "undefined" && included_result
     $("html, body").animate({ scrollTop: $(document).height() }, 1000)
   
 $(document).ready ->

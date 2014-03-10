@@ -18,6 +18,12 @@ class BusinessStepsController < ApplicationController
 			business_params[:is_paying_back] = true
 		end
 
+		if business_params[:is_tax_lien] == 0
+			business_params[:is_tax_lien] = false
+		else
+			business_params[:is_tax_lien] = true
+		end
+
 		standardize_params if step == :past_merchants
 
 		puts "#{business_params[:is_paying_back]}"
@@ -57,7 +63,7 @@ class BusinessStepsController < ApplicationController
 	end
 
 	def business_params
-    	params.require(:business).permit(:id, :name, :email, :password, :password_confirmation, :owner_first_name, :owner_last_name, :open_date, :is_authenticated, :is_accepting, :is_accept_credit_cards, :phone_number, :street_address_one, :street_address_two, :city, :state, :zip_code, :is_paying_back, :previous_merchant_id, :total_previous_payback_amount, :total_previous_payback_balance, :is_email_confirmed, :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :owner_first_name, :owner_last_name, :is_finished_application, :passed_merchant_history, :passed_personal_information, :most_recent_funder)
+    	params.require(:business).permit(:id, :name, :email, :password, :password_confirmation, :owner_first_name, :owner_last_name, :open_date, :is_authenticated, :is_accepting, :is_accept_credit_cards, :phone_number, :street_address_one, :street_address_two, :city, :state, :zip_code, :is_paying_back, :previous_merchant_id, :total_previous_payback_amount, :total_previous_payback_balance, :is_email_confirmed, :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :owner_first_name, :owner_last_name, :is_finished_application, :passed_merchant_history, :passed_personal_information, :most_recent_funder, :is_tax_lien, :business_type, :approximate_credit_score )
     end
 
     def standardize_params

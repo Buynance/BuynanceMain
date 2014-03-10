@@ -30,11 +30,14 @@
 
           %label{class: "control-label", :for => :total_previous_payback_amount}
             How much was your total payback amount?
-          = f.text_field :total_previous_payback_amount, class: "text-center form-control "
-          %label{class: "control-label", :for => :total_previous_payback_balance}
+          = f.text_field :total_previous_payback_amount, class: "text-center form-control ", value: ""
+          %label{class: "control-label", :for => :total_previous_payback_balance, onclick: "clear(this)"} 
             How much is your current balance?
-          = f.text_field :total_previous_payback_balance, class: "text-center form-control "
+          = f.text_field :total_previous_payback_balance, class: "text-center form-control ", value: "", onclick: "clear(this)"
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
 
 :javascript
+  function clear(el) {
+    $(el).val('');
+  }

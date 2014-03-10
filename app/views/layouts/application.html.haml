@@ -22,9 +22,9 @@
                 %a{href: "/#why"} WHY WE FIGHT
             %li.blog.col-sm-3
               - if current_page?(root_url)
-                %a{href: "#"} BLOG
+                %a{href: "blog.buynance.com"} BLOG
               - else
-                %a{href: "/#"} BLOG
+                %a{href: "blog.buynance.com"} BLOG
             %li.phone.col-sm-3
               = image_tag("call.jpg")
             %li.login.col-sm-3
@@ -34,6 +34,7 @@
               - else
                 %button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
                   LOGIN
+      - render :partial => "layouts/analytics" if Rails.env == "production"
     = yield
 
     = render :partial => 'layouts/footer'
