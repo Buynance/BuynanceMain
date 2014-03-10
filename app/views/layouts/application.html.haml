@@ -16,17 +16,23 @@
         .row-fluid
           %ul
             %li.fight.col-sm-3
-              %a{href: "#why"} WHY WE FIGHT
+              - if current_page?(root_url)
+                  %a{href: "#why"} WHY WE FIGHT
+              - else
+                  %a{href: "/#why"}
             %li.blog.col-sm-3
-              %a{href: "#"} BLOG
+              - if current_page?(root_url)
+                  %a{href: "#"} BLOG
+              - else
+                  %a{href: "/#"}
             %li.phone.col-sm-3
               = image_tag("call.jpg")
             %li.login.col-sm-3
               - if current_business
-                %button.btn.btn-green{type: "button", onclick: "login_link()"} 
+                %button.btn.btn-green{type: "button", onclick: "logout_link()"} 
                   LOGOUT
               - else
-                %button.btn.btn-green{type: "button", href: "#", onclick: "logout_link()"} 
+                %button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
                   LOGIN
     = yield
 
