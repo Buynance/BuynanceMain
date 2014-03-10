@@ -21,6 +21,9 @@ Buynance::Application.routes.draw do
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
 
+  get 'tos' => 'static_pages#privacy'
+  get 'privacy' => 'static_pages#tos'
+
   match 'activate/:activation_code' => "businesses#activate", via: :get
   
   mount Sidekiq::Web, at: "/sidekiq"
