@@ -2,6 +2,10 @@
 	margin-top: 30px;
 }
 
+.web_body .container .main_body.no-form {
+	margin-top: 0px;
+}
+
 .web_body .container .main_body .alert{
 	margin-bottom: 0px;
 }
