@@ -3,6 +3,7 @@ class BusinessesController < ApplicationController
 
   before_filter :require_business, :only => [:show, :edit, :update, :activate_account]
   before_filter :require_no_business, :only => [:new, :create]
+  before_filter :standardize_params, :only => [:create]
 
   def new 
       @business = Business.new
@@ -80,6 +81,12 @@ class BusinessesController < ApplicationController
     else
     end 
     render :action => :show 
+  end
+
+  def standardize_params
+      params[:business][:earned_one_month_ago].gsub!( /\$/, '')
+      params[:business][:earned_two_months_ago].gsub!( /\$/, '')
+      params[:business][:earned_three_months_ago].gsub!( /\$/, '')
   end
   
 end

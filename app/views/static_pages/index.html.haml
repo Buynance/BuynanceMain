@@ -13,10 +13,10 @@
           earn commissions – we don’t. They also charge junk fees and closing
           costs. We won’t.
         .link
-          %button.btn.btn-green{type: "button"}
-            %span.icon>
+          %button.btn.btn-green{type: "button", onclick: "get_funding_link()"}
+            %span.icon
               = image_tag("lock.png")
-            = link_to "GET FUNDING", new_business_path
+            GET FUNDING
 .container
   #web_body
     .how_works
@@ -52,7 +52,7 @@
           = image_tag("funding.jpg")
         .section.col-xs-8
           .header
-            GET FUNDING
+            Get Funding
           .body
             Once you select the offer that works best for you – you’ll be
             connected directly with your funding source and in most cases you
@@ -60,7 +60,7 @@
             funding in as little as 3 days.
     #benefit.benefit
       .top_header
-        Benefit
+        BENEFITS
       .new_hr
         = image_tag("line.jpg")
       .row
@@ -108,8 +108,8 @@
             the high pressure sales tactics.
       .row
         .button_row.col-xs-12
-          %button.btn.btn-green{type: "button"}
-            %span.icon>
+          %button.btn.btn-green{type: "button", onclick: "get_funding_link()"}
+            %span.icon
               = image_tag("lock.png")
             GET FUNDING
     #why.why_we_fight
@@ -137,3 +137,8 @@
           = image_tag("why_we_fight.jpg")
 .footer_divider
   = image_tag("line.jpg")
+
+:javascript
+  function get_funding_link(){
+    window.location = "/signup"
+  }

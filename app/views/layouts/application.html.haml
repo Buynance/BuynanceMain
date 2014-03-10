@@ -15,30 +15,29 @@
       #nav.col-sm-8
         .row-fluid
           %ul
-            %li.fight.col-sm-2
+            %li.fight.col-sm-3
               %a{href: "#why"} WHY WE FIGHT
-            %li.blog.col-sm-2
+            %li.blog.col-sm-3
               %a{href: "#"} BLOG
             %li.phone.col-sm-3
               = image_tag("call.jpg")
-            %li.chat.col-sm-3
+            %li.login.col-sm-3
               - if current_business
-                %button.btn.btn-green{type: "button", href: "#"} 
-                  %a{href: '/account'}
-                    Account
+                %button.btn.btn-green{type: "button", onclick: "login_link()"} 
+                  LOGOUT
               - else
-                %button.btn.btn-green{type: "button", href: "#"} 
-                  %a{href: '/signup'}
-                    SIGNUP
-            %li.login.col-sm-2
-              - if current_business
-                %button.btn.btn-green{type: "button", href: "#"} 
-                  %a{href: '/logout'}
-                    LOGOUT
-              - else
-                %button.btn.btn-green{type: "button", href: "#"} 
-                  %a{href: '/login'}
-                    LOGIN
+                %button.btn.btn-green{type: "button", href: "#", onclick: "logout_link()"} 
+                  LOGIN
     = yield
 
     = render :partial => 'layouts/footer'
+
+:javascript
+  
+  function login_link(){
+    window.location = "/login"
+  }
+
+  function logout_link(){
+    window.location = "/logout"
+  }
