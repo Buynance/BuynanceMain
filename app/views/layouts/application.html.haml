@@ -17,14 +17,14 @@
           %ul
             %li.fight.col-sm-3
               - if current_page?(root_url)
-                  %a{href: "#why"} WHY WE FIGHT
+                %a{href: "#why"} WHY WE FIGHT
               - else
-                  %a{href: "/#why"}
+                %a{href: "/#why"}
             %li.blog.col-sm-3
               - if current_page?(root_url)
-                  %a{href: "#"} BLOG
+                %a{href: "#"} BLOG
               - else
-                  %a{href: "/#"}
+                %a{href: "/#"}
             %li.phone.col-sm-3
               = image_tag("call.jpg")
             %li.login.col-sm-3
