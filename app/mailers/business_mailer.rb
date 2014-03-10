@@ -1,7 +1,7 @@
 class BusinessMailer < ActionMailer::Base
   def email_registration(business)
     @business = business
-    mail :subject => "Thank you for registering with Buynance",
+    mail :subject => "Complete Your Registration With Buynance",
          :to      => business.email,
          :from    => "edwin@buynance.com"
   end

@@ -39,8 +39,8 @@ class Business < ActiveRecord::Base
   end
 
   def has_paid_enough
-    return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
-    return false
+    return false if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
+    return true
   end
 
   private
