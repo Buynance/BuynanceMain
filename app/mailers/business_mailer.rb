@@ -3,19 +3,19 @@ class BusinessMailer < ActionMailer::Base
     @business = business
     mail :subject => "Complete Your Registration With Buynance",
          :to      => business.email,
-         :from    => "NoReply <noreply@buynance.com>"
+         :from    => "Team Buynance <noreply@buynance.com>"
   end
 
   def welcome(business)
   	mail :subject => "Welcome to Buynance",
          :to      => business.email,
-         :from    => "NoReply <noreply@buynance.com>"
+         :from    => "Team Buynance <noreply@buynance.com>"
   end
 
   def average_less_than(business)
     mail :subject => "We will keep in touch",
          :to      => business.email,
-         :from    => "NoReply <noreply@buynance.com>"
+         :from    => "Team Buynance <noreply@buynance.com>"
   end
   
 end

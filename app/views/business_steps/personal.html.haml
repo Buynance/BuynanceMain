@@ -43,10 +43,10 @@
             What is your current credit score? (Or best guess)
           = f.text_field :approximate_credit_score, class: "text-center form-control "
           %label{class: "control-label", :for => :is_tax_lien}
-            Are You Currently Paying Back a Merchant Cash Advance
+            Do you have any tax liens?
           = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           %label{class: "control-label", :for => :previous_merchant}
-            Are You Currently Paying Back a Merchant Cash Advance
+            Are you currently paying back a merchant cash advance?
           = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
