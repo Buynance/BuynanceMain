@@ -43,7 +43,8 @@
             What is your current credit score? (Or best guess)
           = f.text_field :approximate_credit_score, class: "text-center form-control "
           %label{class: "control-label", :for => :is_tax_lien}
-            Do you have any tax liens?
+            Do you have any tax liens? 
+          %br
           = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           %label{class: "control-label", :for => :previous_merchant}
             Are you currently paying back a merchant cash advance?

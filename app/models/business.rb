@@ -6,7 +6,9 @@ class Business < ActiveRecord::Base
   validates_numericality_of :earned_one_month_ago, :message => "The amount your business earned a month ago should be a number"
   validates_numericality_of :earned_two_months_ago, :message => "The amount your business earned a month ago should be a number"
   validates_numericality_of :earned_three_months_ago, :message => "The amount your business earned a month ago should be a number"
+  validates_acceptance_of :terms_of_service
   before_create :init
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_authentic do |c|
