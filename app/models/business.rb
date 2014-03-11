@@ -1,13 +1,41 @@
 require 'securerandom'
 
+######## Validations ###############
+
+  # name -> atleast three characters long
+  # email -> email validator ->
+  # password -> password validator atleast 5 characters long, must contain a combination of chracters and numbers
+  # owner_first_name -> must only contain characters, atleast two characters long
+  # owner_last_name -> must only contain characters, atleast two characters long
+  # phone_number -> Global phone
+  # city ->
+  # state ->
+  # zip_code ->
+  # total_previous_payback_amount ->
+  # total_previous_payback_balance ->
+  # approximate_credit_score ->
+
 class Business < ActiveRecord::Base
   has_many :offers
+  
   validates :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :email, presence: true
+  #validates :something,  :presence => true, :if => :passed_step_one?
+  #validates :something,  :presence => true, :if => :passed_step_one?
+  
+  #Step One
   validates_numericality_of :earned_one_month_ago, :message => "The amount your business earned a month ago should be a number"
   validates_numericality_of :earned_two_months_ago, :message => "The amount your business earned a month ago should be a number"
   validates_numericality_of :earned_three_months_ago, :message => "The amount your business earned a month ago should be a number"
   validates_acceptance_of :terms_of_service
+
+  #validates :approximate_credit_score, :numericality => { :greater_than => 300, :less_than_or_equal_to => 850 }, message: "Your credit score must fall in the range of 300 to 850" 
+  #validates_numericality_of :total_previous_payback_amount, :message => "Your total payback amount should be anumber should be a number"
+  #validates_numericality_of :total_previous_payback_balance, :message => "The amount you have to pack back should be a number"
+  #validates_format_of :zip_code, :with => /^\d{5}(-\d{4})?$/, :message => "should be in the form 12345 or 12345-6789"
+
   before_create :init
+
+
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -70,6 +98,18 @@ class Business < ActiveRecord::Base
 
     def generate_activation_code
       return SecureRandom.hex
+    end
+
+    def are_defined?(hash)
+      return_val = true
+      hash.each do |var|
+        return_val = (defined?(var)).nil?
+      end
+      return_val
+    end
+
+    def passed_step_one
+      are_defined?(self.earned_one_month_ago, self.earned_two_months_ago, self.earned_three_months_ago, self.email, self.presence)
     end
   
 end

@@ -23,7 +23,8 @@ Buynance::Application.routes.draw do
 
   get 'tos' => 'static_pages#tos'
   get 'privacy' => 'static_pages#privacy'
-
+  get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
+ 
   match 'activate/:activation_code' => "businesses#activate", via: :get
   
   mount Sidekiq::Web, at: "/sidekiq"

@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery 
   before_filter :make_action_mailer_use_request_host_and_protocol
   helper_method :current_business_session, :current_business, :require_business, :x_months_ago_string, :zero?
-
+  force_ssl if: :ssl_configured?
 
   private
   	def after_sign_out_path_for(resource_or_scope)
@@ -83,6 +83,10 @@ class ApplicationController < ActionController::Base
     def make_action_mailer_use_request_host_and_protocol
       ActionMailer::Base.default_url_options[:protocol] = request.protocol
       ActionMailer::Base.default_url_options[:host] = request.host_with_port
+    end
+
+    def ssl_configured?
+      !Rails.env.development?
     end
 
 

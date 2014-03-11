@@ -5,4 +5,6 @@ class StaticPagesController < ApplicationController
 	end
 	def tos
 	end
+	def merchantcashadvance
+	end
 end
