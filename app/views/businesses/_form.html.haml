@@ -27,7 +27,12 @@
 = f.password_field :password_confirmation, class: "text-center form-control "
 = f.check_box :terms_of_service
 %label{style: "margin-left: 10px;"}
-  I agree to the Terms & conditions
+  I agree to the 
+  %a{href: "http://buynance.com/tos"}  
+    Terms of Service 
+  and 
+  %a{href: "http://buynance.com/privacy"}
+    Privacy    
 
 
 = f.submit "Next Step", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
