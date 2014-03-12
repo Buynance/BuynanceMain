@@ -1,4 +1,12 @@
 GIT
+  remote: git://github.com/d0m0v0y/obfuscate_id.git
+  revision: d19bd2a78a494389940ecf3c45d469403bc4ff7a
+  specs:
+    obfuscate_id (0.0.4)
+      rails (>= 3.2.15)
+      scatter_swap (~> 0.0.3)
+
+GIT
   remote: git://github.com/gregbell/active_admin.git
   revision: a21b7843344384cc6fef8ec7ce018fdbc8c3ccdf
   specs:
@@ -221,6 +229,7 @@ GEM
       railties (>= 4.0.0, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    scatter_swap (0.0.3)
     scrypt (1.2.0)
       ffi-compiler (>= 0.0.2)
       rake
@@ -294,6 +303,7 @@ DEPENDENCIES
   jquery-rails
   mandrill-api
   maxminddb
+  obfuscate_id!
   pg
   quiet_assets
   rails (= 4.0.2)

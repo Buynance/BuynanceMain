@@ -36,7 +36,7 @@
           %div{class: "row", id: "is_payment_group", style: "display: none;"}
             %label{class: "control-label", :for => :is_payment_plan}
             
-              Are you currently in a payment plan? 
+              Are you currently making payments on your tax liens? 
             %br
             = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker", }
             

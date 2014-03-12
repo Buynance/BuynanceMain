@@ -16,6 +16,7 @@ require 'securerandom'
   # approximate_credit_score ->
 
 class Business < ActiveRecord::Base
+  obfuscate_id :spin => 89238723
   has_many :offers
   
   validates :earned_one_month_ago, :earned_two_months_ago, :earned_three_months_ago, :email, presence: true

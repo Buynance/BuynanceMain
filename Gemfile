@@ -54,6 +54,8 @@ gem 'mandrill-api'
 
 gem 'global_phone'
 
+gem "obfuscate_id", :git => "git://github.com/d0m0v0y/obfuscate_id.git"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
