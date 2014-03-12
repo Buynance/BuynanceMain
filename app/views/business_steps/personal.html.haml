@@ -14,40 +14,31 @@
         = form_for @business, url: wizard_path do |f|
           %label{class: "control-label", :for => :owner_first_name}
             Your First Name
-          = f.text_field :owner_first_name, class: "text-center form-control "
+          = f.text_field :owner_first_name, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :owner_last_name}
             Your Last Name
-          = f.text_field :owner_last_name, class: "text-center form-control "
+          = f.text_field :owner_last_name, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :name}
             Business Name
-          = f.text_field :name, class: "text-center form-control "
+          = f.text_field :name, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :phone_number}
             Business Phone Number
-          = f.text_field :phone_number, class: "text-center form-control "
+          = f.text_field :phone_number, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :street_address_one}
             Business Address Line One
-          = f.text_field :street_address_one, class: "text-center form-control "
+          = f.text_field :street_address_one, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :street_address_two}
             Business Address Line Two
           = f.text_field :street_address_two, class: "text-center form-control "
           %label{class: "control-label", :for => :city}
             Business City
-          = f.text_field :city, class: "text-center form-control "
+          = f.text_field :city, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :state}
             Business State
-          = f.text_field :state, class: "text-center form-control "
+          = f.text_field :state, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :business_type}
             What do you sell?
-          = f.text_field :business_type, class: "text-center form-control "
+          = f.text_field :business_type, class: "text-center form-control ", required: true
           %label{class: "control-label", :for => :approximate_credit_score}
-            What is your current credit score? (Or best guess)
-          = f.text_field :approximate_credit_score, class: "text-center form-control "
-          %label{class: "control-label", :for => :is_tax_lien}
-            Do you have any tax liens? 
-          %br
-          = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
-          %label{class: "control-label", :for => :previous_merchant}
-            Are you currently paying back a merchant cash advance?
-          = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

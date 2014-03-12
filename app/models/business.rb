@@ -76,8 +76,8 @@ class Business < ActiveRecord::Base
   private
 
     def init 
-      self.total_previous_payback_balance = 0
-      self.total_previous_payback_amount = 0
+      #self.total_previous_payback_balance = 0
+      #self.total_previous_payback_amount = 0
       self.is_paying_back = false if self.is_paying_back.nil?
       self.activation_code = generate_activation_code
     end
@@ -92,7 +92,7 @@ class Business < ActiveRecord::Base
     end
 
     def is_payback_amount_set
-      return false if self.total_previous_payback_balance == 0 || self.total_previous_payback_amount == 0
+      return false if self.total_previous_payback_balance.nil? || self.total_previous_payback_amount.nil?
       return true
     end
 

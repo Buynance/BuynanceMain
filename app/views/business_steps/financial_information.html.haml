@@ -5,7 +5,7 @@
         %h1
     .row    
       .col-md-6.col-md-offset-3.form-style
-        %h3.form-header Prior Merchant Cash Advance History
+        %h3.form-header Financial Information
         = form_for @business, url: wizard_path do |f|
           - if @business.errors.any? 
             .error_messages
@@ -16,6 +16,59 @@
                 - @business.errors.full_messages.each do |msg|
                   %li 
                     = msg
-          %label{class: "control-label", :for => :previous_merchant}
-            Are you currently paying back a merchant cash advance?
-          = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
+          .row
+            %label{class: "control-label", :for => :is_paying_back}
+              Are you currently paying back a merchant cash advance?
+            
+            = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker"}
+          
+          .row
+            %label{class: "control-label", :for => :approximate_credit_score_range}
+              What is your approximate credit score?
+            %br
+            = f.select :approximate_credit_score_range, options_for_select({"800 - 751" => 7, "750-701" => 6, "700-651" => 5, "650-601" => 4, "600-551" => 3, "550-501" => 2, "500-450" => 1}),{  }, {:class => "selectpicker"}
+          
+          .row
+            %label{class: "control-label", :for => :is_tax_lien}
+              Do you have any tax liens? 
+            %br
+            = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker", onChange: "hide_or_show()"}
+          %div{class: "row", id: "is_payment_group", style: "display: none;"}
+            %label{class: "control-label", :for => :is_payment_plan}
+            
+              Are you currently in a payment plan? 
+            %br
+            = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker", }
+            
+          .row
+            %label{class: "control-label", :for => :is_ever_bankruptcy}
+              Have you ever filed for bankruptcy?
+            %br
+            = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
+            
+            
+          %label{class: "control-label", :for => :average_daily_balance_bank_account}
+            What is the average daily balance of your primary business bank account?
+          = f.text_field :average_daily_balance_bank_account, class: "text-center form-control ", required: true
+
+          %label{class: "control-label", :for => :amount_negative_balance_past_month}
+            How many times have you had a negative balance in the past 30 days?
+          = f.text_field :amount_negative_balance_past_month, class: "text-center form-control ", required: true
+          .action
+            =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
+
+:javascript
+  function hide_or_show()
+  {
+  var s1= document.getElementById('business_is_tax_lien');
+  var s2= document.getElementById('is_payment_group');
+
+  if( s1.options[s1.selectedIndex].text=="Yes")
+  {
+  s2.style.display = 'block';
+  }
+  if( s1.options[s1.selectedIndex].text=="No")
+  {
+  s2.style.display = 'none';
+  }
+  }

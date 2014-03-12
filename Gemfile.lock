@@ -109,6 +109,7 @@ GEM
       rake
     formtastic (2.3.0.rc2)
       actionpack (>= 3.0)
+    global_phone (1.0.1)
     gon (5.0.4)
       actionpack (>= 2.3.0)
       json
@@ -285,6 +286,7 @@ DEPENDENCIES
   debugger
   devise
   factory_girl_rails
+  global_phone
   gon
   haml-rails
   html2haml
