@@ -21,10 +21,11 @@ Buynance::Application.routes.draw do
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
 
+
   get 'tos' => 'static_pages#tos'
   get 'privacy' => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
- 
+  get 'blog' => 'static_pages#blog'
   match 'activate/:activation_code' => "businesses#activate", via: :get
   
   mount Sidekiq::Web, at: "/sidekiq"

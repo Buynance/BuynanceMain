@@ -7,4 +7,6 @@ class StaticPagesController < ApplicationController
 	end
 	def merchantcashadvance
 	end
+	def blog
+	end
 end
