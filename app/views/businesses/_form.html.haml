@@ -4,12 +4,12 @@
   = x_months_ago_string(1) + "?"
 = f.text_field :earned_one_month_ago, class: "text-center form-control ", required: true
 
-%label{class: "control-label", :for => :earned_three_month_ago} 
+%label{class: "control-label", :for => :earned_two_months_ago} 
   How much did your business earn in  
   = x_months_ago_string(2) + "?"
 = f.text_field :earned_two_months_ago, class: "text-center form-control ", required: true
 
-%label{class: "control-label", :for => :earned_three_month_ago} 
+%label{class: "control-label", :for => :earned_three_months_ago} 
   How much did your business earn in  
   = x_months_ago_string(3) + "?"
 = f.text_field :earned_three_months_ago, class: "text-center form-control ", required: true
@@ -22,7 +22,7 @@
   Password
 = f.password_field :password, class: "text-center form-control ", required: true
 
-%label{class: "control-label", :for => :earned_one_month_ago} 
+%label{class: "control-label", :for => :password_confirmation} 
   Password Confirmation
 = f.password_field :password_confirmation, class: "text-center form-control "
 = f.check_box :terms_of_service

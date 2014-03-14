@@ -1,5 +1,3 @@
-require 'sidekiq/web'
-
 Buynance::Application.routes.draw do
   get "activations/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
@@ -21,14 +19,13 @@ Buynance::Application.routes.draw do
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
 
-
+  get 'activate_account' => 'businesses#activate_account'
   get 'tos' => 'static_pages#tos'
   get 'privacy' => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog' => 'static_pages#blog'
   match 'activate/:activation_code' => "businesses#activate", via: :get
   
-  mount Sidekiq::Web, at: "/sidekiq"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 

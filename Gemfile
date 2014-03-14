@@ -39,12 +39,6 @@ gem 'activeadmin', github: 'gregbell/active_admin'
 
 gem 'maxminddb'
 
-gem 'sidekiq'
-gem 'sinatra'
-gem 'slim'
-
-gem 'gon'
-
 gem 'authlogic'
 gem 'scrypt'
 
@@ -55,6 +49,9 @@ gem 'mandrill-api'
 gem 'global_phone'
 
 gem "obfuscate_id", :git => "git://github.com/d0m0v0y/obfuscate_id.git"
+
+gem 'delayed_job'
+gem 'delayed_job_active_record'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
