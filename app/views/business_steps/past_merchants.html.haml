@@ -9,16 +9,12 @@
     .row    
       .col-md-6.col-md-offset-3.form-style
         %h3.form-header Prior Merchant Cash Advance History
+        - if @business.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business.errors.full_messages.each do |msg|
+                %li= msg
         = form_for @business, url: wizard_path do |f|
-          - if @business.errors.any? 
-            .error_messages
-              %h2
-                = pluralize(@business.errors.count, "error") 
-                prohibited this business from being saved:
-              %ul
-                - @business.errors.full_messages.each do |msg|
-                  %li 
-                    = msg
           %label{class: "control-label", :for => :previous_merchant}
             Which company are you currently receiving and advance from?
           %select{class: "form-control text-center selectpicker", name: "previous_merchant"}
@@ -30,14 +26,10 @@
 
           %label{class: "control-label", :for => :total_previous_payback_amount}
             How much was your total payback amount?
-          = f.text_field :total_previous_payback_amount, class: "text-center form-control ", value: "", required: true
+          = f.text_field :total_previous_payback_amount, class: "text-center form-control currency_convert", value: "", required: true
           %label{class: "control-label", :for => :total_previous_payback_balance, onclick: "clear(this)"} 
             How much is your current balance?
-          = f.text_field :total_previous_payback_balance, class: "text-center form-control ", value: "", onclick: "clear(this)", required: true
+          = f.text_field :total_previous_payback_balance, class: "text-center form-control currency_convert", value: "", onclick: "clear(this)", required: true
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
 
-:javascript
-  function clear(el) {
-    $(el).val('');
-  }

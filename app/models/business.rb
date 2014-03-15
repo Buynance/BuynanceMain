@@ -24,25 +24,26 @@ class Business < ActiveRecord::Base
   # Step One
 
   validates :earned_one_month_ago,
-    presence: {message: "Please include the amount of money earned one month ago"},
-    numericality: {only_integer: true, message: "Please make sure the amount you earned one month ago is a number"},
+    presence: {message: "Please include the amount you earned a month ago"},
+    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
     on: :create
 
   validates :earned_two_months_ago,
-    presence: {message: "Please include the amount of money earned two months ago"}
-    numericality: {only_integer: true, message: "Please make sure the amount you earned two month ago is a number"},
+    presence: {message: "Please include the amount you earned two months ago"},
+    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
     on: :create
 
   validates :earned_three_months_ago,
-    presence: {message: "Please include the amount of money earned three months ago"}
-    numericality: {only_integer: true, message: "Please make sure the amount you earned three months ago is a number"},
+    presence: {message: "Please include the amount of money earned three months ago"},
+    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
     on: :create
 
   validates :password,
-    format: {with: /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: "Your password must be at least 6 characters and include one number and one letter."},
+    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and include atleast one number and one letter."},
     on: :create
 
-  validates_acceptance_of :terms_of_service, message: "Please accept the terms and conditions"
+  validates :terms_of_service, 
+    acceptance: { message: "Please accept the terms and conditions"}
 
   #Step Two
 
@@ -59,8 +60,8 @@ class Business < ActiveRecord::Base
     if: -> {self.current_step == :personal}
 
   validates :phone_number,
-    presence: {mesage: "Please include your phone number"}
-    length: {minimum: 10, maximum: 10, message: "Your phone number should be 10 digits long"},
+    presence: {mesage: "Please include your phone number"},
+    length: {minimum: 10, maximum: 10, message: "Your phone number should be 10 digits long starting with your area code"},
     numericality: {only_integer: true, message: "Please include only digits in your phone number"},
     if: -> {self.current_step == :personal}  
 
@@ -94,19 +95,19 @@ class Business < ActiveRecord::Base
 
   validates :average_daily_balance_bank_account,
     presence: {message: "Please include your bank account average daily balance"},
-    numericality: {only_integer: true, message: "Your average daily bank account should be a number"},
+    numericality: {only_integer: true, message: "Your average daily bank account should not contain any letters"},
     if: -> {self.current_step == :financial_information}
 
   # Step 4
 
   validates :total_previous_payback_amount,
-    presence: {message: "Please include your total previous payback amount"},
-    numericality: {only_integer: true, message: "Your total previous payback amount should be a number"},
+    presence: {message: "Please include the amount you have to payback to your funder"},
+    numericality: {only_integer: true, message: "The amount you have to payback to your funder should be a number"},
     if: -> {self.current_step == :past_merchants}
 
   validates :total_previous_payback_balance,
-    presence: {message: "Please include your total previous payback balance"},
-    numericality: {only_integer: true, message: "Your total previous payback balance should be a number"},
+    presence: {message: "Please include the balance left to pay to your funder"},
+    numericality: {only_integer: true, message: "The balance left to pay to your funder should be a number"},
     if: -> {self.current_step == :past_merchants}
 
 
@@ -123,6 +124,7 @@ class Business < ActiveRecord::Base
   # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_authentic do |c|
     c.login_field = 'email'
+    c.merge_validates_format_of_email_field_options :message => 'Please include a valid email address'
   end # block optional
 
   def is_averaged_over_minimum
@@ -140,42 +142,39 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
-  handle_asynchronously :deliver_activation_instructions!
+  #handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!
     BusinessMailer.welcome(self).deliver!
   end
-  handle_asynchronously :deliver_welcome!
 
   def deliver_average_email!
     BusinessMailer.average_less_than(self).deliver!
   end
-  handle_asynchronously :deliver_average_email!
+  #handle_asynchronously :deliver_average_email!
   
   def has_paid_enough
     return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
     return false
   end
 
-  def activate(activation_code)
-    if activation_code == self.activation_code
-      is_email_confimed = true
+  def activate(code)
+    if code == self.activation_code
+      self.is_email_confirmed = true
       return true
+    else
+      return false
     end
-    false
   end
 
   def update_step(step)
-    puts "================#{step} going into update"
     if step == :financial_information
-      puts "===========financial"
       if !self.is_paying_back
         self.is_finished_application = true
         return true 
       end
     elsif step == :past_merchants
-      puts "past merchant"
       self.is_finished_application = true
       return true if self.has_paid_enough
     else

@@ -10,7 +10,6 @@ class BusinessesController < ApplicationController
   def create
     @business = Business.new(business_params)
     @business.current_step = :new
-
     if @business.save
       if @business.is_averaged_over_minimum
         session[:business_id] = @business.id
@@ -61,6 +60,7 @@ class BusinessesController < ApplicationController
 
   def activate
     @business = current_business
+    puts "===================#{params[:activation_code]}"
     @business.save if @business.activate(params[:activation_code])
     redirect_to :action => :show
   end
@@ -68,15 +68,15 @@ class BusinessesController < ApplicationController
   private
 
     def standardize_params
-      params[:business][:earned_one_month_ago].gsub!( /\$/, '')
-      params[:business][:earned_two_months_ago].gsub!( /\$/, '')
-      params[:business][:earned_three_months_ago].gsub!( /\$/, '')
+      params[:business][:earned_one_month_ago].gsub!( /[^\d.]/, '').slice!(".00")
+      params[:business][:earned_two_months_ago].gsub!( /[^\d.]/, '').slice!(".00")
+      params[:business][:earned_three_months_ago].gsub!( /[^\d.]/, '').slice!(".00")
     end
 
     def business_params
       return params.require(:business).permit(:earned_one_month_ago, 
         :earned_two_months_ago, :earned_three_months_ago, :email, 
-        :password, :password_confirmation, :terms_of_service) 
+        :password, :password_confirmation, :terms_of_service, :activation_code) 
     end
   
 end

@@ -6,16 +6,12 @@
     .row    
       .col-md-6.col-md-offset-3.form-style
         %h3.form-header Financial Information
+        - if @business.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business.errors.full_messages.each do |msg|
+                %li= msg
         = form_for @business, url: wizard_path do |f|
-          - if @business.errors.any? 
-            .error_messages
-              %h2
-                = pluralize(@business.errors.count, "error") 
-                prohibited this business from being saved:
-              %ul
-                - @business.errors.full_messages.each do |msg|
-                  %li 
-                    = msg
           .row
             %label{class: "control-label", :for => :is_paying_back}
               Are you currently paying back a merchant cash advance?
@@ -49,7 +45,7 @@
             
           %label{class: "control-label", :for => :average_daily_balance_bank_account}
             What is the average daily balance of your primary business bank account?
-          = f.text_field :average_daily_balance_bank_account, class: "text-center form-control ", required: true
+          = f.text_field :average_daily_balance_bank_account, class: "text-center form-control currency_convert", required: true
 
           %label{class: "control-label", :for => :amount_negative_balance_past_month}
             How many times have you had a negative balance in the past 30 days?

@@ -48,11 +48,13 @@ class BusinessStepsController < ApplicationController
 
 
 	    def standardize_params
-	    	if step == :past_merchants
-	      		params[:business][:total_previous_payback_amount] = params[:business][:total_previous_payback_amount].gsub( /\$/, '')
-	      		params[:business][:total_previous_payback_balance] = params[:business][:total_previous_payback_balance].gsub(/\$/, '')
+	    	if step == :personal
+	    		params[:business][:phone_number] = params[:business][:phone_number].gsub(/\D/, "")
+	    	elsif step == :past_merchants
+	      		params[:business][:total_previous_payback_amount].gsub!( /[^\d.]/, '').slice!(".00")
+	      		params[:business][:total_previous_payback_balance].gsub!( /[^\d.]/, '').slice!(".00")
 	    	elsif step == :financial_information
-	    		params[:business][:average_daily_balance_bank_account] = params[:business][:average_daily_balance_bank_account].gsub(/\$/, '')
+	    		params[:business][:average_daily_balance_bank_account].gsub!( /[^\d.]/, '').slice!(".00")
 	    	end	
 	    end
 end
