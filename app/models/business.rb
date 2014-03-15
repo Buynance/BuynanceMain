@@ -148,7 +148,7 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.welcome(self).deliver!
   end
-  handle_asynchronously :deliver_welcome_email!
+  handle_asynchronously :deliver_welcome!
 
   def deliver_average_email!
     BusinessMailer.average_less_than(self).deliver!
