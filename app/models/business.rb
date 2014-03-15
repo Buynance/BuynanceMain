@@ -142,17 +142,18 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
-  #handle_asynchronously :deliver_activation_instructions!
+  handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!
     BusinessMailer.welcome(self).deliver!
   end
+  handle_asynchronously :deliver_welcome_email!
 
   def deliver_average_email!
     BusinessMailer.average_less_than(self).deliver!
   end
-  #handle_asynchronously :deliver_average_email!
+  handle_asynchronously :deliver_average_email!
   
   def has_paid_enough
     return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
