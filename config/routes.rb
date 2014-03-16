@@ -2,15 +2,18 @@ Buynance::Application.routes.draw do
   get "activations/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :profitabilities
+  scope(:path_names => { :new => "merchant-cash-advance" }) do
+    resources :profitabilities, :path => "calculator"
+  end
   resources :static_pages
   resources :businesses
   resource :business, :as => 'account'  # a convenience route
-  resources :business_steps
-
+  scope(:path_names => { :past_merchants => "funders", :financial_information => "financial" }) do
+    resources :business_steps, :path => "register"
+  end
   resources :funders
-
   resources :business_sessions
+  #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 
   get 'login' => "business_sessions#new",      :as => :login
   get 'logout' => "business_sessions#destroy", :as => :logout
@@ -18,17 +21,16 @@ Buynance::Application.routes.draw do
 
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
-
   get 'activate_account' => 'businesses#activate_account'
+
   get 'tos' => 'static_pages#tos'
   get 'privacy' => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog' => 'static_pages#blog'
   match 'activate/:activation_code' => "businesses#activate", via: :get
-  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
-
+  match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 

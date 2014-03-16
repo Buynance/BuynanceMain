@@ -70,12 +70,12 @@ class Business < ActiveRecord::Base
   end
 
   def update_step(step)
-    if step == :financial_information
+    if step == :financial
       if !self.is_paying_back
         self.is_finished_application = true
         return true 
       end
-    elsif step == :past_merchants
+    elsif step == :funders
       self.is_finished_application = true
       return true if self.has_paid_enough
     else

@@ -1,26 +1,12 @@
 class ProfitabilitiesController < ApplicationController
-  before_action :set_profitability, only: [:show, :edit, :update, :destroy]
   before_filter :standardize_params, only: [:create]
 
-  # GET /profitabilities
-  # GET /profitabilities.json
-  def index
-    @profitabilities = Profitability.all
-  end
 
-  # GET /profitabilities/1
-  # GET /profitabilities/1.json
-  def show
-  end
 
   # GET /profitabilities/new
   def new
     @profitability = Profitability.new
     @saved_profitability = Profitability.find(params[:id]) if params[:id]
-  end
-
-  # GET /profitabilities/1/edit
-  def edit
   end
 
   # POST /profitabilities
@@ -43,30 +29,6 @@ class ProfitabilitiesController < ApplicationController
         format.html { render action: 'new' }
         format.json { render json: @profitability.errors, status: :unprocessable_entity }
       end
-    end
-  end
-
-  # PATCH/PUT /profitabilities/1
-  # PATCH/PUT /profitabilities/1.json
-  def update
-    respond_to do |format|
-      if @profitability.update(profitability_params)
-        format.html { redirect_to @profitability, notice: 'Profitability was successfully updated.' }
-        format.json { head :no_content }
-      else
-        format.html { render action: 'edit' }
-        format.json { render json: @profitability.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /profitabilities/1
-  # DELETE /profitabilities/1.json
-  def destroy
-    @profitability.destroy
-    respond_to do |format|
-      format.html { redirect_to profitabilities_url }
-      format.json { head :no_content }
     end
   end
 

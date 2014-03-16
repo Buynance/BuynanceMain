@@ -1,12 +1,12 @@
 class BusinessStepsController < ApplicationController
 	include Wicked::Wizard
-	steps :personal, :financial_information, :past_merchants
+	steps :personal, :financial, :funders
 	before_filter :require_business
 	before_filter :standardize_params, :only => [:update]
 
 	def show
 		@business = current_business
-		skip_step if (step == :past_merchants and !@business.is_paying_back)
+		skip_step if (step == :funders and !@business.is_paying_back)
 		render_wizard
 	end
 
@@ -28,8 +28,8 @@ class BusinessStepsController < ApplicationController
 	private
 
 		def business_params
-			if step == :financial_information
-				puts "========== financial_information"
+			if step == :financial
+				puts "========== financial"
 				return params.require(:business).permit(:id, :is_paying_back, 
 	    		:approximate_credit_score_range, :is_tax_lien, :is_payment_plan,
 	    		:is_ever_bankruptcy, :average_daily_balance_bank_account,
@@ -39,8 +39,8 @@ class BusinessStepsController < ApplicationController
 				return params.require(:business).permit(:id, :owner_first_name, 
 				:owner_last_name, :name, :phone_number, :street_address_one, 
 				:street_address_two, :city, :state, :business_type)
-			elsif step == :past_merchants
-				puts "============== past_merchants"
+			elsif step == :funders
+				puts "============== funders"
 				return params.require(:business).permit(:id, :previous_merchant, 
 	    		:total_previous_payback_amount, :total_previous_payback_balance)
 	    	end
@@ -50,10 +50,10 @@ class BusinessStepsController < ApplicationController
 	    def standardize_params
 	    	if step == :personal
 	    		params[:business][:phone_number] = params[:business][:phone_number].gsub(/\D/, "")
-	    	elsif step == :past_merchants
+	    	elsif step == :funders
 	      		params[:business][:total_previous_payback_amount].gsub!( /[^\d.]/, '').slice!(".00")
 	      		params[:business][:total_previous_payback_balance].gsub!( /[^\d.]/, '').slice!(".00")
-	    	elsif step == :financial_information
+	    	elsif step == :financial
 	    		params[:business][:average_daily_balance_bank_account].gsub!( /[^\d.]/, '').slice!(".00")
 	    	end	
 	    end

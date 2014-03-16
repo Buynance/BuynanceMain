@@ -3,10 +3,10 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 # scroll to bottom when show result
-
 $(window).load  ->
   if typeof(included_result) != "undefined" && included_result
-    $("html, body").animate({ scrollTop: ($(document).height()  - 300)}, 1000)
+    location = $(".result-box").offset().top
+    $("html, body").animate({ scrollTop: location}, 1000)
   
 $(document).ready ->
    $('.selectpicker').selectpicker();

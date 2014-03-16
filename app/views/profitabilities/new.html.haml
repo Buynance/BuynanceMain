@@ -13,8 +13,8 @@
       %h1.main-title Merchant Cash Advance
   .container
     .main_body.no-form.row{style: "text-align:justify; padding: 10px;"}
-      .col-md-6{style: "margin-top: 40px;"}
-        %p{style: "page-break-inside: avoid;"}
+      .col-md-6{style: "margin-top: 0px;"}
+        %p{style: "page-break-inside: avoid; line-height:25px;"}
           %font{color: "#333333", size: "3"}
             %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
               Merchant
@@ -30,7 +30,7 @@
               cash advance can be paid back in one of two ways:
         %ol
           %li
-            %p{style: "page-break-inside: avoid;"}
+            %p{style: "page-break-inside: avoid; line-height:25px;"}
               %font{color: "#333333", size: "3"}
                 %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
                   %font{style: "font-size: 12pt"}
@@ -38,17 +38,17 @@
                     a small portion of your future credit card sales will go to pay the
                     money back plus fee.
           %li
-            %p{style: "page-break-inside: avoid;"}
+            %p{style: "page-break-inside: avoid; line-height:25px;"}
               %font{color: "#333333", size: "3"}
                 %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
                   %font{style: "font-size: 12pt"}
                     Through a daily debit made to your business or checking account.
-        %p{style: "page-break-inside: avoid;"}
+        %p{style: "page-break-inside: avoid; line-height:25px;"}
           %font{size: "3"}
             %font{color: "#333333"}
               %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
                 You qualify for a merchant cash advance if you have been in business for at least one year, and earn at least $15,000 per month.
-        %p{style: "page-break-inside: avoid"}
+        %p{style: "page-break-inside: avoid line-height:25px;"}
           %font{size: "3"}
             %font{color: "#333333"}
               %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
@@ -107,4 +107,4 @@
               %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
               %br/
 
-            = link_to "CLICK TO GET 114% OFF YOUR NEXT CASH ADVANCE", "http://goo.gl/uYHqFf", class: "btn btn-primary  btn-lg btn-block teal-btn", id: "btnClickHere"
+            = link_to "CLICK TO GET 114% OFF YOUR NEXT CASH ADVANCE", "/signup", class: "btn btn-primary  btn-lg btn-block teal-btn", id: "btnClickHere"

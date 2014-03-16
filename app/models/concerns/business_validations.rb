@@ -72,24 +72,24 @@ module BusinessValidations
 	validates :amount_negative_balance_past_month,
 	presence: {message: "Please include the amount of days you have been in the negative"},
 	numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 30, message: "The amount of days you have been in the negative should be between 0 and 30"},
-	if: -> {self.current_step == :financial_information}
+	if: -> {self.current_step == :financial}
 
 	validates :average_daily_balance_bank_account,
 	presence: {message: "Please include your bank account average daily balance"},
 	numericality: {only_integer: true, message: "Your average daily bank account should not contain any letters"},
-	if: -> {self.current_step == :financial_information}
+	if: -> {self.current_step == :financial}
 
 	# Step - Past Merchants
 
 	validates :total_previous_payback_amount,
 	presence: {message: "Please include the amount you have to payback to your funder"},
 	numericality: {only_integer: true, message: "The amount you have to payback to your funder should be a number"},
-	if: -> {self.current_step == :past_merchants}
+	if: -> {self.current_step == :funders}
 
 	validates :total_previous_payback_balance,
 	presence: {message: "Please include the balance left to pay to your funder"},
 	numericality: {only_integer: true, message: "The balance left to pay to your funder should be a number"},
-	if: -> {self.current_step == :past_merchants}
+	if: -> {self.current_step == :funders}
   end
 
 end
