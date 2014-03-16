@@ -3,45 +3,97 @@
     .col-md-6.col-md-offset-3
       %h1.main-title Merchant Cash Advance
   .container
-    .main_body.no-form
-      %p{style: "page-break-inside: avoid;"}
-        %font{color: "#333333", size: "3"}
-          %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
-            Merchant
-            cash advances are a short-term form of alternative business funding
-            most commonly used for things like unexpected expenses, expansion,
-            payroll, marketing, or facility upgrades. The product was originally
-            created as a means to solve the problem small business owners face
-            when they are turned away for working capital loans. Merchant cash
-            advances are based on what is referred to as a factor rate. A factor
-            rate represents the final cost of funds after fee. For example, if
-            you receive a merchant cash advance in the amount of $10,000 with a
-            factor rate of 1.30, then you will pay back $13,000. Your merchant
-            cash advance can be paid back in one of two ways:
-      %ol
-        %li
-          %p{style: "page-break-inside: avoid;"}
-            %font{color: "#333333", size: "3"}
-              %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
-                %font{style: "font-size: 12pt"}
-                  Through
-                  a small portion of your future credit card sales will go to pay the
-                  money back plus fee.
-        %li
-          %p{style: "page-break-inside: avoid;"}
-            %font{color: "#333333", size: "3"}
-              %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
-                %font{style: "font-size: 12pt"}
-                  Through a daily debit made to your business or checking account.
-      %p{style: "page-break-inside: avoid;"}
-        %font{size: "3"}
-          %font{color: "#333333"}
+    .main_body.no-form.row
+      .col-md-6{style: "padding-top: 40px;"}
+        %p{style: "page-break-inside: avoid;"}
+          %font{color: "#333333", size: "3"}
             %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
-              You qualify for a merchant cash advance if you have been in business for at least one year, and earn at least $15,000 per month.
-      %p{style: "page-break-inside: avoid"}
-        %font{size: "3"}
-          %font{color: "#333333"}
-            %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
-              More information on merchant cash advances can be found on Wikipedia by clicking 
-              %a{href: "http://en.wikipedia.org/wiki/Merchant_cash_advance"}
-                here  
+              Merchant
+              cash advances are a short-term form of alternative business funding
+              most commonly used for things like unexpected expenses, expansion,
+              payroll, marketing, or facility upgrades. The product was originally
+              created as a means to solve the problem small business owners face
+              when they are turned away for working capital loans. Merchant cash
+              advances are based on what is referred to as a factor rate. A factor
+              rate represents the final cost of funds after fee. For example, if
+              you receive a merchant cash advance in the amount of $10,000 with a
+              factor rate of 1.30, then you will pay back $13,000. Your merchant
+              cash advance can be paid back in one of two ways:
+        %ol
+          %li
+            %p{style: "page-break-inside: avoid;"}
+              %font{color: "#333333", size: "3"}
+                %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
+                  %font{style: "font-size: 12pt"}
+                    Through
+                    a small portion of your future credit card sales will go to pay the
+                    money back plus fee.
+          %li
+            %p{style: "page-break-inside: avoid;"}
+              %font{color: "#333333", size: "3"}
+                %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
+                  %font{style: "font-size: 12pt"}
+                    Through a daily debit made to your business or checking account.
+        %p{style: "page-break-inside: avoid;"}
+          %font{size: "3"}
+            %font{color: "#333333"}
+              %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
+                You qualify for a merchant cash advance if you have been in business for at least one year, and earn at least $15,000 per month.
+        %p{style: "page-break-inside: avoid"}
+          %font{size: "3"}
+            %font{color: "#333333"}
+              %font{face: "Helvetica Neue, Helvetica, Arial, sans-serif"}
+                More information on merchant cash advances can be found on Wikipedia by clicking 
+                %a{href: "http://en.wikipedia.org/wiki/Merchant_cash_advance"}
+                  here  
+      .col-md-6
+        = form_for @profitability, class: "new_profitability", id: "new_profitability" do |f|
+          - if @profitability.errors.any?
+            %div{class: "alert alert-danger"}
+              %ul
+                - @profitability.errors.each do |attr, error|
+                  %li= error
+          %div{style: "margin:0;padding:0;display:inline"}
+          - if_error = @profitability.errors.include?(:monthly_cash_collection_amount) ? 'has-error' : ''
+          %div{class: "form_group #{return_error_class(@profitability, :monthly_cash_collection_amount)}"}
+            %label{class: "control-label", :for => :monthly_cash_collection_amount} 
+              How much money does your business earn each<br/> month before you pay the bills?
+
+            = f.text_field :monthly_cash_collection_amount,
+                          value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : '$50000'), :precision => 0), maxlength: "9", min: "1",
+                          class: "text-center form-control ", required: true
+          - if_error = @profitability.errors.include?(:total_monthly_bills) ? 'has-error' : ''
+          %div{class: "form_group #{return_error_class(@profitability, :total_monthly_bills)}"}    
+            %label{class: "control-label", :for => :total_monthly_bills}
+              How much are your total monthly bills?
+            = f.text_field :total_monthly_bills,
+                          value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : '$40000'), :precision => 0), maxlength: "9", min: "1",
+                          class: "text-center form-control", required: true
+          - if_error = @profitability.errors.include?(:daily_merchant_cash_advance) ? 'has-error' : ''
+          %div{class: "form_group #{return_error_class(@profitability, :daily_merchant_cash_advance)}"}
+            %label{class: "control-label", :for => :daily_merchant_cash_advance} 
+              How much is your current merchant <br/>cash advance company collecting daily?
+            = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280'),
+            class: "text-center form-control", required: true
+
+            .actions
+              = f.submit "GET RESULTS", class: "btn btn-primary btn-lg btn-lg btn-block green-btn", id: "hidden_button" 
+
+        - if @saved_profitability
+          .row.result-box
+            .col-md-6.col-md-offset-3.form-style
+              %h3 Your gross profit margin is
+              %h2.text-green= number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 1
+              %br/
+
+              %h3 Your projected monthly profit is
+              %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
+              %br/
+
+              - if @saved_profitability.projected_monthly_profit < 0
+                - if @saved_profitability.total_month_fully_profitable_again != -1
+                  %h3 Below is the total number of months it will take for you to be fully profitable again
+                  %h2.text-green{class: ("text-red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
+                  %br/
+
+                = link_to "CLICK TO GET 114% OFF YOUR NEXT CASH ADVANCE", "http://goo.gl/uYHqFf", class: "btn btn-primary  btn-lg btn-block teal-btn", id: "btnClickHere"

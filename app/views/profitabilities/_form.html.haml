@@ -10,11 +10,11 @@
         - if @profitability.errors.any?
           %div{class: "alert alert-danger"}
             %ul
-              - @profitability.errors.full_messages.each do |msg|
-                %li= msg
+              - @profitability.errors.each do |attr, error|
+                %li= error
         %div{style: "margin:0;padding:0;display:inline"}
         - if_error = @profitability.errors.include?(:monthly_cash_collection_amount) ? 'has-error' : ''
-        %div{class: "form_group #{if_error}"}
+        %div{class: "form_group #{return_error_class(@profitability, :monthly_cash_collection_amount)}"}
           %label{class: "control-label", :for => :monthly_cash_collection_amount} 
             How much money does your business earn each<br/> month before you pay the bills?
 
@@ -22,14 +22,14 @@
                         value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : '$50000'), :precision => 0), maxlength: "9", min: "1",
                         class: "text-center form-control ", required: true
         - if_error = @profitability.errors.include?(:total_monthly_bills) ? 'has-error' : ''
-        %div{class: "form_group #{if_error}"}    
+        %div{class: "form_group #{return_error_class(@profitability, :total_monthly_bills)}"}    
           %label{class: "control-label", :for => :total_monthly_bills}
             How much are your total monthly bills?
           = f.text_field :total_monthly_bills,
                         value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : '$40000'), :precision => 0), maxlength: "9", min: "1",
                         class: "text-center form-control", required: true
         - if_error = @profitability.errors.include?(:daily_merchant_cash_advance) ? 'has-error' : ''
-        %div{class: "form_group #{if_error}"}
+        %div{class: "form_group #{return_error_class(@profitability, :daily_merchant_cash_advance)}"}
           %label{class: "control-label", :for => :daily_merchant_cash_advance} 
             How much is your current merchant <br/>cash advance company collecting daily?
           = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280'),

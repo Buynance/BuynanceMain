@@ -16,127 +16,21 @@ require 'securerandom'
   # approximate_credit_score ->
 
 class Business < ActiveRecord::Base
+  
+  include BusinessValidations
   attr_accessor :current_step
-
+  
   obfuscate_id :spin => 89238723
   has_many :offers
 
-  # Step One
-
-  validates :earned_one_month_ago,
-    presence: {message: "Please include the amount you earned a month ago"},
-    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
-    on: :create
-
-  validates :earned_two_months_ago,
-    presence: {message: "Please include the amount you earned two months ago"},
-    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
-    on: :create
-
-  validates :earned_three_months_ago,
-    presence: {message: "Please include the amount of money earned three months ago"},
-    numericality: {only_integer: true, message: "The amount earned should only contain digits"},
-    on: :create
-
-  validates :password,
-    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and include atleast one number and one letter."},
-    on: :create
-
-  validates :terms_of_service, 
-    acceptance: { message: "Please accept the terms and conditions"}
-
-  #Step Two
-
-  validates :owner_first_name,
-    presence: {message: "Please include your first name"},
-    if: -> {self.current_step == :personal}
-
-  validates :owner_last_name,
-    presence: {message: "Please include your last name"},
-    if: -> {self.current_step == :personal}
-
-  validates :name, 
-    presence: {message: "Please include your business name"},
-    if: -> {self.current_step == :personal}
-
-  validates :phone_number,
-    presence: {mesage: "Please include your phone number"},
-    length: {minimum: 10, maximum: 10, message: "Your phone number should be 10 digits long starting with your area code"},
-    numericality: {only_integer: true, message: "Please include only digits in your phone number"},
-    if: -> {self.current_step == :personal}  
-
-  validates :street_address_one,
-    presence: {message: "Please include the first line of your address"},
-    if: -> {self.current_step == :personal}
-
-  validates :city,
-    presence: {message: "Please include your city"},
-    if: -> {self.current_step == :personal}
-
-  validates :state,
-    presence: {message: "Please include your state"},
-    if: -> {self.current_step == :personal}
-
-  validate :zip_code,
-    presence: {message: "Please include your five digit zip code"},
-    numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
-    if: -> {self.current_step == :personal}
-
-  validate :business_type,
-    presence: {message: "Please include your business type"},
-    if: -> {self.current_step == :personal}
-
-  # Step 3
-
-  validates :amount_negative_balance_past_month,
-    presence: {message: "Please include the amount of days you have been in the negative"},
-    numericality: {only_integer: true, minimum: 0, maximum: 30, message: "The amount of days you have been in the negative should be between 0 and 30"},
-    if: -> {self.current_step == :financial_information}
-
-  validates :average_daily_balance_bank_account,
-    presence: {message: "Please include your bank account average daily balance"},
-    numericality: {only_integer: true, message: "Your average daily bank account should not contain any letters"},
-    if: -> {self.current_step == :financial_information}
-
-  # Step 4
-
-  validates :total_previous_payback_amount,
-    presence: {message: "Please include the amount you have to payback to your funder"},
-    numericality: {only_integer: true, message: "The amount you have to payback to your funder should be a number"},
-    if: -> {self.current_step == :past_merchants}
-
-  validates :total_previous_payback_balance,
-    presence: {message: "Please include the balance left to pay to your funder"},
-    numericality: {only_integer: true, message: "The balance left to pay to your funder should be a number"},
-    if: -> {self.current_step == :past_merchants}
-
-
-  #validates :approximate_credit_score, :numericality => { :greater_than => 300, :less_than_or_equal_to => 850 }, message: "Your credit score must fall in the range of 300 to 850" 
-  #validates_numericality_of :total_previous_payback_amount, :message => "Your total payback amount should be anumber should be a number"
-  #validates_numericality_of :total_previous_payback_balance, :message => "The amount you have to pack back should be a number"
-  #validates_format_of :zip_code, :with => /^\d{5}(-\d{4})?$/, :message => "should be in the form 12345 or 12345-6789"
-
   before_create :init
 
-
-
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable and :omniauthable
   acts_as_authentic do |c|
     c.login_field = 'email'
     c.merge_validates_format_of_email_field_options :message => 'Please include a valid email address'
+    c.merge_validates_confirmation_of_password_field_options :message => "Password confirmation should match the password"
+    c.merge_validates_length_of_password_confirmation_field_options :message => "Password too short (atleast 6 characters)"
   end # block optional
-
-  def is_averaged_over_minimum
-    minimum = 15000
-    return true if get_average_last_three_months_earnings >= minimum
-    return false
-  end
-
-  def activate!
-    self.is_email_confimed = true
-    save
-  end
 
   def deliver_activation_instructions!
     reset_perishable_token!
@@ -154,6 +48,12 @@ class Business < ActiveRecord::Base
     BusinessMailer.average_less_than(self).deliver!
   end
   handle_asynchronously :deliver_average_email!
+
+  def is_averaged_over_minimum
+    minimum = 15000
+    return true if get_average_last_three_months_earnings >= minimum
+    return false
+  end
   
   def has_paid_enough
     return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
@@ -206,18 +106,6 @@ class Business < ActiveRecord::Base
 
     def generate_activation_code
       return SecureRandom.hex
-    end
-
-    def are_defined?(hash)
-      return_val = true
-      hash.each do |var|
-        return_val = (defined?(var)).nil?
-      end
-      return_val
-    end
-
-    def passed_step_one
-      are_defined?(self.earned_one_month_ago, self.earned_two_months_ago, self.earned_three_months_ago, self.email, self.presence)
     end
   
 end

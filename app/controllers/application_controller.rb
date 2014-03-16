@@ -3,7 +3,8 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery 
   before_filter :make_action_mailer_use_request_host_and_protocol
-  helper_method :current_business_session, :current_business, :require_business, :x_months_ago_string, :zero?
+  helper_method :current_business_session, :current_business, 
+    :require_business, :x_months_ago_string, :zero?, :return_error_class
   force_ssl if: :ssl_configured?
 
   private
@@ -87,6 +88,27 @@ class ApplicationController < ActionController::Base
 
     def ssl_configured?
       !Rails.env.development?
+    end
+
+    def return_error_class(model, attribute)
+      return 'has-error' if model.errors.include?(attribute)
+      return ''
+    end
+
+    def send_activation_text
+      number_to_send_to = "+13473567903"
+ 
+      twilio_sid = "ACa599ee1205fbc22bab49c5c12586b143"
+      twilio_token = "d4944731dadc8bb487486d99169240c9"
+      twilio_phone_number = "9146104411"
+ 
+      @twilio_client = Twilio::REST::Client.new twilio_sid, twilio_token
+ 
+      @twilio_client.account.sms.messages.create(
+        :from => "+1#{twilio_phone_number}",
+        :to => number_to_send_to,
+        :body => "A new account has signed up"
+      )
     end
 
 

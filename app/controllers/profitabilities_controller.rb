@@ -35,7 +35,7 @@ class ProfitabilitiesController < ApplicationController
     
     respond_to do |format|
       if @profitability.save
-        AnonymousUserWorker.perform_async(request.remote_ip, @profitability.id)
+        #AnonymousUserWorker.perform_async(request.remote_ip, @profitability.id)
         #@profitability.create_anonymous_user(request.remote_ip)
         format.html { redirect_to new_profitability_path(id: @profitability.id), notice: 'Profitability was successfully created.' }
         format.json { render action: 'show', status: :created, location: @profitability }

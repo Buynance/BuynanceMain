@@ -1,34 +1,41 @@
+%div{class: "form_group #{return_error_class(@business, :earned_one_month_ago)}"}
+  %label{class: "control-label", :for => :earned_one_month_ago} 
+    How much did your business earn in 
+    = x_months_ago_string(1) + "?"
+  = f.text_field :earned_one_month_ago, class: "text-center form-control currency_convert", required: true
 
-%label{class: "control-label", :for => :earned_one_month_ago} 
-  How much did your business earn in 
-  = x_months_ago_string(1) + "?"
-= f.text_field :earned_one_month_ago, class: "text-center form-control currency_convert", required: true
+%div{class: "form_group #{return_error_class(@business, :earned_two_months_ago)}"}
+  %label{class: "control-label", :for => :earned_two_months_ago} 
+    How much did your business earn in  
+    = x_months_ago_string(2) + "?"
+  = f.text_field :earned_two_months_ago, class: "text-center form-control currency_convert", required: true
 
-%label{class: "control-label", :for => :earned_two_months_ago} 
-  How much did your business earn in  
-  = x_months_ago_string(2) + "?"
-= f.text_field :earned_two_months_ago, class: "text-center form-control currency_convert", required: true
+%div{class: "form_group #{return_error_class(@business, :earned_three_months_ago)}"}
+  %label{class: "control-label", :for => :earned_three_months_ago} 
+    How much did your business earn in  
+    = x_months_ago_string(3) + "?"
+  = f.text_field :earned_three_months_ago, class: "text-center form-control currency_convert", required: true
 
-%label{class: "control-label", :for => :earned_three_months_ago} 
-  How much did your business earn in  
-  = x_months_ago_string(3) + "?"
-= f.text_field :earned_three_months_ago, class: "text-center form-control currency_convert", required: true
+%div{class: "form_group #{return_error_class(@business, :email)}"}
+  %label{class: "control-label", :for => :email} 
+    Email
+  = f.text_field :email, class: "text-center form-control ", required: true
 
-%label{class: "control-label", :for => :earned_one_month_ago} 
-  Email
-= f.text_field :email, class: "text-center form-control ", required: true
+%div{class: "form_group #{return_error_class(@business, :password)}"}
+  %label{class: "control-label", :for => :password} 
+    Password
+  = f.password_field :password, class: "text-center form-control ", required: true
 
-%label{class: "control-label", :for => :earned_one_month_ago} 
-  Password
-= f.password_field :password, class: "text-center form-control ", required: true
+%div{class: "form_group #{return_error_class(@business, :password_confirmation)}"}
+  %label{class: "control-label", :for => :password_confirmation} 
+    Password Confirmation
+  = f.password_field :password_confirmation, class: "text-center form-control "
 
-%label{class: "control-label", :for => :password_confirmation} 
-  Password Confirmation
-= f.password_field :password_confirmation, class: "text-center form-control "
-= f.check_box :terms_of_service
-%label{style: "margin-left: 10px;"}
-  I agree to the 
-  %a{href: "http://buynance.com/tos"}  
-    Terms of Service 
+%div{class: "form_group #{return_error_class(@business, :terms_of_service)}"}  
+  = f.check_box :terms_of_service
+  %label{class: "control-label", :for => :terms_of_service, style: "margin-left: 10px;"}
+    I agree to the 
+    %a{href: "http://buynance.com/tos"}  
+      Terms of Service 
 
 = f.submit "Next Step", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

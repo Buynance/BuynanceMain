@@ -15,21 +15,23 @@
               - @business.errors.full_messages.each do |msg|
                 %li= msg
         = form_for @business, url: wizard_path do |f|
-          %label{class: "control-label", :for => :previous_merchant}
-            Which company are you currently receiving and advance from?
-          %select{class: "form-control text-center selectpicker", name: "previous_merchant"}
-            - CashAdvanceCompany.all.each do |m|
-              %option{value: m.name} 
-                = m.name
-            %option{value: "other"}
-              Other   
-
-          %label{class: "control-label", :for => :total_previous_payback_amount}
-            How much was your total payback amount?
-          = f.text_field :total_previous_payback_amount, class: "text-center form-control currency_convert", value: "", required: true
-          %label{class: "control-label", :for => :total_previous_payback_balance, onclick: "clear(this)"} 
-            How much is your current balance?
-          = f.text_field :total_previous_payback_balance, class: "text-center form-control currency_convert", value: "", onclick: "clear(this)", required: true
+          %div{class: "form_group #{return_error_class(@business, :previous_merchant)}"}
+            %label{class: "control-label", :for => :previous_merchant}
+              Which company are you currently receiving and advance from?
+            %select{class: "form-control text-center selectpicker", name: "previous_merchant"}
+              - CashAdvanceCompany.all.each do |m|
+                %option{value: m.name} 
+                  = m.name
+              %option{value: "other"}
+                Other   
+          %div{class: "form_group #{return_error_class(@business, :total_previous_payback_amount)}"}
+            %label{class: "control-label", :for => :total_previous_payback_amount}
+              How much was your total payback amount?
+            = f.text_field :total_previous_payback_amount, class: "text-center form-control currency_convert", value: "", required: true
+          %div{class: "form_group #{return_error_class(@business, :total_previous_payback_balance)}"}
+            %label{class: "control-label", :for => :total_previous_payback_balance, onclick: "clear(this)"} 
+              How much is your current balance?
+            = f.text_field :total_previous_payback_balance, class: "text-center form-control currency_convert", value: "", onclick: "clear(this)", required: true
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
 

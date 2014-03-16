@@ -6,7 +6,7 @@
 
 $(window).load  ->
   if typeof(included_result) != "undefined" && included_result
-    $("html, body").animate({ scrollTop: $(document).height() }, 1000)
+    $("html, body").animate({ scrollTop: ($(document).height()  - 300)}, 1000)
   
 $(document).ready ->
    $('.selectpicker').selectpicker();

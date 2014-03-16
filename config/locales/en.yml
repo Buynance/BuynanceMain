@@ -22,3 +22,15 @@
 en:
   errors:
     format: '%{message}'
+  authlogic:
+    error_messages:
+      login_blank: Login email can not be left blank
+      login_not_found: Login email not found
+      login_invalid: Login email is in an invalid format
+      consecutive_failed_logins_limit_exceeded: Consecutive failed login reached. Your account has been disabled.
+      email_invalid: Email is in an invalid format
+      password_blank: Password can not be left blank
+      password_invalid: Password is invalid
+      not_active: Your account is not active
+      not_confirmed: Your account is not confirmed
+      not_approved: Your account is not approved.

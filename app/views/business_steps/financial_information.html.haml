@@ -12,19 +12,19 @@
               - @business.errors.full_messages.each do |msg|
                 %li= msg
         = form_for @business, url: wizard_path do |f|
-          .row
+          %div{class: "form_group #{return_error_class(@business, :is_paying_back)} row"}
             %label{class: "control-label", :for => :is_paying_back}
               Are you currently paying back a merchant cash advance?
             
             = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker"}
           
-          .row
+          %div{class: "form_group #{return_error_class(@business, :approximate_credit_score_range)} row"}
             %label{class: "control-label", :for => :approximate_credit_score_range}
               What is your approximate credit score?
             %br
             = f.select :approximate_credit_score_range, options_for_select({"800 - 751" => 7, "750-701" => 6, "700-651" => 5, "650-601" => 4, "600-551" => 3, "550-501" => 2, "500-450" => 1}),{  }, {:class => "selectpicker"}
           
-          .row
+          %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
             %label{class: "control-label", :for => :is_tax_lien}
               Do you have any tax liens? 
             %br
@@ -42,14 +42,16 @@
             %br
             = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
             
-            
-          %label{class: "control-label", :for => :average_daily_balance_bank_account}
-            What is the average daily balance of your primary business bank account?
-          = f.text_field :average_daily_balance_bank_account, class: "text-center form-control currency_convert", required: true
+          %div{class: "form_group #{return_error_class(@business, :average_daily_balance_bank_account)}"}  
+            %label{class: "control-label", :for => :average_daily_balance_bank_account}
+              What is the average daily balance of your primary business bank account?
+            = f.text_field :average_daily_balance_bank_account, class: "text-center form-control currency_convert", required: true
 
-          %label{class: "control-label", :for => :amount_negative_balance_past_month}
-            How many times have you had a negative balance in the past 30 days?
-          = f.text_field :amount_negative_balance_past_month, class: "text-center form-control ", required: true
+          %div{class: "form_group #{return_error_class(@business, :amount_negative_balance_past_month)}"}
+            %label{class: "control-label", :for => :amount_negative_balance_past_month}
+              How many times have you had a negative balance in the past 30 days?
+            = f.text_field :amount_negative_balance_past_month, class: "text-center form-control ", required: true
+          
           .action
             =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
 
