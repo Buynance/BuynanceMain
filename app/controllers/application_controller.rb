@@ -4,7 +4,8 @@ class ApplicationController < ActionController::Base
   protect_from_forgery 
   before_filter :make_action_mailer_use_request_host_and_protocol
   helper_method :current_business_session, :current_business, 
-    :require_business, :x_months_ago_string, :zero?, :return_error_class
+    :require_business, :x_months_ago_string, :zero?, :return_error_class,
+    :deliver_qualified_confirmation!
   force_ssl if: :ssl_configured?
 
   private
@@ -110,6 +111,11 @@ class ApplicationController < ActionController::Base
         :body => "A new account has signed up"
       )
     end
+
+    def deliver_qualified_confirmation!
+      AdminMailer.qualified_signup.deliver!
+    end
+    handle_asynchronously :deliver_qualified_confirmation!
 
 
 end

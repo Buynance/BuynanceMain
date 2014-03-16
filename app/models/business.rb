@@ -35,6 +35,7 @@ class Business < ActiveRecord::Base
   def deliver_activation_instructions!
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
+    AdminMailer.qualified_signup.deliver!
   end
   handle_asynchronously :deliver_activation_instructions!
 
