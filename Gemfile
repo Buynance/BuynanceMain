@@ -52,7 +52,7 @@ gem "obfuscate_id", :git => "git://github.com/d0m0v0y/obfuscate_id.git"
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
-gem "delayed_job_web"
+gem "delayed_job_web", '~> 1.2.5'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

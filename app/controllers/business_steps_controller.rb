@@ -16,6 +16,7 @@ class BusinessStepsController < ApplicationController
 		if @business.update(business_params)
 			if @business.update_step(step)
 				@business.deliver_activation_instructions!
+				@business.deliver_qualified_signup!
 			end
 		end
 		render_wizard @business

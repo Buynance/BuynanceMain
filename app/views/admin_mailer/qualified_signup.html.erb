@@ -14,26 +14,21 @@
     <p> How much did you earn two months ago: <%=@business.earned_two_months_ago %> </p>
     <p> How much did you earn three months ago: <%=@business.earned_three_months_ago %> </p>
     <p>------------------------------------</p>
-    <p> First Name: <%= business.owner_first_name %> </p>
-    <p> Last Name: <%= business.owner_last_name %></p>
-    <p> Business Name: <%= business.name %></p>
-    <p> Phone Number: <%= business.phone_number %></p> 
-    <p> Address 1: <%= business.street_address_one %></p>
-    <p> Address 2: <%= business.street_address_two %></p>
-    <p> City: <%= business.city %></p>
-    <p> State: <%= business.state %></p>
-    <p> What does he sell? <%= business.business_type %></p>
+    <p> First Name: <%=@business.owner_first_name %> </p>
+    <p> Last Name: <%=@business.owner_last_name %></p>
+    <p> Business Name: <%=@business.name %></p>
+    <p> Phone Number: <%=@business.phone_number %></p> 
+    <p> Address 1: <%=@business.street_address_one %></p>
+    <p> Address 2: <%=@business.street_address_two %></p>
+    <p> City: <%=@business.city %></p>
+    <p> State: <%=@business.state %></p>
+    <p> What does he sell? <%=@business.business_type %></p>
     <p>------------------------------------</p>
-    <p> Paying Merhcant Cash Advance? <%= business.is_paying_back %></p>
-    <p> Approximate Credit Score: <%= business.approximate_credit_score_range %></p>
-    <p> Tax Liens? <%= business.is_tax_lien %></p>
-    <p> Payment Plan? <%= business.is_payment_plan %></p>
-    <p> Bankruptcy? <%= business.is_ever_bankruptcy %></p>
-    <p> Average daily balance bank account: <%= business.average_daily_balance_bank_account %></p>
-    <p> How many times negative? <%= business.amount_negative_balance_past_month %></p>
-    <p>------------------------------------</p>
-    <p> Current Funder: <%= business.previous_merchant %></p>
-    <p> Total payback amount: <%= business.total_previous_payback_amount %></p>
-    <p> Current Balance: <%= business.total_previous_payback_balance %></p>
-  </body>
+    <p> Paying Merhcant Cash Advance? <%=@business.is_paying_back %></p>
+    <p> Approximate Credit Score: <%=@business.approximate_credit_score_range %></p>
+    <p> Tax Liens? <%=@business.is_tax_lien %></p>
+    <p> Payment Plan? <%=@business.is_payment_plan %></p>
+    <p> Bankruptcy? <%=@business.is_ever_bankruptcy %></p>
+    <p> Average daily balance bank account: <%=@business.average_daily_balance_bank_account %></p>
+    <p> How many times negative? <%=@business.amount_negative_balance_past_month %></p>
 </html>

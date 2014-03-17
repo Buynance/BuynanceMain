@@ -32,10 +32,13 @@ class Business < ActiveRecord::Base
     c.merge_validates_length_of_password_confirmation_field_options :message => "Password too short (atleast 6 characters)"
   end # block optional
 
+  def deliver_qualified_signup!
+    AdminMailer.delay.qualified_signup(self)
+  end
+
   def deliver_activation_instructions!
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
-    AdminMailer.qualified_signup.deliver!
   end
   handle_asynchronously :deliver_activation_instructions!
 
