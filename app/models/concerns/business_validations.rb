@@ -19,7 +19,7 @@ module BusinessValidations
     on: :create
 
 	validates :password,
-    format: {with: /^(?=.*[a-zA-Z])(?=.*[0-9]).{6,}$/, message: "Your password must be at least 6 characters and must include one number and one letter."},
+    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and must include one number and one letter."},
 	on: :create
 
 	validates :terms_of_service, 
