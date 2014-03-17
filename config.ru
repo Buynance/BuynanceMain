@@ -5,6 +5,6 @@ run Rails.application
 
 if Rails.env.production?
   DelayedJobWeb.use Rack::Auth::Basic do |username, password|
-    username == 'buynace-saas' && password == 'grubraise4all'
+    username == 'buynance-saas' && password == 'grubraise4all'
   end
 end
