@@ -32,6 +32,10 @@ class Business < ActiveRecord::Base
     c.merge_validates_length_of_password_confirmation_field_options :message => "Password too short (atleast 6 characters)."
     c.merge_validates_uniqueness_of_email_field_options :message => "Email already taken, please select another email. "
   end # block optional
+  
+  # ------------------------------------------#
+  # Scope Approximate credit score from range #
+  # ------------------------------------------#
 
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)

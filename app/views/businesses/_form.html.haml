@@ -2,19 +2,19 @@
   %label{class: "control-label", :for => :earned_one_month_ago} 
     How much did your business earn in 
     = x_months_ago_string(1) + "?"
-  = f.text_field :earned_one_month_ago, class: "text-center form-control currency_convert", required: true
+  = f.currency :earned_one_month_ago, class: "text-center form-control", required: true
 
 %div{class: "form_group #{return_error_class(@business, :earned_two_months_ago)}"}
   %label{class: "control-label", :for => :earned_two_months_ago} 
     How much did your business earn in  
     = x_months_ago_string(2) + "?"
-  = f.text_field :earned_two_months_ago, class: "text-center form-control currency_convert", required: true
+  = f.currency :earned_two_months_ago, class: "text-center form-control", required: true
 
 %div{class: "form_group #{return_error_class(@business, :earned_three_months_ago)}"}
   %label{class: "control-label", :for => :earned_three_months_ago} 
     How much did your business earn in  
     = x_months_ago_string(3) + "?"
-  = f.text_field :earned_three_months_ago, class: "text-center form-control currency_convert", required: true
+  = f.currency :earned_three_months_ago, class: "text-center form-control", required: true
 
 %div{class: "form_group #{return_error_class(@business, :email)}"}
   %label{class: "control-label", :for => :email} 

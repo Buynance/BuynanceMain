@@ -52,8 +52,8 @@ class BusinessStepsController < ApplicationController
 	    	if step == :personal
 	    		params[:business][:phone_number] = params[:business][:phone_number].gsub(/\D/, "")
 	    	elsif step == :funders
-	      		params[:business][:total_previous_payback_amount].gsub!( /[^\d.]/, '').slice!(".00")
-	      		params[:business][:total_previous_payback_balance].gsub!( /[^\d.]/, '').slice!(".00")
+	      		params[:business][:total_previous_payback_amount].gsub!( /[^\d]/, '')
+	      		params[:business][:total_previous_payback_balance].gsub!( /[^\d]/, '')
 	    	elsif step == :financial
 	    		params[:business][:average_daily_balance_bank_account].gsub!( /[^\d.]/, '').slice!(".00")
 	    	end	

@@ -13,7 +13,7 @@ convert_currency = (element) ->
     number = $(this).val()
     if (typeof number != 'undefined' and number.length > 0)
       number = number.replace(/[^\d.]/g, "")
-      new_value = parseInt(number).formatMoney(2, ",", ".")
+      new_value = parseInt(number).formatMoney(0, ",", ".")
       $(this).val("$"+new_value)
 
 convert_phone = (element) ->
@@ -31,6 +31,8 @@ $(document).ready ->
 
   $(".currency_convert").change ->
   	convert_currency(this)
+  $(".currency_convert.live_edit").keyup ->
+    convert_currency(this)
 
   $(".phone_convert").change ->
     convert_phone (this)
