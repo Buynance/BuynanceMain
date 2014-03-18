@@ -88,7 +88,7 @@ class Business < ActiveRecord::Base
 
   def update_step(step)
     if step == :financial
-      if !self.is_paying_back || !self.is_qualified
+      if !self.is_paying_back and self.is_qualified
         self.is_finished_application = true
         return true 
       end
