@@ -27,6 +27,8 @@ class BusinessesController < ApplicationController
     if !@business.is_email_confirmed
       if !@business.is_averaged_over_minimum
         render :action => :not_qualified
+      elsif !@business.is_qualified
+        render :action => :not_qualified
       elsif !@business.has_paid_enough
         render :action => :not_qualified
       elsif !@business.is_finished_application

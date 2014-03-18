@@ -6,7 +6,7 @@ class BusinessStepsController < ApplicationController
 
 	def show
 		@business = current_business
-		skip_step if (step == :funders and !@business.is_paying_back)
+		skip_step if (step == :funders and (!@business.is_paying_back or !@business.is_qualified))
 		render_wizard
 	end
 

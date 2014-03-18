@@ -78,9 +78,17 @@ class Business < ActiveRecord::Base
     end
   end
 
+  def is_qualified
+    return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_paying_back
+    return false if !self.is_ever_bankruptcy.nil? and self.is_ever_bankruptcy
+    return false if !self.approximate_credit_score_range.nil? and self.approximate_credit_score_range == 1
+    return false if !self.amount_negative_balance_past_month.nil? and self.amount_negative_balance_past_month >= 3
+    return true
+  end
+
   def update_step(step)
     if step == :financial
-      if !self.is_paying_back
+      if !self.is_paying_back || !self.is_qualified
         self.is_finished_application = true
         return true 
       end
