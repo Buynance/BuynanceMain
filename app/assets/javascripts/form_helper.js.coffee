@@ -12,6 +12,8 @@ convert_currency = (element) ->
   $(element).each (index) ->
     number = $(this).val()
     if (typeof number != 'undefined' and number.length > 0)
+      number = number.replace(/k$/, "000")
+      number = number.replace(/K$/, "000")      
       number = number.replace(/[^\d.]/g, "")
       new_value = parseInt(number).formatMoney(0, ",", ".")
       $(this).val("$"+new_value)
