@@ -29,12 +29,12 @@
 
 %div{class: "form_group #{return_error_class(@business, :password)}"}
   %label{class: "control-label", :for => :password} 
-    Password
+    Enter New Buynance Password
   = f.password_field :password, class: "text-center form-control ", required: true
 
 %div{class: "form_group #{return_error_class(@business, :password_confirmation)}"}
   %label{class: "control-label", :for => :password_confirmation} 
-    Password Confirmation
+    Re-Enter Buynance Password
   = f.password_field :password_confirmation, class: "text-center form-control "
 
 %div{class: "form_group #{return_error_class(@business, :terms_of_service)}"}  
