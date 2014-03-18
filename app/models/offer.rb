@@ -17,6 +17,4 @@ class Offer < ActiveRecord::Base
 	def collection_per_day(total_amount, days)
 		return total_amount / days
 	end
-
-	def minimum_daily_balance()
 end
