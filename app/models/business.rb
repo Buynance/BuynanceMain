@@ -106,7 +106,7 @@ class Business < ActiveRecord::Base
     average = Offer.get_three_months_average(self.earned_one_month_ago,
         earned_two_months_ago, earned_three_months_ago)
     days = 60
-    days = 120 if @business.approximate_credit_score_range >= 4  
+    days = 120 if self.approximate_credit_score_range >= 4  
     for n in 0...amount 
       factor_rate = Offer.get_random_rate(1.36, 1.48)
       factor_rate = Offer.get_random_rate(1.32, 1.38) if @business.approximate_credit_score_range >= 4  
