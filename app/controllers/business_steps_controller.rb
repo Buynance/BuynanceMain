@@ -21,7 +21,7 @@ class BusinessStepsController < ApplicationController
 				else
 				  @business.is_email_confirmed = true
 				end
-				@business.create_random_offers(6,10)
+				@business.create_offers(10)
 				@business.save
 			end
 		end

@@ -102,6 +102,32 @@ class Business < ActiveRecord::Base
     end
   end
 
+  def create_offers(amount)
+    average = Offer.get_three_months_average(self.earned_one_month_ago,
+        earned_two_months_ago, earned_three_months_ago)
+    days = 60
+    for n in 0...amount 
+      factor_rate = Offer.get_random_rate(1.32, 1.38)
+      daily_rate = Offer.get_random_rate(0.145, 0.15)
+
+      daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
+      total_payback = daily_payback * days
+      offer = (total_payback / factor_rate).round(-2)
+
+      total_payback = offer * factor_rate
+      daily_payback = total_payback / days
+
+      if(offer > (average * 0.35))
+        percent_monthly = Offer.get_random_rate(0.30, 0.35)
+        offer = (average * percent_monthly).round(-2)
+        total_payback = offer * factor_rate
+        daily_payback = total_payback / days
+      end
+      offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
+        days_to_collect: days, total_payback_amount: total_payback)
+    end
+  end
+  
   def create_random_offers(min, max)
     amount = rand(max - min + 1) + min
     for n in 0..amount
@@ -127,7 +153,9 @@ class Business < ActiveRecord::Base
 
     def init 
       self.is_paying_back = false if self.is_paying_back.nil?
-      self.activation_code = generate_activation_code
+      self.activation_code = Business.generate_activation_code
+      self.recovery_code = Business.generate_activation_code
+      self.confirmation_code = Business.generate_activation_code
     end
 
     def get_average_last_three_months_earnings
@@ -144,7 +172,7 @@ class Business < ActiveRecord::Base
       return true
     end
 
-    def generate_activation_code
+    def self.generate_activation_code
       return SecureRandom.hex
     end
   

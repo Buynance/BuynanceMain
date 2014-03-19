@@ -47,7 +47,40 @@ class BusinessesController < ApplicationController
       render :action => :edit
     end
   end
-	
+
+  def confirm_account
+    @business = Business.find(params[:business_id])
+    if @business.confirmation_code != params[:confirmation_code]
+      redirect_to :root_path
+    end
+  end
+
+  def confirm
+    @business = Business.find(params[:business_id])
+    if !is_email_confirmed && @business.update_attributes(business_params)
+      @business.is_email_confirmed = true
+      @business.save
+      redirect_to business_path(@business.id)
+    end
+  end
+
+  def recover
+    @business = Business.find(params[:business_id])
+    if !is_email_confirmed && @business.update_attributes(business_params)
+      @business.is_email_confirmed = true
+      @business.recovery_code = Business.generate_activation_code
+      @business.save
+      redirect_to business_path(@business.id)
+    end
+  end
+
+  def recover_account
+    @business = Business.find(params[:business_id])
+    if @business.confirmation_code != params[:activation_code]
+      redirect_to :root_path
+    end
+  end
+
   def activate_account
     @business = current_business
   end

@@ -28,6 +28,8 @@ Buynance::Application.routes.draw do
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog' => 'static_pages#blog'
   match 'activate/:activation_code' => "businesses#activate", via: :get
+  match 'business/:business_id/confirm/:confirmation_code' => "business#confirm_account", via: :get
+  match 'business/:business_id/confirm/:activation_code' => "business#activation_account", via: :get
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]

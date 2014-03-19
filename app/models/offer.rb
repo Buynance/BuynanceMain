@@ -37,6 +37,18 @@ class Offer < ActiveRecord::Base
 		max_merchant_recieve(average1, average2, average3) * get_random_rate(min, max)
 	end
 
+	def self.get_three_months_average(average1, average2, average3)
+		max_merchant_recieve(average1, average2, average3)
+	end
+
+	def self.get_daily_payback(average_daily_balance, rate)
+		average_daily_balance * rate
+	end
+
+	def self.get_random_rate(min, max)
+	    return rand * (max - min) + min
+	end
+
 	private
 
 	  def self.get_random_rate(min, max)
