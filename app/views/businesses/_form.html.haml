@@ -21,11 +21,11 @@
     Email
   = f.text_field :email, class: "text-center form-control ", required: true
 
-%div{style: "margin-left: -35px; margin-right: -35px; padding-bottom: 0px; width: 585px; float: left;" }
-  %svg{width: "100%", height: "50"}
-    %rect{ width: "100%", height: "50", style:"fill:rgb(245,245,245);stroke-width:0;stroke:rgb(0,0,0);"}
 
-%h3.form-header{style: "margin-left: -35px; margin-right: -35px; margin-top: 0px;"} Create Your Buynance Password
+%span{class: "starting-separator", style: "margin-left: -35px; margin-right: -35px; padding-bottom: 0px; width: 100%; background: #f5f5f5; height: 60px; float: left"}
+%span{class: "starting-separator", style: "height: 60px; width: 70px; float: right; margin-left: -35px; margin-right: -35px; padding-bottom: 0px; background: #f5f5f5;"}
+
+%h3.form-header{style: "margin-left: -35px; margin-right: -35px; margin-top: 86px;"} Create Your Buynance Password
 
 %div{class: "form_group #{return_error_class(@business, :password)}"}
   %label{class: "control-label", :for => :password} 
