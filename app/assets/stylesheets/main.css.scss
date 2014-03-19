@@ -279,6 +279,14 @@ button .icon {
   }
 }
 
+.starting-form-separator{
+    margin-left: -35px; 
+    margin-right: -35px; 
+    padding-bottom: 0px; 
+    width: 585px; 
+    float: left;
+}
+
 @media (max-width: 1020px) {}
 
 @media (min-width: 1200px) {
@@ -292,6 +300,12 @@ button .icon {
       margin-left: 0px;
       margin-right: 0px;
     }
+  }
+}
+
+@media (max-width: 991px) {
+  .starting-form-separator{
+    width: 100%;
   }
 }
 
