@@ -112,7 +112,7 @@ class Business < ActiveRecord::Base
       period = Offer.get_random_months(4, 12)
       days = period * 30
       pay_per_day = payback_amount / days
-      maximum_pay_per_day = @business.average_daily_balance_bank_account * 0.15
+      maximum_pay_per_day = self.average_daily_balance_bank_account * 0.15
       if (pay_per_day > maximum_pay_per_day)
         pay_per_day = maximum_pay_per_day
         payback_amount = pay_per_day * days
