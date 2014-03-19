@@ -79,10 +79,12 @@ class Business < ActiveRecord::Base
   end
 
   def is_qualified
+    return false if !self.is_averaged_over_minimum
     return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_paying_back
     return false if !self.is_ever_bankruptcy.nil? and self.is_ever_bankruptcy
     return false if !self.approximate_credit_score_range.nil? and self.approximate_credit_score_range == 1
     return false if !self.amount_negative_balance_past_month.nil? and self.amount_negative_balance_past_month >= 3
+    return false if !self.has_paid_enough
     return true
   end
 
@@ -97,6 +99,27 @@ class Business < ActiveRecord::Base
       return true if self.has_paid_enough
     else
       return false
+    end
+  end
+
+  def create_random_offers(min, max)
+    amount = rand(max - min + 1) + min
+    for n in 0..amount
+      factor_rate = rand * (1.32 - 1.30) + 1.30
+      cash_advance_amount = Offer.get_advance_amount(self.earned_one_month_ago,
+        earned_two_months_ago, earned_three_months_ago, 0.32, 0.37).round(-2)
+      payback_amount = cash_advance_amount * factor_rate
+      period = Offer.get_random_months(4, 12)
+      days = period * 30
+      pay_per_day = payback_amount / days
+      maximum_pay_per_day = @business.average_daily_balance_bank_account * 0.15
+      if (pay_per_day > maximum_pay_per_day)
+        pay_per_day = maximum_pay_per_day
+        payback_amount = pay_per_day * days
+        cash_advance_amount = payback_amount / factor_rate
+      end
+      offers << Offer.create(cash_advance_amount: cash_advance_amount, daily_merchant_cash_advance: pay_per_day,
+        months_to_collect: period, days_to_collect: days, total_payback_amount: payback_amount)
     end
   end
   

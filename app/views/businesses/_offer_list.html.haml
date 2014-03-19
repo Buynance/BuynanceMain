@@ -1,0 +1,32 @@
+.row
+  .offer-banner
+    = "You Have #{@business.offers.length} Offers!"
+- @business.offers.each do |offer|
+  .panel.panel-default.offer-section
+    .panel-heading.offer-heading
+      Offer
+    .panel-body.offer-body
+      .row
+        .col-md-9
+          .col-md-3
+            .header
+              Advance Amount
+            .body
+              = Integer(offer.cash_advance_amount)
+          .col-md-3
+            .header
+              Payback Amount
+            .body
+              = Integer(offer.total_payback_amount)
+          .col-md-3
+            .header
+              Daily Collection
+            .body
+              = Integer(offer.daily_merchant_cash_advance)
+          .col-md-3
+            .header
+              Collection Period
+            .body
+              = offer.months_to_collect
+        .col-md-3
+          .button
