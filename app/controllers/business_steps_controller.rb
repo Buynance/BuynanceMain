@@ -15,12 +15,12 @@ class BusinessStepsController < ApplicationController
 		@business.current_step = step
 		if @business.update(business_params)
 			if @business.update_step(step)
-				if Rails.env.production?
-				  @business.deliver_activation_instructions! 
-				  @business.deliver_qualified_signup!
-				else
+				#if Rails.env.production?
+				#  @business.deliver_activation_instructions! 
+				#  @business.deliver_qualified_signup!
+				#else
 				  @business.is_email_confirmed = true
-				end
+				#end
 				@business.create_offers(10)
 				@business.save
 			end
