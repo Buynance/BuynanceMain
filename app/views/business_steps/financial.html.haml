@@ -18,11 +18,21 @@
             
             = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker"}
           
+          %div{class: "form_group #{return_error_class(@business, :business_type_id)}"}
+            %label{class: "control-label", :for => :business_type_id}
+              What type of business do you own?  
+            %select{class: "form-control text-center selectpicker", name: "business_type_id"}
+              - BusinessType.all.each do |m|
+                %option{value: m.id} 
+                  = m.name
+              %option{value: "other"}
+                Other  
+
           %div{class: "form_group #{return_error_class(@business, :approximate_credit_score_range)} row"}
             %label{class: "control-label", :for => :approximate_credit_score_range}
               What is your approximate credit score?
             %br
-            = f.select :approximate_credit_score_range, options_for_select({"800 - 751" => 7, "750-701" => 6, "700-651" => 5, "650-601" => 4, "600-551" => 3, "550-501" => 2, "500-450" => 1}),{  }, {:class => "selectpicker"}
+            = f.select :approximate_credit_score_range, options_for_select({"800 - 751" => 7, "750-701" => 6, "700-651" => 5, "650-601" => 4, "600-551" => 3, "550-501" => 2, "500-450" => 1}),"600-551", {:class => "selectpicker"}
           
           %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
             %label{class: "control-label", :for => :is_tax_lien}
@@ -41,6 +51,12 @@
               Have you ever filed for bankruptcy?
             %br
             = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
+
+          %div{class: "form_group #{return_error_class(@business, :is_judgement)} row"}
+            %label{class: "control-label", :for => :is_judgement}
+              Do you have any judgments?
+            %br
+            = f.select :is_judgement, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}  
             
           %div{class: "form_group #{return_error_class(@business, :average_daily_balance_bank_account)}"}  
             %label{class: "control-label", :for => :average_daily_balance_bank_account}

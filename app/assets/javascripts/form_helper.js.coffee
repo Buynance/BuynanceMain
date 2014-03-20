@@ -39,5 +39,5 @@ $(document).ready ->
   $(".phone_convert").change ->
     convert_phone (this)
 
-  $('input.form-control').focus ->
+  $('input.form-control').click ->
     $(this).val('')

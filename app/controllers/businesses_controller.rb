@@ -107,7 +107,7 @@ class BusinessesController < ApplicationController
     def business_params
       return params.require(:business).permit(:earned_one_month_ago, 
         :earned_two_months_ago, :earned_three_months_ago, :email, 
-        :password, :password_confirmation, :terms_of_service, :activation_code) 
+        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id) 
     end
   
 end

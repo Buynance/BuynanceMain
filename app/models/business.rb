@@ -20,6 +20,9 @@ class Business < ActiveRecord::Base
   include BusinessValidations
   attr_accessor :current_step
   
+  LOAN_REASON = ["Invest in marketing","Pay old bills", "Expansion", "Payroll", "Invest in inventory", "Capital Improvement", "Pay rent / mortgage"]
+  INVALID_LOAN_REASONS = [6]
+
   obfuscate_id :spin => 89238723
   has_many :offers
 
@@ -33,9 +36,17 @@ class Business < ActiveRecord::Base
     c.merge_validates_uniqueness_of_email_field_options :message => "Email already taken, please select another email. "
   end # block optional
   
-  # ------------------------------------------#
-  # Scope Approximate credit score from range #
-  # ------------------------------------------#
+  # --------------------------------------------------#
+  # Method Approximate credit score string from range #
+  # --------------------------------------------------#
+
+  # --------------------------------------------------#
+  # Method Loan Reason string from id                 #
+  # --------------------------------------------------#
+
+  # --------------------------------------------------#
+  # Business type string from id                      #
+  # --------------------------------------------------#
 
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)
