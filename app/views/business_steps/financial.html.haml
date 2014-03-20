@@ -16,47 +16,51 @@
             %label{class: "control-label", :for => :is_paying_back}
               Are you currently paying back a merchant cash advance?
             
-            = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker"}
+            = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "form-control selectpicker"}
           
           %div{class: "form_group #{return_error_class(@business, :business_type_id)}"}
             %label{class: "control-label", :for => :business_type_id}
               What type of business do you own?  
-            %select{class: "form-control text-center selectpicker", name: "business_type_id"}
+            %select{class: "form-control selectpicker text-center ", name: "business_type_id"}
               - BusinessType.all.each do |m|
                 %option{value: m.id} 
                   = m.name
-              %option{value: "other"}
-                Other  
+
+          %div{class: "form_group #{return_error_class(@business, :years_in_business)} row"}
+            %label{class: "control-label", :for => :years_in_business}
+              How many years have you been in business?
+            %br
+            = f.select :years_in_business, options_for_select({"0" => 0, "1" => 1, "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10, "11" => 11, "12" => 12, "13" => 13, "14" => 14, "15" => 15, "16" => 16, "17" => 17, "18" => 18, "19" => 19, "20" => 20, "20+" => 21}),{}, {:class => "form-control selectpicker"}
 
           %div{class: "form_group #{return_error_class(@business, :approximate_credit_score_range)} row"}
             %label{class: "control-label", :for => :approximate_credit_score_range}
               What is your approximate credit score?
             %br
-            = f.select :approximate_credit_score_range, options_for_select({"800 - 751" => 7, "750-701" => 6, "700-651" => 5, "650-601" => 4, "600-551" => 3, "550-501" => 2, "500-450" => 1}),"600-551", {:class => "selectpicker"}
+            = f.select :approximate_credit_score_range, options_for_select({"500-450" => 1, "550-501" => 2, "600-551" => 3, "650-601" => 4, "700-651" => 5, "750-701" => 6, "800 - 751" => 7}),{}, {:class => "form-control selectpicker"}
           
           %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
             %label{class: "control-label", :for => :is_tax_lien}
               Do you have any tax liens? 
             %br
-            = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker", onChange: "hide_or_show()"}
+            = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "form-control selectpicker", onChange: "hide_or_show()"}
           %div{class: "row", id: "is_payment_group", style: "display: none;"}
             %label{class: "control-label", :for => :is_payment_plan}
             
               Are you currently making payments on your tax liens? 
             %br
-            = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "selectpicker", }
+            = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{  }, {:class => "form-control selectpicker", }
             
           .row
             %label{class: "control-label", :for => :is_ever_bankruptcy}
               Have you ever filed for bankruptcy?
             %br
-            = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}
+            = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "form-control selectpicker"}
 
           %div{class: "form_group #{return_error_class(@business, :is_judgement)} row"}
             %label{class: "control-label", :for => :is_judgement}
               Do you have any judgments?
             %br
-            = f.select :is_judgement, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "selectpicker"}  
+            = f.select :is_judgement, options_for_select({"No" => 0, "Yes" => 1}),{}, {:class => "form-control selectpicker text-center"}  
             
           %div{class: "form_group #{return_error_class(@business, :average_daily_balance_bank_account)}"}  
             %label{class: "control-label", :for => :average_daily_balance_bank_account}

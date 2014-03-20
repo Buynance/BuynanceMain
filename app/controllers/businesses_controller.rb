@@ -11,7 +11,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.current_step = :new
     if @business.save
-      if @business.is_averaged_over_minimum
+      if @business.qualified?
         session[:business_id] = @business.id
         redirect_to business_steps_path
       else
@@ -25,7 +25,7 @@ class BusinessesController < ApplicationController
   def show
     @business = current_business
     if !@business.is_email_confirmed
-      if !@business.is_qualified
+      if !@business.qualified?
         render :action => :not_qualified
       elsif !@business.is_finished_application
         redirect_to business_steps_path

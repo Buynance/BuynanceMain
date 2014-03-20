@@ -89,19 +89,27 @@ class Business < ActiveRecord::Base
     end
   end
 
-  def is_qualified
+  def qualified?
     return false if !self.is_averaged_over_minimum
-    return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_paying_back
-    return false if !self.is_ever_bankruptcy.nil? and self.is_ever_bankruptcy
+    return false if !self.loan_reason_id.nil? and INVALID_LOAN_REASONS.include?(self.loan_reason_id)
+
+
     return false if !self.approximate_credit_score_range.nil? and self.approximate_credit_score_range == 1
+    return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_paying_back
+    return false if !self.is_judgement.nil? and self.is_judgement
+    return false if !self.is_ever_bankruptcy.nil? and self.is_ever_bankruptcy
+    return false if !self.years_in_business.nil? and self.years_in_business == 0
     return false if !self.amount_negative_balance_past_month.nil? and self.amount_negative_balance_past_month >= 3
+    return false if !self.business_type_id.nil? and (BusinessType.find(business_type_id).is_rejecting)
+
     return false if !self.has_paid_enough
+
     return true
   end
 
   def update_step(step)
     if step == :financial
-      if !self.is_paying_back and self.is_qualified
+      if !self.is_paying_back and self.qualified?
         self.is_finished_application = true
         return true 
       end
