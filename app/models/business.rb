@@ -136,7 +136,7 @@ class Business < ActiveRecord::Base
     days = Offer.get_days(self.approximate_credit_score_range) 
     counter = 0 
 
-    for n in 1...amount 
+    for n in 0...amount 
       if counter < 100
         factor_rate = Offer.get_random_rate(1.36, 1.48)
         factor_rate = Offer.get_random_rate(1.32, 1.38) if self.approximate_credit_score_range >= 4  
