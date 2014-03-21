@@ -49,6 +49,15 @@ class Offer < ActiveRecord::Base
 	    return rand * (max - min) + min
 	end
 
+	def self.get_best_possible_offer(average_daily, days, rate)
+		return ((average_daily * 0.15 * days) / rate)
+	end
+
+	def self.get_days(credit_score_range)
+		return 120 if credit_score_range >= 4
+		return 80
+	end
+
 	private
 
 	  def self.get_random_rate(min, max)

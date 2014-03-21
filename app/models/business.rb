@@ -95,7 +95,8 @@ class Business < ActiveRecord::Base
 
 
     return false if !self.approximate_credit_score_range.nil? and self.approximate_credit_score_range == 1
-    return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_paying_back
+    return false if !self.approximate_credit_score_range.nil? and self.best_possible_offer < 5000
+    return false if !self.is_tax_lien.nil? and self.is_tax_lien and !self.is_payment_plan
     return false if !self.is_judgement.nil? and self.is_judgement
     return false if !self.is_ever_bankruptcy.nil? and self.is_ever_bankruptcy
     return false if !self.years_in_business.nil? and self.years_in_business == 0
@@ -105,6 +106,14 @@ class Business < ActiveRecord::Base
     return false if !self.has_paid_enough
 
     return true
+  end
+
+  def best_possible_offer
+    days = Offer.get_days(self.approximate_credit_score_range)
+    rate = 1.36
+    rate = 1.32 if days >= 120
+    best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
+    return best
   end
 
   def update_step(step)
@@ -124,28 +133,36 @@ class Business < ActiveRecord::Base
   def create_offers(amount)
     average = Offer.get_three_months_average(self.earned_one_month_ago,
         earned_two_months_ago, earned_three_months_ago)
-    days = 60
-    days = 120 if self.approximate_credit_score_range >= 4  
-    for n in 0...amount 
-      factor_rate = Offer.get_random_rate(1.36, 1.48)
-      factor_rate = Offer.get_random_rate(1.32, 1.38) if self.approximate_credit_score_range >= 4  
-      daily_rate = Offer.get_random_rate(0.145, 0.15)
+    days = Offer.get_days(self.approximate_credit_score_range) 
+    counter = 0 
 
-      daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
-      total_payback = daily_payback * days
-      offer = (total_payback / factor_rate).round(-2)
+    for n in 1...amount 
+      if counter < 100
+        factor_rate = Offer.get_random_rate(1.36, 1.48)
+        factor_rate = Offer.get_random_rate(1.32, 1.38) if self.approximate_credit_score_range >= 4  
+        daily_rate = Offer.get_random_rate(0.145, 0.15)
+        daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
+        total_payback = daily_payback * days
+        offer = (total_payback / factor_rate).round(-2)
 
-      total_payback = offer * factor_rate
-      daily_payback = total_payback / days
-
-      if(offer > (average * 0.35))
-        percent_monthly = Offer.get_random_rate(0.30, 0.35)
-        offer = (average * percent_monthly).round(-2)
         total_payback = offer * factor_rate
         daily_payback = total_payback / days
+
+        if(offer > (average * 0.35))
+          percent_monthly = Offer.get_random_rate(0.30, 0.35)
+          offer = (average * percent_monthly).round(-2)
+          total_payback = offer * factor_rate
+          daily_payback = total_payback / days
+        end
+
+        if offer < 5000
+          n = n-1
+        else
+          offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
+          days_to_collect: days, total_payback_amount: total_payback)
+        end
+          counter = counter + 1;
       end
-      offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-        days_to_collect: days, total_payback_amount: total_payback)
     end
   end
   

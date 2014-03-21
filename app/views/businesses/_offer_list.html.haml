@@ -5,8 +5,8 @@
   - for i in 0...(@business.offers.length)/2
     - offer = @business.offers[i]
     .panel.panel-default.offer-section{style: "margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
-      .panel-heading.offer-heading{style: "font-weight: bold;"}
-        = "Offer #{i+1}"
+      .panel-heading.offer-heading{style: "font-weight: bold; color: #8EC63E;"}
+        = "Merchant Cash Advance #{(i + 65).chr}"
       .panel-body.offer-body
         .row
           .col-sm-10
@@ -27,17 +27,20 @@
                 = Integer(offer.daily_merchant_cash_advance)
             .col-sm-3
               .header
-                Days to Collect
+                Collection Period
               .body
-                = offer.days_to_collect
+                - if offer.days_to_collect == 80
+                  = "#{offer.days_to_collect} days (4 months)"
+                - else
+                  = "#{offer.days_to_collect} days (6 months)"
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-default",  data: {toggle: "modal", target: "#myModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#myModal"}
   - for i in (@business.offers.length/2)...@business.offers.length
     - offer = @business.offers[i]
     .panel.panel-default.offer-section.hidden-offers{style:"display:none; margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
-      .panel-heading.offer-heading{style: "font-weight: bold;"}
-        = "Offer #{i + 1}"
+      .panel-heading.offer-heading{style: "font-weight: bold; color: #8EC63E;"}
+        = "Merchant Cash Advance #{(i + 65).chr}"
       .panel-body.offer-body
         .row
           .col-sm-10
@@ -58,15 +61,19 @@
                 = Integer(offer.daily_merchant_cash_advance)
             .col-sm-3
               .header
-                Days to Collect
+                Collection Period
               .body
-                = offer.days_to_collect
+                - if offer.days_to_collect == 80
+                  = "#{offer.days_to_collect} days (4 months)"
+                - else
+                  = "#{offer.days_to_collect} days (6 months)"
+
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-default",  data: {toggle: "modal", target: "#myModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#myModal"}
   %ul.pager
     %li
-      %a{class: "btn", onclick: "display_offers()"} More Offers
+      %a{class: "btn btn-default", onclick: "display_offers()"} More Offers
 
   #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog
@@ -74,12 +81,13 @@
         .modal-header
           %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
         .modal-body
-          Our workers are a bit overworked with this recent media attention. This is embarrassing.  Don't worry - we have beefed up our team of amazingly friendly people who are ready to work until midnight if necessary to get you funded. So please call us at (our number) so we can get you funded.
+          Our workers are a bit overworked with this recent media attention. This is embarrassing.  Don't worry - we have beefed up our team of amazingly friendly people who are ready to work until midnight if necessary to get you funded. So please call us at 888-906-4909 so we can get you funded.
         .modal-footer
           %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
 
   :javascript
 
     function display_offers(){
-      $(".hidden-offers" ).css("display", "block")
+      $(".hidden-offers" ).css("display", "block");
+      $(".pager").css("display", "none");
     }
