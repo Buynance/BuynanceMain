@@ -1,8 +1,7 @@
 .web_body
   .container
-    .main_body
-      - if @business.offers.length == 0
-        = render :partial => "no_offers"
-      - else
-        = render :partial => "offer_list"
+    - if @business.offers.length == 0
+      = render :partial => "no_offers"
+    - else
+      = render :partial => "offer_list"
 

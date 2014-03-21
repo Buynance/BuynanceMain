@@ -1,33 +1,85 @@
-.row
-  .offer-banner
+.main_body.form-style
+  %h3.form-header
     = "You Have #{@business.offers.length} Offers!"
-- @business.offers.each do |offer|
-  .panel.panel-default.offer-section
-    .panel-heading.offer-heading
-      Offer
-    .panel-body.offer-body
-      .row
-        .col-md-9
-          .col-md-3
-            .header
-              Advance Amount
-            .body
-              = Integer(offer.cash_advance_amount)
-          .col-md-3
-            .header
-              Payback Amount
-            .body
-              = Integer(offer.total_payback_amount)
-          .col-md-3
-            .header
-              Daily Collection
-            .body
-              = Integer(offer.daily_merchant_cash_advance)
-          .col-md-3
-            .header
-              Days to Collect
-            .body
-              = offer.days_to_collect
-        .col-md-3
-          .button
-            =link_to "Accept Offer", "#", class: "btn btn-default"  
+  .row
+  - for i in 0...(@business.offers.length)/2
+    - offer = @business.offers[i]
+    .panel.panel-default.offer-section{style: "margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
+      .panel-heading.offer-heading{style: "font-weight: bold;"}
+        = "Offer #{i+1}"
+      .panel-body.offer-body
+        .row
+          .col-sm-10
+            .col-sm-3
+              .header
+                Advance Amount
+              .body
+                = Integer(offer.cash_advance_amount)
+            .col-sm-3
+              .header
+                Payback Amount
+              .body
+                = Integer(offer.total_payback_amount)
+            .col-sm-3
+              .header
+                Daily Collection
+              .body
+                = Integer(offer.daily_merchant_cash_advance)
+            .col-sm-3
+              .header
+                Days to Collect
+              .body
+                = offer.days_to_collect
+          .col-sm-2
+            .button
+              =link_to "Accept Offer", "#", class: "btn btn-default",  data: {toggle: "modal", target: "#myModal"}
+  - for i in (@business.offers.length/2)...@business.offers.length
+    - offer = @business.offers[i]
+    .panel.panel-default.offer-section.hidden-offers{style:"display:none; margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
+      .panel-heading.offer-heading{style: "font-weight: bold;"}
+        = "Offer #{i + 1}"
+      .panel-body.offer-body
+        .row
+          .col-sm-10
+            .col-sm-3
+              .header
+                Advance Amount
+              .body
+                = Integer(offer.cash_advance_amount)
+            .col-sm-3
+              .header
+                Payback Amount
+              .body
+                = Integer(offer.total_payback_amount)
+            .col-sm-3
+              .header
+                Daily Collection
+              .body
+                = Integer(offer.daily_merchant_cash_advance)
+            .col-sm-3
+              .header
+                Days to Collect
+              .body
+                = offer.days_to_collect
+          .col-sm-2
+            .button
+              =link_to "Accept Offer", "#", class: "btn btn-default",  data: {toggle: "modal", target: "#myModal"}
+  %ul.pager
+    %li
+      %a{class: "btn", onclick: "display_offers()"} More Offers
+
+  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        .modal-body
+          Our workers are a bit overworked with this recent media attention. This is embarrassing.  Don't worry - we have beefed up our team of amazingly friendly people who are ready to work until midnight if necessary to get you funded. So please call us at (our number) so we can get you funded.
+        .modal-footer
+          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+
+  :javascript
+
+    function display_offers(){
+      $(".hidden-offers" ).css("display", "block")
+    }
