@@ -1,12 +1,12 @@
 class BusinessStepsController < ApplicationController
 	include Wicked::Wizard
-	steps :personal, :financial, :funders
+	steps :financial, :funders
 	before_filter :require_business
 	before_filter :standardize_params, :only => [:update]
 
 	def show
 		@business = current_business
-		skip_step if (step == :funders and (!@business.is_paying_back or !@business.is_qualified))
+		skip_step if (step == :funders and (!@business.is_paying_back or !@business.qualified?))
 		render_wizard
 	end
 
@@ -15,8 +15,14 @@ class BusinessStepsController < ApplicationController
 		@business.current_step = step
 		if @business.update(business_params)
 			if @business.update_step(step)
-				@business.deliver_activation_instructions!
-				@business.deliver_qualified_signup!
+				if Rails.env.production?
+				  @business.deliver_activation_instructions! 
+				  @business.deliver_qualified_signup!
+				else
+				  @business.is_email_confirmed = true
+				end
+				@business.create_offers(12)
+				@business.save
 			end
 		end
 		render_wizard @business
@@ -34,7 +40,8 @@ class BusinessStepsController < ApplicationController
 				return params.require(:business).permit(:id, :is_paying_back, 
 	    		:approximate_credit_score_range, :is_tax_lien, :is_payment_plan,
 	    		:is_ever_bankruptcy, :average_daily_balance_bank_account,
-	    		:amount_negative_balance_past_month) 
+	    		:amount_negative_balance_past_month, :years_in_business, :business_type_id,
+	    		:years_in_business, :is_judgement) 
 			elsif step == :personal
 				puts "================== personal"
 				return params.require(:business).permit(:id, :owner_first_name, 

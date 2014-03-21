@@ -11,7 +11,7 @@ class BusinessesController < ApplicationController
     @business = Business.new(business_params)
     @business.current_step = :new
     if @business.save
-      if @business.is_averaged_over_minimum
+      if @business.qualified?
         session[:business_id] = @business.id
         redirect_to business_steps_path
       else
@@ -25,11 +25,7 @@ class BusinessesController < ApplicationController
   def show
     @business = current_business
     if !@business.is_email_confirmed
-      if !@business.is_averaged_over_minimum
-        render :action => :not_qualified
-      elsif !@business.is_qualified
-        render :action => :not_qualified
-      elsif !@business.has_paid_enough
+      if !@business.qualified?
         render :action => :not_qualified
       elsif !@business.is_finished_application
         redirect_to business_steps_path
@@ -51,7 +47,45 @@ class BusinessesController < ApplicationController
       render :action => :edit
     end
   end
-	
+
+  def insert
+    @business = current_business
+    @business.update_attributes(business_params)
+  end
+
+  def confirm_account
+    @business = Business.find(params[:business_id])
+    if @business.confirmation_code != params[:confirmation_code]
+      redirect_to :root_path
+    end
+  end
+
+  def confirm
+    @business = Business.find(params[:business_id])
+    if !is_email_confirmed && @business.update_attributes(business_params)
+      @business.is_email_confirmed = true
+      @business.save
+      redirect_to business_path(@business.id)
+    end
+  end
+
+  def recover
+    @business = Business.find(params[:business_id])
+    if !is_email_confirmed && @business.update_attributes(business_params)
+      @business.is_email_confirmed = true
+      @business.recovery_code = Business.generate_activation_code
+      @business.save
+      redirect_to business_path(@business.id)
+    end
+  end
+
+  def recover_account
+    @business = Business.find(params[:business_id])
+    if @business.confirmation_code != params[:activation_code]
+      redirect_to :root_path
+    end
+  end
+
   def activate_account
     @business = current_business
   end
@@ -78,7 +112,7 @@ class BusinessesController < ApplicationController
     def business_params
       return params.require(:business).permit(:earned_one_month_ago, 
         :earned_two_months_ago, :earned_three_months_ago, :email, 
-        :password, :password_confirmation, :terms_of_service, :activation_code) 
+        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id, :is_accept_offer_disclaimer) 
     end
   
 end

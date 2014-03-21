@@ -1,3 +1,9 @@
+%div{class: "form_group #{return_error_class(@business, :loan_reason_id)} row"}
+  %label{class: "control-label", :for => :loan_reason_id} 
+    What do you need the money for?
+  %br
+  = f.select :loan_reason_id, options_for_select({"Invest in marketing" => 0, "Pay old bills" => 1, "Expansion" => 2, "Payroll" => 3, "Invest in inventory" => 4, "Capital improvements" => 5, "Pay rent / mortgage" => 6}),{  }, {:class => "form-control selectpicker", style:"text-align: center;"}
+
 %div{class: "form_group #{return_error_class(@business, :earned_one_month_ago)}"}
   %label{class: "control-label", :for => :earned_one_month_ago} 
     How much did your business earn in 
@@ -16,11 +22,11 @@
     = x_months_ago_string(3) + "?"
   = f.currency :earned_three_months_ago, class: "text-center form-control", required: true
 
+
 %div{class: "form_group #{return_error_class(@business, :email)}"}
   %label{class: "control-label", :for => :email} 
     Email
   = f.text_field :email, class: "text-center form-control ", required: true
-
 
 %span{class: "starting-separator", style: "margin-left: -35px; margin-right: -35px; padding-bottom: 0px; width: 100%; background: #f5f5f5; height: 60px; float: left"}
 %span{class: "starting-separator", style: "height: 60px; width: 70px; float: right; margin-left: -35px; margin-right: -35px; padding-bottom: 0px; background: #f5f5f5;"}
