@@ -190,6 +190,7 @@ class Business < ActiveRecord::Base
   private
 
     def init 
+      self.email.downcase! if !self.email.nil?
       self.is_paying_back = false if self.is_paying_back.nil?
       self.activation_code = Business.generate_activation_code
       self.recovery_code = Business.generate_activation_code

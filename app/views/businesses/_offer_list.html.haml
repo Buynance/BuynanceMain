@@ -6,7 +6,7 @@
     - offer = @business.offers[i]
     .panel.panel-default.offer-section{style: "margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
       .panel-heading.offer-heading{style: "font-weight: bold; color: #8EC63E;"}
-        = "Merchant Cash Advance #{(i + 65).chr}"
+        = "MCA OFFER #{(i + 65).chr}"
       .panel-body.offer-body
         .row
           .col-sm-10
@@ -14,17 +14,18 @@
               .header
                 Advance Amount
               .body
-                = Integer(offer.cash_advance_amount)
+                = "$#{Integer(offer.cash_advance_amount)}"
             .col-sm-3
               .header
                 Payback Amount
               .body
-                = Integer(offer.total_payback_amount)
+                = "$#{Integer(offer.total_payback_amount)}"
             .col-sm-3
               .header
                 Daily Collection
-              .body
-                = Integer(offer.daily_merchant_cash_advance)
+              .body{style: "font-weight: bold;"}
+                = "$#{Integer(offer.daily_merchant_cash_advance)}"
+
             .col-sm-3
               .header
                 Collection Period
@@ -35,12 +36,12 @@
                   = "#{offer.days_to_collect} days (6 months)"
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#myModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#disclaimerModal"}
   - for i in (@business.offers.length/2)...@business.offers.length
     - offer = @business.offers[i]
     .panel.panel-default.offer-section.hidden-offers{style:"display:none; margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
       .panel-heading.offer-heading{style: "font-weight: bold; color: #8EC63E;"}
-        = "Merchant Cash Advance #{(i + 65).chr}"
+        = "MCA OFFER #{(i + 65).chr}"
       .panel-body.offer-body
         .row
           .col-sm-10
@@ -48,17 +49,17 @@
               .header
                 Advance Amount
               .body
-                = Integer(offer.cash_advance_amount)
+                = "$#{Integer(offer.cash_advance_amount)}"
             .col-sm-3
               .header
                 Payback Amount
               .body
-                = Integer(offer.total_payback_amount)
+                = "$#{Integer(offer.total_payback_amount)}"
             .col-sm-3
               .header
                 Daily Collection
-              .body
-                = Integer(offer.daily_merchant_cash_advance)
+              .body{style: "font-weight: bold;"}
+                = "$#{Integer(offer.daily_merchant_cash_advance)}"
             .col-sm-3
               .header
                 Collection Period
@@ -70,10 +71,23 @@
 
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#myModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#disclaimerModal"}
   %ul.pager
     %li
       %a{class: "btn btn-default", onclick: "display_offers()"} More Offers
+
+  #disclaimerModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "disclaimerModal", role: "dialog", tabindex: "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        .modal-body
+          %textarea{readonly: "readonly", rows: 7, cols: 80, style: "resize: none;" }
+            ="I understand that merchant cash advance brokers and funders frequently place unsolicited telephone calls to business owners like me, so as to offer me help in either finding a merchant cash advance, or taking one from their firm.  I understand that this is the norm and that in accordance with it’s Terms of Service Buynance will not broker or sell my information to any third party vendors for any reason whatsoever. I understand that Buynance only supplies my phone number to the funder whose offer I have chosen during the funding pre-qualification process. I understand that Buynance helps funders understand my time is valuable but also understand that Buynance cannot be held responsible for any persistent follow up made by the funder whose offer I chose. I understand that if the funder whose’ offer I chose becomes overbearing then I may file a formal complaint with Buynance at complaints@buynance.com. I expressly authorize Funder Pair Inc to call me or send me recorded messages or texts about their products and services using automated technology to my telephone/cellular number I will enter during this application proccess, regardless of any prior Do-Not-Call election to the contrary. I understand that I am not required to give my consent as a condition of any purchase"
+
+        .modal-footer
+          - function_with_id = "accept_offer_disclaimer(#{@business.id})"
+          %button.btn.btn-green{type: "button", onclick: function_with_id} Accept
 
   #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog
@@ -83,11 +97,28 @@
         .modal-body
           Our servers are a bit overworked with this recent media attention. This is embarrassing.  Don't worry - we have beefed up our team of amazingly friendly people who are ready to work until midnight if necessary to get you funded. So please call us at 888-906-4909 so we can get you funded.
         .modal-footer
-          %button.btn.btn-default{"data-dismiss" => "modal", type: "button"} Close
+          %button.btn.btn-green{"data-dismiss" => "modal", type: "button"} Close
 
   :javascript
 
     function display_offers(){
       $(".hidden-offers" ).css("display", "block");
       $(".pager").css("display", "none");
+    }
+
+    function accept_offer_disclaimer(id){
+      var update_url;
+      update_url = "/business/insert/";
+      $.ajax({
+        type: "PUT",
+        url: update_url,
+        data: {
+          business: {
+            is_accept_offer_disclaimer: true
+          }
+        }
+      });
+      $('#disclaimerModal').modal('hide');
+      $('#myModal').modal('show');
+
     }

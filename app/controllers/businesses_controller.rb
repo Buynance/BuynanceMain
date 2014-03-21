@@ -48,6 +48,11 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def insert
+    @business = current_business
+    @business.update_attributes(business_params)
+  end
+
   def confirm_account
     @business = Business.find(params[:business_id])
     if @business.confirmation_code != params[:confirmation_code]
@@ -107,7 +112,7 @@ class BusinessesController < ApplicationController
     def business_params
       return params.require(:business).permit(:earned_one_month_ago, 
         :earned_two_months_ago, :earned_three_months_ago, :email, 
-        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id) 
+        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id, :is_accept_offer_disclaimer) 
     end
   
 end
