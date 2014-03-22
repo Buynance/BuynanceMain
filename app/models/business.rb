@@ -20,7 +20,7 @@ class Business < ActiveRecord::Base
   include BusinessValidations
   attr_accessor :current_step
   
-  LOAN_REASON = ["Invest in marketing","Pay old bills", "Expansion", "Payroll", "Invest in inventory", "Capital Improvement", "Pay rent / mortgage"]
+  LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
   INVALID_LOAN_REASONS = [6]
 
   obfuscate_id :spin => 89238723
