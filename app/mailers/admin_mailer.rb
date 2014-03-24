@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
     @business = business
     @offer = Offer.find(business.main_offer_id)
     mail :subject => "#{@business.email} Has Accepted An Offer",
-         :to      => "edwin@buynance.com",
+         :to      => "jay@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 end
