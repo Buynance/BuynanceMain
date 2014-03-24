@@ -52,6 +52,10 @@ class Business < ActiveRecord::Base
     AdminMailer.delay.qualified_signup(self)
   end
 
+  def deliver_offer_email!
+    AdminMailer.delay.offer_notification(self)
+  end
+
   def deliver_activation_instructions!
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
@@ -159,7 +163,7 @@ class Business < ActiveRecord::Base
           n = n-1
         else
           offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-          days_to_collect: days, total_payback_amount: total_payback)
+          days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate)
         end
           counter = counter + 1;
       end
@@ -185,6 +189,10 @@ class Business < ActiveRecord::Base
       offers << Offer.create(cash_advance_amount: cash_advance_amount, daily_merchant_cash_advance: pay_per_day,
         months_to_collect: period, days_to_collect: days, total_payback_amount: payback_amount)
     end
+  end
+
+  def main_offer
+    return Offer.find(main_offer_id)
   end
   
   private

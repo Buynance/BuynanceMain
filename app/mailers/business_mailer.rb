@@ -17,5 +17,7 @@ class BusinessMailer < ActionMailer::Base
          :to      => business.email,
          :from    => "Team Buynance <noreply@buynance.com>"
   end
+
+  
   
 end

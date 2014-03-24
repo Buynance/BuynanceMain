@@ -36,7 +36,7 @@
                   = "#{offer.days_to_collect} days (6 months)"
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#disclaimerModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green offer-btn",  data: {toggle: "modal", target: "#disclaimerModal", id: offer.id}
   - for i in (@business.offers.length/2)...@business.offers.length
     - offer = @business.offers[i]
     .panel.panel-default.offer-section.hidden-offers{style:"display:none; margin-top: 20px; margin-left: 20px; margin-right: 20px;"}
@@ -71,7 +71,7 @@
 
           .col-sm-2
             .button
-              =link_to "Accept Offer", "#", class: "btn btn-green",  data: {toggle: "modal", target: "#disclaimerModal"}
+              =link_to "Accept Offer", "#", class: "btn btn-green offer-btn",  data: {toggle: "modal", target: "#disclaimerModal", id: offer.id}
   %ul.pager
     %li
       %a{class: "btn btn-default", onclick: "display_offers()"} View Others
@@ -87,7 +87,7 @@
 
         .modal-footer
           - function_with_id = "accept_offer_disclaimer(#{@business.id})"
-          %button.btn.btn-green{type: "button", onclick: function_with_id} Accept
+          %button.btn.btn-green{type: "button", onclick: "accept_offer_disclaimer(this)"} Accept
 
   #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
     .modal-dialog
@@ -101,14 +101,25 @@
 
   :javascript
 
+    $('.button .btn.offer-btn').click(function(){
+      var id = $(this).data('id');
+      
+      $('#disclaimerModal').find('button.btn').data("id", id);
+      console.log($('#disclaimerModal').find('button.btn').data('id'));
+      console.log(id);
+    });
+
     function display_offers(){
       $(".hidden-offers" ).css("display", "block");
       $(".pager").css("display", "none");
     }
 
-    function accept_offer_disclaimer(id){
+    function accept_offer_disclaimer(node){
+      console.log($(node));
       var update_url;
-      update_url = "/business/insert/";
+      var id = $(node).data('id');
+      console.log(id);
+      update_url = ("/business/insert/"+id);
       $.ajax({
         type: "PUT",
         url: update_url,
