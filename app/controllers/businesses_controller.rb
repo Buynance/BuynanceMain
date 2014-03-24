@@ -50,7 +50,11 @@ class BusinessesController < ApplicationController
 
   def insert
     @business = current_business
-    @business.update_attributes(business_params)
+    #if (!@business.main_offer_id.ni?)
+      @business.main_offer_id = params[:id]
+      @business.save
+      @business.deliver_offer_email!
+    #end
   end
 
   def confirm_account

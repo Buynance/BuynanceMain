@@ -79,6 +79,38 @@ module BusinessValidations
 	numericality: {only_integer: true, message:  "Your average daily balance should be a number."},
 	if: -> {self.current_step == :financial}
 
+	validates :is_paying_back,
+    presence: {message: "Please select whether you are paying back a merchant cash advance."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    validates :business_type_id,
+    presence: {message: "Please select your business type."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    validates :years_in_business,
+    presence: {message: "Please select the amount of years you have been in business."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    validates :approximate_credit_score_range,
+    presence: {message: "Please select your approximate credit score."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    validates :is_ever_bankruptcy,
+    presence: {message: "Please select whether you have ever filed for bankruptcy."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    validates :is_judgement,
+    presence: {message: "Please select whether you have any judgement."},
+    allow_blank: false,
+    if: -> {self.current_step == :financial}
+
+    	
+
 	# Step - Past Merchants
 
 	validates :total_previous_payback_amount,
@@ -90,6 +122,14 @@ module BusinessValidations
 	presence: {message: "Please include the current balance on your cash advance."},
 	numericality: {only_integer: true, message: "Your current balance should be a number."},
 	if: -> {self.current_step == :funders}
+
+	validates :total_previous_payback_balance,
+	presence: {message: "Please include the current balance on your cash advance."},
+	numericality: {only_integer: true, message: "Your current balance should be a number."},
+	if: -> {self.current_step == :funders}
+	
+
+  
   end
 
 end

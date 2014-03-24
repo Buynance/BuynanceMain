@@ -5,4 +5,12 @@ class AdminMailer < ActionMailer::Base
          :to      => "jay@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
+
+  def offer_notification(business)
+    @business = business
+    @offer = Offer.find(business.main_offer_id)
+    mail :subject => "Offer Accepted",
+         :to      => "jay@buynance.com",
+         :from    => "Team Buynance <noreply@buynance.com>"
+  end
 end

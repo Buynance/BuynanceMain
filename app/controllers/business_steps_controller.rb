@@ -17,7 +17,7 @@ class BusinessStepsController < ApplicationController
 			if @business.update_step(step)
 				if Rails.env.production?
 				  @business.deliver_activation_instructions! 
-				  @business.deliver_qualified_signup!
+				  #@business.deliver_qualified_signup!
 				else
 				  @business.is_email_confirmed = true
 				end
