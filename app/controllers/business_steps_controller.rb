@@ -13,7 +13,8 @@ class BusinessStepsController < ApplicationController
 	def update
 		@business = current_business
 		@business.current_step = step
-		if @business.update(business_params)
+		puts("====================#{business_params}")
+		if @business.update_attributes(business_params)
 			if @business.update_step(step)
 				if Rails.env.production?
 				  @business.deliver_activation_instructions! 
