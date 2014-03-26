@@ -48,6 +48,13 @@ class BusinessesController < ApplicationController
     end
   end
 
+  def accept_offer
+    @business = current_business
+    @business.main_offer_id = params[:id]
+    @business.save
+    redirect_to after_offer_path(:personal)
+  end
+
   def edit
     @business = current_business
   end

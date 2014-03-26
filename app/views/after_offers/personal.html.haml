@@ -1,0 +1,36 @@
+.web_body.container 
+  #signup-form
+    .row.main-title-wrap
+      .col-md-6.col-md-offset-3
+        %h1
+    .row    
+      .col-md-6.col-md-offset-3.form-style
+        %h3.form-header Tell Us A Bit About You
+        - if @business.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business.errors.full_messages.each do |msg|
+                %li= msg
+        = form_for @business, url: wizard_path do |f|
+          %div{class: "form_group #{return_error_class(@business, :owner_first_name)}"}
+            %label{class: "control-label", :for => :owner_first_name}
+              Your First Name
+            = f.text_field :owner_first_name, class: "text-center form-control ", required: true
+          %div{class: "form_group #{return_error_class(@business, :owner_last_name)}"}
+            %label{class: "control-label", :for => :owner_last_name}
+              Your Last Name
+            = f.text_field :owner_last_name, class: "text-center form-control ", required: true
+          %div{class: "form_group #{return_error_class(@business, :name)}"}
+            %label{class: "control-label", :for => :name}
+              Business Name
+            = f.text_field :name, class: "text-center form-control ", required: true
+          %div{class: "form_group #{return_error_class(@business, :phone_number)}"}
+            %label{class: "control-label", :for => :phone_number}
+              Business Phone Number
+            = f.text_field :phone_number, class: "text-center form-control phone_convert", required: true
+          %div{class: "form_group #{return_error_class(@business, :mobile_number)}"}
+            %label{class: "control-label", :for => :mobile_number}
+              Mobile Phone Number
+            = f.text_field :mobile_number, class: "text-center form-control phone_convert", required: true
+          .action
+            =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

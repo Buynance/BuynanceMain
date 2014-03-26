@@ -1,11 +1,12 @@
+- offer_class = "offer"
 - if offer.is_timed
-  - offer_class = "offer best-offer"
-- else
-  - offer_class = "offer"
-%div{class: offer_class}
+  - offer_class = "#{offer_class} best-offer"
+-if !offer.is_active.nil? and !offer.is_active
+  - offer_class = "#{offer_class} offer-deleted"
+%div{class: offer_class, data: {'id' => offer.id}}
   %ul
     %li.col-sm-1
-      .delete 
+      .delete
         X
     .col-sm-8  
       %li.col-sm-4
@@ -40,4 +41,5 @@
           =" : "
           %span.timer-seconds 
             = @seconds
-      %a.getfunded{:href => "#"} Get funded
+      .getfunded      
+        = link_to "Get funded", {controller: "businesses", action: "accept_offer", id: offer.id} , method: :put

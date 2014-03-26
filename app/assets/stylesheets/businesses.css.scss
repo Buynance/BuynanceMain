@@ -183,6 +183,8 @@
  .offer-deleted {
   background: #fafafa;
   border-color:#ddd;
+  cursor: default !important;
+  pointer-events: none;
 }
 
  .offer-deleted .delete {

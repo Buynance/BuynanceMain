@@ -30,7 +30,7 @@ start_timer = () ->
 							minutes = 59
 							hours = parseInt(hours) - 1
 				else
-					$(".best-offer").addClass("offer-deleted")
+					deactivate_offer(".best-offer")
 		if seconds.toString().length == 1
 			seconds = "0#{seconds}"
 		if minutes.toString().length == 1
@@ -50,7 +50,19 @@ $(document).ready( ->
 	console.log($(".timeleft"))
 	start_timer()
 	$(".delete").click( ->
-		console.log("ooooooooooo")
-		$(this).closest(".offer").addClass("offer-deleted")
+		deactivate_offer(this)
 	)
 )
+
+deactivate_offer = (node) ->
+	$(node).closest(".offer").addClass("offer-deleted")
+	id = $(node).closest(".offer").data("id")
+	console.log(id)
+	update_url = ("/offer/update/" + id)
+	$.ajax
+		type: "PUT"
+		url: update_url
+		data:
+			business:
+				is_active: false
+

@@ -7,10 +7,13 @@ Buynance::Application.routes.draw do
   end
   resources :static_pages
   resources :businesses
+
+  resources :offers
   resource :business, :as => 'account'  # a convenience route
   scope(:path_names => { :past_merchants => "funders", :financial_information => "financial" }) do
     resources :business_steps, :path => "register"
   end
+  resources :after_offers
   resources :funders
   resources :business_sessions
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
@@ -31,6 +34,8 @@ Buynance::Application.routes.draw do
   match 'business/:business_id/confirm/:confirmation_code' => "business#confirm_account", via: :get
   match 'business/:business_id/confirm/:activation_code' => "business#activation_account", via: :get
   put '/business/insert/:id' => 'businesses#insert'
+  put '/business/accept_offer/:id' => 'businesses#accept_offer'
+  put '/offer/update/:id' => 'offers#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
