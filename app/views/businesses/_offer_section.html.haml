@@ -1,0 +1,43 @@
+- if offer.is_timed
+  - offer_class = "offer best-offer"
+- else
+  - offer_class = "offer"
+%div{class: offer_class}
+  %ul
+    %li.col-sm-1
+      .delete 
+        X
+    .col-sm-8  
+      %li.col-sm-4
+        %span.info-title Advance amount
+        %span.advance-price
+          %span.dollar> $
+          = "#{Integer(offer.cash_advance_amount)}"
+      %li.col-sm-4
+        %span.info-title Payback amount
+        %span.payback-price 
+          = "$#{Integer(offer.total_payback_amount)}"
+      %li.col-sm-4
+        %span.info-title Daily Collection
+        %span.daily-price
+          %span.number
+            %span.dollar $
+            ="#{Integer(offer.daily_merchant_cash_advance)}"
+          \/ 
+          - if offer.days_to_collect == 80
+            4 months
+          - else
+            6 months
+    %li.col-sm-3
+      - if offer.is_timed == true
+        %span.timeleft
+          %i.fa.fa-clock-o
+          %span.timer-hours
+            = @hours
+          =" : " 
+          %span.timer-minutes
+            = @minutes
+          =" : "
+          %span.timer-seconds 
+            = @seconds
+      %a.getfunded{:href => "#"} Get funded

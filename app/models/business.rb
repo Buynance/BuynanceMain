@@ -168,6 +168,7 @@ class Business < ActiveRecord::Base
           counter = counter + 1;
       end
     end
+    self.offers[2].is_timed = true
   end
   
   def create_random_offers(min, max)
