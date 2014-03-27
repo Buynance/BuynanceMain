@@ -2,25 +2,25 @@
   %label{class: "control-label", :for => :loan_reason_id} 
     What do you need the money for?
   %br
-  = f.select :loan_reason_id, options_for_select({"Invest in marketing" => 0, "Pay old bills" => 1, "Expansion" => 2, "Payroll" => 3, "Invest in inventory" => 4, "Capital improvements" => 5, "Pay rent / mortgage" => 6}),{  }, {:class => "form-control selectpicker", style:"text-align: center;"}
+  = f.select :loan_reason_id, options_for_select({"Invest In Marketing" => 0, "Pay Old Bills" => 1, "Expansion" => 2, "Payroll" => 3, "Invest In Inventory" => 4, "Capital Improvements" => 5, "Pay Rent / Mortgage" => 6}),{  }, {:class => "form-control selectpicker", style:"text-align: center;"}
 
 %div{class: "form_group #{return_error_class(@business, :earned_one_month_ago)}"}
   %label{class: "control-label", :for => :earned_one_month_ago} 
     How much did your business earn in 
     = x_months_ago_string(1) + "?"
-  = f.currency :earned_one_month_ago, class: "text-center form-control", required: true
+  = f.text_field :earned_one_month_ago, class: "text-center form-control currency_convert", required: true
 
 %div{class: "form_group #{return_error_class(@business, :earned_two_months_ago)}"}
   %label{class: "control-label", :for => :earned_two_months_ago} 
     How much did your business earn in  
     = x_months_ago_string(2) + "?"
-  = f.currency :earned_two_months_ago, class: "text-center form-control", required: true
+  = f.text_field :earned_two_months_ago, class: "text-center form-control currency_convert", required: true
 
 %div{class: "form_group #{return_error_class(@business, :earned_three_months_ago)}"}
   %label{class: "control-label", :for => :earned_three_months_ago} 
     How much did your business earn in  
     = x_months_ago_string(3) + "?"
-  = f.currency :earned_three_months_ago, class: "text-center form-control", required: true
+  = f.text_field :earned_three_months_ago, class: "text-center form-control currency_convert", required: true
 
 
 %div{class: "form_group #{return_error_class(@business, :email)}"}
@@ -28,10 +28,10 @@
     Email
   = f.text_field :email, class: "text-center form-control ", required: true
 
-%span{class: "starting-separator", style: "margin-left: -35px; margin-right: -35px; padding-bottom: 0px; width: 100%; background: #f5f5f5; height: 60px; float: left"}
-%span{class: "starting-separator", style: "height: 60px; width: 70px; float: right; margin-left: -35px; margin-right: -35px; padding-bottom: 0px; background: #f5f5f5;"}
+%span{class: "starting-separator", style: "margin-left: -35px; margin-right: -35px; padding-bottom: 0px; width: 100%; background: #f5f5f5; height: 0px; float: left"}
+%span{class: "starting-separator", style: "height: 0px; width: 70px; float: right; margin-left: -35px; margin-right: -35px; padding-bottom: 0px; background: #f5f5f5;"}
 
-%h3.form-header{style: "margin-left: -35px; margin-right: -35px; margin-top: 86px;"} Create Your Buynance Password
+%h3.form-header.flat-top{style: "margin-left: -35px; margin-right: -35px; margin-top: 26px;"} Create Your Buynance Password
 
 %div{class: "form_group #{return_error_class(@business, :password)}"}
   %label{class: "control-label", :for => :password} 

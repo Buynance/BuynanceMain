@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140323211547) do
+ActiveRecord::Schema.define(version: 20140327065246) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -194,6 +194,8 @@ ActiveRecord::Schema.define(version: 20140323211547) do
     t.boolean  "is_completed_application",           default: false
     t.integer  "main_offer_id"
     t.string   "email",                              default: "",    null: false
+    t.string   "mobile_number"
+    t.boolean  "is_first_contact",                   default: true
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -263,6 +265,9 @@ ActiveRecord::Schema.define(version: 20140323211547) do
     t.datetime "updated_at"
     t.float    "total_payback_amount"
     t.float    "factor_rate"
+    t.boolean  "is_timed"
+    t.boolean  "is_active"
+    t.boolean  "is_best_offer"
   end
 
   create_table "profitabilities", force: true do |t|
@@ -275,6 +280,17 @@ ActiveRecord::Schema.define(version: 20140323211547) do
     t.float    "daily_merchant_cash_advance"
     t.integer  "total_month_fully_profitable_again"
   end
+
+  create_table "settings", force: true do |t|
+    t.string   "var",                   null: false
+    t.text     "value"
+    t.integer  "thing_id"
+    t.string   "thing_type", limit: 30
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

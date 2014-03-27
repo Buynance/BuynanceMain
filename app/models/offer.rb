@@ -1,6 +1,9 @@
 class Offer < ActiveRecord::Base
 	belongs_to :business
 	belongs_to :funder
+	#before_create :init
+
+	
 
 	def create_random_offers(min, max)
 		amount = rand(max - min + 1) + min

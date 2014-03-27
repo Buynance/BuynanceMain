@@ -4,12 +4,22 @@
     <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
   </head>
   <body>
-    <h1>A new user has signed up with buynance</h1>
+    <h1>A user has accepted an offer up with buynance</h1>
     <p>
-      Snapshot:
+      Snapshot: 
     </p>
     <p>------------------------------------</p>
+      - if @offer.is_first_contact
+        ="This is a first time customer"
+      - else
+        ="This is a returning customer"
+    <p>------------------------------------</p>
     <p> Email: <%=@business.email %></p>
+    <p> First Name: <%=@business.owner_first_name %> </p>
+    <p> Last Name: <%=@business.owner_last_name %></p>
+    <p> Business Name: <%=@business.name %></p>
+    <p> Phone Number: <%=@business.phone_number %></p> 
+    <p> Mobile Number: <%=@business.mobile_number %></p>
     <p> How much did you earn last month: <%=@business.earned_one_month_ago %> </p>
     <p> How much did you earn two months ago: <%=@business.earned_two_months_ago %> </p>
     <p> How much did you earn three months ago: <%=@business.earned_three_months_ago %> </p>

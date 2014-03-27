@@ -114,8 +114,8 @@ class Business < ActiveRecord::Base
 
   def best_possible_offer
     days = Offer.get_days(self.approximate_credit_score_range)
-    rate = 1.36
-    rate = 1.32 if days >= 120
+    rate = 1.35
+    rate = 1.30 if days >= 120
     best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
     return best
   end
@@ -139,33 +139,51 @@ class Business < ActiveRecord::Base
         earned_two_months_ago, earned_three_months_ago)
     days = Offer.get_days(self.approximate_credit_score_range) 
     counter = 0 
-
+    offers_added = 0
     for n in 0...amount 
-      if counter < 100
-        factor_rate = Offer.get_random_rate(1.36, 1.48)
-        factor_rate = Offer.get_random_rate(1.32, 1.38) if self.approximate_credit_score_range >= 4  
-        daily_rate = Offer.get_random_rate(0.145, 0.15)
-        daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
-        total_payback = daily_payback * days
-        offer = (total_payback / factor_rate).round(-2)
+      if counter < 100 
+        if offers_added != 2
+          factor_rate = Offer.get_random_rate(1.35, 1.48)
+          factor_rate = Offer.get_random_rate(1.30, 1.38) if self.approximate_credit_score_range >= 4  
+          daily_rate = Offer.get_random_rate(0.145, 0.15)
+          daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
+          total_payback = daily_payback * days
+          offer = (total_payback / factor_rate).round(-2)
 
-        total_payback = offer * factor_rate
-        daily_payback = total_payback / days
-
-        if(offer > (average * 0.35))
-          percent_monthly = Offer.get_random_rate(0.30, 0.35)
-          offer = (average * percent_monthly).round(-2)
           total_payback = offer * factor_rate
           daily_payback = total_payback / days
-        end
 
-        if offer < 5000
-          n = n-1
+          if(offer > (average * 0.40))
+            percent_monthly = Offer.get_random_rate(0.35, 0.40)
+            offer = (average * percent_monthly).round(-2)
+            total_payback = offer * factor_rate
+            daily_payback = total_payback / days
+          end
+
+          if offer < 5000
+            n = n-1
+          else
+            offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
+            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate)
+            offers_added = offers_added + 1
+          end
+            counter = counter + 1;
         else
+          offer = self.best_possible_offer
+          factor_rate =  Offer.get_random_rate(1.30, 1.31)
+          total_payback = offer * factor_rate
+          daily_payback = total_payback / days
+          if(offer > (average * 0.40))
+            percent_monthly = Offer.get_random_rate(0.39, 0.40)
+            offer = (average * percent_monthly).round(-2)
+            total_payback = offer * factor_rate
+            daily_payback = total_payback / days
+          end
           offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-          days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate)
+            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_timed: true)
+          offers_added = offers_added + 1
+          counter = counter + 1
         end
-          counter = counter + 1;
       end
     end
   end

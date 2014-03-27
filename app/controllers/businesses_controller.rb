@@ -24,6 +24,13 @@ class BusinessesController < ApplicationController
 
   def show
     @business = current_business
+    offer = nil
+    #@business.offers.each do |i|
+    #  if i.is_timed == true
+    #    offer = i
+    #  end
+    #end
+
     if !@business.is_email_confirmed
       if !@business.qualified?
         render :action => :not_qualified
@@ -33,6 +40,23 @@ class BusinessesController < ApplicationController
         redirect_to :action => :activate_account
       end
     end
+
+    created_time = @business.created_at
+    current_time = DateTime.now
+    diff = created_time - current_time
+    @hours = 24 - (diff / 3600).abs.ceil
+    @minutes = "#{((diff % 3600) / 60).floor}"
+    @seconds = "#{((diff % 3600) % 60).floor + 1}"
+    @minutes = "" if @minutes.to_i == 0 and @hours.to_i >= 1
+    @minutes = "0#{@minutes}" if @minutes.length == 1
+    @seconds = "0#{@seconds}" if @seconds.length == 1
+  end
+
+  def accept_offer
+    @business = current_business
+    @business.main_offer_id = params[:id]
+    @business.save
+    redirect_to after_offer_path(:personal)
   end
 
   def edit
