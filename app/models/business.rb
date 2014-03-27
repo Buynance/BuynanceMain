@@ -145,7 +145,7 @@ class Business < ActiveRecord::Base
         if offers_added != 2
           factor_rate = Offer.get_random_rate(1.35, 1.48)
           factor_rate = Offer.get_random_rate(1.30, 1.38) if self.approximate_credit_score_range >= 4  
-          daily_rate = Offer.get_random_rate(0.145, 0.15)
+          daily_rate = Offer.get_random_rate(0.13, 0.15)
           daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
           total_payback = daily_payback * days
           offer = (total_payback / factor_rate).round(-2)
@@ -153,8 +153,8 @@ class Business < ActiveRecord::Base
           total_payback = offer * factor_rate
           daily_payback = total_payback / days
 
-          if(offer > (average * 0.40))
-            percent_monthly = Offer.get_random_rate(0.35, 0.40)
+          if(offer > (average * 0.35))
+            percent_monthly = Offer.get_random_rate(0.33, 0.35)
             offer = (average * percent_monthly).round(-2)
             total_payback = offer * factor_rate
             daily_payback = total_payback / days

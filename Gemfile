@@ -33,6 +33,7 @@ gem 'turbolinks'
 # Buynanceild JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
 
+
 gem 'devise'
 
 gem 'activeadmin', github: 'gregbell/active_admin'
@@ -54,6 +55,8 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "delayed_job_web", "1.2.5"
 gem "rails-settings-cached", "0.3.1"
+
+gem 'font-awesome-sass'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
