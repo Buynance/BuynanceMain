@@ -187,27 +187,6 @@ class Business < ActiveRecord::Base
       end
     end
   end
-  
-  def create_random_offers(min, max)
-    amount = rand(max - min + 1) + min
-    for n in 0..amount
-      factor_rate = rand * (1.32 - 1.30) + 1.30
-      cash_advance_amount = Offer.get_advance_amount(self.earned_one_month_ago,
-        earned_two_months_ago, earned_three_months_ago, 0.32, 0.37).round(-2)
-      payback_amount = cash_advance_amount * factor_rate
-      period = Offer.get_random_months(4, 12)
-      days = period * 30
-      pay_per_day = payback_amount / days
-      maximum_pay_per_day = self.average_daily_balance_bank_account * 0.15
-      if (pay_per_day > maximum_pay_per_day)
-        pay_per_day = maximum_pay_per_day
-        payback_amount = pay_per_day * days
-        cash_advance_amount = payback_amount / factor_rate
-      end
-      offers << Offer.create(cash_advance_amount: cash_advance_amount, daily_merchant_cash_advance: pay_per_day,
-        months_to_collect: period, days_to_collect: days, total_payback_amount: payback_amount)
-    end
-  end
 
   def main_offer
     return Offer.find(main_offer_id)
