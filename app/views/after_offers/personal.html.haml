@@ -33,7 +33,8 @@
               Mobile Phone Number
             = f.text_field :mobile_number, class: "text-center form-control phone_convert", required: true
           .action
-            =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
+            %button{class: "btn btn-primary btn-lg btn-lg btn-block green-btn offer-btn"}
+              Continue 
 
 
           #disclaimerModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "disclaimerModal", role: "dialog", tabindex: "-1"}
@@ -47,5 +48,7 @@
                     ="I understand that merchant cash advance brokers and funders frequently place unsolicited telephone calls to business owners like me, so as to offer me help in either finding a merchant cash advance, or taking one from their firm.  I understand that this is the norm and that in accordance with it’s Terms of Service Buynance will not broker or sell my information to any third party vendors for any reason whatsoever. I understand that Buynance only supplies my phone number to the funder whose offer I have chosen during the funding pre-qualification process. I understand that Buynance helps funders understand my time is valuable but also understand that Buynance cannot be held responsible for any persistent follow up made by the funder whose offer I chose. I understand that if the funder whose’ offer I chose becomes overbearing then I may file a formal complaint with Buynance at complaints@buynance.com. I expressly authorize Funder Pair Inc to call me or send me recorded messages or texts about their products and services using automated technology to my telephone/cellular number I will enter during this application proccess, regardless of any prior Do-Not-Call election to the contrary. I understand that I am not required to give my consent as a condition of any purchase"
 
                 .modal-footer
-                  %button.btn.btn-default{type: "button", "data-dismiss" => "modal"} Go Back
-                  =f.submit "Continue", class: "btn btn-green
+                  %button.btn.btn-default{type: "button", "data-dismiss" => "modal"} 
+                    Go Back
+                  .action
+                    = #f.submit "Continue", {class: "btn btn-green}

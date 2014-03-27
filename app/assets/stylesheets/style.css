@@ -44,7 +44,9 @@ a, a:visited, a:hover, a:active {
   background:#f5f5f5;
   min-height: 75%;
   height: auto;
-  width: 100%
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px;
 
   
 }
@@ -113,6 +115,12 @@ background:#fff;
 text-align:center;
 padding:0;
 margin-bottom: 60px;
+-moz-border-top-left-radius: 10px; 
+-webkit-border-radius-topleft: 10px; 
+border-top-left-radius: 10px; 
+-moz-border-top-right-radius: 10px; 
+-webkit-border-radius-topright: 10px; 
+border-top-right-radius: 10px;
 }
 
 .form-style form {
@@ -148,7 +156,22 @@ background:linear-gradient(to bottom,#22AEDA 0%,#00a4b2 100%);
 filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#22AEDA',endColorstr='#00a4b2',GradientType=0);
 margin-top:0;
 padding:10px 0;
-color:#fff
+color:#fff;
+-moz-border-top-left-radius: 10px; 
+-webkit-border-radius-topleft: 10px; 
+border-top-left-radius: 10px; 
+-moz-border-top-right-radius: 10px; 
+-webkit-border-radius-topright: 10px; 
+border-top-right-radius: 10px;
+}
+
+.flat-top{
+-moz-border-top-left-radius: 0px; 
+-webkit-border-radius-topleft: 0px; 
+border-top-left-radius: 0px; 
+-moz-border-top-right-radius: 0px; 
+-webkit-border-radius-topright: 0px; 
+border-top-right-radius: 0px;
 }
 
 .result-box .col-md-6 {

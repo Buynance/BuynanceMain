@@ -44,28 +44,34 @@ module BusinessValidations
 	presence: {message: "Please include your phone number."},
 	length: {minimum: 10, maximum: 10, message: "Your phone number should be 10 digits long."},
 	numericality: {only_integer: true, message: "Please include only digits in your phone number."},
-	if: -> {self.current_step == :personal}  
-
-	validates :street_address_one,
-	presence: {message: "Please include the first line of your address."},
 	if: -> {self.current_step == :personal}
 
-	validates :city,
-	presence: {message: "Please include your city."},
-	if: -> {self.current_step == :personal}
+	validates :mobile_number,
+	presence: {message: "Please include your mobile number."},
+	length: {minimum: 10, maximum: 10, message: "Your mobile number should be 10 digits long."},
+	numericality: {only_integer: true, message: "Please include only digits in your mobil number."},
+	if: -> {self.current_step == :personal}   
 
-	validates :state,
-	presence: {message: "Please include your state."},
-	if: -> {self.current_step == :personal}
+	#validates :street_address_one,
+	#presence: {message: "Please include the first line of your address."},
+	#if: -> {self.current_step == :personal}
 
-	validate :zip_code,
-	presence: {message: "Please include your five digit zip code"},
-	numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
-	if: -> {self.current_step == :personal}
+	#validates :city,
+	#presence: {message: "Please include your city."},
+	#if: -> {self.current_step == :personal}
 
-	validate :business_type,
-	presence: {message: "Please include what you sell."},
-	if: -> {self.current_step == :personal}
+	#validates :state,
+	#presence: {message: "Please include your state."},
+	#if: -> {self.current_step == :personal}
+
+	#validate :zip_code,
+	#presence: {message: "Please include your five digit zip code"},
+	#numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
+	#if: -> {self.current_step == :personal}
+
+	#validate :business_type,
+	#presence: {message: "Please include what you sell."},
+	#if: -> {self.current_step == :personal}
 
 	# Step - Financial
 
@@ -79,33 +85,29 @@ module BusinessValidations
 	numericality: {only_integer: true, message:  "Your average daily balance should be a number."},
 	if: -> {self.current_step == :financial}
 
-	#validates :is_paying_back,
-    #presence: {message: "Please select whether you are paying back a merchant cash advance.", allow_blank: false},
-    #if: -> {self.current_step == :financial}
+	validates :is_paying_back,
+    inclusion: {:in => [true, false], message: "Please select whether you are paying back a merchant cash advance.", allow_blank: false},
+    if: -> {self.current_step == :financial}
 
     #validates :business_type_id,
-    #presence: {message: "Please select your business type."},
-    
+    #numericality: {only_integer: true, message: "Please select your business type."},
     #if: -> {self.current_step == :financial}
 
-    #validates :years_in_business,
-    #presence: {message: "Please select the amount of years you have been in business."},
-    
-    #if: -> {self.current_step == :financial}
+    validates :years_in_business,
+    presence: {message: "Please select the amount of years you have been in business."},
+    if: -> {self.current_step == :financial}
 
-    #validates :approximate_credit_score_range,
-    #presence: {message: "Please select your approximate credit score."},
-    
-    #if: -> {self.current_step == :financial}
+    validates :approximate_credit_score_range,
+    presence: {message: "Please select your approximate credit score."},
+    if: -> {self.current_step == :financial}
 
-    #validates :is_ever_bankruptcy,
-    #presence: {message: "Please select whether you have ever filed for bankruptcy."},
-    #if: -> {self.current_step == :financial}
+    validates :is_ever_bankruptcy,
+    inclusion: {:in => [true, false], message: "Please select whether you have ever filed for bankruptcy."},
+    if: -> {self.current_step == :financial}
 
-    #validates :is_judgement,
-    #presence: {message: "Please select whether you have any judgement."},
-    
-    #if: -> {self.current_step == :financial}
+    validates :is_judgement,
+    inclusion: {:in => [true, false], message: "Please select whether you have any judgement."},
+    if: -> {self.current_step == :financial}
 
     	
 

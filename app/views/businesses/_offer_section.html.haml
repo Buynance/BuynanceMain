@@ -41,5 +41,6 @@
           =" : "
           %span.timer-seconds 
             = @seconds
-      .getfunded      
-        = link_to "Get funded", {controller: "businesses", action: "accept_offer", id: offer.id} , method: :put
+      .button.getfunded{onclick: "show_modal(this)"}      
+        = "Get funded"
+        =#controller: "businesses", action: "accept_offer", id: offer.id

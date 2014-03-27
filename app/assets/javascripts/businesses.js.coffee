@@ -17,8 +17,10 @@ start_timer = () ->
 	minutes = parseInt($(".timer-minutes").html())
 	seconds = parseInt($(".timer-seconds").html())
 	console.log(hours+":"+minutes+":"+seconds)
+	running = true
 	window.setInterval( ->
 		if hours > 0 or minutes > 0 or seconds > 0
+			running = true
 			console.log(hours+":"+minutes+":"+seconds)
 			seconds = parseInt(seconds) - 1
 			if seconds == 0
@@ -29,8 +31,9 @@ start_timer = () ->
 						if hours > 0
 							minutes = 59
 							hours = parseInt(hours) - 1
-				else
-					deactivate_offer(".best-offer")
+		else if running == true 
+			deactivate_offer(".best-offer")
+			running = false
 		if seconds.toString().length == 1
 			seconds = "0#{seconds}"
 		if minutes.toString().length == 1
@@ -55,6 +58,7 @@ $(document).ready( ->
 )
 
 deactivate_offer = (node) ->
+	console.log("delete")
 	$(node).closest(".offer").addClass("offer-deleted")
 	id = $(node).closest(".offer").data("id")
 	console.log(id)
@@ -65,4 +69,11 @@ deactivate_offer = (node) ->
 		data:
 			business:
 				is_active: false
+
+#$(".btn.offer-btn").click ->
+#  id = $(this).data("id")
+#  $("#disclaimerModal").find("button.btn").data "id", id
+#  console.log $("#disclaimerModal").find("button.btn").data("id")
+#  console.log id
+#  return
 

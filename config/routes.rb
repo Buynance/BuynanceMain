@@ -34,7 +34,7 @@ Buynance::Application.routes.draw do
   match 'business/:business_id/confirm/:confirmation_code' => "business#confirm_account", via: :get
   match 'business/:business_id/confirm/:activation_code' => "business#activation_account", via: :get
   put '/business/insert/:id' => 'businesses#insert'
-  put '/business/accept_offer/:id' => 'businesses#accept_offer'
+  get '/business/accept_offer/:id' => 'businesses#accept_offer'
   put '/offer/update/:id' => 'offers#update'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
