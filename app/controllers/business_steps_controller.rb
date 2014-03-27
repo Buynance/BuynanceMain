@@ -21,8 +21,8 @@ class BusinessStepsController < ApplicationController
 				  @business.is_email_confirmed = true
 				end
 				@business.create_offers(12)
-				@business.offers[2].is_timed = true
-				@business.offers[2].save
+				#@business.offers[2].is_timed = true
+				#@business.offers[2].save
 				@business.save
 			end
 		end

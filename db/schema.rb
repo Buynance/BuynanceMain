@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327033931) do
+ActiveRecord::Schema.define(version: 20140327065246) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -267,6 +267,7 @@ ActiveRecord::Schema.define(version: 20140327033931) do
     t.float    "factor_rate"
     t.boolean  "is_timed"
     t.boolean  "is_active"
+    t.boolean  "is_best_offer"
   end
 
   create_table "profitabilities", force: true do |t|

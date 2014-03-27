@@ -24,6 +24,12 @@ class BusinessesController < ApplicationController
 
   def show
     @business = current_business
+    offer = nil
+    #@business.offers.each do |i|
+    #  if i.is_timed == true
+    #    offer = i
+    #  end
+    #end
 
     if !@business.is_email_confirmed
       if !@business.qualified?
