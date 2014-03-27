@@ -180,7 +180,7 @@ class Business < ActiveRecord::Base
             daily_payback = total_payback / days
           end
           offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate)
+            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_timed: true)
           offers_added = offers_added + 1
           counter = counter + 1
         end
