@@ -38,8 +38,6 @@
       var id = $(this).data('id');
       
       $('#disclaimerModal').find('button.btn').data("id", id);
-      console.log($('#disclaimerModal').find('button.btn').data('id'));
-      console.log(id);
     });
 
     function display_offers(){
@@ -48,16 +46,13 @@
     }
 
     function accept_offer_disclaimer(node){
-      console.log($(node));
       var update_url;
       var id = $(node).closest("#disclaimerModal").data('id');
-      console.log(id);
       window.location = "/business/accept_offer/"+id;
     }
 
     function show_modal(node){
       $('#disclaimerModal').modal('show')
       id = $(node).closest(".offer").data("id")
-      console.log(id)
       $('#disclaimerModal').data("id", id)
     }

@@ -16,12 +16,10 @@ start_timer = () ->
 	hours = parseInt($(".timer-hours").html())
 	minutes = parseInt($(".timer-minutes").html())
 	seconds = parseInt($(".timer-seconds").html())
-	console.log(hours+":"+minutes+":"+seconds)
 	running = true
 	window.setInterval( ->
 		if hours > 0 or minutes > 0 or seconds > 0
 			running = true
-			console.log(hours+":"+minutes+":"+seconds)
 			seconds = parseInt(seconds) - 1
 			if seconds == 0
 				if minutes > 0 or hours > 0
@@ -50,7 +48,6 @@ start_timer = () ->
 
 
 $(document).ready( ->
-	console.log($(".timeleft"))
 	start_timer()
 	$(".delete").click( ->
 		deactivate_offer(this)
@@ -58,10 +55,8 @@ $(document).ready( ->
 )
 
 deactivate_offer = (node) ->
-	console.log("delete")
 	$(node).closest(".offer").addClass("offer-deleted")
 	id = $(node).closest(".offer").data("id")
-	console.log(id)
 	update_url = ("/offer/update/" + id)
 	$.ajax
 		type: "PUT"

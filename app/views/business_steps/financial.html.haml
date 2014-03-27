@@ -36,7 +36,7 @@
             %label{class: "control-label", :for => :approximate_credit_score_range}
               What is your approximate credit score?
             %br
-            = f.select :approximate_credit_score_range, options_for_select({"500-450" => 1, "550-501" => 2, "600-551" => 3, "650-601" => 4, "700-651" => 5, "750-701" => 6, "800 - 751" => 7}),{:include_blank => true}, {:class => "form-control selectpicker"}
+            = f.select :approximate_credit_score_range, options_for_select({"450-500" => 1, "501-550" => 2, "551-600" => 3, "601-650" => 4, "651-700" => 5, "701-750" => 6, "751-800" => 7}),{:include_blank => true}, {:class => "form-control selectpicker"}
           
           %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
             %label{class: "control-label", :for => :is_tax_lien}

@@ -46,7 +46,7 @@ class BusinessesController < ApplicationController
     diff = created_time - current_time
     @hours = 24 - (diff / 3600).abs.ceil
     @minutes = "#{((diff % 3600) / 60).floor}"
-    @seconds = "#{((diff % 3600) % 60).floor}"
+    @seconds = "#{((diff % 3600) % 60).floor + 1}"
     @minutes = "" if @minutes.to_i == 0 and @hours.to_i >= 1
     @minutes = "0#{@minutes}" if @minutes.length == 1
     @seconds = "0#{@seconds}" if @seconds.length == 1
