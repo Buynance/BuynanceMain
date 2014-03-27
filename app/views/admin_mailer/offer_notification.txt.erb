@@ -2,10 +2,7 @@ A user has accepted an offer up with buynance
 
 Snapshot: 
 ------------------------------------
-- if @offer.is_first_contact
-  ="This is a first time customer"
-- else
-  ="This is a returning customer"
+Is this the first time is customer accepts offer: <%= @offer.is_first_contact %>
 ------------------------------------
  Email: <%=@business.email %>
  First Name: <%=@business.owner_first_name %> 

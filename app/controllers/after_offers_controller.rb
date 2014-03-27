@@ -14,7 +14,10 @@ include Wicked::Wizard
 		@business.current_step = step
 		if @business.update_attributes(business_params)
 			if step = :personal
+				offer = Offer.find(@business.main_offer_id)
 				@business.deliver_offer_email!
+				offer.is_first_contact = false
+				offer.save
 			end
 		end
 		render_wizard @business

@@ -29,7 +29,7 @@ include Wicked::Wizard
 				puts "================== personal"
 				return params.require(:business).permit(:id, :owner_first_name, 
 				:owner_last_name, :name, :phone_number, :street_address_one, 
-				:street_address_two, :city, :state, :business_type)
+				:street_address_two, :city, :state, :business_type, :mobile_number)
 			end
 	    end
 
