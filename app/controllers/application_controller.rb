@@ -107,11 +107,4 @@ class ApplicationController < ActionController::Base
         :body => "A new account has signed up"
       )
     end
-
-    def deliver_qualified_confirmation!
-      AdminMailer.qualified_signup.deliver!
-    end
-    handle_asynchronously :deliver_qualified_confirmation!
-
-
 end
