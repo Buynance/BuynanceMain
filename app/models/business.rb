@@ -145,7 +145,7 @@ class Business < ActiveRecord::Base
         if offers_added != 2
           factor_rate = Offer.get_random_rate(1.35, 1.48)
           factor_rate = Offer.get_random_rate(1.30, 1.38) if self.approximate_credit_score_range >= 4  
-          daily_rate = Offer.get_random_rate(0.145, 0.15)
+          daily_rate = Offer.get_random_rate(0.13, 0.15)
           daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
           total_payback = daily_payback * days
           offer = (total_payback / factor_rate).round(-2)
@@ -153,8 +153,8 @@ class Business < ActiveRecord::Base
           total_payback = offer * factor_rate
           daily_payback = total_payback / days
 
-          if(offer > (average * 0.40))
-            percent_monthly = Offer.get_random_rate(0.35, 0.40)
+          if(offer > (average * 0.35))
+            percent_monthly = Offer.get_random_rate(0.33, 0.35)
             offer = (average * percent_monthly).round(-2)
             total_payback = offer * factor_rate
             daily_payback = total_payback / days
@@ -185,27 +185,6 @@ class Business < ActiveRecord::Base
           counter = counter + 1
         end
       end
-    end
-  end
-  
-  def create_random_offers(min, max)
-    amount = rand(max - min + 1) + min
-    for n in 0..amount
-      factor_rate = rand * (1.32 - 1.30) + 1.30
-      cash_advance_amount = Offer.get_advance_amount(self.earned_one_month_ago,
-        earned_two_months_ago, earned_three_months_ago, 0.32, 0.37).round(-2)
-      payback_amount = cash_advance_amount * factor_rate
-      period = Offer.get_random_months(4, 12)
-      days = period * 30
-      pay_per_day = payback_amount / days
-      maximum_pay_per_day = self.average_daily_balance_bank_account * 0.15
-      if (pay_per_day > maximum_pay_per_day)
-        pay_per_day = maximum_pay_per_day
-        payback_amount = pay_per_day * days
-        cash_advance_amount = payback_amount / factor_rate
-      end
-      offers << Offer.create(cash_advance_amount: cash_advance_amount, daily_merchant_cash_advance: pay_per_day,
-        months_to_collect: period, days_to_collect: days, total_payback_amount: payback_amount)
     end
   end
 

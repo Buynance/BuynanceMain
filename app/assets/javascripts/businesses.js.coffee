@@ -17,33 +17,31 @@ start_timer = () ->
 	minutes = parseInt($(".timer-minutes").html())
 	seconds = parseInt($(".timer-seconds").html())
 	running = true
-	window.setInterval( ->
-		if hours > 0 or minutes > 0 or seconds > 0
-			running = true
-			seconds = parseInt(seconds) - 1
-			if seconds == 0
-				if minutes > 0 or hours > 0
-					minutes = parseInt(minutes) - 1
-					seconds = 59
-					if minutes == 0
-						if hours > 0
-							minutes = 59
-							hours = parseInt(hours) - 1
-		else if running == true 
-			deactivate_offer(".best-offer")
-			running = false
-		if seconds.toString().length == 1
-			seconds = "0#{seconds}"
-		if minutes.toString().length == 1
-			minutes = "0#{minutes}"	
-		if hours.toString().length == 1
-			hours = "0#{hours}"		
+	#window.setInterval( ->
+	#	if hours > 0 or minutes > 0 or seconds > 0
+	#		running = true
+	#		seconds = parseInt(seconds) - 1
+	#		if seconds == 0
+	#			if minutes > 0 or hours > 0
+	#				minutes = parseInt(minutes) - 1
+	#				seconds = 59
+	#				if minutes == 0
+	#					if hours > 0
+	#						minutes = 59
+	#						hours = parseInt(hours) - 1
+	#	else if running == true 
+	#		deactivate_offer(".best-offer")
+	#		running = false
+	#	if seconds.toString().length == 1
+	#		seconds = "0#{seconds}"
+	#	if minutes.toString().length == 1
+	#		minutes = "0#{minutes}"	
+	#	if hours.toString().length == 1
+	#		hours = "0#{hours}"		
 		
-		$(".timer-seconds").html(seconds)
-		$(".timer-minutes").html(minutes)
-		$(".timer-hours").html(hours)
+	#	$(".timer-seconds").html(seconds)
 
-	, 1000)
+	#, 1000)
 
 
 

@@ -12,18 +12,18 @@
       %li.col-sm-4
         %span.info-title Advance amount
         %span.advance-price
-          %span.dollar> $
-          = "#{Integer(offer.cash_advance_amount)}"
+          %span.dollar>$ 
+          = "#{number_to_currency(Integer(offer.cash_advance_amount), precision: 0)[1..-1]}"
       %li.col-sm-4
         %span.info-title Payback amount
         %span.payback-price 
-          = "$#{Integer(offer.total_payback_amount)}"
+          = "#{number_to_currency(Integer(offer.total_payback_amount), precision: 0)}"
       %li.col-sm-4
         %span.info-title Daily Collection
         %span.daily-price
           %span.number
             %span.dollar $
-            ="#{Integer(offer.daily_merchant_cash_advance)}"
+            ="#{number_to_currency(Integer(offer.daily_merchant_cash_advance), precision: 0)[1..-1]}"
           \/ 
           - if offer.days_to_collect == 80
             4 months
@@ -33,14 +33,15 @@
       - if offer.is_timed == true
         %span.timeleft
           %i.fa.fa-clock-o
-          %span.timer-hours
-            = @hours
-          =" : " 
-          %span.timer-minutes
-            = @minutes
-          =" : "
-          %span.timer-seconds 
-            = @seconds
+          -if @hours >= 1
+            %span.timer-hours
+              ="Expires in #{@hours} Hours."
+          -elsif minutes >= 1
+            %span.timer-hours
+              ="Expires in #{@minutes} Minutes"
+          -else
+            %span.timer-hours
+              ="Expires in #{@seconds} Seconds"
       .button.getfunded{onclick: "show_modal(this)"}      
         = "Get funded"
         =#controller: "businesses", action: "accept_offer", id: offer.id

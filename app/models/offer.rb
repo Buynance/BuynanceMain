@@ -53,7 +53,7 @@ class Offer < ActiveRecord::Base
 	end
 
 	def self.get_best_possible_offer(average_daily, days, rate)
-		return ((average_daily * 0.15 * days) / rate)
+		return ((average_daily * 0.20 * days) / rate)
 	end
 
 	def self.get_days(credit_score_range)
