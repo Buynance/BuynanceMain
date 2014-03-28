@@ -32,16 +32,17 @@
     %li.col-sm-3
       - if offer.is_timed == true
         %span.timeleft
-          %i.fa.fa-clock-o
-          -if @hours >= 1
-            %span.timer-hours
-              ="Expires in #{@hours} Hours."
-          -elsif minutes >= 1
-            %span.timer-hours
-              ="Expires in #{@minutes} Minutes"
-          -else
-            %span.timer-hours
-              ="Expires in #{@seconds} Seconds"
+          /
+            %i.fa.fa-clock-o
+            -if @hours >= 1
+              %span.timer-hours
+                ="Expires in #{@hours} Hours."
+            -elsif minutes >= 1
+              %span.timer-hours
+                ="Expires in #{@minutes} Minutes"
+            -else
+              %span.timer-hours
+                ="Expires in #{@seconds} Seconds"
       .button.getfunded{onclick: "show_modal(this)"}      
         = "Get funded"
         =#controller: "businesses", action: "accept_offer", id: offer.id
