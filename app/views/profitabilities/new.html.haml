@@ -43,8 +43,6 @@
             .form_group
               %label.control-label{for: "daily_merchant_cash_advance"}
                 How much is your current merchant cash advance company collecting daily?
-                = succeed "cash" do
-                  %br/
               %input#profitability_daily_merchant_cash_advance.text-center.form-control{name: "profitability[daily_merchant_cash_advance]", required: "required", type: "text", value: "$280"}/
               .actions
                 %input#hidden_button.btn.btn-primary.btn-lg.btn-lg.btn-block.green-btn{name: "commit", type: "submit", value: "GET RESULTS"}/
