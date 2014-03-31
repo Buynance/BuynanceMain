@@ -313,6 +313,29 @@ button .icon {
       margin-right: 0px;
     }
   }
+
+}
+
+.article-info{
+    top: 180px;
+  }
+
+@media (max-width: 1279px) {
+  .article-info{
+    top: 140px;
+  }
+}
+
+@media (max-width: 1103px) {
+  .article-info{
+    top: 120px;
+  }
+}
+
+@media (max-width: 803px) {
+  .article-info{
+    top: 100px;
+  }
 }
 
 @media (max-width: 991px) {
