@@ -59,7 +59,7 @@
             - if_error = @profitability.errors.include?(:other_monthly_loan_collection) ? 'has-error' : ''
             %div{class: "form_group #{return_error_class(@profitability, :other_monthly_loan_collection)}"}
               %label{class: "control-label", :for => :other_monthly_loan_collection} 
-                How much is the monthly collection amount for all other loan ?
+                How much is the monthly collection amount for all other loans?
               = f.text_field :other_monthly_loan_collection, value: (@saved_profitability ? @saved_profitability.other_monthly_loan_collection : '$0'),
               class: "text-center form-control", required: true
 
