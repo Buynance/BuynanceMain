@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140327065246) do
+ActiveRecord::Schema.define(version: 20140401195023) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -80,29 +80,17 @@ ActiveRecord::Schema.define(version: 20140327065246) do
     t.string   "first_name"
     t.string   "last_name"
     t.string   "phone_number"
-    t.string   "address_line_one"
-    t.string   "address_line_two"
-    t.string   "city"
-    t.string   "state"
-    t.integer  "zipcode"
-    t.string   "title"
-    t.datetime "date_of_birth"
-    t.integer  "home_phone_number"
-    t.string   "mobile_phone_number"
-    t.integer  "ownership_percentage"
-    t.string   "email",                                           null: false
-    t.string   "crypted_password",                                null: false
+    t.string   "mobile_number"
+    t.string   "email",                                null: false
+    t.string   "crypted_password",                     null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "login_count",                         default: 0, null: false
+    t.integer  "login_count",              default: 0, null: false
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
     t.string   "last_login_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.datetime "open_date"
     t.boolean  "is_accepting"
     t.boolean  "is_authenticated"
     t.boolean  "is_email_confirmed"
@@ -110,21 +98,14 @@ ActiveRecord::Schema.define(version: 20140327065246) do
     t.string   "persistence_token"
     t.string   "single_access_token"
     t.string   "perishable_token"
-    t.integer  "failed_login_count",                  default: 0, null: false
+    t.integer  "failed_login_count",       default: 0, null: false
     t.datetime "last_request_at"
-    t.boolean  "is_finished_application"
     t.string   "activation_code"
     t.string   "recovery_code"
-    t.string   "confirmation_code"
-    t.boolean  "is_confirmed"
     t.integer  "business_id"
     t.boolean  "is_finished_registration"
-    t.string   "statement_one_month_ago"
-    t.string   "statement_two_months_ago"
-    t.string   "statement_three_months_ago"
-    t.string   "drivers_license"
-    t.string   "business_license"
-    t.boolean  "is_complete_information_application"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "businesses", force: true do |t|
@@ -196,6 +177,8 @@ ActiveRecord::Schema.define(version: 20140327065246) do
     t.string   "email",                              default: "",    null: false
     t.string   "mobile_number"
     t.boolean  "is_first_contact",                   default: true
+    t.integer  "main_business_user_id"
+    t.integer  "status"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -279,6 +262,7 @@ ActiveRecord::Schema.define(version: 20140327065246) do
     t.float    "total_monthly_bills"
     t.float    "daily_merchant_cash_advance"
     t.integer  "total_month_fully_profitable_again"
+    t.integer  "other_monthly_loan_collection"
   end
 
   create_table "settings", force: true do |t|

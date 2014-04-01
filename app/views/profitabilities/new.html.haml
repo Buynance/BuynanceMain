@@ -27,25 +27,47 @@
       .calc-wrapper
         %h2.title Cash Advance Profit Calculator
         .calculator
-          %form#new_profitability.new_profitability{"accept-charset" => "UTF-8", action: "/calculator", method: "post"}
+          = form_for @profitability, class: "new_profitability", id: "new_profitability" do |f|
+            - if @profitability.errors.any?
+              %div{class: "alert alert-danger"}
+                %ul
+                  - @profitability.errors.each do |attr, error|
+                    %li= error
             %div{style: "margin:0;padding:0;display:inline"}
-              %input{name: "utf8", type: "hidden", value: "✓"}/
-              %input{name: "authenticity_token", type: "hidden", value: "Lxt8fdnNK4+QpSmkseQlTbFLvnps386ks1+dOPunTQo="}/
-            %div{style: "margin:0;padding:0;display:inline"}
-            .form_group
-              %label.control-label{for: "monthly_cash_collection_amount"}
+            - if_error = @profitability.errors.include?(:monthly_cash_collection_amount) ? 'has-error' : ''
+            %div{class: "form_group #{return_error_class(@profitability, :monthly_cash_collection_amount)}"}
+              %label{class: "control-label", :for => :monthly_cash_collection_amount} 
                 How much money does your business earn each month before you pay the bills?
-              %input#profitability_monthly_cash_collection_amount.text-center.form-control{maxlength: "9", min: "1", name: "profitability[monthly_cash_collection_amount]", required: "required", size: "9", type: "text", value: "$50000"}/
-            .form_group
-              %label.control-label{for: "total_monthly_bills"}
+
+              = f.text_field :monthly_cash_collection_amount,
+                            value: number_with_precision((@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : '$50000'), :precision => 0), maxlength: "9", min: "1",
+                            class: "text-center form-control ", required: true
+            - if_error = @profitability.errors.include?(:total_monthly_bills) ? 'has-error' : ''
+            %div{class: "form_group #{return_error_class(@profitability, :total_monthly_bills)}"}    
+              %label{class: "control-label", :for => :total_monthly_bills}
                 How much are your total monthly bills?
-              %input#profitability_total_monthly_bills.text-center.form-control{maxlength: "9", min: "1", name: "profitability[total_monthly_bills]", required: "required", size: "9", type: "text", value: "$40000"}/
-            .form_group
-              %label.control-label{for: "daily_merchant_cash_advance"}
+              = f.text_field :total_monthly_bills,
+                            value: number_with_precision((@saved_profitability ? @saved_profitability.total_monthly_bills : '$40000'), :precision => 0), maxlength: "9", min: "1",
+                            class: "text-center form-control", required: true
+            - if_error = @profitability.errors.include?(:daily_merchant_cash_advance) ? 'has-error' : ''
+            %div{class: "form_group #{return_error_class(@profitability, :daily_merchant_cash_advance)}"}
+              %label{class: "control-label", :for => :daily_merchant_cash_advance} 
                 How much is your current merchant cash advance company collecting daily?
-              %input#profitability_daily_merchant_cash_advance.text-center.form-control{name: "profitability[daily_merchant_cash_advance]", required: "required", type: "text", value: "$280"}/
+              = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280'),
+              class: "text-center form-control", required: true
+
+            - if_error = @profitability.errors.include?(:other_monthly_loan_collection) ? 'has-error' : ''
+            %div{class: "form_group #{return_error_class(@profitability, :other_monthly_loan_collection)}"}
+              %label{class: "control-label", :for => :other_monthly_loan_collection} 
+                How much is the monthly collection amount for all other loan ?
+              = f.text_field :other_monthly_loan_collection, value: (@saved_profitability ? @saved_profitability.other_monthly_loan_collection : '$0'),
+              class: "text-center form-control", required: true
+
+
               .actions
                 %input#hidden_button.btn.btn-primary.btn-lg.btn-lg.btn-block.green-btn{name: "commit", type: "submit", value: "GET RESULTS"}/
+
+
         .result-box
           - if @saved_profitability
             .results

@@ -41,7 +41,7 @@ class ProfitabilitiesController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def profitability_params
       params.require(:profitability).permit(:monthly_cash_collection_amount, :gross_profit_margin,
-                                            :projected_monthly_profit, :total_monthly_bills, :daily_merchant_cash_advance)
+                                            :projected_monthly_profit, :total_monthly_bills, :daily_merchant_cash_advance, :other_monthly_loan_collection)
     end
 
     # remove $
@@ -49,5 +49,6 @@ class ProfitabilitiesController < ApplicationController
       params[:profitability][:monthly_cash_collection_amount].gsub!( /\$/, '')
       params[:profitability][:total_monthly_bills].gsub!( /\$/, '')
       params[:profitability][:daily_merchant_cash_advance].gsub!( /\$/, '')
+      params[:profitability][:other_monthly_loan_collection].gsub!( /\$/, '')
     end
 end

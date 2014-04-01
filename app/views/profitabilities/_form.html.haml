@@ -35,6 +35,15 @@
           = f.text_field :daily_merchant_cash_advance, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280'),
           class: "text-center form-control", required: true
 
+        - if_error = @profitability.errors.include?(:other_monthly_loan_collection) ? 'has-error' : ''
+        %div{class: "form_group #{return_error_class(@profitability, :other_monthly_loan_collection)}"}
+          %label{class: "control-label", :for => :other_monthly_loan_collection} 
+            How much is the monthly collection amount <br/>for all other loan ?
+          = f.text_field :other_monthly_loan_collection, value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$0'),
+          class: "text-center form-control", required: true
+
+
+          
           .actions
             = f.submit "GET RESULTS", class: "btn btn-primary btn-lg btn-lg btn-block green-btn", id: "hidden_button" 
 
