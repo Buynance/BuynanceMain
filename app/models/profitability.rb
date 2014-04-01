@@ -23,8 +23,9 @@ class Profitability < ActiveRecord::Base
 
   def calculate_daily_profit
     @pay_back = 0.2
+    daily_merchant_cash_advance = self.daily_merchant_cash_advance + (self.other_monthly_loan_collection / 20.8)
     self.gross_profit_margin = (monthly_cash_collection_amount - total_monthly_bills)/monthly_cash_collection_amount
-    self.projected_monthly_profit = (((monthly_cash_collection_amount - total_monthly_bills)/30 - (30 * daily_merchant_cash_advance)/20.8)*30) - other_monthly_loan_collection
+    self.projected_monthly_profit = (((monthly_cash_collection_amount - total_monthly_bills)/30 - (30 * daily_merchant_cash_advance)/20.8)*30)
 
     # total_month_fully_profitable_again
     if monthly_cash_collection_amount == total_monthly_bills
