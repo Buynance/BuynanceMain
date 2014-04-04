@@ -80,4 +80,3 @@
                 - if @saved_profitability.total_month_fully_profitable_again != -1
                   %p.result-title Below is the total number of months it will take for you to be fully profitable again:
                   %p.result.green{class: ("red" if @saved_profitability.projected_monthly_profit < 0)}= @saved_profitability.total_month_fully_profitable_again
-              %a.button-deal{href: "/signup"} Get a better deal
