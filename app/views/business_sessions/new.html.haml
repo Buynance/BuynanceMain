@@ -19,9 +19,8 @@
           %label{class: "control-label", :for => :password}
             Password
           = f.password_field :password, class: "text-center form-control "
-          
-          %input{type: "checkbox",  :for => :remember_me} 
+
           %label{class: "control-label", :for => :remember_me}
-            Remember Me?
+            = link_to "Recover Password", :recovery_path
           
           = f.submit "Login", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

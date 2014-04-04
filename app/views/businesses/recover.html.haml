@@ -1,0 +1,20 @@
+.web_body.container 
+  #signup-form
+    .row.main-title-wrap
+      .col-md-6.col-md-offset-3
+        %h1.main-title Recover
+    .row    
+      .col-md-6.col-md-offset-3.form-style
+        %h3.form-header Recover Your Account
+        - unless flash[:alert].nil?
+          %div{class: "alert alert-danger"}
+            = flash[:alert]
+
+        = form_for @business, url: {controller: :businesses, action: :recover_account}, class: "new_profitability", id: "new_profitability" do |f|
+
+          %div{class: "form_group #{return_error_class(@business, :email)}"}
+            %label{class: "control-label", :for => :email} 
+              Email
+            = f.text_field :email, class: "text-center form-control ", required: true
+
+          = f.submit "Submit", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

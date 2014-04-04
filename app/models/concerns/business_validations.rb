@@ -128,6 +128,11 @@ module BusinessValidations
 	numericality: {only_integer: true, message: "Your current balance should be a number."},
 	if: -> {self.current_step == :funders}
 	
+	# Step - Recover Password
+
+	validates :password,
+    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and must include one number and one letter."},
+	if: -> {self.current_step == :recover_password}
 
   
   end

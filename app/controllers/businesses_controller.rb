@@ -1,6 +1,6 @@
 class BusinessesController < ApplicationController
-  before_filter :require_business, :only => [:show, :edit, :update, :activate_account, :activate]
-  before_filter :require_no_business, :only => [:new, :create]
+  before_filter :require_business, :only => [:show, :activate_account, :activate]
+  before_filter :require_no_business, :only => [:new, :create, :recover, :recover_account, :password]
   before_filter :standardize_params, :only => [:create]
 
   def new 
@@ -59,18 +59,6 @@ class BusinessesController < ApplicationController
     redirect_to after_offer_path(:personal)
   end
 
-  def edit
-    @business = current_business
-  end
-
-  def update
-    @business = current_business # makes our views "cleaner" and more consistent
-    if @business.update_attributes(business_params)
-      redirect_to account_url
-    else
-      render :action => :edit
-    end
-  end
 
   def insert
     @business = current_business
@@ -98,20 +86,42 @@ class BusinessesController < ApplicationController
   end
 
   def recover
-    @business = Business.find(params[:business_id])
-    if !is_email_confirmed && @business.update_attributes(business_params)
-      @business.is_email_confirmed = true
-      @business.recovery_code = Business.generate_activation_code
-      @business.save
-      redirect_to business_path(@business.id)
-    end
+    @business = Business.new
+  end
+
+  def recovery_instructions
+
   end
 
   def recover_account
-    @business = Business.find(params[:business_id])
-    if @business.confirmation_code != params[:activation_code]
-      redirect_to :root_path
+    @business = Business.find_by email: business_params[:email]
+    if !@business.nil?
+      @business.deliver_recovery_email!
+      redirect_to :recovery_instructions
+    else
+      flash[:alert] = "Sorry the email you provided does not exist in our system."
+      redirect_to :recover
     end
+  end
+
+  def password
+    if params.has_key?("recovery_code")
+      @business = Business.find_by recovery_code: params[:recovery_code]
+    else
+      redirect_to :root
+    end
+  end
+
+  def reset_password
+    @business = Business.find_by recovery_code: business_params[:recovery_code]
+    @business.current_step = :recover_password
+    @business.password = business_params[:password]
+    @business.password_confirmation = business_params[:password_confirmation]
+    if @business.save
+      redirect_to :root
+    else
+      redirect_to :password
+    end 
   end
 
   def activate_account
@@ -140,7 +150,7 @@ class BusinessesController < ApplicationController
     def business_params
       return params.require(:business).permit(:earned_one_month_ago, 
         :earned_two_months_ago, :earned_three_months_ago, :email, 
-        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id, :is_accept_offer_disclaimer) 
+        :password, :password_confirmation, :terms_of_service, :activation_code, :loan_reason_id, :is_accept_offer_disclaimer, :recovery_code) 
     end
   
 end

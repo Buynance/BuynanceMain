@@ -48,6 +48,10 @@ class Business < ActiveRecord::Base
   # Business type string from id                      #
   # --------------------------------------------------#
 
+  def deliver_recovery_email!
+    BusinessMailer.delay.recovery_email(self)
+  end
+  
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)
   end
