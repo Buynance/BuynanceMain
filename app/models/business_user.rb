@@ -7,6 +7,9 @@ class BusinessUser < ActiveRecord::Base
 
 	before_create :init
 
+	validate :email_does_not_contain_test,
+      on: :create
+
 	acts_as_authentic do |c|
 	    c.login_field = 'email'
 	    c.merge_validates_format_of_email_field_options :message => 'Please include a valid email address.'
@@ -23,4 +26,12 @@ class BusinessUser < ActiveRecord::Base
   	def init
   		self.email.downcase! if !self.email.nil?
   	end
+
+  	def email_does_not_contain_test
+      first_part_of_email = self.email.gsub(/\@(.*)/, "")
+      second_part_of_email = self.email.gsub(/(.+?)@|([.]|com|net|org|gov|edu)/,"")
+      puts("================#{first_part_of_email}")
+      puts("================#{second_part_of_email}")
+      errors.add(:email, "Please enter a valid email address.") if (first_part_of_email == "test" || first_part_of_email == "testing" || second_part_of_email == 'test' || second_part_of_email == 'testing')
+    end
 end
