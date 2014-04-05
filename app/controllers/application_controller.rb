@@ -3,48 +3,51 @@ class ApplicationController < ActionController::Base
   # For APIs, you may want to use :null_session instead.
   protect_from_forgery 
   before_filter :make_action_mailer_use_request_host_and_protocol
-  helper_method :current_business_session, :current_business, 
-    :require_business, :x_months_ago_string, :zero?, :return_error_class,
-    :deliver_qualified_confirmation!
+  helper_method :current_business_user_session, :current_business_user, 
+    :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
+     :current_business
   force_ssl if: :ssl_configured?
 
   private
-  	def after_sign_out_path_for(resource_or_scope)
-    	root_path
-  	end
+    def after_sign_out_path_for(resource_or_scope)
+      root_path
+    end
 
-  	def after_sign_in_path_for(resource_or_scope)
-    	root_path
-  	end
-  	
-    def configure_permitted_parameters
-  		devise_parameter_sanitizer.for(:sign_up) { |u| u.permit(:email, :password, :password_confirmation) }
-	  end
+    def after_sign_in_path_for(resource_or_scope)
+      root_path
+    end
 
+    def current_business_user_session
+      return @current_business_user_session if defined?(@current_business_user_session)
+      @current_business_user_session = BusinessUserSession.find
+    end
 
-    def current_business_session
-      return @current_business_session if defined?(@current_business_session)
-      @current_business_session = BusinessSession.find
+    def current_business_user
+      return @current_business_user if defined?(@current_business_user)
+      @current_business_user = current_business_user_session && current_business_user_session.business_user
     end
 
     def current_business
-      return @current_business if defined?(@current_business)
-      @current_business = current_business_session && current_business_session.business
-    end
-
-    def require_business
-      logger.debug "ApplicationController::require_business"
-      unless current_business
-        store_location
-        flash[:notice] = "You must be logged in to access this page"
-        redirect_to new_business_session_url
+      if current_business_user
+        return Business.find(current_business_user.business_id, no_obfuscated_id: true)
+      else
         return false
       end
     end
 
-    def require_no_business
-      logger.debug "ApplicationController::require_no_business"
-      if current_business
+    def require_business_user
+      logger.debug "ApplicationController::require_business_user"
+      unless current_business_user
+        store_location
+        flash[:notice] = "You must be logged in to access this page"
+        redirect_to new_business_user_session_url
+        return false
+      end
+    end
+
+    def require_no_business_user
+      logger.debug "ApplicationController::require_no_business_user"
+      if current_business_user
         store_location
         flash[:notice] = "You can not login twice, please logout if you want to login"
         redirect_to account_url
@@ -106,5 +109,10 @@ class ApplicationController < ActionController::Base
         :to => number_to_send_to,
         :body => "A new account has signed up"
       )
+    end
+
+    def grab_business_and_business_user
+      @business_user = current_business_user
+      @business = current_business
     end
 end

@@ -7,6 +7,7 @@ Buynance::Application.routes.draw do
   end
   resources :static_pages
   resources :businesses
+  resources :business_users
 
   resources :offers
   resource :business, :as => 'account'  # a convenience route
@@ -16,14 +17,15 @@ Buynance::Application.routes.draw do
   resources :after_offers
   resources :funders
   resources :business_sessions
+  resources :business_user_sessions
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 
-  get 'login' => "business_sessions#new",      :as => :login
-  get 'logout' => "business_sessions#destroy", :as => :logout
-
+  get 'login' => "business_user_sessions#new",      :as => :login
+  get 'logout' => "business_user_sessions#destroy", :as => :logout
 
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
+
   get 'activate_account' => 'businesses#activate_account'
 
   get 'tos' => 'static_pages#tos'

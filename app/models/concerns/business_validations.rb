@@ -18,39 +18,14 @@ module BusinessValidations
     numericality: {only_integer: true, message: "Please make sure the amount you earned three months ago is a number"},
     on: :create
 
-	validates :password,
-    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and must include one number and one letter."},
-	on: :create
 
 	validates :terms_of_service, 
 	acceptance: { message: "Please accept the terms and conditions."},
 	on: :create
 
-	# Step - Personal
-
-	validates :owner_first_name,
-	presence: {message: "Please include your first name."},
-	if: -> {self.current_step == :personal}
-
-	validates :owner_last_name,
-	presence: {message: "Please include your last name."},
-	if: -> {self.current_step == :personal}
-
 	validates :name, 
 	presence: {message: "Please include your business name."},
 	if: -> {self.current_step == :personal}
-
-	validates :phone_number,
-	presence: {message: "Please include your phone number."},
-	length: {minimum: 10, maximum: 10, message: "Your phone number should be 10 digits long."},
-	numericality: {only_integer: true, message: "Please include only digits in your phone number."},
-	if: -> {self.current_step == :personal}
-
-	validates :mobile_number,
-	presence: {message: "Please include your mobile number."},
-	length: {minimum: 10, maximum: 10, message: "Your mobile number should be 10 digits long."},
-	numericality: {only_integer: true, message: "Please include only digits in your mobil number."},
-	if: -> {self.current_step == :personal}   
 
 	#validates :street_address_one,
 	#presence: {message: "Please include the first line of your address."},
@@ -128,11 +103,6 @@ module BusinessValidations
 	numericality: {only_integer: true, message: "Your current balance should be a number."},
 	if: -> {self.current_step == :funders}
 	
-	# Step - Recover Password
-
-	validates :password,
-    format: {with: /\A(?=.*[a-zA-Z])(?=.*[0-9]).{6,}\z/, message: "Your password must be at least 6 characters and must include one number and one letter."},
-	if: -> {self.current_step == :recover_password}
 
   
   end

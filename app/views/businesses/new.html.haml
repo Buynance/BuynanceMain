@@ -6,10 +6,12 @@
     .row    
       .col-md-6.col-md-offset-3.form-style
         %h3.form-header Tell Us About Your Business
-        - if @business.errors.any?
+        - if @business.errors.any? || @business_user.errors.any?
           %div{class: "alert alert-danger"}
             %ul{style: "list-style: none;"}
               - @business.errors.full_messages.each do |msg|
+                %li= msg
+              - @business_user.errors.full_messages.each do |msg|
                 %li= msg
 
         = form_for @business, class: "new_profitability", id: "new_profitability" do |f|

@@ -30,7 +30,7 @@
             %li.phone.col-sm-3
               = image_tag("call.jpg")
             %li.login.col-sm-3{style: "padding-top: 0px;"}
-              - if current_business
+              - if current_business_user
                 %button.btn.btn-green{type: "button", onclick: "logout_link()"} 
                   LOGOUT
               - else

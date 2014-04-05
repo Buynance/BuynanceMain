@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140401195023) do
+ActiveRecord::Schema.define(version: 20140405035745) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -177,8 +177,8 @@ ActiveRecord::Schema.define(version: 20140401195023) do
     t.string   "email",                              default: "",    null: false
     t.string   "mobile_number"
     t.boolean  "is_first_contact",                   default: true
-    t.integer  "main_business_user_id"
     t.integer  "status"
+    t.integer  "main_business_user_id"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true

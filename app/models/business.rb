@@ -1,41 +1,23 @@
 require 'securerandom'
 
-######## Validations ###############
-
-  # name -> atleast three characters long
-  # email -> email validator ->
-  # password -> password validator atleast 5 characters long, must contain a combination of chracters and numbers
-  # owner_first_name -> must only contain characters, atleast two characters long
-  # owner_last_name -> must only contain characters, atleast two characters long
-  # phone_number -> Global phone
-  # city ->
-  # state ->
-  # zip_code ->
-  # total_previous_payback_amount ->
-  # total_previous_payback_balance ->
-  # approximate_credit_score ->
-
 class Business < ActiveRecord::Base
   
   include BusinessValidations
   attr_accessor :current_step
+  obfuscate_id :spin => 89238723
   
   LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
   INVALID_LOAN_REASONS = [6]
 
-  obfuscate_id :spin => 89238723
+  STATUS_AWAITING_ACTIVATION = 1
+  STATUS_EMAIL_CONFIRMED = 2
+  STATUS_NOT_QUALIFIED = 3
+
   has_many :offers
+  has_many :business_users
 
   before_create :init
 
-  acts_as_authentic do |c|
-    c.login_field = 'email'
-    c.merge_validates_format_of_email_field_options :message => 'Please include a valid email address.'
-    c.merge_validates_confirmation_of_password_field_options :message => "Password confirmation should match the password."
-    c.merge_validates_length_of_password_confirmation_field_options :message => "Password too short (atleast 6 characters)."
-    c.merge_validates_uniqueness_of_email_field_options :message => "Email already taken, please select another email. "
-  end # block optional
-  
   # --------------------------------------------------#
   # Method Approximate credit score string from range #
   # --------------------------------------------------#
@@ -76,7 +58,7 @@ class Business < ActiveRecord::Base
     BusinessMailer.average_less_than(self).deliver!
   end
   handle_asynchronously :deliver_average_email!
-
+  
   def is_averaged_over_minimum
     minimum = 15000
     return true if get_average_last_three_months_earnings >= minimum
@@ -114,14 +96,6 @@ class Business < ActiveRecord::Base
     return false if !self.has_paid_enough
 
     return true
-  end
-
-  def best_possible_offer
-    days = Offer.get_days(self.approximate_credit_score_range)
-    rate = 1.35
-    rate = 1.30 if days >= 120
-    best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
-    return best
   end
 
   def update_step(step)
@@ -196,10 +170,18 @@ class Business < ActiveRecord::Base
     return Offer.find(main_offer_id)
   end
   
+  def best_possible_offer
+      days = Offer.get_days(self.approximate_credit_score_range)
+      rate = 1.35
+      rate = 1.30 if days >= 120
+      best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
+      return best
+  end
+  
+
   private
 
     def init 
-      self.email.downcase! if !self.email.nil?
       self.is_paying_back = false if self.is_paying_back.nil?
       self.activation_code = Business.generate_activation_code
       self.recovery_code = Business.generate_activation_code
@@ -223,5 +205,6 @@ class Business < ActiveRecord::Base
     def self.generate_activation_code
       return SecureRandom.hex
     end
-  
+
+    
 end

@@ -1,0 +1,27 @@
+.web_body.container 
+  #signup-form
+    .row.main-title-wrap
+      .col-md-6.col-md-offset-3
+        %h1.main-title Log In
+    .row    
+      .col-md-6.col-md-offset-3.form-style
+        %h3.form-header Please Log In
+        - if @business_user_session.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business_user_session.errors.full_messages.each do |msg|
+                %li= msg
+
+        = form_for @business_user_session, :as => :business_user_session, :url => { :action => "create" } do |f|
+          %label{class: "control-label", :for => :email}
+            Email
+          = f.text_field :email, class: "text-center form-control "
+          %label{class: "control-label", :for => :password}
+            Password
+          = f.password_field :password, class: "text-center form-control "
+          
+          %input{type: "checkbox",  :for => :remember_me} 
+          %label{class: "control-label", :for => :remember_me}
+            Remember Me?
+          
+          = f.submit "Login", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

@@ -22,8 +22,9 @@
             = f.text_field :owner_last_name, class: "text-center form-control ", required: true
           %div{class: "form_group #{return_error_class(@business, :name)}"}
             %label{class: "control-label", :for => :name}
-              Business Name
+              Business Name    
             = f.text_field :name, class: "text-center form-control ", required: true
+          
           %div{class: "form_group #{return_error_class(@business, :phone_number)}"}
             %label{class: "control-label", :for => :phone_number}
               Business Phone Number

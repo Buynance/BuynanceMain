@@ -1,7 +1,7 @@
 class AfterOffersController < ApplicationController
 include Wicked::Wizard
 	steps :personal, :offer_accepted
-	before_filter :require_business
+	before_filter :require_business_user
 	before_filter :standardize_params, :only => [:update]
 
 	def show
@@ -10,10 +10,14 @@ include Wicked::Wizard
 	end
 
 	def update
-		@business = current_business
+		@business_user = current_business_user
+		@business = Business.find(@business_user.business_id, no_obfuscated_id: true)
+		@business_user.current_step = step
 		@business.current_step = step
+
 		if @business.update_attributes(business_params)
 			if step = :personal
+				@business_user.update_attributes(first_name: business_params[:owner_first_name], last_name: business_params[:owner_last_name], mobile_number: business_params[:mobile_number])
 				@business.deliver_offer_email!
 				@business.is_first_contact = false
 				@business.save
@@ -30,7 +34,6 @@ include Wicked::Wizard
 
 		def business_params
 			if step == :personal
-				puts "================== personal"
 				return params.require(:business).permit(:id, :owner_first_name, 
 				:owner_last_name, :name, :phone_number, :street_address_one, 
 				:street_address_two, :city, :state, :business_type, :mobile_number)
