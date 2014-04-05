@@ -35,6 +35,9 @@ class Business < ActiveRecord::Base
     c.merge_validates_length_of_password_confirmation_field_options :message => "Password too short (atleast 6 characters)."
     c.merge_validates_uniqueness_of_email_field_options :message => "Email already taken, please select another email. "
   end # block optional
+
+  validate :email_does_not_contain_test,
+  on: :create
   
   # --------------------------------------------------#
   # Method Approximate credit score string from range #
@@ -218,6 +221,14 @@ class Business < ActiveRecord::Base
 
     def self.generate_activation_code
       return SecureRandom.hex
+    end
+
+    def email_does_not_contain_test
+      first_part_of_email = self.email.gsub(/\@(.*)/, "")
+      second_part_of_email = self.email.gsub(/(.+?)@|([.]|com|net|org|gov|edu)/,"")
+      puts("================#{first_part_of_email}")
+      puts("================#{second_part_of_email}")
+      errors.add(:email, "Please enter a valid email address.") if (first_part_of_email == "test" || first_part_of_email == "testing" || second_part_of_email == 'test' || second_part_of_email == 'testing')
     end
   
 end
