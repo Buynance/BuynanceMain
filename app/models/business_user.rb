@@ -19,19 +19,24 @@ class BusinessUser < ActiveRecord::Base
 	end # block optional
 
 
-  	def business
-    	Business.find(self.business_id, no_obfuscated_id: true)
-  	end
+  def business
+  	Business.find(self.business_id, no_obfuscated_id: true)
+  end
+
+  def deliver_recovery_email!
+    BusinessMailer.delay.recovery_email(self)
+  end
+
+  private
 
   	def init
   		self.email.downcase! if !self.email.nil?
+      self.recovery_code = Business.generate_activation_code
   	end
 
   	def email_does_not_contain_test
       first_part_of_email = self.email.gsub(/\@(.*)/, "")
       second_part_of_email = self.email.gsub(/(.+?)@|([.]|com|net|org|gov|edu)/,"")
-      puts("================#{first_part_of_email}")
-      puts("================#{second_part_of_email}")
       errors.add(:email, "Please enter a valid email address.") if (first_part_of_email == "test" || first_part_of_email == "testing" || second_part_of_email == 'test' || second_part_of_email == 'testing')
     end
 end

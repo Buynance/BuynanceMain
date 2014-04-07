@@ -1,6 +1,6 @@
 class AddBusinessUserSession < ActiveRecord::Migration
   def change
-  	drop_table :business_user_sessions
+  	#drop_table :business_user_sessions
     create_table :business_user_sessions do |t|
       t.string :session_id, :null => false
       t.text :data

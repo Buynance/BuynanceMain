@@ -1,6 +1,6 @@
 class AddBusinessUser < ActiveRecord::Migration
   def change
-  	drop_table :business_users
+  	#drop_table :business_users
     create_table :business_users do |t|
 	    t.string   "first_name"
 	    t.string   "last_name"

@@ -18,10 +18,10 @@ class BusinessMailer < ActionMailer::Base
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
-  def recovery_email(business)
-    @business = business
+  def recovery_email(business_user)
+    @business_user = business_user
     mail :subject => "Recover your account",
-         :to      => business.email,
+         :to      => business_user.email,
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 

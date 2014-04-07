@@ -1,0 +1,35 @@
+- offer_class = "offer"
+- if offer.is_timed
+  - offer_class = "#{offer_class} best-offer"
+-if !offer.is_active.nil? and !offer.is_active
+  - offer_class = "#{offer_class} offer-deleted"
+%div{class: offer_class, data: {'id' => offer.id}}
+  %ul
+    %li.col-sm-1
+      .delete
+        X
+    .col-sm-8  
+      %li.col-sm-4
+        %span.info-title Advance amount
+        %span.advance-price
+          %span.dollar>$ 
+          = "#{number_to_currency(Integer(offer.cash_advance_amount), precision: 0)[1..-1]}"
+      %li.col-sm-4
+        %span.info-title Payback amount
+        %span.payback-price 
+          = "#{number_to_currency(Integer(offer.total_payback_amount), precision: 0)}"
+      %li.col-sm-4
+        %span.info-title Daily Collection
+        %span.daily-price
+          %span.number
+            %span.dollar $
+            ="#{number_to_currency(Integer(offer.daily_merchant_cash_advance), precision: 0)[1..-1]}"
+          \/ 
+          - if offer.days_to_collect == 80
+            4 months
+          - else
+            6 months
+    %li.col-sm-3
+      .button.getfunded{onclick: "show_modal(this)"}      
+        = "Get funded"
+        =#controller: "businesses", action: "accept_offer", id: offer.id

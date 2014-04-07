@@ -37,7 +37,7 @@ class BusinessesController < ApplicationController
         render :action => :activate_account
       end
     end 
-    set_offer_time   
+    
   end
 
   def accept_offer

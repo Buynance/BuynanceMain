@@ -20,8 +20,7 @@
             Password
           = f.password_field :password, class: "text-center form-control "
           
-          %input{type: "checkbox",  :for => :remember_me} 
           %label{class: "control-label", :for => :remember_me}
-            Remember Me?
+            %a{href: "/recover"} Recover Password
           
           = f.submit "Login", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"

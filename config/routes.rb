@@ -6,10 +6,10 @@ Buynance::Application.routes.draw do
     resources :profitabilities, :path => "calculator"
   end
   resources :static_pages
-  resources :businesses
-  resources :business_users
-
-  resources :offers
+  resources :businesses do
+    resources :offers
+  end
+  
   resource :business, :as => 'account'  # a convenience route
   scope(:path_names => { :past_merchants => "funders", :financial_information => "financial" }) do
     resources :business_steps, :path => "register"
@@ -18,6 +18,7 @@ Buynance::Application.routes.draw do
   resources :funders
   resources :business_sessions
   resources :business_user_sessions
+  resources :business_users
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 
   get 'login' => "business_user_sessions#new",      :as => :login
@@ -33,15 +34,16 @@ Buynance::Application.routes.draw do
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog' => 'static_pages#blog'
   match 'activate/:activation_code' => "businesses#activate", via: :get
-  get 'recover' => 'businesses#recover', :as => :recovery_path
-  match 'recover/:recovery_code' => "businesses#password", via: :get
+  get 'recover' => 'business_users#recover', :as => :recovery_path
+  get 'activation' => 'business_users#recovery_instructions', :as => :recovery_instructions_path
+  match 'recover/:recovery_code' => "business_users#password", via: :get
   match 'business/:business_id/confirm/:confirmation_code' => "business#confirm_account", via: :get
   match 'business/:business_id/confirm/:activation_code' => "business#activation_account", via: :get
   put '/business/insert/:id' => 'businesses#insert'
   get '/business/accept_offer/:id' => 'businesses#accept_offer'
   put '/offer/update/:id' => 'offers#update'
-  post 'businesses/recover_account'
-  post 'businesses/reset_password' => "businesses#reset_password"
+  post 'business_users/recover_account'
+  post 'business_users/reset_password' => "business_users#reset_password"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
