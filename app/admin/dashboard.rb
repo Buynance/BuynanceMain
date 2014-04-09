@@ -7,10 +7,10 @@ ActiveAdmin.register_page "Dashboard" do
 
       column do
         panel "Recent Offers" do
-          table_for Offer.active.order('id desc').limit(5).each do |offer|
+          table_for Offer.all.order('id desc').limit(5).each do |offer|
             column("Offer", :sortable => :id)             {|offer| "##{offer.id}"}
             column("Best Offer")                          {|offer| offer.is_best_offer }
-            column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).nil?}
+            column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id.nil?}
             column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
             column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
             column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
