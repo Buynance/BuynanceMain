@@ -203,7 +203,7 @@ class Business < ActiveRecord::Base
   end
 
   def main_offer
-    return Offer.find(main_offer_id)
+    return Offer.find(self.main_offer_id)
   end
   
   def best_possible_offer
