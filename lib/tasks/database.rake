@@ -55,7 +55,7 @@ namespace :db do
     task :destroy_delinquent_offers => :environment do
         Offer.all.each do |offer|
             delinquent_id = 0
-            if (offer.business_id == delinquent_id || Business.find(offer.business_id, no_obfuscated_id: true).nil?)
+            if (offer.business_id == delinquent_id || Business.find_by(id: offer.business_id, no_obfuscated_id: true).nil?)
                 delinquent_id = offer.business_id
                 offer.destroy
             end
