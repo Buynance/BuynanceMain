@@ -33,8 +33,8 @@ namespace :db do
                 if !business.owner_first_name.nil?
                     business.submit_offer
                 end
-
             end 
+            business.save
         end
     end
 
