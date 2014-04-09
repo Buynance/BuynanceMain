@@ -21,7 +21,7 @@ namespace :db do
             if !business.is_email_confirmed
               if !business.qualified?
                 business.decline
-              else
+              else business.is_finished_application
                 business.update_account_information
               end
             else
