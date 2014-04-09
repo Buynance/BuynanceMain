@@ -42,8 +42,11 @@ namespace :db do
     task :recreate_offers => :environment do
         Business.all.each do |business|
             business.offers.destroy_all
-            business.create_offers(12)
-            business.save
+            if business.state != "awaiting_information" and business.state != "declined"
+                business.main_offer_id = nil
+                business.create_offers(12)
+                business.save
+            end
         end
     end
      
