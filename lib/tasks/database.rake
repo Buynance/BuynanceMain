@@ -38,5 +38,13 @@ namespace :db do
         end
     end
 
+    desc "Recreate All Offers"
+    task :recreate_offers => :environment do
+        Business.all.each do |business|
+            business.offers.destroy_all
+            business.create_offers(12)
+            business.save
+        end
+    end
      
 end
