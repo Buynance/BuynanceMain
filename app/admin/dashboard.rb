@@ -35,14 +35,14 @@ ActiveAdmin.register_page "Dashboard" do
           panel 'New Businesses By Months' do
             @metric = Business.group(:email).count
             if Rails.env.production?
-              @metric = Business.group(:email).count
+              @metric = Business.group_by_month(:created_at).count
             end
             render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
           end
           panel 'Offers Accepted By Months' do
             @metric = Business.group(:email).count
             if Rails.env.production?
-              @metric = Business.group(:email).count
+              @metric = Business.group_by_month(:created_at).count
             end
             render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
           end
@@ -51,14 +51,14 @@ ActiveAdmin.register_page "Dashboard" do
           panel 'New Business By Day' do
             @metric = Business.group(:email).count
             if Rails.env.production?
-              @metric = Business.group(:email).count
+              @metric = Business.group_by_day(:created_at).count
             end
             render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
           end
           panel 'Offers Accepted By Day' do
             @metric = Business.group(:email).count
             if Rails.env.production?
-              @metric = Business.group(:email).count
+              @metric = Business.group_by_day(:created_at).count
             end
             render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
           end
