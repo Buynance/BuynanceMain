@@ -53,7 +53,7 @@ namespace :db do
 
     desc "Recreate All Offers"
     task :destroy_delinquent_offers => :environment do
-        Offer.all.each do |business|
+        Offer.all.each do |offer|
             delinquent_id = 0
             if (offer.business_id == delinquent_id || Business.find(Offer.business_id, no_obfuscated_id: true).nil?)
                 delinquent_id = offer.business_id
