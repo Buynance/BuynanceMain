@@ -3,12 +3,13 @@ namespace :db do
     task :create_business_users => :environment do
     	Business.all.each do |business|
     		business_user = BusinessUser.find_or_initialize_by(email: business.email)
-    		business_user.password = business.password
+    		business_user.crypted_password = business.crypted_password
     		business_user.password_confirmation = business.password
-            business_user.first_name = business.owner_first_name
+            business_user.recovery_code = business.recovery_code
+            business_user.password_salt = business.password_salt
             business_user.last_name = business.owner_last_name
             business_user.mobile_number = business.mobile_number
-    		business_user.save
+    		business_user.save(validate: false)
     		business.main_business_user_id = business_user.id
     		business.save
     	end
