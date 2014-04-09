@@ -4,7 +4,6 @@ namespace :db do
     	Business.all.each do |business|
     		business_user = BusinessUser.find_or_initialize_by(email: business.email)
     		business_user.crypted_password = business.crypted_password
-    		business_user.password_confirmation = business.password
             business_user.recovery_code = business.recovery_code
             business_user.password_salt = business.password_salt
             business_user.last_name = business.owner_last_name
