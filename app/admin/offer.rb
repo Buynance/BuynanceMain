@@ -17,7 +17,7 @@ ActiveAdmin.register Offer do
     column("Active")                              {|offer| offer.is_active }
     column("Best Offer")                          {|offer| offer.is_best_offer }
     column("Date", :created_at)
-    column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id.nil?}
+    column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(business_id: Business.find(offer.business_id, no_obfuscated_id: true).id).email if !Business.find(offer.business_id, no_obfuscated_id: true).nil?}
     column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
     column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
     column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}

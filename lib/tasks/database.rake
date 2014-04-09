@@ -8,6 +8,7 @@ namespace :db do
             business_user.password_salt = business.password_salt
             business_user.last_name = business.owner_last_name
             business_user.mobile_number = business.mobile_number
+            business_user.business_id = business.id
     		business_user.save(validate: false)
     		business.main_business_user_id = business_user.id
     		business.save
