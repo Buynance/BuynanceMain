@@ -20,6 +20,7 @@ class BusinessesController < ApplicationController
         session[:business_user_id] = @business_user.id
         redirect_to business_steps_path
       else
+        @business.decline
         redirect_to action: :show
       end
     else
@@ -28,20 +29,28 @@ class BusinessesController < ApplicationController
   end
 
   def show 
-    if !@business.is_email_confirmed
-      if !@business.qualified?
-        render :action => :not_qualified
-      elsif !@business.is_finished_application
-        redirect_to business_steps_path
-      else
-        render :action => :activate_account
-      end
-    end 
+    if @business.declined?
+      render :action => :not_qualified
+    elsif @business.awaiting_information?
+      redirect_to business_steps_path
+    elsif@business.awaiting_confirmation?
+      render :action => :activate_account
+    end
+    #if !@business.is_email_confirmed
+    #  if !@business.qualified?
+    #    render :action => :not_qualified
+    #  elsif !@business.is_finished_application
+    #    redirect_to business_steps_path
+    #  else
+    #    render :action => :activate_account
+    #  end
+    #end 
     
   end
 
   def accept_offer
     current_business.update_attribute(:main_offer_id, params[:id])
+    current_business.accept_offer
     redirect_to after_offer_path(:personal)
   end
 
@@ -55,6 +64,7 @@ class BusinessesController < ApplicationController
 
   def activate
     @business = current_business
+    @business.comfirm_account
     @business.save if @business.activate(params[:activation_code])
     redirect_to :action => :show
   end

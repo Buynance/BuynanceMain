@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140405035745) do
+ActiveRecord::Schema.define(version: 20140408030409) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -106,6 +106,7 @@ ActiveRecord::Schema.define(version: 20140405035745) do
     t.boolean  "is_finished_registration"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "state"
   end
 
   create_table "businesses", force: true do |t|
@@ -135,7 +136,7 @@ ActiveRecord::Schema.define(version: 20140405035745) do
     t.string   "street_address_one"
     t.string   "street_address_two"
     t.string   "city"
-    t.string   "state"
+    t.string   "location_state"
     t.integer  "zip_code"
     t.boolean  "is_paying_back"
     t.integer  "previous_merchant_id"
@@ -179,6 +180,7 @@ ActiveRecord::Schema.define(version: 20140405035745) do
     t.boolean  "is_first_contact",                   default: true
     t.integer  "status"
     t.integer  "main_business_user_id"
+    t.string   "state"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -251,6 +253,7 @@ ActiveRecord::Schema.define(version: 20140405035745) do
     t.boolean  "is_timed"
     t.boolean  "is_active"
     t.boolean  "is_best_offer"
+    t.string   "state"
   end
 
   create_table "profitabilities", force: true do |t|

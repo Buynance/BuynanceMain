@@ -3,7 +3,19 @@ class Offer < ActiveRecord::Base
 	belongs_to :funder
 	#before_create :init
 
+	scope :active, where(is_active: true)
+	scope :inactive, where(is_active: false)
+	scope :best_offers, where(is_best_offer: true)
 	
+	state_machine :state, :initial => :awaiting_action do
+	    event :accept do
+	      transition [:awaiting_action] => :accepted
+	    end
+    
+	    event :reject do
+	      transition [:awaiting_action] => :rejected
+	    end
+  	end
 
 	def create_random_offers(min, max)
 		amount = rand(max - min + 1) + min
@@ -19,10 +31,6 @@ class Offer < ActiveRecord::Base
 	def self.get_random_rate(min, max)
 		return rand * (max - min) + min
 	end
-
-
-	
-	
 
 	def max_payback_amount(max_advance)
 		return max_advance * rate

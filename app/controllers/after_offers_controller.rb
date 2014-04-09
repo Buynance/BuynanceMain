@@ -19,7 +19,7 @@ include Wicked::Wizard
 			if step = :personal
 				@business_user.update_attributes(first_name: business_params[:owner_first_name], last_name: business_params[:owner_last_name], mobile_number: business_params[:mobile_number])
 				@business.deliver_offer_email!
-				@business.is_first_contact = false
+				@business.submit_offer
 				@business.save
 			end
 		end

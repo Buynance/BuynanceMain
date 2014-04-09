@@ -58,6 +58,10 @@ gem "rails-settings-cached", "0.3.1"
 
 gem 'font-awesome-sass'
 
+gem 'state_machine'
+
+gem "chartkick"
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
@@ -93,3 +97,4 @@ end
 
 # Use debugger
 gem 'debugger', group: [:development, :test]
+gem 'groupdate', :github => "mieko/groupdate"

@@ -1,66 +1,109 @@
 ActiveAdmin.register Business do
 
-=begin
-  index do
-    column :id
-    column :name
-    column :email
-    column :owner_first_name
-    column :owner_last_name
-    column :open_date
-    column :is_authenticated
-    column :is_accepting
-    column :is_accept_credit_cards
-    column :login_count
-    column :current_login_at
-    column :last_login_at
-    column :current_login_ip
-    column :last_login_ip
-    column :created_at
-    column :updated_at
-    column :phone_number
-    column :is_email_confirmed 
-    column :failed_login_count
-    column :last_request_at
+  actions :index, :show
+
+  scope :all, :default => true
+  scope :awaiting_information
+  scope :awaiting_confirmation
+  scope :awaiting_offer_acceptance
+  scope :awaiting_offer_submission
+  scope :declined
+
+  index do 
+    column("Business", :sortable => :id) {|business| "##{business.id} "}
+    column("State")                      {|business| status_tag(business.state) }
+    column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+    column("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+    column("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+
+    default_actions
   end
-=end
 
   show do |business|
-      attributes_table do
-        row :id
-        row :name
-        row :email
-        row :owner_first_name
-        row :owner_last_name
-        row :open_date
-        row :is_authenticated
-        row :is_accepting
-        row :is_accept_credit_cards
-        row :phone_number
-        row :street_address_one
-        row :street_address_two
-        row :city
-        row :state
-        row :zip_code
-        row :is_paying_back
-        row :previous_merchant_id
-        row :total_previous_payback_amount
-        row :total_previous_payback_balance
-        row :is_email_confirmed
-        row :login_count
-        row :current_login_at
-        row :last_login_at
-        row :current_login_ip
-        row :last_login_ip
-        row :created_at
-        row :updated_at
-        row :passed_personal_information
-        row :is_finished_application
-        row :is_paying_back
-        row :activation_code
+    columns do
+      column do
+        panel 'Basic Information' do
+          attributes_table_for business do
+            row :id
+            row("State")                      {|business| status_tag(business.state) }
+            row("Email")                      {|business| business.email}
+            row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+            row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+          end
+        end
+
+        panel 'Personal Information' do
+          attributes_table_for business do
+            row("Email")                      {|business| business.email}
+            row("Name") {|business| business.name}
+            row("Owners First Name") {|business| business.owner_first_name}
+            row("Owners Last Name") {|business| business.owner_last_name}
+            row("Phone Number") {|business| business.phone_number}
+            row("Mobile Number") {|business| business.mobile_number}
+            row("Street Adress Line One") {|business| business.street_address_one}
+            row("Street Adress Line Two") {|business| business.street_address_two}
+            row("City") {|business| business.city}
+            row("Zip Code") {|business| business.zip_code}
+          end
+        end  
+      end
+    
+      column do
+        panel 'Financial Information' do
+          attributes_table_for business do
+            row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
+            row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
+            row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
+            row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+            row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+            row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
+            row("Credit Score") do |business|
+              range = ""
+              range = "400-500" if business.approximate_credit_score_range == 1
+              range = "501-550" if business.approximate_credit_score_range == 2
+              range = "551-600" if business.approximate_credit_score_range == 3
+              range = "601-650" if business.approximate_credit_score_range == 4
+              range = "651-700" if business.approximate_credit_score_range == 5
+              range = "701-750" if business.approximate_credit_score_range == 6
+              range = "751-800" if business.approximate_credit_score_range == 7
+              range
+            end
+            row("Tax Lien?") {|business| business.is_tax_lien}
+            row("Payment Plan?") {|business| business.is_payment_plan}
+            row("Bankruptcy?") {|business| business.is_ever_bankruptcy}
+          end
+        end
+
+      panel 'Misc' do
+        attributes_table_for business do
+          row :login_count
+          row :current_login_at
+          row :last_login_at
+          row :current_login_ip
+          row :last_login_ip
+          row :created_at
+          row :updated_at
+          row :activation_code
+        end
+      end
+    end     
+  end
+
+  panel 'Offers' do
+        table_for business.offers do
+          column("Offer", :sortable => :id)             {|offer| "##{offer.id} "}
+          column("Active")                              {|offer| offer.is_active }
+          column("Best Offer")                          {|offer| offer.is_best_offer }
+          column("Date", :created_at)
+          column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).nil?}
+          column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
+          column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
+          column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
+          column("Factor Rate")                         {|offer| offer.factor_rate}
+        end
       end
       active_admin_comments
-    end
+  end
 
   form do |f|
     f.inputs "Businesses" do

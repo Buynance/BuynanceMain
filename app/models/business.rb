@@ -5,6 +5,36 @@ class Business < ActiveRecord::Base
   include BusinessValidations
   attr_accessor :current_step
   obfuscate_id :spin => 89238723
+
+  scope :awaiting_information, where(state: "awaiting_information")
+  scope :awaiting_confirmation, where(state: "awaiting_confirmation")
+  scope :awaiting_offer_acceptance, where(state: "awaiting_offer_acceptance")
+  scope :awaiting_offer_submission, where(state: "awaiting_offer_submission")
+  scope :declined, where(state: "declined")
+
+  state_machine :state, :initial => :awaiting_information do
+   
+    event :update_account_information do
+      transition [:awaiting_information] => :awaiting_confirmation
+    end
+    
+    event :comfirm_account do
+      transition [:awaiting_confirmation] => :awaiting_offer_acceptance
+    end
+   
+    event :accept_offer do
+      transition [:awaiting_offer_acceptance] => :awaiting_offer_submission
+      transition [:offer_submitted] => :awaiting_another_offer_submission
+    end
+
+    event :submit_offer do
+      transition [:awaiting_offer_submission, :awaiting_another_offer_submission] => :offer_submitted
+    end
+
+    event :decline do
+      transition [:awaiting_information] => :declined
+    end
+  end
   
   LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
   INVALID_LOAN_REASONS = [6]
@@ -99,16 +129,23 @@ class Business < ActiveRecord::Base
 
   def update_step(step)
     if step == :financial
-      if !self.is_paying_back and self.qualified?
-        self.is_finished_application = true
-        return true 
+      if !self.is_paying_back
+        if self.qualified?
+          self.update_account_information
+          return true
+        else
+          self.decline
+        end 
       end
     elsif step == :funders
-      self.is_finished_application = true
-      return true if self.has_paid_enough
-    else
-      return false
+      if self.has_paid_enough
+        self.update_account_information
+        return true
+      else
+        self.decline
+      end
     end
+    return false
   end
 
   def create_offers(amount)
@@ -141,7 +178,7 @@ class Business < ActiveRecord::Base
             n = n-1
           else
             offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate)
+            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_best_offer: false, is_active: true)
             offers_added = offers_added + 1
           end
             counter = counter + 1;
@@ -157,7 +194,7 @@ class Business < ActiveRecord::Base
             daily_payback = total_payback / days
           end
           offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_timed: true)
+            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_timed: true, is_best_offer: true, is_active: true)
           offers_added = offers_added + 1
           counter = counter + 1
         end

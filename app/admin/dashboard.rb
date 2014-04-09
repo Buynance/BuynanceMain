@@ -2,14 +2,69 @@ ActiveAdmin.register_page "Dashboard" do
 
   menu :priority => 1, :label => proc{ I18n.t("active_admin.dashboard") }
 
-  content :title => proc{ I18n.t("active_admin.dashboard") } do
-    div :class => "blank_slate_container", :id => "dashboard_default_message" do
-      span :class => "blank_slate" do
-        span I18n.t("active_admin.dashboard_welcome.welcome")
-        small I18n.t("active_admin.dashboard_welcome.call_to_action")
+   content do
+    columns do
+
+      column do
+        panel "Recent Offers" do
+          table_for Offer.active.order('id desc').limit(5).each do |offer|
+            column("Offer", :sortable => :id)             {|offer| "##{offer.id}"}
+            column("Best Offer")                          {|offer| offer.is_best_offer }
+            column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).nil?}
+            column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
+            column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
+            column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
+            column("Factor Rate")                         {|offer| number_with_precision offer.factor_rate, precision: 2}
+          end
+        end
+      end
+
+      column do
+        panel "Recent Businesses" do
+          table_for Business.order('id desc').limit(5).each do |business|
+            column("Business", :sortable => :id) {|business| link_to "##{business.id}", grubraise_business_path(business)}
+            column("State")                      {|business| status_tag(business.state) }
+            column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+          end
+        end
+      end
+
+    end 
+    columns do
+      column do
+          panel 'New Businesses By Months' do
+            @metric = Business.group(:email).count
+            if Rails.env.production?
+              @metric = Business.group(:email).count
+            end
+            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+          end
+          panel 'Offers Accepted By Months' do
+            @metric = Business.group(:email).count
+            if Rails.env.production?
+              @metric = Business.group(:email).count
+            end
+            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+          end
+      end
+      column do
+          panel 'New Business By Day' do
+            @metric = Business.group(:email).count
+            if Rails.env.production?
+              @metric = Business.group(:email).count
+            end
+            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+          end
+          panel 'Offers Accepted By Day' do
+            @metric = Business.group(:email).count
+            if Rails.env.production?
+              @metric = Business.group(:email).count
+            end
+            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+          end
       end
     end
-
+end
     # Here is an example of a simple dashboard with columns and panels.
     #
     # columns do
@@ -29,5 +84,5 @@ ActiveAdmin.register_page "Dashboard" do
     #     end
     #   end
     # end
-  end # content
+   # content
 end
