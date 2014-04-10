@@ -12,7 +12,8 @@
               - @business.errors.full_messages.each do |msg|
                 %li= msg
               - @business_user.errors.full_messages.each do |msg|
-                %li= msg
+                - if /[[:upper:]]/.match(msg[0])
+                  %li= msg
 
         = form_for @business, class: "new_profitability", id: "new_profitability" do |f|
           = render :partial => "form", :locals => {:f => f} 

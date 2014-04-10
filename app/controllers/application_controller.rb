@@ -50,7 +50,7 @@ class ApplicationController < ActionController::Base
       if current_business_user
         store_location
         flash[:notice] = "You can not login twice, please logout if you want to login"
-        redirect_to account_url
+        redirect_to business_url(current_business)
         return false
       end
     end

@@ -1,24 +1,28 @@
 Buynance::Application.routes.draw do
-  get "activations/create"
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope(:path_names => { :new => "merchant-cash-advance" }) do
-    resources :profitabilities, :path => "calculator"
+    resources :profitabilities, :path => "calculator", :only => [:new, :create]
   end
-  resources :static_pages
-  resources :businesses do
-    resources :offers
+
+  resources :static_pages, :except => [:new, :create, :show, :update, :destroy, :index, :edit]
+  
+  resources :businesses, :only => [:new, :create, :show], :path => "clients" do
+    resources :offers, :only => [:index] do
+      patch :accept
+    end
+    member do
+      patch :activate
+    end
   end
   
-  resource :business, :as => 'account'  # a convenience route
+  mount API::Base => '/api'
+  #resource :business, :as => 'account'  # a convenience route
   scope(:path_names => { :past_merchants => "funders", :financial_information => "financial" }) do
     resources :business_steps, :path => "register"
   end
-  resources :after_offers
-  resources :funders
-  resources :business_sessions
-  resources :business_user_sessions
-  resources :business_users
+  resources :after_offers, :path => "submit"
+  resources :business_user_sessions, :path => "session", :only => [:new, :create, :destoy]
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 
   get 'login' => "business_user_sessions#new",      :as => :login
@@ -27,23 +31,23 @@ Buynance::Application.routes.draw do
   get 'signup' => 'businesses#new', :as => :signup
   get 'account' => 'businesses#show'
 
-  get 'activate_account' => 'businesses#activate_account'
+  #get 'activate_account' => 'businesses#activate_account'
 
-  get 'tos' => 'static_pages#tos'
-  get 'privacy' => 'static_pages#privacy'
+  get 'tos'                   => 'static_pages#tos'
+  get 'privacy'               => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
-  get 'blog' => 'static_pages#blog'
+  get 'blog'                  => 'static_pages#blog'
+
   match 'activate/:activation_code' => "businesses#activate", via: :get
-  get 'recover' => 'business_users#recover', :as => :recovery_path
-  get 'activation' => 'business_users#recovery_instructions', :as => :recovery_instructions_path
+
+  get '/offers/:offer_id/accept' => 'offers#accept'
+  put '/offers/:offer_id/update' => 'offers#update'
+
+  post 'user/recover_account'    => 'business_users#recover_account'
+  post 'user/reset_password'     => "business_users#reset_password"
+  get 'recover'                  => 'business_users#recover', :as => :recovery_path
+  get 'activation'               => 'business_users#recovery_instructions', :as => :recovery_instructions_path
   match 'recover/:recovery_code' => "business_users#password", via: :get
-  match 'business/:business_id/confirm/:confirmation_code' => "business#confirm_account", via: :get
-  match 'business/:business_id/confirm/:activation_code' => "business#activation_account", via: :get
-  put '/business/insert/:id' => 'businesses#insert'
-  get '/business/accept_offer/:id' => 'businesses#accept_offer'
-  put '/offer/update/:id' => 'offers#update'
-  post 'business_users/recover_account'
-  post 'business_users/reset_password' => "business_users#reset_password"
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]

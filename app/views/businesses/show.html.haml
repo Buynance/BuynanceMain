@@ -1,6 +1,6 @@
 .web_body
   .container
-    - if @business.offers.length == 0
+    - if @business.offers.size == 0
       = render :partial => "no_offers"
     - else
       = render :partial => "offer_list"

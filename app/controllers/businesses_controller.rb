@@ -12,7 +12,9 @@ class BusinessesController < ApplicationController
   def create
     @business_user = BusinessUser.new(business_user_params)
     @business = Business.new(business_params)
-    if @business_user.save && @business.save
+    if @business_user.valid? && @business.valid?
+      @business_user.save
+      @business.save
       @business_user.update_attribute(:business_id, @business.id)
       @business.update_attribute(:main_business_user_id, @business_user.id)
       @business.update_attribute(:email, @business_user.email)
@@ -36,22 +38,6 @@ class BusinessesController < ApplicationController
     elsif@business.awaiting_confirmation?
       render :action => :activate_account
     end
-    #if !@business.is_email_confirmed
-    #  if !@business.qualified?
-    #    render :action => :not_qualified
-    #  elsif !@business.is_finished_application
-    #    redirect_to business_steps_path
-    #  else
-    #    render :action => :activate_account
-    #  end
-    #end 
-    
-  end
-
-  def accept_offer
-    current_business.update_attribute(:main_offer_id, params[:id])
-    current_business.accept_offer
-    redirect_to after_offer_path(:personal)
   end
 
   def activate_account

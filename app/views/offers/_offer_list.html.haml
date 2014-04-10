@@ -1,12 +1,12 @@
 .main_body.form-style
   %h3.form-header
-    = "You Have #{@offers.length} Offers!"
+    = "You Have #{@offers.size} Offers!"
   .row.offer-body
-    - for i in 0...(@offers.length)/2
+    - for i in 0...(@offers.size)/2
       - offer = @offers[i]
       = render :partial => "offer_section", :locals => {:offer => offer, :i => i} 
 
-    - for i in (@offers.length/2)...@offers.length
+    - for i in (@offers.size/2)...@offers.size
       .hidden-offers
         - offer = @offers[i]
         = render :partial => "offer_section", :locals => {:offer => offer, :i => i}

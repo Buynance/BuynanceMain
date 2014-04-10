@@ -61,6 +61,7 @@ gem 'font-awesome-sass'
 gem 'state_machine'
 
 gem "chartkick"
+gem 'grape'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.

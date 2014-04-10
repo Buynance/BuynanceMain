@@ -1,6 +1,6 @@
 ActiveAdmin.register Business do
 
-  actions :index, :show
+  actions :index, :show, :destroy
 
   scope :all, :default => true
   scope :awaiting_information

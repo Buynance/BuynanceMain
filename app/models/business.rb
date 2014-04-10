@@ -6,6 +6,7 @@ class Business < ActiveRecord::Base
   attr_accessor :current_step
   obfuscate_id :spin => 89238723
   has_many :offers, :dependent => :destroy
+  has_one :business_user, :dependent => :destroy
 
   scope :awaiting_information, where(state: "awaiting_information")
   scope :awaiting_confirmation, where(state: "awaiting_confirmation")

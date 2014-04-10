@@ -55,12 +55,12 @@ $(document).ready( ->
 deactivate_offer = (node) ->
 	$(node).closest(".offer").addClass("offer-deleted")
 	id = $(node).closest(".offer").data("id")
-	update_url = ("/offer/update/" + id)
+	update_url = ("/offers/"+id+"/update")
 	$.ajax
 		type: "PUT"
 		url: update_url
 		data:
-			business:
+			offer:
 				is_active: false
 
 #$(".btn.offer-btn").click ->

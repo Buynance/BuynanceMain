@@ -1,12 +1,12 @@
 .main_body.form-style
   %h3.form-header
-    = "You Have #{@business.offers.length} Offers!"
+    = "You Have #{@business.offers.size} Offers!"
   .row.offer-body
-    - for i in 0...(@business.offers.length)/2
+    - for i in 0...(@business.offers.size)/2
       - offer = @business.offers[i]
       = render :partial => "offer_section", :locals => {:offer => offer, :i => i} 
 
-    - for i in (@business.offers.length/2)...@business.offers.length
+    - for i in (@business.offers.size/2)...@business.offers.size
       .hidden-offers
         - offer = @business.offers[i]
         = render :partial => "offer_section", :locals => {:offer => offer, :i => i}
@@ -36,7 +36,6 @@
 
     $('.button .btn.offer-btn').click(function(){
       var id = $(this).data('id');
-      
       $('#disclaimerModal').find('button.btn').data("id", id);
     });
 
@@ -48,7 +47,7 @@
     function accept_offer_disclaimer(node){
       var update_url;
       var id = $(node).closest("#disclaimerModal").data('id');
-      window.location = "/business/accept_offer/"+id;
+      window.location = "/offers/"+id+"/accept";
     }
 
     function show_modal(node){
