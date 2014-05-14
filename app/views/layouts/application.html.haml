@@ -17,25 +17,40 @@
       #nav.col-sm-8
         .row-fluid
           %ul
-            %li.fight.col-sm-3
+            %li.fight
               - if current_page?(root_url)
                 %a{href: "#why"} HOW WE HELP
               - else
                 %a{href: "/#why"} HOW WE HELP
-            %li.blog.col-sm-3
+            %li.blog
               - if current_page?(root_url)
                 %a{href: "/blog"} BLOG
               - else
                 %a{href: "/blog"} BLOG
-            %li.phone.col-sm-3
-              = image_tag("call.jpg")
-            %li.login.col-sm-3{style: "padding-top: 0px;"}
+            %li.phone
+              = image_tag("phone_icon.jpg")
+              1-888-906-4909
+            %li.email
+              = image_tag("mail_icon.jpg")
+              Email Us
+            %li.login
               - if current_business_user
-                %button.btn.btn-green{type: "button", onclick: "logout_link()"} 
-                  LOGOUT
+                /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+                /  LOGOUT
+                = image_tag("silver_button.jpg")
               - else
-                %button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
-                  LOGIN
+                /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+                /  LOGIN
+                = image_tag("silver_button.jpg")
+            %li.signup
+              - if current_business_user
+                /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+                /  ACCOUNT
+                = image_tag("orange_button.jpg")
+              - else
+                /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+                /  SIGNUP
+                = image_tag("orange_button.jpg")
       - render :partial => "layouts/analytics" if Rails.env == "production"
     = yield
 
