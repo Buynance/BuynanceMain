@@ -1,122 +1,64 @@
-.container{style: "padding-top: 20px;"}
-  .footer.row
-    .useful_links.col-xs-3
-      .section
-        .header
-          USEFUL LINKS
-        .body
-          %ul.nav.nav-stacked
-            %li
-              - if current_page?(root_url)
-                %a{href: "#"} Home
-              - else
-                %a{href: "/#"} Home
-              
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              - if current_page?(root_url)
-                %a{href: "#web_body"} How Buynance Works
-              - else
-                %a{href: "/#web_body"} How Buynance Works
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              - if current_page?(root_url)
-                %a{href: "#benefit"} Benefits
-              - else
-                %a{href: "/#benefit"} Benefits
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              - if current_page?(root_url)
-                %a{href: "#why"} How We Help
-              - else
-                %a{href: "/#why"} How We Help
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "/blog"} Blog
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "/calculator/merchant-cash-advance.html"} Merchant Cash Advance
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "http://www.buynance.com/tos"} Terms of Service
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "http://www.buynance.com/privacy"} Privacy Policy
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-    .social.col-xs-3
-      .section
-        .header
-          WE ARE SOCIAL
-        .body
-          %ul.nav.nav-stacked
-            %li
-              %a{href: "#"}
-                = image_tag("facebook.jpg")
-                %span.text Facebook
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "#"}
-                = image_tag("twitter.jpg")
-                %span.text Twitter
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "#"}
-                = image_tag("google.jpg")
-                %span.text Google Plus
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "http://www.linkedin.com/company/5077474?trk=tyah&trkInfo=tas%3Abuynance%2Cidx%3A1-1-1"}
-                = image_tag("linkedin.jpg")
-                %span.text Linkedin
-            %li{style: "list-style: none; display: inline"}
-              %hr/
-            %li
-              %a{href: "#"}
-                = image_tag("youtube.jpg")
-                %span.text YouTube
-    .locate_help.col-xs-3
-      .section
-        .locate_us
-          .header
+.bottom{style: "padding-top: 20px;"}
+  .container
+    .footer.row
+      .footer-image-section.col-xs-4
+        =image_tag("buynance-footer.jpg")
+      .col-xs-5
+        .col-xs-6.footer-section
+          .footer-section-header
+            USEFUL LINKS
+          .footer-section-body
+            %ul
+              %li Home
+              %li How Buynance Works
+              %li Benefits
+              %li How We Help
+              %li Blog
+              %li Merchant Cash Advance
+              %li Terms of Service
+              %li Privacy Policy
+        .col-xs-6.footer-section
+          .footer-section-header
+            WE ARE SOCIAL
+          .footer-section-body
+            %ul
+              %li 
+                = image_tag("facebook_footer_icon.png")
+                Facebook
+              %li 
+                = image_tag("twitter_footer_icon.png")
+                Twitter
+              %li 
+                = image_tag("google_footer_icon.png")
+                Google Plus
+              %li 
+                = image_tag("linkedin_footer_icon.png")
+                Linkedin
+              %li 
+                = image_tag("youtube_footer_icon.png")
+                Youtube
+      .col-xs-3
+        .footer-section
+          .footer-section-header
             LOCATE US
-          .body
-            %p Address
-            %p
-              Funder Pair Inc.
-              %br/
-              44 Wall Street, 21st Floor
-              %br/
-              New York, NY 10005
-              %br/
-        .need_help
-          .header
-            NEED HELP
-          .body
-            %ul.nav.nav-stacked
-              %li
-                %a{href: "#"}
-                  = image_tag("phone.jpg")
-                  %span.text (888) 906-4909
-              %li{style: "list-style: none; display: inline"}
-                %hr/
-              %li
-                %a{href: "#"}
-                  = image_tag("mail.jpg")
-                  %span.text{style: "font-size: 10px;"} info@buynance.com
-    .map.col-xs-3
-      .image
-        %a{href: "https://mapsengine.google.com/map/u/0/edit?mid=zwAAYEsfDXF8.kMHkc1NF3iMY"}
-          = image_tag("map.jpg")
-      %div{class: "copy", style:"text-align: left;"}
-        = "© 2014, Buynance"
+          .footer-section-body
+            .footer-address
+              .footer-address-header
+                Address
+              .footer-address-body
+                %ul
+                  %li Funder Pair Inc.
+                  %li 44 Wall Street, 21st Floor
+                  %li New York, NY 10005
+          .footer-need-help
+            .footer-need-help-header
+              Need Help?
+            .footer-need-help-body
+              %ul
+                %li
+                  = image_tag("phone_footer_icon.png")
+                  = "(888) 906-4909"
+                %li
+                  = image_tag("mail_footer_icon.png")
+                  = "info@buynance.com"
+

@@ -1,0 +1,26 @@
+.web_body
+  .module
+    %ul
+      %li.tab.activeTab
+        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
+    .form
+      = simple_form_for @business do |f|
+        - if @business.errors.any? || @business_user.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business.errors.full_messages.each do |msg|
+                %li= msg
+              - @business_user.errors.full_messages.each do |msg|
+                - if /[[:upper:]]/.match(msg[0])
+                  %li= msg
+        = f.input :email, placeholder: 'Email', input_html: {class: 'textbox'}, label: false
+        = f.input :password, placeholder: 'Password', input_html: {class: 'textbox'}, label: false
+        = f.input :password_comfirmation, placeholder: 'Password Comfirmation', input_html: {class: 'textbox'}, label: false
+        /= f.input :terms_of_service, as: :boolean, label: false
+        = f.submit'Next', class: 'form-button'

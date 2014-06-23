@@ -1,0 +1,23 @@
+.web_body
+  .module
+    %ul
+      %li.tab.activeTab
+        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
+    .form
+      - if @funder_session.errors.any?
+        %div{class: "alert alert-danger"}
+          %ul{style: "list-style: none;"}
+            - @funder_session.errors.full_messages.each do |msg|
+              %li= msg
+
+      = form_for @funder_session, :as => :funder_session, :url => { :action => "create" } do |f|
+        = f.text_field :email, class: 'textbox', placeholder: 'Email'
+        = f.password_field :password, class: 'textbox', placeholder: 'Password'
+        
+        = f.submit'Next', class: 'form-button'

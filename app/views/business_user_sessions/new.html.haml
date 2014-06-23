@@ -1,26 +1,64 @@
-.web_body.container 
-  #signup-form
-    .row.main-title-wrap
-      .col-md-6.col-md-offset-3
-        %h1.main-title Log In
-    .row    
-      .col-md-6.col-md-offset-3.form-style
-        %h3.form-header Please Log In
-        - if @business_user_session.errors.any?
-          %div{class: "alert alert-danger"}
-            %ul{style: "list-style: none;"}
-              - @business_user_session.errors.full_messages.each do |msg|
-                %li= msg
-
-        = form_for @business_user_session, :as => :business_user_session, :url => { :action => "create" } do |f|
-          %label{class: "control-label", :for => :email}
-            Email
-          = f.text_field :email, class: "text-center form-control "
-          %label{class: "control-label", :for => :password}
-            Password
-          = f.password_field :password, class: "text-center form-control "
-          
-          %label{class: "control-label", :for => :remember_me}
-            %a{href: "/recover"} Recover Password
-          
-          = f.submit "Login", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
+.web_body
+  .paper-section
+    .paper-section-top
+    .paper-section-body.paper-section-bank-login.row
+      .paper-section-bank-login-left.col-xs-7
+        .paper-section-bank-login-left-header
+          %span Login to your buynance account
+        .paper-section-bank-login-form
+          = form_for @business_user_session, :as => :business_user_session, :url => { :action => "create" } do |f|
+            - if @business_user_session.errors.any?
+              %div{class: "alert alert-danger"}
+              %ul{style: "list-style: none;"}
+                - @business_user_session.errors.full_messages.each do |msg|
+                  %li= msg
+            .paper-section-bank-login-form-label
+              %span Buyanance Email
+            .paper-section-bank-login-form-input
+              = f.text_field :email, class: 'textbox', placeholder: 'Email'
+            .paper-section-bank-login-form-label
+              %span Buynance Passowrd
+            .paper-section-bank-login-form-input
+              = f.password_field :password, class: 'textbox', placeholder: 'Password'
+            .paper-section-bank-login-form-routing-info
+              %a{href: "/recover"} Recover Password
+            .paper-section-bank-login-form-action
+              = f.submit "Continue", class: "form-button flat-button button-submit"
+      .paper-section-bank-login-right.col-xs-5
+        .paper-section-bank-login-right-top.row
+          .paper-section-bank-login-right-top-image
+            = image_tag("bank_lock.png")
+          .paper-section-bank-login-right-top-information
+            .paper-section-bank-login-right-top-information-header
+              %span Safe & Secure
+            .paper-section-bank-login-right-top-information-subheader
+              
+              %span We use bank-level security to keep all your data secure
+        %hr
+        .paper-section-bank-login-subsection
+          .paper-section-bank-login-subsection-points
+            = image_tag("bank_pointer.png")
+            %span Trusted by over 100,000 businesses
+          .paper-section-bank-login-subsection-points
+            = image_tag("bank_pointer.png")
+            %span Has advanced over $200,000 to help small businesses grow.
+        %hr
+        .paper-section-bank-login-subsection
+          %span.paper-section-bank-login-subsection-phone 
+            = image_tag("bank_phone.png")
+          %span.paper-section-bank-login-subsection-questions Questions?
+          %span.paper-section-bank-login-subsection-phone-number 1-888-906-4909
+        %hr
+        .paper-section-bank-login-subsection
+          .paper-section-bank-login-subsection-security.row
+            %span.paper-section-bank-login-subsection-security-image-left
+              = image_tag("bbb_security.png")
+            %span.paper-section-bank-login-subsection-security-image-right
+              = image_tag("truste_security.png")
+          .paper-section-bank-login-subsection-security.row
+            %span.paper-section-bank-login-subsection-security-image-left
+              = image_tag("verisign_security.png")
+        %hr
+        .paper-section-bank-login-subsection
+          .paper-section-bank-login-subsection-about
+            %span We never store or view your passwords to your marketplaces or payment proccessors. We simply redirect you to their sites to confirm ownership of your account.

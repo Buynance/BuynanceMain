@@ -139,7 +139,7 @@ font-family:'Source Sans Pro',sans-serif;
 .form-style .form-control {
 height: 100%;
 border-radius:0;
-padding:25px 10px;
+padding:15px 10px;
 background:#e2e8e9;
 font-size:1em;
 margin-bottom: 25px;
@@ -157,12 +157,6 @@ filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#22AEDA',endCol
 margin-top:0;
 padding:10px 0;
 color:#fff;
--moz-border-top-left-radius: 10px; 
--webkit-border-radius-topleft: 10px; 
-border-top-left-radius: 10px; 
--moz-border-top-right-radius: 10px; 
--webkit-border-radius-topright: 10px; 
-border-top-right-radius: 10px;
 }
 
 .flat-top{

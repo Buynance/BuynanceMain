@@ -38,5 +38,15 @@ ActiveAdmin.register BusinessUser do
       end
     end
   end
+
+  index do
+    column("ID") {|business_user| business_user.id}
+    column("Email") {|business_user| business_user.email}
+    #column("Encrypted Password") {|business_user| business_user.crypted_password}
+    column("Created At") {|business_user| business_user.created_at}
+    column("Updated At") {|business_user| business_user.updated_at}
+    column("Failed Login Count") {|business_user| business_user.failed_login_count}
+    actions
+  end
   
 end

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  lead_id: 1
+  funder_id: 1
+  price_in_cents: 1
+  state: MyString
+
+two:
+  lead_id: 1
+  funder_id: 1
+  price_in_cents: 1
+  state: MyString

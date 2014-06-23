@@ -1,14 +1,23 @@
 class ApplicationController < ActionController::Base
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
+  Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
+
   protect_from_forgery 
   before_filter :make_action_mailer_use_request_host_and_protocol
   helper_method :current_business_user_session, :current_business_user, 
     :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
-     :current_business
+     :current_business, :current_funder, :require_funder, :to_boolean
   force_ssl if: :ssl_configured?
 
   private
+
+  # Business and Business User
+
+    def to_boolean(str)
+      str == 'true'
+    end
+
     def after_sign_out_path_for(resource_or_scope)
       root_path
     end
@@ -64,6 +73,40 @@ class ApplicationController < ActionController::Base
       session[:return_to] = nil
     end
 
+    ####################################### Funder ########################################
+
+    def current_funder_session
+      return @current_funder_session if defined?(@current_funder_session)
+      @current_funder_session = FunderSession.find
+    end
+
+    def current_funder
+      return @current_funder if defined?(@current_funder)
+      @current_funder = current_funder_session && current_funder_session.funder
+    end
+
+    def require_funder
+      logger.debug "ApplicationController::require_funder"
+      unless current_funder
+        flash[:notice] = "You must be logged in to access this page"
+        redirect_to new_funder_session_url
+        return false
+      end
+    end
+
+    def require_no_funder
+      logger.debug "ApplicationController::require_no_funder"
+      if current_funder
+        store_location
+        flash[:notice] = "You can not login twice, please logout if you want to login"
+        redirect_to funder_url(current_funder)
+        return false
+      end
+    end
+
+
+    ######################################## Misc #########################################
+
     def x_months_ago(x)
       Date.today.prev_month(x).month 
     
@@ -109,6 +152,10 @@ class ApplicationController < ActionController::Base
         :to => number_to_send_to,
         :body => "A new account has signed up"
       )
+    end
+
+    def send_activation_code
+
     end
 
     def grab_business_and_business_user

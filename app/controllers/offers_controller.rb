@@ -1,7 +1,9 @@
+
 class OffersController < ApplicationController
 
 	def index
-		@offers = Offer.all 
+		@business = current_business
+    	@offers = @business.leads.last.offers
 	end
 	
 	def update
@@ -17,5 +19,4 @@ class OffersController < ApplicationController
     	current_business.accept_offer
     	redirect_to after_offer_path(:personal)
   	end
-
 end

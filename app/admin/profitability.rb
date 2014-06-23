@@ -1,4 +1,4 @@
-ActiveAdmin.register Profitability do
+#ActiveAdmin.register Profitability do
 
   
   
@@ -15,4 +15,4 @@ ActiveAdmin.register Profitability do
   #  permitted
   # end
   
-end
+#end

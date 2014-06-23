@@ -1,0 +1,132 @@
+#banner
+  .row
+    .merchant_info.col-xs-5
+      .merchant_box
+        .section
+          .header
+            Faster, Cheaper, Merchant Cash Advances
+          .body
+            Buynance is only place where you can get up to 12 merchant cash advance offers in minutes. With Buynance there are no more offers inflated by middlemen, no more excessive credit checks, and no more harassing phone calls.
+          .link
+            %button.btn.btn-lg.btn-green{type: "button", onclick: "get_funding_link()"}
+              %span.icon
+                = image_tag("lock.png")
+              GET FUNDING
+  .row{style: "height: 240px"}
+    .article-info.col-xs-4{style: "margin-left: 66%;"}
+      = link_to image_tag("bloomberg.png"), "http://www.businessweek.com/articles/2014-04-03/alternative-lenders-still-rely-on-loan-brokers", :target => "_blank"  
+.container
+  #web_body
+    .how_works
+      .top_header
+        HOW
+        %span.color_text BUYNANCE
+        WORKS
+      .new_hr
+        = image_tag("line.jpg")
+      .tell_us.row
+        .image.col-xs-4
+          = image_tag("tell_us.jpg")
+        .section.col-xs-8
+          .header
+            Tell Us About Your Business
+          .body
+            We just need to know the basics for now, no personal information is required. Start the simple application and zip directly into step two.
+      .start_auction.row
+        .section.col-xs-8
+          .header
+            Get Offers
+          .body
+            We take your business information and our Smart Match system gives you great offers in 2 clicks.  
+        .image.col-xs-4
+          = image_tag("auction.jpg")
+      .get_funding.row
+        .image.col-xs-4
+          = image_tag("funding.jpg")
+        .section.col-xs-8
+          .header
+            Get Funding
+          .body
+            Select the offer that works best for you, complete the super simple application process and get funding as early as the next day!
+    #benefit.benefit
+      .top_header
+        BENEFITS
+      .new_hr
+        = image_tag("line.jpg")
+      .row
+        
+        .section.col-md-2.drop
+          .image
+            = image_tag("middle_man.jpg")
+          .header
+            No More Middle Men
+          .body
+            We cut out the middle man (greedy brokers) and protect you from
+            junk fees and closing costs – delivering you true wholesale
+            rates.
+        .section.col-md-2.drop
+          .image
+            = image_tag("shop_funders.jpg")
+          .header
+            Shop With Multiple Funders
+          .body
+            Shop with for the best deal from our hand selected list of top
+            notch funders.
+        .section.col-md-2.drop
+          .image
+            = image_tag("smart_match.jpg")
+          .header
+            Smart Match System
+          .body
+            Our smart match system helps to protect your profit margin during
+            the life of your advance.
+        .section.col-md-2
+          .image
+            = image_tag("credit_check.jpg")
+          .header
+            Only One Credit Check
+          .body
+            We protect you from excessive credit checks which harm your
+            chances of getting more traditional funding later.
+        .section.col-md-2.drop
+          .image
+            = image_tag("control.jpg")
+          .header
+            You Maintain Control
+          .body
+            You choose the funding source that best fits your needs without
+            the high pressure sales tactics.
+      .row
+        .button_row.col-xs-12
+          %button.btn.btn-lg.btn-green{type: "button", onclick: "get_funding_link()"}
+            %span.icon
+              = image_tag("lock.png")
+            GET FUNDING
+    #why.why_we_fight
+      .top_header
+        HOW WE HELP
+      .new_hr
+        = image_tag("line.jpg")
+      .section.row
+        .body.col-xs-5
+          Jay – one of our co-founders started out as a broker in the
+          merchant cash advance business 6 years ago. He never received his
+          first paycheck because his “boss” took all the money and ran. When
+          he joined another shop – it didn’t go any better. Instead of the shop
+          taking his money and running – they were taking money from
+          businesses owners like you and running. Broker fees, insane
+          equipment leasing fees, ridiculous up-sells, data insecurity, were
+          all big enough problems to inspire Jay to put together a team of
+          broker busters! The team has been tinkering with this problem off
+          and on for more than 4 years and finally after came up with a
+          solution that works for you the business owner and our funding
+          partners. So if your broker is kind of strange, and your deal don’t
+          look good… Who you gonna call? buynance broker busters!… We’re
+          dorks. Unapologetically.
+        .image.col-xs-7
+          = image_tag("why_we_fight.jpg")
+
+:javascript
+  function get_funding_link(){
+    window.location = "/signup"
+  }

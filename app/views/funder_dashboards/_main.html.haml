@@ -1,0 +1,77 @@
+.web_body
+  .module{style:"width:1020px;"}
+    %ul
+      %li.tab.activeTab
+        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
+    .form
+
+      %table{class:"table table-hover", style:"font-size: 10px;"}
+        %tr
+          %th Total Transaction Days
+          %th Average Balance
+          %th Total Credit Transactions
+          %th Total Debit Transactions
+          %th Available Balance
+          %th Deposits One Months Ago
+          %th Deposits Two Months Ago
+          %th Deposits Three Months Ago
+          %th Average Balance One Month Ago
+          %th Average Balance Two Months Ago
+          %th Average Balance Three Months Ago
+          %th Total Negative Days
+          %th Average Negative Days per Month
+          %th
+        - @leads.each do |lead|
+          %tr
+            %th 
+              = (lead.business.bank_account.months_of_transactions * 30).to_i
+            %th
+              = number_to_currency(lead.business.bank_account.average_balance)
+            %th
+              = lead.business.bank_account.total_credit_transactions
+            %th 
+              = lead.business.bank_account.total_debit_transactions
+            %th
+              = number_to_currency(lead.business.bank_account.available_balance)
+            %th
+              = number_to_currency(lead.business.bank_account.deposits_one_month_ago)
+            %th
+              = number_to_currency(lead.business.bank_account.deposits_two_months_ago)
+            %th
+              = number_to_currency(lead.business.bank_account.deposits_three_months_ago)
+            %th 
+              = number_to_currency(lead.business.bank_account.average_balance_one_month_ago)
+            %th 
+              = number_to_currency(lead.business.bank_account.average_balance_two_months_ago)
+            %th 
+              = number_to_currency(lead.business.bank_account.average_balance_three_months_ago)
+            %th
+              = lead.business.bank_account.get_negative_days
+            %th
+              = lead.business.bank_account.get_negative_days_monthly_average.to_f.round(2)
+            %th
+              %button{type: "button", class: " btn btn-default btn-offer", data: {leadId: "#{lead.id}"}}
+                Make Offer
+
+#offerModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog
+    .modal-content
+      .modal-header
+        %button.close{"aria-hidden" => "true", "data-dismiss" => "modal", type: "button"} ×
+        %h4#offerModal.modal-title Make an Offer
+      .modal-body
+        = simple_form_for @offer, :url => url_for(:action => 'make_offer', :controller => 'funder_dashboards'), :method => 'post' do |f|
+          = f.input :total_payback_amount, placeholder: 'Payback Amount', input_html: {class: 'textbox'}, label: false
+          = f.input :cash_advance_amount, placeholder: 'Offer Amount', input_html: {class: 'textbox'}, label: false
+          = f.input :days_to_collect, placeholder: 'Collection Period (Days)', input_html: {class: 'textbox'}, label: false
+          = f.input :lead_id, :as => :hidden, :input_html => { :value => "some value" }
+
+          = f.submit 'Make Offer', class: 'form-button'
+
+

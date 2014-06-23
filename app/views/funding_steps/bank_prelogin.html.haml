@@ -1,0 +1,40 @@
+.web_body
+  .paper-section
+    .paper-section-header
+      Bank Pre-Login
+    .paper-section-top
+    .paper-section-body.paper-section-bank-login.row
+      .paper-section-bank-login-left.col-xs-7
+        .paper-section-bank-login-left-header
+          %span Business Checking Bank Information
+        .paper-section-bank-login-left-information
+          %span Please log in to your bank account to grant access to Buynance to review your data.
+          .paper-section-bank-login-left-information-important
+            %span Your information is safe, secure, and private.
+        .paper-section-bank-login-form
+          = simple_form_for @business, url: wizard_path do |f|
+            - if flash[:notice]
+              %div{class: "alert alert-danger"}
+                %ul{style: "list-style: none;"}
+                  %li 
+                    = flash[:notice]
+            - if @bank_account.errors.any?
+              %div{class: "alert alert-danger"}
+                %ul{style: "list-style: none;"}
+                  - @bank_account.errors.full_messages.each do |msg|
+                    %li= msg
+            = fields_for @bank_account do |ba|
+              .paper-section-bank-login-form-label
+                %span Routing Number *
+              .paper-section-bank-login-form-input
+                = ba.text_field :routing_number, class: 'textbox', label: false
+              .paper-section-bank-login-form-label
+                %span Account Number *
+              .paper-section-bank-login-form-input
+                = ba.text_field :account_number, class: 'textbox', label: false
+              .paper-section-bank-login-form-routing-info
+                %span * Where can i find the routing and account number?
+              .paper-section-bank-login-form-action
+                = f.submit "Continue", class: "form-button flat-button button-submit"
+      .paper-section-bank-login-right.col-xs-5
+        = render "shared/bank_sidebar"

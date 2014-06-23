@@ -1,0 +1,133 @@
+
+
+.offer-body {
+	margin-top: 55px;	
+	.business-sidebar {
+		padding-right: 30px;
+		font-size: 15px;
+		color: rgb(123, 123, 123);
+		font-weight: 800;
+		margin-top: 5px;
+		.business-sidebar-header {
+			color: rgb(126, 190, 39);
+			margin-bottom: 40px;
+		}
+
+		.business-sidebar-item {
+
+		}
+
+		hr {
+
+		}
+	}
+
+	.business-offer { 
+		margin-bottom: 0px;
+		background-color: white;
+		border-top-left-radius: 10px;
+		border-bottom-left-radius: 10px;
+		border-bottom-right-radius: 10px;
+		background-image:url('paper-top-right-single.png');
+		background-position: right top;
+		background-repeat: no-repeat;
+		padding-top: 24px;
+		padding-left: 24px;
+		padding-right: 80px;
+	  .business-offer-body.row {
+	  	font-size: 14px;
+	  	color: rgb(123, 123, 123);
+	    .business-offer-body-image {
+	    	.business-offer-body-image-dummy{
+	    	  width: 154px;
+	    	  height: 90px;
+	    	  background-color: rgb(242, 242, 242)
+	        }
+	    }
+	    .business-offer-body-info {
+	    	padding-left: 0px;
+	      .business-offer-body-info-top.row {
+	      	  padding-left: 0px;
+	        .business-offer-body-info-top-amount {
+	        	padding-left: 0px;
+	        	padding-right: 20px;
+	        }
+	        .business-offer-body-info-top-rate {
+	        	padding-left: 20px;
+	        }
+	        hr {
+			  margin-top: 5px;
+			  margin-bottom: 5px;
+			  border-width: 1px;
+			  border-color: rgb(219, 219, 219)
+		    }
+	      }
+	      .business-offer-body-info-bottom.row {
+	      	padding-top: 11px;
+	      	padding-bottom: 16px;
+	        .business-offer-body-info-text.col-xs-7 {
+	          float: left;
+	          vertical-align:middle;
+	          padding-left: 0px;
+	          padding-right: 0px;	
+	          font-size: 16px;
+	          .business-offer-info-label{vertical-align:middle;}
+	          .business-offer-info-amount{color: rgb(126, 190, 39); vertical-align:middle;} 
+	        }
+	        .business-offer-body-info-action.col-xs-5{
+	        	float: right;
+	        	.blue-button {
+	        		float: right;
+	        		font-size: 15px;
+	            	background-color: #1FACD7;
+	  				color: #ffffff;
+	 				padding: 5px 30px;
+	  				margin: 0 auto;
+	        	}
+	        }
+	      }
+	      hr {
+			margin-top: 5px;
+			margin-bottom: 5px;
+			border-width: 3px;
+			border-color: rgb(185, 185, 185)
+
+		  }
+	    }
+	  }
+	}
+
+	.business-offer-section {
+		font-size:15px;
+		.business-offer-label {
+			float: left;
+			padding: 0px;
+			span{
+				float: left;
+			}
+		}
+		.business-offer-amount{
+			float: right;
+			padding: 0px;
+			color: rgb(126, 190, 39);
+			span{
+				float: left;
+			}
+
+			
+		}
+
+	}
+
+	.no-offers {
+		vertical-align:middle;
+		text-align: center;
+		span.no-offers-text {
+			text-align: center;
+			font-size: 15px;
+			font-weight: 800;
+			color: rgb(123, 123, 123);
+		}
+	}
+
+}

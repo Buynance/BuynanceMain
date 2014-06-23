@@ -1,0 +1,37 @@
+- @offer = lead.offers.where('funder_id == ?', current_funder.id).last
+.paper-make-offer-header
+  Show Offer
+.paper-body
+  .paper-item-blue
+    %span.paper-item-label
+      Offer Amount
+    %span.paper-item-value
+      = number_to_currency @offer.cash_advance_amount
+  .paper-item-white
+    %span.paper-item-label
+      Deal Type
+    %span.paper-item-value
+      - if @offer.offer_type == 1
+        = "ACH"
+      - else
+        = "Credit"
+  .paper-item-blue
+    %span.paper-item-label
+      Payback Amount
+    %span.paper-item-value
+      = @offer.total_payback_amount
+  .paper-item-white
+    %span.paper-item-label
+      Factor Rate
+    %span.paper-item-value
+      = @offer.factor_rate
+  .paper-item-blue
+    %span.paper-item-label
+      Daily Holdback (if ACH)
+    %span.paper-item-value
+      = @offer.daily_merchant_cash_advance
+  .paper-item-white
+    %span.paper-item-label
+      Stipulations
+    %span.paper-item-value
+      = @offer.stipulations

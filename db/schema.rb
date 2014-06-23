@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140408030409) do
+ActiveRecord::Schema.define(version: 20140616205025) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -57,6 +57,42 @@ ActiveRecord::Schema.define(version: 20140408030409) do
     t.string   "country"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.string   "business_name"
+  end
+
+  create_table "bank_accounts", force: true do |t|
+    t.integer  "business_id"
+    t.integer  "reliability"
+    t.string   "account_number"
+    t.string   "routing_number"
+    t.string   "logo_url"
+    t.string   "bank_url"
+    t.string   "institution_name"
+    t.integer  "institution_number"
+    t.datetime "transactions_from_date"
+    t.datetime "transactions_to_date"
+    t.float    "average_balance"
+    t.float    "average_recent_balance"
+    t.datetime "as_of_date"
+    t.integer  "total_credit_transactions"
+    t.integer  "total_debit_transactions"
+    t.float    "available_balance"
+    t.boolean  "is_transactions_available"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "all_request"
+    t.string   "state"
+    t.datetime "last_reset"
+    t.float    "current_balance"
+    t.float    "deposits_one_month_ago"
+    t.float    "deposits_two_months_ago"
+    t.float    "deposits_three_months_ago"
+    t.float    "average_balance_one_month_ago"
+    t.float    "average_balance_two_months_ago"
+    t.float    "average_balance_three_months_ago"
+    t.integer  "average_negative_days"
+    t.integer  "total_negative_days"
   end
 
   create_table "business_types", force: true do |t|
@@ -181,6 +217,17 @@ ActiveRecord::Schema.define(version: 20140408030409) do
     t.integer  "status"
     t.integer  "main_business_user_id"
     t.string   "state"
+    t.string   "initial_request_code"
+    t.string   "owner_full_name"
+    t.boolean  "is_willing_to_pledge_assets"
+    t.float    "value_of_assets"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.boolean  "is_refinance"
+    t.integer  "deal_type"
+    t.date     "previous_loan_date"
+    t.float    "closing_fee"
+    t.float    "total_previous_loan_amount"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -231,10 +278,49 @@ ActiveRecord::Schema.define(version: 20140408030409) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "paypal_email"
+    t.string   "crypted_password",                    null: false
+    t.string   "password_salt",                       null: false
+    t.string   "persistence_token",                   null: false
+    t.string   "single_access_token",                 null: false
+    t.string   "perishable_token",                    null: false
+    t.integer  "login_count",            default: 0,  null: false
+    t.integer  "failed_login_count",     default: 0,  null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string   "current_login_ip"
+    t.string   "last_login_ip"
+    t.string   "image_url"
   end
 
   add_index "funders", ["email"], name: "index_funders_on_email", unique: true
   add_index "funders", ["reset_password_token"], name: "index_funders_on_reset_password_token", unique: true
+
+  create_table "globals", force: true do |t|
+    t.string   "variable"
+    t.string   "value"
+    t.string   "type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "lead_transactions", force: true do |t|
+    t.integer  "lead_id"
+    t.integer  "funder_id"
+    t.integer  "price_in_cents"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "leads", force: true do |t|
+    t.integer  "funder_id"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "business_id"
+    t.boolean  "is_sponsor"
+  end
 
   create_table "offers", force: true do |t|
     t.float    "cash_advance_amount"
@@ -254,6 +340,10 @@ ActiveRecord::Schema.define(version: 20140408030409) do
     t.boolean  "is_active"
     t.boolean  "is_best_offer"
     t.string   "state"
+    t.integer  "lead_id"
+    t.integer  "accepted_lead_id"
+    t.integer  "offer_type"
+    t.text     "stipulations"
   end
 
   create_table "profitabilities", force: true do |t|
@@ -269,15 +359,52 @@ ActiveRecord::Schema.define(version: 20140408030409) do
   end
 
   create_table "settings", force: true do |t|
-    t.string   "var",                   null: false
+    t.string   "var",         null: false
     t.text     "value"
-    t.integer  "thing_id"
-    t.string   "thing_type", limit: 30
+    t.integer  "target_id",   null: false
+    t.string   "target_type", null: false
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "settings", ["thing_type", "thing_id", "var"], name: "index_settings_on_thing_type_and_thing_id_and_var", unique: true
+  add_index "settings", ["target_type", "target_id", "var"], name: "index_settings_on_target_type_and_target_id_and_var", unique: true
+
+  create_table "transaction_summaries", force: true do |t|
+    t.string   "type_name"
+    t.string   "type_code"
+    t.integer  "total_count"
+    t.float    "total_amount"
+    t.integer  "recent_count"
+    t.float    "recent_amount"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bank_account_id"
+  end
+
+  create_table "transactions", force: true do |t|
+    t.datetime "transaction_date"
+    t.float    "amount"
+    t.float    "running_balance"
+    t.string   "description"
+    t.boolean  "is_refresh"
+    t.string   "status"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "bank_account_id"
+    t.string   "type_code"
+  end
+
+  create_table "transactions_type_codes", force: true do |t|
+    t.integer "transaction_id", null: false
+    t.integer "type_code_id",   null: false
+  end
+
+  create_table "type_codes", force: true do |t|
+    t.string   "type_code"
+    t.string   "summary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

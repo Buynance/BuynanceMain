@@ -1,0 +1,17 @@
+.paper-make-offer-header
+  Make Offer
+.paper-make-offer-body
+  = simple_form_for @offer, url: url_for(:controller => 'funder_dashboards', :action => 'make_offer') do |f|
+    - if @offer.errors.any?
+      %div{class: "alert alert-danger"}
+        %ul{style: "list-style: none;"}
+          - @offer.errors.full_messages.each do |msg|
+            %li= msg
+    = f.input :cash_advance_amount, placeholder: 'Offer Amount', input_html: {class: 'textbox'}, label: false
+    = f.input :offer_type, include_blank: 'Deal Type', :as => :select, collection: [['ACH',1],['Credit',2]], selected: "", input_html: {class: 'textbox'}, label: false
+    = f.input :total_payback_amount, placeholder: 'Payback Amount', input_html: {class: 'textbox'}, label: false
+    = f.input :factor_rate, placeholder: 'Factor Rate', input_html: {class: 'textbox'}, label: false
+    = f.input :daily_merchant_cash_advance, placeholder: 'Daily Holdback (if ACH)', input_html: {class: 'textbox'}, label: false
+    = f.input :stipulations, as: :text,  placeholder: 'Stipulations', input_html: {class: 'textbox'}, label: false
+    = f.input :lead_id, :as => :hidden, :input_html => { :value => "#{lead.id}" }
+    = f.submit'Next', class: 'form-button'

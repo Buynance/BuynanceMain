@@ -1,94 +1,92 @@
-.web_body.container
-  #signup-form 
-    .row.main-title-wrap
-      .col-md-6.col-md-offset-3
-        %h1
-    .row    
-      .col-md-6.col-md-offset-3.form-style
-        %h3.form-header Financial Information
-        - if @business.errors.any?
-          %div{class: "alert alert-danger"}
-            %ul{style: "list-style: none;"}
-              - @business.errors.full_messages.each do |msg|
-                %li= msg
-        = form_for @business, url: wizard_path do |f|
-          %div{class: "form_group #{return_error_class(@business, :is_paying_back)} row"}
-            %label{class: "control-label", :for => :is_paying_back}
-              Are you currently paying back a merchant cash advance?
-            
-            = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{ :include_blank => true }, {:class => "selectpicker form-control"}
+.web_body
+  .paper-section
+    .paper-section-top
+    .paper-section-body.form-style
+      - if @business.errors.any?
+        %div{class: "alert alert-danger"}
+          %ul{style: "list-style: none;"}
+            - @business.errors.full_messages.each do |msg|
+              %li= msg
+      = form_for @business, url: wizard_path do |f|
+        %div{class: "form_group #{return_error_class(@business, :is_paying_back)} row"}
+          %label{class: "control-label", :for => :is_paying_back}
+            Are you currently paying back a merchant cash advance?
           
-          %div{class: "form_group #{return_error_class(@business, :business_type_id)}"}
-            %label{class: "control-label", :for => :business_type_id}
-              What type of business do you own?  
-            %select{class: "form-control selectpicker text-center ", name: "business_type_id"}
-              - BusinessType.all.each do |m|
-                %option{value: m.id} 
-                  = m.name
+          = f.select :is_paying_back, options_for_select({"No" => 0, "Yes" => 1}),{ :include_blank => true }, {:class => "selectpicker form-control"}
+        
+        %div{class: "form_group #{return_error_class(@business, :business_type_id)}"}
+          %label{class: "control-label", :for => :business_type_id}
+            What type of business do you own?  
+          %select{class: "form-control selectpicker text-center ", name: "business_type_id"}
+            - BusinessType.all.each do |m|
+              %option{value: m.id} 
+                = m.name
 
-          %div{class: "form_group #{return_error_class(@business, :years_in_business)} row"}
-            %label{class: "control-label", :for => :years_in_business}
-              How many years have you been in business?
-            %br
-            = f.select :years_in_business, options_for_select({"0" => 0, "1" => 1, "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10, "11" => 11, "12" => 12, "13" => 13, "14" => 14, "15" => 15, "16" => 16, "17" => 17, "18" => 18, "19" => 19, "20" => 20, "20+" => 21}),{:include_blank => true}, {:class => "form-control selectpicker"}
+        %div{class: "form_group #{return_error_class(@business, :years_in_business)} row"}
+          %label{class: "control-label", :for => :years_in_business}
+            How many years have you been in business?
+          %br
+          = f.select :years_in_business, options_for_select({"0" => 0, "1" => 1, "2" => 2, "3" => 3, "4" => 4, "5" => 5, "6" => 6, "7" => 7, "8" => 8, "9" => 9, "10" => 10, "11" => 11, "12" => 12, "13" => 13, "14" => 14, "15" => 15, "16" => 16, "17" => 17, "18" => 18, "19" => 19, "20" => 20, "20+" => 21}),{:include_blank => true}, {:class => "form-control selectpicker"}
 
-          %div{class: "form_group #{return_error_class(@business, :approximate_credit_score_range)} row"}
-            %label{class: "control-label", :for => :approximate_credit_score_range}
-              What is your approximate credit score?
-            %br
-            = f.select :approximate_credit_score_range, options_for_select({"450-500" => 1, "501-550" => 2, "551-600" => 3, "601-650" => 4, "651-700" => 5, "701-750" => 6, "751-800" => 7}),{:include_blank => true}, {:class => "form-control selectpicker"}
+        %div{class: "form_group #{return_error_class(@business, :approximate_credit_score_range)} row"}
+          %label{class: "control-label", :for => :approximate_credit_score_range}
+            What is your approximate credit score?
+          %br
+          = f.select :approximate_credit_score_range, options_for_select({"450-500" => 1, "501-550" => 2, "551-600" => 3, "601-650" => 4, "651-700" => 5, "701-750" => 6, "751-800" => 7}),{:include_blank => true}, {:class => "form-control selectpicker"}
+        
+        %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
+          %label{class: "control-label", :for => :is_tax_lien}
+            Do you have any tax liens? 
+          %br
+          = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker", onChange: "hide_or_show()"}
+        %div{class: "row", id: "is_payment_group", style: "display: none;"}
+          %label{class: "control-label", :for => :is_payment_plan}
           
-          %div{class: "form_group #{return_error_class(@business, :is_tax_lien)} row"}
-            %label{class: "control-label", :for => :is_tax_lien}
-              Do you have any tax liens? 
-            %br
-            = f.select :is_tax_lien, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker", onChange: "hide_or_show()"}
-          %div{class: "row", id: "is_payment_group", style: "display: none;"}
-            %label{class: "control-label", :for => :is_payment_plan}
-            
-              Are you currently making payments on your tax liens? 
-            %br
-            = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker", }
-            
-          .row
-            %label{class: "control-label", :for => :is_ever_bankruptcy}
-              Have you ever filed for bankruptcy?
-            %br
-            = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "selectpicker form-control"}
-
-
-
-          %div{class: "form_group #{return_error_class(@business, :is_judgement)} row"}
-            %label{class: "control-label", :for => :is_judgement}
-              Do you have any judgments?
-            %br
-            = f.select :is_judgement, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker text-center"}  
-            
-          %div{class: "form_group #{return_error_class(@business, :average_daily_balance_bank_account)}"}  
-            %label{class: "control-label", :for => :average_daily_balance_bank_account}
-              What is the average daily balance of your primary business bank account?
-            = f.text_field :average_daily_balance_bank_account, class: "text-center form-control currency_convert", required: true
-
-          %div{class: "form_group #{return_error_class(@business, :amount_negative_balance_past_month)}"}
-            %label{class: "control-label", :for => :amount_negative_balance_past_month}
-              How many times have you had a negative balance in the past 30 days?
-            = f.text_field :amount_negative_balance_past_month, class: "text-center form-control ", required: true
+            Are you currently making payments on your tax liens? 
+          %br
+          = f.select :is_payment_plan, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker", }
           
-          .action
-            =f.submit "Continue", class: "btn btn-primary btn-lg btn-lg btn-block green-btn"
+        .row
+          %label{class: "control-label", :for => :is_ever_bankruptcy}
+            Have you ever filed for bankruptcy?
+          %br
+          = f.select :is_ever_bankruptcy, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "selectpicker form-control"}
+
+
+
+        %div{class: "form_group #{return_error_class(@business, :is_judgement)} row"}
+          %label{class: "control-label", :for => :is_judgement}
+            Do you have any judgments?
+          %br
+          = f.select :is_judgement, options_for_select({"No" => 0, "Yes" => 1}),{:include_blank => true}, {:class => "form-control selectpicker text-center"}  
+          
+        %div{class: "form_group #{return_error_class(@business, :average_daily_balance_bank_account)}"}  
+          %label{class: "control-label", :for => :average_daily_balance_bank_account}
+            What is the average daily balance of your primary business bank account?
+          = f.text_field :average_daily_balance_bank_account, class: "text-center form-control currency_convert", required: true
+
+        %div{class: "form_group #{return_error_class(@business, :amount_negative_balance_past_month)}"}
+          %label{class: "control-label", :for => :amount_negative_balance_past_month}
+            How many times have you had a negative balance in the past 30 days?
+          = f.text_field :amount_negative_balance_past_month, class: "text-center form-control ", required: true
+        
+
+    .paper-braker
+    %button{form: "edit_business_100",  class: "btn btn-primary btn-lg btn-lg btn-block green-btn", type: "submit"}
+      Continue
 
 :javascript
-  function hide_or_show()
-  {
-  var s1= document.getElementById('business_is_tax_lien');
-  var s2= document.getElementById('is_payment_group');
+function hide_or_show()
+{
+var s1= document.getElementById('business_is_tax_lien');
+var s2= document.getElementById('is_payment_group');
 
-  if( s1.options[s1.selectedIndex].text=="Yes")
-  {
-  s2.style.display = 'block';
-  }
-  if( s1.options[s1.selectedIndex].text=="No")
-  {
-  s2.style.display = 'none';
-  }
-  }
+if( s1.options[s1.selectedIndex].text=="Yes")
+{
+s2.style.display = 'block';
+}
+if( s1.options[s1.selectedIndex].text=="No")
+{
+s2.style.display = 'none';
+}
+}

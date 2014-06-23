@@ -1,0 +1,466 @@
+body
+{
+  font: normal normal normal 14px Arial, Helvetica, sans-serif;
+  margin: 0px;
+  padding: 0px;
+}
+
+a
+{
+  color: #25aae1;
+  text-decoration: none;
+}
+
+#divContent
+{
+  width: 416px;
+  height: 590px;
+  overflow: hidden;
+}
+
+#pnlStart, #pnlSearch, #pnlLogin, #pnlResults, #pnlTerms, #pnlError
+{
+  width: 416px;
+  height: 590px;
+  overflow: hidden;
+  padding: 0px;
+  position: relative;
+}
+
+#startFormContainer, #searchFormContainer, #loginFormContainer, #termsContainer
+{
+  position: relative;
+  overflow: auto;
+  height: 535px;
+  width: auto;
+}
+
+.headingContainer
+{
+  margin: 10px 0px 20px 0px;
+}
+
+.subHeadingContainer
+{
+  margin: 0px 0px 10px 0px;
+}
+
+#startErrorContainer, #searchErrorContainer, #loginErrorContainer, #timerMessageContainer
+{
+  margin: 0px;
+  overflow: auto;
+}
+
+#lblStartHeading, #lblSearchHeading, #lblLoginHeading, #lblMFAHeading, #lblResultsHeading, #lblTermsHeading, #lblErrorHeading
+{
+  font-size: 20px;
+  font-weight: 900;
+  color: #8dc63f;
+  margin-bottom: 50px;
+}
+
+#lblErrorMessage
+{
+  font-size: 14px;
+  color: #000000;
+}
+
+#lblTimerSeconds
+{
+  font-size: 14px;
+  color: #dd0000;
+}
+
+#lblStartSubHeading, #lblSearchSubHeading, #lblLoginSubHeading, #lblMFASubHeading, #lblResultsSubHeading
+{
+  font-weight: normal;
+  color: #666666;
+}
+
+#lblStartErrorHeading, #lblSearchErrorHeading, #lblLoginErrorHeading
+{
+  font-size: 15px;
+  font-weight: bold;
+  color: #dd0000;
+}
+
+#lstStartError, #lstSearchError, #lstLoginError
+{
+  font-weight: normal;
+  color: #dddddd;
+  margin: 0px 0px 0px 0px;
+}
+
+#lstStartError li, #lstSearchError li, #lstLoginError li
+{
+  font-weight: normal;
+  color: #dd0000;
+  margin-left: -20px;
+}
+
+#startButtonContainer, #searchButtonContainer, #loginButtonContainer, #resultsButtonContainer, #termsButtonContainer
+{
+  position: absolute;
+  bottom: 0px;
+  }
+
+#startOuterTable
+{
+  width: 100%;
+ }
+#startOuterColumn1
+{
+  width: 60%;
+  vertical-align: top;
+  padding-top: 7px;
+}
+#startOuterColumn2
+{
+  width: 40%;
+  vertical-align: top;
+  text-align: left;
+}
+
+#ddlBankSelect
+{
+  font: normal normal normal 14px Arial, Helvetica, sans-serif;
+  border: 1px solid #999999;
+  border-radius: 6px;
+  -moz-border-radius: 6px;
+  padding: 4px;
+  margin-right: 5px;
+  max-width: 300px;
+}
+
+#startTable
+{
+  width: 100%;
+  border: 0px solid #aaaaaa;
+}
+
+.startColumn1
+{
+  text-align: right;
+  height: 28px;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+.startColumn2
+{
+  text-align: left;
+  height: 28px;
+  vertical-align: middle;
+}
+
+.startPrompt, .searchPrompt, .loginFormPrompt
+{
+  color: #443f3f;
+}
+
+.startTextBox, .searchTextBox, .loginFormTextBox, .startTextBoxError, .searchTextBoxError, .loginFormTextBoxError
+{
+  font: normal normal normal 14px Arial, Helvetica, sans-serif;
+  background-color: #f2f2f2;
+  height: 30px;
+  border-width: 0px;
+  padding: 10px;
+  margin-bottom: 30px;
+  width: 313px;
+  /* width: 160px; */
+}
+
+.startTextBoxError, .searchTextBoxError, .loginFormTextBoxError
+{
+  background: #ffcccc;
+}
+
+.startText
+{
+}
+
+.startBankLinkColumn
+{
+  text-align: left;
+  padding: 8px;
+}
+.startSearchLink
+{
+}
+
+#checkContainer
+{
+  /* position: absolute;
+  top: 55px;
+  left: 420px;
+  width: 400px;
+  margin: 0px 0px 0px 0px;
+  overflow: hidden;
+  border: 0px solid #336699; */
+}
+#imgCheck
+{
+}
+
+.button
+{
+  /* -webkit-appearance: none;     border: 1px solid #999999;    background-color: #FF9933;    border-radius: 6px;    box-shadow: inset 0 18px 16px #FFCC66;    -o-box-shadow: inset 0 18px 16px #FFCC66;    -webkit-box-shadow: inset 0 18px 16px #FFCC66;    -moz-box-shadow: inset 0 18px 16px #FFCC66;     color: #ffffff;  */
+  width: 192px;
+  padding: 10px 50px;
+  color: white;
+  font-size: 14px;
+  line-height: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  font: normal normal bold 16px Arial, Helvetica, sans-serif;
+  background-color: #20acd7;
+  outline: 0 none;
+  text-decoration: none;
+  border: rgba(0, 0, 0, 0.3) 0px solid;
+  height: 50px;
+  border-radius: 3px;
+}
+/* .button:hover
+{
+  background-color: #FF9933;
+  box-shadow: inset 0 18px 16px #CC6600;
+  -o-box-shadow: inset 0 18px 16px #CC6600;
+  -webkit-box-shadow: inset 0 18px 16px #CC6600;
+  -moz-box-shadow: inset 0 18px 16px #CC6600;
+  color: #cccccc;
+} */
+
+.buttonSmall
+{
+  /* -webkit-appearance: none;   border: 1px solid #999999;   background-color: #FF9933;   border-radius: 6px;   box-shadow: inset 0 18px 16px #FFCC66;   -o-box-shadow: inset 0 18px 16px #FFCC66;   -webkit-box-shadow: inset 0 18px 16px #FFCC66;   -moz-box-shadow: inset 0 18px 16px #FFCC66;   color: #ffffff; */
+  padding: 3px 11px;
+  font: normal normal bold 14px Arial, Helvetica, sans-serif;
+}
+.buttonSmall:hover
+{
+  /*  background-color: #FF9933;   box-shadow: inset 0 18px 16px #CC6600;   -o-box-shadow: inset 0 18px 16px #CC6600;   -webkit-box-shadow: inset 0 18px 16px #CC6600;   -moz-box-shadow: inset 0 18px 16px #CC6600;   color: #cccccc; */
+}
+
+.searchTable
+{
+}
+.searchColumn1
+{
+  text-align: right;
+  padding: 4px;
+}
+.searchColumn2
+{
+  text-align: left;
+  padding: 4px;
+}
+.searchPrompt
+{
+}
+.searchResultsTable
+{
+}
+.searchResultsRow
+{
+}
+.searchResultsColumn1
+{
+  width: 24px;
+  text-align: left;
+  padding: 3px 3px 3px 20px;
+}
+.searchResultsColumn2
+{
+  text-align: left;
+  padding: 4px 0px 4px 10px;
+}
+
+.loginTable
+{
+  margin-bottom: 50px;
+}
+.loginColumn1
+{
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 900;
+}
+.loginColumn2
+{
+  padding: 4px
+}
+#imgContentServiceIcon
+{
+}
+#lblContentServiceDisplayName
+{
+  font-size: 18px;
+  line-height: 30px;
+  font-weight: bold;
+}
+#lnkHomeUrl
+{
+  font-size: 12px;
+}
+#lblMFAMessage
+{
+}
+
+.loginMainContainer
+{
+}
+.loginExtraContainer
+{
+}
+
+.loginFormTable
+{
+  border-collapse:collapse;
+  display: inline-block;
+  margin-bottom: 20px;
+}
+
+.loginFormTable tbody tr
+{
+  display: block;
+}
+
+.loginFormColumn1
+{
+  text-align: right;
+  padding: 4px;
+  display: inline-block;
+  margin-bottom: 20px;
+  font-size: 14px;
+  font-weight: 900;
+}
+.loginFormColumn2
+{
+  text-align: left;
+  padding: 4px;
+  width: 313px;
+}
+.loginFormSelect
+{
+  padding: 4px;
+}
+
+.loginFormChoiceHeading
+{
+  padding: 4px;
+  text-align: left;
+  color: #dd0000;
+}
+
+.loginFormChoiceRow
+{
+  background: #eeeeee;
+}
+.showTypingLink
+{
+  margin-right: 15px;
+}
+
+#confirmContainer, #optInContainer, #timerContainer
+{
+  margin: 10px 0px 10px 5px;
+  color: #878787;
+  line-height: 24px;
+}
+.cbConfirm
+{    
+  outline: none;
+  padding: 0px; 
+}
+.cbConfirmError
+{  
+  outline: #ffcccc solid 4px;
+  padding: 0px;
+}
+.cbOptIn
+{    
+  outline: none;
+  padding: 0px; 
+}
+.confirmText
+{
+}
+#lbtnTerms
+{
+}
+
+.timerMessage
+{
+}
+#lblTimerSeconds
+{
+}
+
+
+
+.resultsTable
+{
+}
+.resultsColumn1
+{
+  text-align: right;
+  padding: 10px;
+}
+.resultsColumn2
+{
+  text-align: left;
+  padding: 4px;
+}
+#lblResultsMessage
+{
+}
+
+.termsContent
+{
+}
+
+#divWorking
+{
+  display: none;
+  width: 100%;
+  height: 400px;
+  padding-top: 160px;
+  text-align: center;
+  line-height: 40px;
+}
+#lblWorkingTop
+{
+  font-size: 20px;
+}
+#lblWorkingBottom
+{
+}
+.helper
+{
+  display: inline;
+  text-decoration: underline;
+  position: relative;
+  margin-right: 15px;
+  color: #3366CC;
+}
+.helper .helperText
+{
+  position: absolute;
+  left: 50%;
+  margin-left: -100px;
+  display: none;
+  width: 250px;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #666666;
+  z-index: 9999;
+  border-radius: 6px;
+  color: #000000;
+  line-height: 130%;
+}
+.helper:hover .helperText
+{
+  background: #ffffff;
+  display: block;
+}

@@ -5,31 +5,75 @@ Buynance::Application.routes.draw do
     resources :profitabilities, :path => "calculator", :only => [:new, :create]
   end
 
-  resources :static_pages, :except => [:new, :create, :show, :update, :destroy, :index, :edit]
+  resources :static_pages, :except => [:new, :create, :show, :update, :destroy, :index, :edit] do
+    collection do
+      get 'about'
+      get 'offer'
+    end
+  end
   
+  resources :funder_dashboards, only: [:main, :make_offer, :pending_bids, :accepted_bids, :lost_bids, :won_bids], path: "funder_dashboard" do
+    collection do
+      get 'main'
+      post 'make_offer'
+      get 'pending_bids'
+      get 'accepted_bids'
+      get 'lost_bids'
+      get 'won_bids'
+    end
+  end
+
   resources :businesses, :only => [:new, :create, :show], :path => "clients" do
     resources :offers, :only => [:index] do
       patch :accept
     end
+    resources :bank_accounts
     member do
       patch :activate
     end
+    collection do
+      get 'show_offers'
+    end
   end
+
+  #resources :bank_accounts
   
   mount API::Base => '/api'
+  mount Soulmate::Server, :at => "/sm"
   #resource :business, :as => 'account'  # a convenience route
   scope(:path_names => { :past_merchants => "funders", :financial_information => "financial" }) do
     resources :business_steps, :path => "register"
   end
-  resources :after_offers, :path => "submit"
+
+  resources :funders
+  resources :funding_steps, :path => "after_signups"
+  resources :funder_sessions, :path => "funder_session", :only => [:new, :create, :destoy]
   resources :business_user_sessions, :path => "session", :only => [:new, :create, :destoy]
+  
+  resources :business_dashboards, :only => [:display_offers, :offer_accepted, :offer_funded, :reenter_market, :accept_offer] do
+    collection do
+      get "display_offers"
+      get "offer_accepted", as: :offer_accepted
+      get "offer_funded", as: :offer_funded
+      get "reenter_market", as: :reenter_market
+      post "accept_offer", as: :accept_offer
+    end
+  end
+  
+  get 'offers' => 'business_dashboards#display_offers', as: :display_offers
+
+  resources :funding_steps
+  
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 
   get 'login' => "business_user_sessions#new",      :as => :login
   get 'logout' => "business_user_sessions#destroy", :as => :logout
+  get 'funder_login' => "funder_sessions#new",      :as => :funder_login
+  get 'funder_logout' => "funder_sessions#destroy", :as => :funder_logout
+
 
   get 'signup' => 'businesses#new', :as => :signup
-  get 'account' => 'businesses#show'
+  get 'account' => 'businesses#show', :as => :account
 
   #get 'activate_account' => 'businesses#activate_account'
 
@@ -37,8 +81,13 @@ Buynance::Application.routes.draw do
   get 'privacy'               => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog'                  => 'static_pages#blog'
-
+ # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
+
+  get 'details' => 'businesses#details'
+  
+  get 'DLPHP/verification.php' => "bank_accounts#new"
+  get '/bank_accounts/success' => "bank_accounts#success"
 
   get '/offers/:offer_id/accept' => 'offers#accept'
   put '/offers/:offer_id/update' => 'offers#update'
@@ -55,6 +104,7 @@ Buynance::Application.routes.draw do
   root 'static_pages#index'
 
   get '*path' => redirect('/')
+  
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
 

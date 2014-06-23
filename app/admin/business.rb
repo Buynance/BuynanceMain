@@ -3,20 +3,31 @@ ActiveAdmin.register Business do
   actions :index, :show, :destroy
 
   scope :all, :default => true
-  scope :awaiting_information
-  scope :awaiting_confirmation
+  scope :awaiting_persona_information
+  scope :awaiting_bank_information
   scope :awaiting_offer_acceptance
-  scope :awaiting_offer_submission
-  scope :declined
+  scope :awaiting_offer_completetion
+  scope :awaiting_reenter_market
+  scope :awaiting_bank_information_refresh
+
 
   index do 
     column("Business", :sortable => :id) {|business| "##{business.id} "}
-    column("State")                      {|business| status_tag(business.state) }
-    column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
-    column("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
-    column("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
-
-    default_actions
+    column("Business State")             {|business| business.state}
+    column("Business Name")              {|business| business.name}
+    #column("State")                      {|business| status_tag(business.state) }
+    column("Email")                      {|business| link_to business.business_user.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+    column("Owner's First Name")         {|business| business.first_name}
+    column("Owner's Last Name")          {|business| business.last_name}
+    #column("Address Line One")           {|business| business.street_address_one}
+    #column("City")                       {|business| business.city}
+    column("State")                      {|business| business.location_state}
+    #column("Zip Code")                   {|business| business.zip_code}
+    column("Business Phone")             {|business| business.phone_number}
+    column("Mobile Phone")               {|business| business.mobile_number}
+    #column("")
+    
+    actions
   end
 
   show do |business|
@@ -25,10 +36,12 @@ ActiveAdmin.register Business do
         panel 'Basic Information' do
           attributes_table_for business do
             row :id
+            row("Business User ID")           {|business| link_to business.business_user.id, grubraise_business_user_path(business.business_user)}
+            row("Business Name")              {|business| business.name}
+            row("Business Type")              {|business| BusinessType.find(business.business_type_id).name} 
             row("State")                      {|business| status_tag(business.state) }
-            row("Email")                      {|business| business.email}
-            row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
-            row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+            #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+            #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
           end
         end
 
@@ -36,27 +49,41 @@ ActiveAdmin.register Business do
           attributes_table_for business do
             row("Email")                      {|business| business.email}
             row("Name") {|business| business.name}
-            row("Owners First Name") {|business| business.owner_first_name}
-            row("Owners Last Name") {|business| business.owner_last_name}
+            row("Owners First Name") {|business| business.first_name}
+            row("Owners Last Name") {|business| business.last_name}
             row("Phone Number") {|business| business.phone_number}
             row("Mobile Number") {|business| business.mobile_number}
             row("Street Adress Line One") {|business| business.street_address_one}
             row("Street Adress Line Two") {|business| business.street_address_two}
             row("City") {|business| business.city}
+            row("State") {|business| business.location_state}
             row("Zip Code") {|business| business.zip_code}
+
           end
         end  
       end
     
       column do
-        panel 'Financial Information' do
+        panel 'Financial & Bank Information' do
           attributes_table_for business do
-            row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
-            row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
-            row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
-            row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
-            row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
-            row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
+            row("Bank Account State")      {|business| status_tag(business.bank_account.state) if !business.bank_account.nil?}
+            row("Bank Name")               {|business| business.bank_account.institution_name if business.bank_account.bank_information_retrieved?}
+            row("Account Number")          {|business| business.bank_account.account_number if business.bank_account.bank_information_retrieved?}
+            row("Routing Number")          {|business| business.bank_account.routing_number if business.bank_account.bank_information_retrieved?}
+            row("Oldest Transaction Date") {|business| business.bank_account.transactions_from_date if business.bank_account.bank_information_retrieved?}
+            row("Newest Transaction Date") {|business| business.bank_account.transactions_to_date if business.bank_account.bank_information_retrieved?}
+            row("Days of Transaction")     {|business| business.bank_account.days_of_transactions if business.bank_account.bank_information_retrieved?}
+            row("Available Balance")       {|business| (number_to_currency business.bank_account.available_balance) if business.bank_account.bank_information_retrieved?}
+            row("Average Balance")         {|business| (number_to_currency business.bank_account.average_balance) if business.bank_account.bank_information_retrieved?}
+            row("Total Number of Deposits") {|business| business.bank_account.total_number_of_deposits if business.bank_account.bank_information_retrieved?}
+            row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) if business.bank_account.bank_information_retrieved?} 
+            row("Total Negative Days")      {|business| business.bank_account.total_negative_days if business.bank_account.bank_information_retrieved?}
+            #row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
+            #row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
+            #row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
+            #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+            #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+            #row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
             row("Credit Score") do |business|
               range = ""
               range = "400-500" if business.approximate_credit_score_range == 1

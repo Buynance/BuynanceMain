@@ -1,0 +1,279 @@
+html{ font-size: 100%; }
+body{font-size: 0.625em;}
+	.banner{
+		background-image: url(homepage_background.jpg);
+		background-repeat:no-repeat;
+		background-size:100%;
+		display: inline-block;
+	    position: relative;
+	    width: 100%;
+
+	    .banner-dummy{
+			padding-top: 41%;
+		}
+
+		.banner-content{
+			position: absolute;
+	    	top: 21%;
+	    	bottom: 0;
+	    	left: 0;
+	    	right: 0;
+
+	    	.banner-content-information{
+	    		.banner-content-information-header{
+	    		 	margin-bottom: 1.6em;
+	    		 	span{
+	    		 		font-size: 4.2em;
+	    		 		font-weight: 900;
+	    		 	}
+	    		 	.banner-content-information-header-top{
+	    		 		color: rgb(141, 198, 63);
+	    		 	}
+	    		 	.banner-content-information-header-bottom{
+	    		 		color: rgb(32, 172, 215);
+	    		 	}
+	    		}
+	    		.banner-content-information-subheader{
+	    		 	color: rgb(63, 63, 63);
+	    		 	margin-bottom: 5.0em;
+	    		 	text-align: left;
+	    		 	span{ font-size: 2.2em; }
+	    		}
+	    	}
+	    	.banner-content-information-action{
+	    		
+	    		.banner-content-information-action-get-financed{
+	    			float: left;
+	    			.flat-button.button-get-financed {
+  						background-color: rgb(32, 172, 215);
+  						color: white;
+  						font-size: 1.7em;
+ 						font-weight: 900;
+  						width: 10.0em;
+  						border-size: 0px;
+  						padding-top: 0.8em;
+  						padding-bottom: 0.8em;
+					}
+					margin-right: 1em;
+				}
+				.banner-content-information-action-refinance{
+					float: left;
+					.flat-button.button-get-refinance {
+						font-size: 1.7em;
+  						background-color: rgb(141, 198, 63);
+  						color: white;
+ 						font-weight: 900;
+  						width: 10.0em;
+  						border-size: 0px;
+  						padding-top: 0.8em;
+  						padding-bottom: 0.8em;
+					}
+
+	    		}
+	    	}
+	    	.banner-content-information-bages{
+	    		.banner-content-information-badges-one{
+
+	    		}
+        		.banner-content-information-badges-two{
+
+        		}
+	    	}
+        
+
+		}
+
+	}
+
+    /***************************************************************************************/
+   /*****************************                   ***************************************/
+  /*****************************    How it Works     *************************************/
+ /*******************************                   *************************************/
+/***************************************************************************************/
+
+.homepage-wrapper{
+	width: 108em;
+	margin: 0 auto;
+	padding-bottom: 10.0em;
+
+	.how-works{
+		width: 100%;
+		padding-top: 2.0em;
+		padding-left: 15em;
+		padding-right: 15em;
+		.how-works-header{
+			text-align: center;
+			margin-bottom: 5.0em;
+			.how-works-header-top{
+				text-align: center;
+				span{
+					font-size: 2.4em;
+				}
+
+			}
+			.how-works-header-bottom{
+				text-align: center;
+				span{
+					font-size: 2.4em;
+					font-weight: 900;
+					color: rgb(32, 172, 215);
+				}
+
+			}
+		}
+		.how-works-steps{
+			width: 100%;
+			background-image: url("dot_divider.jpg");
+			background-position: left center;
+			background-repeat: repeat-x;
+			text-align: center;
+			img{width: 11.3em; height: 11.3em;}
+			.how-works-steps-step1{
+				display: inline-block;
+				float:left;
+				text-align: center;
+
+				.how-works-steps-step1-image{
+					background-color: white;
+					padding-left: 2.0em;
+					padding-right: 2.0em;
+				}
+			}
+			.how-works-steps-step2{
+				display: inline-block;
+				text-align: center;
+				
+				.how-works-steps-step2-image{
+					background-color: white;
+					padding-left: 2.0em;
+					padding-right: 2.0em;
+					
+				}
+			}
+			.how-works-steps-step3{
+				display: inline-block;
+				float: right;
+				text-align: center;
+				.how-works-steps-step3-image{
+					background-color: white;
+					padding-left: 2.0em;
+					padding-right: 2.0em;	
+				}
+      		}
+		}
+		.how-works-information{
+			padding-top: 2.0em;
+			text-align: center;
+			font-color: rgb(115, 115, 115);
+			.how-works-information-step1{
+				float: left;
+				display: inline-block;
+				width: 15.3em;
+				span{
+					text-align: center;
+					font-size: 1.6em;
+				}
+
+			}
+        
+      		.how-works-information-step2{
+      			display: inline-block;
+      			width: 15.3em;
+      			span{
+      				text-align: center;
+      				font-size: 1.6em;
+      			}
+      		}
+  
+      		.how-works-information-step3{
+      			float: right;
+      			display: inline-block;
+      			width:15.3em;
+      			span{
+      				text-align: center;
+      				font-size: 1.6em;
+      			}
+
+      		}
+		}
+	}
+}
+
+.homepage-fluid-container{
+	width: 100%;
+	
+	padding-top: 10.0em;
+	padding-bottom: 10.0em;
+
+	.homepage-container{
+		width: 108.0em;
+		margin: 0 auto;
+	}
+}
+
+.container-gray{
+	background-color: rgb(242,242,242);
+}
+
+.container-white{
+	background-color: white;
+}
+
+.in-the-news{
+	width: 100%;
+	.in-the-news-header{
+
+	}
+	.in-the-news-body{
+		display: inline-block;
+		margin: 0 auto;
+		.in-the-news-body-section{
+			width: 35.5em;
+			float: left;
+			display: inline-block;
+			.in-the-news-body-section-image-bloomberg{
+				width: 100%;
+				img{
+					width:19.3em;
+					height: 4.4em;
+					margin: 0 auto;
+				}
+
+			}
+			.in-the-news-body-section-image-alleywatch{
+				width: 100%;
+				img{
+					width:19.5em;
+					height: 5.0em;
+					margin: 0 auto;
+				}
+
+			}
+			.in-the-news-body-section-information{
+				width: 100%;
+				text-align: center;
+				span{
+					display: inline-block;
+				}
+			}
+
+			.in-the-news-body-section-action{
+				width: 100%;
+				.flat-button.button-get-refinance {
+					font-size: 1.7em;
+					background-color: rgb(141, 198, 63);
+					color: white;
+					font-weight: 900;
+					width: 10.0em;
+					border-size: 0px;
+					padding-top: 0.4em;
+					padding-bottom: 0.4em;
+					margin: 0 auto;
+				}
+			}
+		}
+	}
+}
+
+
+

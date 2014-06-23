@@ -3,16 +3,121 @@
 
 form input[type=text].form-control { font-size: 18px; color: #666; }
 
+input.form-input
+{
+padding : 10px;
+border : 2px;
+.hover : blue;
+font-family : Century Gothic;
+font-size :25px;
+width : 600px
+}
+
+input.form-input :focus
+{
+border-color:yellow;
+}
+
+.flat-button {
+  margin-top: 0px;
+  margin-right: 0px;
+  padding: 10px 10px;
+  font-size: 14px;
+  line-height: 100%;
+  color: #fff;
+  display:inline-block;
+  vertical-align: middle;
+  text-align: center;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background 0.1s ease-in-out;
+  -webkit-transition: background 0.1s ease-in-out;
+  -moz-transition: background 0.1s ease-in-out;
+  -ms-transition: background 0.1s ease-in-out;
+  -o-transition: background 0.1s ease-in-out;
+  color: #fff;
+  -webkit-border-radius: 3px;
+  -moz-border-radius: 3px;
+  border-radius: 3px;
+  font-family: 'Lato', sans-serif;
+}
+
+.flat-button:active {
+  
+}
+
+.flat-button, .flat-button:hover, .flat-button:active {
+  outline: 0 none;
+  text-decoration: none;
+  color: #fff;
+}
+
+.button-signup {
+  background-color: #F0BC1B;
+}
+.button-signup:hover {
+  background-color: #F0BC1B;
+}
+.button-signup:active {
+  box-shadow: 0px 1px 0px 0px #3293ba;
+}
+
+.button-login {
+  background-color: #F2F2F2;
+  color: #8c8c8c;
+  padding: 10px 15px;
+}
+.button-login:hover {
+  background-color: #F2F2F2;
+}
+.button-login:active {
+  box-shadow: 0px 1px 0px 0px #3293ba;
+}
+
+
+
+.button-form {
+  background-color: #1FACD7;
+  color: #ffffff;
+  padding: 20px 75px;
+  margin: 0 auto;
+
+}
+
+
+
 /* CSS Document */
 #signup-form label{
   font-size: 16px;  
 }
 
-
-.login {
-  margin-top: -8px;
+.no-padding{
+  padding-left: 0px;
+  padding-right: 0px;
 }
 
+.header-text-padding{
+  padding-top: 6px
+}
+
+.phone-text-padding{
+  line-height: 190%;
+}
+
+.header-btn-padding-right{
+  padding-right: 6px;
+  img {
+    float: right;
+  }
+
+}
+
+.header-btn-padding-left{
+  padding-left: 6px;
+  img {
+    float: left;
+  }
+}
 .btn-green {
   background-color: hsl(86, 66%, 43%) !important;
   background-repeat: repeat-x;
@@ -30,11 +135,7 @@ form input[type=text].form-control { font-size: 18px; color: #666; }
   -webkit-font-smoothing: antialiased;
 }
 
-#web_body {
-  background_color: #FFF8F0;
-  padding-top: 20px;
-  padding-bottom: 20px;
-}
+
 
 body {
   padding-left: 0px;
@@ -52,7 +153,7 @@ body {
   }
 }
 
-#header {
+body #header {
   height: 108px;
   #logo {
     text-align: center;
@@ -66,7 +167,10 @@ body {
   }
   #nav {
     margin-top: 55px;
-    font-size: 12px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 900;
+    font-size: 9pt;
+    color: #636363;
     text-align: center;
     list-style: none;
     padding: 0;
@@ -245,48 +349,65 @@ button .icon {
   }
 }
 
+.bottom {
+  background-color: #A9B4B6;
+}
+
 .footer {
-  margin-bottom: 110px;
-  hr {
-    margin-top: 5px;
-    margin-bottom: 5px;
+  margin-bottom: 62px;
+  .footer-image-section {
+    margin-top: 42px;
   }
-  .header {
-    font-size: 15px;
-    line-height: 21px;
-    margin-bottom: 24px;
-  }
-  .body {
-    font-size: 12px;
-    color: #7E7E7E;
-  }
-  li a {
-    text-decoration: none;
-    font-size: 12px;
-    color: #7E7E7E;
-    padding-left: 8px;
-    .text {
-      padding-left: 9px;
+
+  .footer-section {
+    margin-top: 64px;
+    .footer-section-header {
+      font-weight: 900;
+      color: #1B759A;
+      font-size: 14px;
+    }
+    ul {
+      list-style-type: none;
+      list-style: none;
+      padding-left: 0;
+      padding-right: 0;
+      margin-left: 0;
+      margin-right: 0;
+      li {
+        margin-top: 6px;
+        img {
+          margin-right: 4px;
+        }
+      }
+    }
+    .footer-need-help {
+      color: #636363;
+      margin-top: 32px;
+      .footer-need-help-header {
+        font-weight: 900;
+      }
+      .footer-need-help-body{
+        img {
+          margin-left: -27px;
+        }
+        img {
+          margin-right: 0px !important;
+        }
+      }
     }
   }
-  .locate_us {
-    margin-bottom: 55px;
-  }
-  .section {
-    padding-left: 30px;
-    padding-right: 30px;
-  }
-}
 
-.how_works .get_funding .image img {
-  margin-top: 30px;
-}
+  .footer-section-body {
+    margin-top: 28px;
+    color: white;
 
-.footer .map {
-  padding-left: 0px;
-  img {
-    width: 100%;
+
+    .footer-address-header {
+      font-weight: 900px;
+    }
   }
+
+
 }
 
 .starting-form-separator{

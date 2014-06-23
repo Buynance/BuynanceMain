@@ -2,79 +2,85 @@ module BusinessValidations
   extend ActiveSupport::Concern
 
   included do
-  	# Step - Signup
-	validates :earned_one_month_ago,
-    presence: {message: "Please include the amount of money your business earned one month ago."},
-    numericality: {only_integer: true, message: "Please make sure the amount you earned one month ago is a number."},
-    on: :create
+  	#########################################################################
+	###################### Step - Signup ####################################
+	#########################################################################
 
-	validates :earned_two_months_ago,
-    presence: {message: "Please include the amount of money your business earned two months ago."},
-    numericality: {only_integer: true, message: "Please make sure the amount you earned two month ago is a number"},
-    on: :create
-
-    validates :earned_three_months_ago,
-    presence: {message: "Please include the amount of money your business earned three months ago."},
-    numericality: {only_integer: true, message: "Please make sure the amount you earned three months ago is a number"},
-    on: :create
-
-
-	validates :terms_of_service, 
-	acceptance: { message: "Please accept the terms and conditions."},
-	on: :create
+	#validates :terms_of_service, 
+	#acceptance: { message: "Please accept the terms and conditions."},
+	#on: :create
 
 	validates :name, 
-	presence: {message: "Please include your business name."},
+	length: {minimum: 3, maximum: 20, message: "Your business name should be atleast 3 letters long."},
+	on: :create
+
+
+	validates :is_refinance,
+	presence: {message: "An error has occured. Please contact us for further assistance"},
+	on: :save
+
+	
+
+    #########################################################################
+	###################### Step - Personal ##################################
+	#########################################################################
+
+	validates :owner_first_name,
+	length: {minimum: 2, maximum: 20, message: "Please include a valid first name."},
 	if: -> {self.current_step == :personal}
 
-	#validates :street_address_one,
-	#presence: {message: "Please include the first line of your address."},
-	#if: -> {self.current_step == :personal}
+	validates :owner_last_name,
+	length: {minimum: 2, maximum: 20, message: "Please include a valid last name."},
+	if: -> {self.current_step == :personal}
 
-	#validates :city,
-	#presence: {message: "Please include your city."},
-	#if: -> {self.current_step == :personal}
+	validates :phone_number,
+	presence: {message: "Please enter a valid US phone number."},
+	if: -> {self.current_step == :personal}
 
-	#validates :state,
-	#presence: {message: "Please include your state."},
-	#if: -> {self.current_step == :personal}
+	validates :mobile_number,
+	presence: {message: "Plase enter a valid US mobile phone number."},
+	if: -> {self.current_step == :personal}
 
-	#validate :zip_code,
-	#presence: {message: "Please include your five digit zip code"},
-	#numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
-	#if: -> {self.current_step == :personal}
+    validates :street_address_one,
+	length: {minimum: 3, maximum: 20, message: "Please include a valid street address."},
+	if: -> {self.current_step == :personal}
 
-	#validate :business_type,
-	#presence: {message: "Please include what you sell."},
-	#if: -> {self.current_step == :personal}
+	validates :city,
+	presence: {message: "Please include your city."},
+	if: -> {self.current_step == :personal}
+
+	validates :state,
+	presence: {message: "Please include your state."},
+	if: -> {self.current_step == :personal}
+
+	validate :zip_code,
+	presence: {message: "Please include your five digit zip code"},
+	numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
+	if: -> {self.current_step == :personal}
+
+	validate :business_type_id,
+	presence: {message: "Please include what your business type."},
+	if: -> {self.current_step == :personal}
+
+	validate :years_in_business,
+	presence: {message: "Please include how many years you have been in business."},
+	if: -> {self.current_step == :personal}
+
 
 	# Step - Financial
-
-	validates :amount_negative_balance_past_month,
-	presence: {message: "Please include the number of days your business bank account has had a negative balance in the last 30 days."},
-	numericality: {only_integer: true, greater_than_or_equal_to: 0, less_than_or_equal_to: 30, message: "The amount of days your business bank account has been in the negative should be between 0 and 30."},
-	if: -> {self.current_step == :financial}
-
-	validates :average_daily_balance_bank_account,
-	presence: {message:  "Please include the average daily balance of  your primary business bank account."},
-	numericality: {only_integer: true, message:  "Your average daily balance should be a number."},
-	if: -> {self.current_step == :financial}
 
 	validates :is_paying_back,
     inclusion: {:in => [true, false], message: "Please select whether you are paying back a merchant cash advance.", allow_blank: false},
     if: -> {self.current_step == :financial}
 
-    #validates :business_type_id,
-    #numericality: {only_integer: true, message: "Please select your business type."},
-    #if: -> {self.current_step == :financial}
-
-    validates :years_in_business,
-    presence: {message: "Please select the amount of years you have been in business."},
-    if: -> {self.current_step == :financial}
-
     validates :approximate_credit_score_range,
     presence: {message: "Please select your approximate credit score."},
     if: -> {self.current_step == :financial}
+
+    validates :is_tax_lien,
+    inclusion: {:in => [true, false], message: "Please select whether you have ever has a tax lien."},
+    if: -> {self.current_step == :financial}
+
 
     validates :is_ever_bankruptcy,
     inclusion: {:in => [true, false], message: "Please select whether you have ever filed for bankruptcy."},
@@ -84,24 +90,24 @@ module BusinessValidations
     inclusion: {:in => [true, false], message: "Please select whether you have any judgement."},
     if: -> {self.current_step == :financial}
 
-    	
+   
 
 	# Step - Past Merchants
 
-	validates :total_previous_payback_amount,
-	presence: {message: "Please include your total previous payback amount"},
-	numericality: {only_integer: true, message: "Your total previous payback amount should be a number"},
-	if: -> {self.current_step == :funders}
+	#validates :total_previous_payback_amount,
+	#presence: {message: "Please include your total previous payback amount"},
+	#numericality: {only_integer: true, message: "Your total previous payback amount should be a number"},
+	#if: -> {self.current_step == :funders}
 
-	validates :total_previous_payback_balance,
-	presence: {message: "Please include the current balance on your cash advance."},
-	numericality: {only_integer: true, message: "Your current balance should be a number."},
-	if: -> {self.current_step == :funders}
+	#validates :total_previous_payback_balance,
+	#presence: {message: "Please include the current balance on your cash advance."},
+	#numericality: {only_integer: true, message: "Your current balance should be a number."},
+	#if: -> {self.current_step == :funders}
 
-	validates :total_previous_payback_balance,
-	presence: {message: "Please include the current balance on your cash advance."},
-	numericality: {only_integer: true, message: "Your current balance should be a number."},
-	if: -> {self.current_step == :funders}
+	#validates :total_previous_payback_balance,
+	#presence: {message: "Please include the current balance on your cash advance."},
+	#numericality: {only_integer: true, message: "Your current balance should be a number."},
+	#if: -> {self.current_step == :funders}
 	
 
   

@@ -1,0 +1,29 @@
+.web_body
+  .module
+    %ul
+      %li.tab.activeTab
+        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
+    .form
+      = simple_form_for @business do |f|
+        - if @business.errors.any?
+          %div{class: "alert alert-danger"}
+            %ul{style: "list-style: none;"}
+              - @business.errors.full_messages.each do |msg|
+                %li= msg
+        = f.input :is_paying_back, include_blank: 'Are you currently paying back a merchant cash advance?', :as => :select, collection: [['No',false],['Yes',true]], input_html: {class: 'textbox'}, label: false
+        = f.input :business_type_id, include_blank: 'What type of business do you own?', :as => :select, collection: BusinessType.all, label_method: :name, value_method: :id,  input_html: {class: 'textbox'}, label: false
+        = f.input :years_in_business, include_blank: 'How many years have you been in business?', :as => :select, collection: [["0" , 0], ["1" , 1], ["2" , 2], ["3" , 3], ["4" , 4], ["5" , 5], ["6" , 6], ["7" , 7], ["8" , 8], ["9" , 9], ["10" , 10], ["11" , 11], ["12" , 12], ["13" , 13], ["14" , 14], ["15" , 15], ["16" , 16], ["17" , 17], ["18" , 18], ["19" , 19], ["20" , 20], ["20+", 21]],   input_html: {class: 'textbox'}, label: false
+        = f.input :is_paying_back, include_blank: 'What is your approximate credit score?', :as => :select, collection: [["450-500" , 1], ["501-550" , 2], ["551-600" , 3], ["601-650" , 4], ["651-700" , 5], ["701-750" , 6], ["751-800" , 7]],   input_html: {class: 'textbox'}, label: false
+        = f.input :is_paying_back, include_blank: 'Do you have any tax liens?', onchange: "hide_or_show()", :as => :select, collection: [['No',false],['Yes',true]],   input_html: {class: 'textbox'}, label: false
+        = f.input :is_paying_back, include_blank: 'Are you currently making payments on your tax liens? ?', :as => :select, collection: [['No',false],['Yes',true]],  input_html: {class: 'textbox', id: "is_payment_group", style: "display: none;"}, label: false
+        = f.input :is_paying_back, include_blank: 'Have you ever filed for bankruptcy?', :as => :select, collection: [['No',false],['Yes',true]],  input_html: {class: 'textbox'}, label: false
+        = f.input :is_paying_back, include_blank: 'Do you have any judgements?', :as => :select, collection: [['No',false],['Yes',true]],   input_html: {class: 'textbox'}, label: false
+        
+        /= f.input :terms_of_service, as: :boolean, label: false
+        = f.submit'Next', class: 'form-button'

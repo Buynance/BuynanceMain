@@ -1,0 +1,54 @@
+.funder-sidebar.col-sm-3
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Current Leads Available
+    .funder-sidebar-item-body
+      = link_to Lead.no_offer_by(@funder.id).size, {action: :main}
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Current Bids Pending
+    .funder-sidebar-item-body
+      = link_to @funder.number_of_offers("pending"), {action: :pending_bids}
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Deals Won + Not Funded
+    .funder-sidebar-item-body
+      = link_to @funder.number_of_offers("accepted"), {action: :accepted_bids}
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Deals Won + Funded
+    .funder-sidebar-item-body
+      = link_to @funder.number_of_offers("funded"), {action: :won_bids}
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Number of Deals Lost
+    .funder-sidebar-item-body
+      = link_to @funder.number_of_offers("rejected"), {actions: :lost_bids}
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Pending Bids $ Value
+    .funder-sidebar-item-body
+      = number_to_currency(@funder.value_of_offers("pending"))  
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Deals Won + Not Funded $ Value
+    .funder-sidebar-item-body
+      = number_to_currency(@funder.value_of_offers("accepted"))
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Deals Won + Funded $ Value
+    .funder-sidebar-item-body
+      = number_to_currency(@funder.value_of_offers("funded"))
+  %hr
+  .funder-sidebar-item
+    .funder-sidebar-item-header
+      Deals Lost $ Value
+    .funder-sidebar-item-body
+      = number_to_currency(@funder.value_of_offers("rejected"))

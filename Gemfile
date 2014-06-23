@@ -47,21 +47,37 @@ gem 'wicked'
 
 gem 'mandrill-api'
 
-gem 'global_phone'
+gem 'global_phone', :git => 'git://github.com/sstephenson/global_phone'
 
 gem "obfuscate_id", :git => "git://github.com/d0m0v0y/obfuscate_id.git"
 
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem "delayed_job_web", "1.2.5"
-gem "rails-settings-cached", "0.3.1"
+gem 'ledermann-rails-settings'
 
 gem 'font-awesome-sass'
 
+# States
 gem 'state_machine'
 
+# Charts
 gem "chartkick"
+
+# Api
 gem 'grape'
+
+# Intuit
+gem 'aggcat'
+
+# Autocomplete
+gem 'rack-contrib'
+gem 'soulmate', :require => 'soulmate/server'
+
+#SOAP
+gem 'savon', '~> 2.3.0'
+
+gem 'will_paginate', '~> 3.0'
 
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
@@ -73,8 +89,6 @@ group :development do
   gem 'binding_of_caller'
   gem 'quiet_assets'
   gem 'sqlite3'
-  gem 'rspec-rails'
-  gem "factory_girl_rails", :require => false
   gem 'html2haml'
 end
 
@@ -99,3 +113,7 @@ end
 # Use debugger
 gem 'debugger', group: [:development, :test]
 gem 'groupdate', :github => "mieko/groupdate"
+
+gem 'simple_form'
+
+gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'

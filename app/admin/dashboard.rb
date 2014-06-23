@@ -4,13 +4,23 @@ ActiveAdmin.register_page "Dashboard" do
 
    content do
     columns do
+      
+      column do
+        panel "Last 10 Businesses" do
+          table_for Business.order('id desc').limit(10).each do |business|
+            column("Business", :sortable => :id) {|business| link_to "##{business.id}", grubraise_business_path(business)}
+            column("State")                      {|business| status_tag(business.state) }
+            column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+          end
+        end
+      end
 
       column do
-        panel "Recent Offers" do
-          table_for Offer.all.order('id desc').limit(5).each do |offer|
+        panel "Last 10 Offers" do
+          table_for Offer.all.order('id desc').limit(10).each do |offer|
             column("Offer", :sortable => :id)             {|offer| "##{offer.id}"}
-            column("Best Offer")                          {|offer| offer.is_best_offer }
-            column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id.nil?}
+            column("Merchant")                            {|offer| offer.lead.business.name}
+            column("Funder")                              {|offer| offer.funder.name}
             column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
             column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
             column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
@@ -19,51 +29,66 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
 
-      column do
-        panel "Recent Businesses" do
-          table_for Business.order('id desc').limit(5).each do |business|
-            column("Business", :sortable => :id) {|business| link_to "##{business.id}", grubraise_business_path(business)}
-            column("State")                      {|business| status_tag(business.state) }
-            column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
-          end
-        end
-      end
 
     end 
     columns do
       column do
-          panel 'New Businesses By Months' do
-            @metric = Business.group(:email).count
-            if Rails.env.production?
-              @metric = Business.group_by_month(:created_at).count
-            end
-            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+        panel "Last 10 Leads" do
+          table_for Lead.order('id desc').limit(10).each do |lead|
+            column("Business", :sortable => :id) {|business| link_to "##{business.id}", grubraise_business_path(business)}
+            column("State")                      {|business| status_tag(business.state) }
+            # column("Email")                     {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
           end
-          panel 'Offers Accepted By Months' do
-            @metric = Business.group(:email).count
-            if Rails.env.production?
-              @metric = Business.group_by_month(:created_at).count
-            end
-            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
-          end
+        end
       end
       column do
-          panel 'New Business By Day' do
-            @metric = Business.group(:email).count
-            if Rails.env.production?
-              @metric = Business.group_by_day(:created_at).count
-            end
-            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
-          end
-          panel 'Offers Accepted By Day' do
-            @metric = Business.group(:email).count
-            if Rails.env.production?
-              @metric = Business.group_by_day(:created_at).count
-            end
-            render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
-          end
+
       end
     end
+
+    columns do
+      column do
+        panel "Statistics" do
+          #column("Number of Business") {||}
+
+        end
+      end
+    end
+  ### 
+    #columns do
+    #  column do
+    #      panel 'New Businesses By Months' do
+    #        @metric = Business.group(:email).count
+    #        if Rails.env.production?
+    #          @metric = Business.group_by_month(:created_at).count
+    #        end
+    #        render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+    #      end
+    #      panel 'Offers Accepted By Months' do
+    #        @metric = Business.group(:email).count
+    #        if Rails.env.production?
+    #          @metric = Business.group_by_month(:created_at).count
+    #        end
+    #        render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+    #      end
+    #  end
+    #  column do
+    #      panel 'New Business By Day' do
+    #        @metric = Business.group(:email).count
+    #        if Rails.env.production?
+    #          @metric = Business.group_by_day(:created_at).count
+    #        end
+    #        render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+    #      end
+    #      panel 'Offers Accepted By Day' do
+    #        @metric = Business.group(:email).count
+    #        if Rails.env.production?
+    #          @metric = Business.group_by_day(:created_at).count
+    #        end
+    #        render :partial => 'metrics/line_graph', :locals => {:metric => @metric}
+    #      end
+    #  end
+    #end
 end
     # Here is an example of a simple dashboard with columns and panels.
     #

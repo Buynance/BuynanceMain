@@ -1,0 +1,10 @@
+.web_body
+  .offer-body.container-fluid{style: "width: 1100px;"}
+    .col-xs-2
+      = render "business_sidebar"
+    .col-xs-10
+      - if @business.leads.last.offers.size > 0
+        - @business.leads.last.offers.each do |offer|
+          = render "offer", offer: offer
+      - else
+        = render "no_offers"

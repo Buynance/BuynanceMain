@@ -1,44 +1,59 @@
 require 'securerandom'
 
 class Business < ActiveRecord::Base
+
+  before_save :parse_phone_number
   
   include BusinessValidations
-  attr_accessor :current_step
+  attr_accessor :current_step, :is_closing_fee, :terms_of_service
   obfuscate_id :spin => 89238723
-  has_many :offers, :dependent => :destroy
+  #has_many :offers, :dependent => :destroy
   has_one :business_user, :dependent => :destroy
+  has_one :bank_account, :dependent => :destroy
+  has_many :leads, :dependent => :destroy
 
-  scope :awaiting_information, where(state: "awaiting_information")
-  scope :awaiting_confirmation, where(state: "awaiting_confirmation")
+  scope :awaiting_persona_information, where(state: "awaiting_personal_information")
+  scope :awaiting_bank_information, where(state: "awaiting_bank_information")
   scope :awaiting_offer_acceptance, where(state: "awaiting_offer_acceptance")
-  scope :awaiting_offer_submission, where(state: "awaiting_offer_submission")
-  scope :declined, where(state: "declined")
+  scope :awaiting_offer_completetion, where(state: "awaiting_offer_completetion")
+  scope :awaiting_reenter_market, where(state: "awaiting_reenter_market")
+  scope :awaiting_bank_information_refresh, where(state: "awaiting_bank_information_refresh")
 
-  state_machine :state, :initial => :awaiting_information do
+  state_machine :state, :initial => :awaiting_personal_information do
    
-    event :update_account_information do
-      transition [:awaiting_information] => :awaiting_confirmation
+    event :personal_information_provided do
+      transition [:awaiting_personal_information] => :awaiting_bank_information
     end
-    
-    event :comfirm_account do
-      transition [:awaiting_confirmation] => :awaiting_offer_acceptance
+
+    event :bank_information_provided do
+      transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_offer_acceptance
+    end
+
+    event :offer_accepted do
+      transition [:awaiting_offer_acceptance] => :awaiting_offer_completetion
     end
    
-    event :accept_offer do
-      transition [:awaiting_offer_acceptance] => :awaiting_offer_submission
-      transition [:offer_submitted] => :awaiting_another_offer_submission
+    event :offer_funded do
+      transition [:awaiting_offer_completetion] => :awaiting_reenter_market
     end
 
-    event :submit_offer do
-      transition [:awaiting_offer_submission, :awaiting_another_offer_submission] => :offer_submitted
+    event :offer_rejected do
+      transition [:awaiting_offer_completetion] => :awaiting_offer_acceptance
     end
 
-    event :decline do
-      transition [:awaiting_information] => :declined
+    event :reenter_market do
+      transition [:awaiting_reenter_market] => :awaiting_bank_information_refresh
     end
+
+    event :bank_information_refreshed do
+      transition [:awaiting_reenter_market, :awaiting_bank_information_refresh] => :awaiting_offer_acceptance
+    end
+
+
   end
   
   LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
+  CREDIT_SCORE_RANGES = ["0", "450-500", "501-550", "551-600", "601-650", "651-700", "701-750", "751-800"]
   INVALID_LOAN_REASONS = [6]
 
   STATUS_AWAITING_ACTIVATION = 1
@@ -55,6 +70,37 @@ class Business < ActiveRecord::Base
   # Method Approximate credit score string from range #
   # --------------------------------------------------#
 
+  def self.credit_score_string(variable)
+    return CREDIT_SCORE_RANGES[variable]
+  end
+
+  def create_request_code
+    service_key = Buynance::Application.config.service_key
+    profile_guid = Buynance::Application.config.profile_guid
+    site_user_guid = Buynance::Application.config.site_user_guid 
+    customer_id = self.email
+    #DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=QBZKMWHRHND5&profileGuid=9538c1e4-2a44-4eca-9587-e5d5bd1fcf65&siteUserGuid=76246387-0c72-401a-b629-b5b102859bb3&customerId=&firstName=#{@business.owner_first_name}&lastName=#{@business.owner_last_name}&routingNumber=#{@business.bank_account.routing_number}&accountNumber=#{@business.bank_account.account_number}") 
+    self.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{self.owner_first_name}&lastName=#{self.owner_last_name}&accountNumber=#{self.bank_account.account_number}&routingNumber=#{self.bank_account.routing_number}")
+    is_valid = false
+    is_valid = true if self.initial_request_code.length <= 10
+    return is_valid
+  end
+
+  def get_profile
+    profile_hash = Hash.new(email: self.business_user.email, business_name: self.name, owners_first_name: self.owner_first_name, 
+    owners_last_name: self.owner_last_name, landline_number: self.phone_number, mobile_number: self.mobile_number,
+    street_address_1: self.street_address_one, street_address_2: self.street_address_two, city: self.city, 
+    state: self.location_state, zip_code: self.zip_code, credit_score_range: CREDIT_SCORE_RANGES[self.approximate_credit_score_range],
+    business_type: BusinessType.find(self.business_type_id), loan_reason: LOAN_REASON[self.loan_reason_id],
+    bank_account: [account_number: self.bank_account.account_number, routing_number: self.bank_account.routing_number,
+      bank_name: self.bank_account.institution_name, avergae_balance: self.bank_account.average_balance, as_of_date: self.bank_account.as_of_date,
+      total_credit_transactions: self.bank_account.total_credit_transactions, total_debit_transactions: self.bank_account.total_debit_transactions,
+      available_balance: self.bank_account.available_balance, total_negative_days: self.bank_account.total_negative_days, 
+      days_of_transaction: self.bank_account.days_of_transaction, total_deposits: self.bank_account.total_number_of_deposits,
+      total_deposits_value: self.bank_account.total_deposits_value, transactions_from_date: self.bank_account.transactions_from_date, 
+      transactions_to_date: self.bank_account.transactions_to_date])
+  end
+
   # --------------------------------------------------#
   # Method Loan Reason string from id                 #
   # --------------------------------------------------#
@@ -62,8 +108,6 @@ class Business < ActiveRecord::Base
   # --------------------------------------------------#
   # Business type string from id                      #
   # --------------------------------------------------#
-
-  
   
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)
@@ -129,8 +173,12 @@ class Business < ActiveRecord::Base
     return true
   end
 
+
   def update_step(step)
-    if step == :financial
+    if step == :personal
+      self.update_account_information
+      return true
+    elsif step == :financial
       if !self.is_paying_back
         if self.qualified?
           self.update_account_information
@@ -215,9 +263,33 @@ class Business < ActiveRecord::Base
       best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
       return best
   end
+
+  def accept_as_lead
+    Lead.create(business_id: self.id)
+    self.bank_information_provided
+  end
   
 
   private
+
+    def parse_phone_number
+      if self.current_step == :personal
+        phone_number_object = GlobalPhone.parse(self.phone_number)
+        mobile_number_object = GlobalPhone.parse(self.mobile_number)
+        phone_number_object = nil if (phone_number_object != nil and phone_number_object.territory.name != "US")
+        mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
+        if phone_number_object.nil?
+          self.phone_number = nil
+        else
+          self.phone_number = phone_number_object.national_string
+        end
+        if mobile_number_object.nil?
+          self.mobile_number = nil
+        else
+          self.mobile_number = mobile_number_object.national_string      
+        end
+      end
+    end
 
     def init 
       self.is_paying_back = false if self.is_paying_back.nil?
@@ -243,6 +315,4 @@ class Business < ActiveRecord::Base
     def self.generate_activation_code
       return SecureRandom.hex
     end
-
-
 end

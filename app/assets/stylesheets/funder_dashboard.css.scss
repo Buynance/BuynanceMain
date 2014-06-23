@@ -1,0 +1,92 @@
+.paper {
+	border-style: solid;
+	border-width: 1px;
+	border-color: rgb(231,231,231);
+	min-height: 100px;
+	margin-top: 8px;
+	margin-bottom: 8px;
+	padding-left: 30px;
+	padding-right: 30px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	background-color: white;
+	border-radius: 5px;
+	background-image:url(image-path('green-fold.png'));
+	background-repeat:no-repeat;
+	background-position: right top;
+
+	.paper-make-offer-header{
+		color: rgb(32, 168, 226);
+		font-size: 16px;
+		margin-bottom: 20px;
+	}
+
+	.paper-make-offer-body{
+	  input{
+		margin-bottom: 8px;
+		height: 42px;
+	  }
+	  select {
+	  	margin-bottom: 8px;
+		height: 42px;
+	  }
+	  textarea{
+	  	margin-bottom: 8px;
+		height: 120px;
+	  }
+	}
+
+    .paper-header {
+    	color: rgb(140, 198, 62);
+    	margin-bottom: 20px;
+    }
+	.paper-body {
+		.paper-item-white {
+			height: 24px;
+			padding-left: 10px;
+			padding-right: 8px;
+
+		}
+
+		.paper-item-green {
+			height: 24px;
+			background-color: rgb(140, 198, 62);
+			border-radius: 3px;
+			padding-left: 10px;
+			padding-right: 8px;
+			color: white;
+		}
+
+		.paper-item-blue {
+			height: 24px;
+			background-color: rgb(223, 243, 252);
+			padding-left: 10px;
+			padding-right: 8px;
+		}
+
+		.paper-item-label {
+			float: left;
+
+		}
+		.paper-item-value {
+			float: right;
+		}
+	}
+}
+
+.funder-offer-main {
+	padding-left: 0px;
+	padding-right: 0px;
+}
+
+.funder-main-left {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+.funder-main-right {
+	padding-right: 0px;
+}
+
+.funder-sidebar {
+}

@@ -1,0 +1,17 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  type_name: MyString
+  type_code: MyString
+  total_count: 1
+  total_amount: 1.5
+  recent_count: 1
+  recent_amount: 1.5
+
+two:
+  type_name: MyString
+  type_code: MyString
+  total_count: 1
+  total_amount: 1.5
+  recent_count: 1
+  recent_amount: 1.5

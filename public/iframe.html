@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+   <head id="Head1">
+      <title>
+         DecisionLogic Service Page (Widget)
+      </title>
+      <meta http-equiv="pragma" content="no-cache" />
+      <link id="styleSheet" href="landing_page_default.css" rel="stylesheet" type="text/css" />
+   </head>
+   <body onload="javascript: loadTyping(); pageLoadTrackLastActivity();">
+      <form name="form1" method="post" action="Service.aspx?requestCode=F59ZF3&amp;isKiosk=false" id="form1">
+         <input type="hidden" name="hfBankSelect" id="hfBankSelect" value="300" />
+         <div id="divContent">
+            <div id="pnlLogin" onkeypress="javascript:return WebForm_FireDefaultButton(event, &#39;btnLoginNext&#39;)">
+               <div id="loginFormContainer">
+                  <div class="loginMainContainer">
+                     <div class="headingContainer">
+                        <span id="lblLoginHeading">Enter your login information and click Next</span>
+                     </div>
+                     <div class="subHeadingContainer">
+                        <span id="lblLoginSubHeading"></span>
+                     </div>
+                     <table class="loginTable">
+                        <tr>
+                           <td class="loginColumn1">
+                              <img id="imgContentServiceIcon" src="/images/boa.png" style="border-width:0px;" />
+                           </td>
+                           <td class="loginColumn2">
+                              <span id="lblContentServiceDisplayName">Bank of America - Bank</span><br />
+                              <a id="lnkHomeUrl" href="http://www.bankofamerica.com" target="_blank">http://www.bankofamerica.com</a>
+                           </td>
+                        </tr>
+                     </table>
+                     <table class="loginFormTable">
+                        <tr>
+                           <td class="loginFormColumn1"><span class="loginFormPrompt">Online ID</span></td>
+                           <td class="loginFormColumn2">
+                              <input type="text" id="id_LOGIN" name="LOGIN" size="20" maxlength="40" value="" class="loginFormTextBox" />  
+                           </td>
+                        </tr>
+                        <tr>
+                           <td class="loginFormColumn1"><span class="loginFormPrompt">Passcode</span></td>
+                           <td class="loginFormColumn2">
+                              <input type="password" id="id_pw_PASSWORD" name="PASSWORD" size="20" maxlength="20" value="" class="loginFormTextBox" /><a href="javascript:void(0)" onclick="showTyping()" class="showTypingLink">Show Typing</a>  
+                           </td>
+                        </tr>
+                     </table>
+                     <div id="confirmContainer">
+                        <input id="cbConfirm" type="checkbox" name="cbConfirm" class="cbConfirm" /><span id="lblConfirmTextStart" class="confirmText" style="padding-left: 10px;">I agree to the service </span><a id="lbtnTerms" href="javascript:__doPostBack(&#39;lbtnTerms&#39;,&#39;&#39;)">terms and conditions</a><span id="lblConfirmTextEnd" class="confirmText"> and authorize the release of my bank information to Buynance.</span>
+                     </div>
+                  </div>
+               </div>
+               <div id="loginButtonContainer">
+                  <input type="submit" name="btnLoginNext" value="Next" onclick="javascript:disableElement(&#39;btnLoginNext&#39;);disableElement(&#39;btnLoginBack&#39;);hideElement(&#39;divContent&#39;);showElement(&#39;divWorking&#39;);TrackLastActivityInsert();" id="btnLoginNext" class="button" />
+               </div>
+               <input type="hidden" name="hfShowTyping" id="hfShowTyping" value="0" />
+               <div class="loginExtraContainer">
+               </div>
+            </div>
+            <input type="hidden" name="hfActivityId" id="hfActivityId" value="3296471" />
+         </div>
+         <div id="divWorking" style="display: none;">
+            <span id="lblWorkingTop">Retrieving Information</span><br />
+            <img id="imgWorking" src="Images/loadingHoriz.gif" style="border-width:0px;" /><br />
+            <span id="lblWorkingBottom">(This may take a few minutes)</span>
+         </div>
+      </form>
+      <script type="text/javascript">
+         var _gaq = _gaq || [];
+         _gaq.push(['_setAccount', 'UA-15889953-3']);
+         _gaq.push(['_trackPageview']);
+         (function() {
+         	var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+         	ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+         	var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+         })();
+      </script>
+   </body>
+</html>

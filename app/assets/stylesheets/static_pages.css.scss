@@ -79,3 +79,55 @@ span.GramE
 	mso-paper-source:0;}
 div.WordSection1
 	{page:WordSection1;}
+
+
+.web_body {
+	.sub-menu{
+		height: 50px;
+		width: 100%;
+		background-color: rgb(169, 180, 182);
+		background-image:url('sub-menu-bg.jpg');
+		background-repeat:repeat-x;
+
+		ul{
+			margin: 0;
+			padding: 0;
+			list-style-type: none;
+			text-align: center;
+			li {
+				display: inline;
+			}
+		}
+	}
+
+	.our-story{
+		padding-top: 50px;
+		.our-story-header{
+
+		}
+		.our-story-subtitle{
+
+		}
+		.our-story-body{
+
+		}
+	}
+
+	.we-vs-retail-brokers{
+		background-color: white;
+		min-height: 250px;
+	}
+
+	.team{
+		.team-header{
+
+		}
+		.team-body{
+
+		}
+	}
+	.team-info{
+		background-color: white;
+		min-height: 250px;
+	}
+}

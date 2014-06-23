@@ -1,0 +1,54 @@
+.web_body
+  .module{style:"width:900px;"}
+    %ul
+      %li.tab.activeTab
+        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
+      %li.tab
+        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
+    .form
+      .main_body.form-style
+        %h3.form-header
+          = "You Have #{@offers.size} Offers!"
+        .row.offer-body
+          - for i in 0...(@offers.size)
+            - offer = @offers[i]
+            - offer_class = "offer"
+            - if offer.is_timed
+              - offer_class = "#{offer_class} best-offer"
+            -if !offer.is_active.nil? and !offer.is_active
+              - offer_class = "#{offer_class} offer-deleted"
+            %div{class: offer_class, data: {'id' => offer.id}}
+              %ul
+                %li.col-sm-1
+                  .delete
+                    X
+                .col-sm-8  
+                  %li.col-sm-4
+                    %span.info-title Advance amount
+                    %span.advance-price
+                      %span.dollar>$ 
+                      = "#{number_to_currency(Integer(offer.cash_advance_amount), precision: 0)[1..-1]}"
+                  %li.col-sm-4
+                    %span.info-title Payback amount
+                    %span.payback-price 
+                      = "#{number_to_currency(Integer(offer.total_payback_amount), precision: 0)}"
+                  %li.col-sm-4
+                    %span.info-title Daily Collection
+                    %span.daily-price
+                      %span.number
+                        %span.dollar $
+                        ="#{number_to_currency(Integer(offer.daily_merchant_cash_advance), precision: 0)[1..-1]}"
+                      \/ 
+                      - if offer.days_to_collect == 80
+                        4 months
+                      - else
+                        6 months
+                %li.col-sm-3
+                  =#.button.getfunded{onclick: "show_modal(this)"}    
+                  .button.getfunded
+                    = link_to "Get funded", {controller: "business_dashboards", action: "accept_offer", offer_id: offer.id }, method: :post
+                    =#controller: "businesses", action: "accept_offer", id: offer.id

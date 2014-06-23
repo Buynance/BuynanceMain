@@ -1,0 +1,112 @@
+- business = Business.find(lead.business_id, no_obfuscated_id: true)
+
+.funder-offer-main.col-sm-9
+  .funder-main-left.col-sm-6
+    .paper.paper-green
+      .paper-header
+        Current Loan or Advance Info
+      .paper-body
+        .paper-body-header
+        .paper-item-green
+          .paper-item-label
+            Lender
+          .paper-item-value
+            Fast Advance
+        .paper-item-white
+          .paper-item-label
+            Funded Amount
+          .paper-item-value
+            None
+        .paper-item-blue
+          %span.paper-item-label
+            Payback Amount
+          %span.paper-item-value
+            None
+        .paper-item-white
+          %span.paper-item-label
+            Current Balance
+          %span.paper-item-value
+            None
+        .paper-item-blue
+          %span.paper-item-label
+            ="% Paid Off"
+          %span.paper-item-value
+            None
+        .paper-item-white
+          %span.paper-item-label
+            Missed Payments
+          %span.paper-item-value
+            None
+        .paper-item-blue
+          %span.paper-item-label
+            Daily Holdback
+          %span.paper-item-value
+            None
+        .paper-item-white
+          %span.paper-item-label
+            = "Daily Holdback % of Avg Daily"
+          %span.paper-item-value
+            None
+    .paper.paper-green
+      .paper-header
+        ="Business and Banking Performance (#{business.bank_account.days_of_transactions.to_i} Days)"
+      .paper-body
+        .paper-item-blue
+          %span.paper-item-label
+            Total Deposits Value
+          %span.paper-item-value
+            = number_to_currency(business.bank_account.total_deposits_value)
+        .paper-item-white
+          %span.paper-item-label
+            Average Daily Balance
+          %span.paper-item-value
+            = number_to_currency(business.bank_account.average_balance)
+        .paper-item-blue
+          %span.paper-item-label
+            Total Negative Days
+          %span.paper-item-value
+            = business.bank_account.get_negative_days
+        .paper-item-white
+          %span.paper-item-label
+            Total Number of Deposits
+          %span.paper-item-value
+            = business.bank_account.total_number_of_deposits
+        /.paper-item-blue
+        /  %span.paper-item-label
+        /    Average # of NSF's Per Month:
+        /  %span.paper-item-value
+        .paper-item-blue
+          %span.paper-item-label
+            Monthly Credit Cards Revenue:
+          %span.paper-item-value
+  .funder-main-right.col-sm-6
+    .paper.paper-green
+      .paper-header
+        Credit
+      .paper-body
+        .paper-item-blue
+          %span.paper-item-label
+            FICO
+          %span.paper-item-value
+            = Business.credit_score_string(business.approximate_credit_score_range)
+        .paper-item-white
+          %span.paper-item-label
+            Bankruptcies
+          %span.paper-item-value
+            = business.is_ever_bankruptcy
+        .paper-item-blue
+          %span.paper-item-label
+            Judgements
+          %span.paper-item-value
+            = business.is_judgement
+        .paper-item-white
+          %span.paper-item-label
+            Tax Liens
+          %span.paper-item-value
+            = business.is_tax_lien
+    
+    .paper.paper-blue
+      - if is_make_offer
+        = render 'funder_make_offer', lead: lead
+      - else
+        = render 'funder_show_offer', lead: lead

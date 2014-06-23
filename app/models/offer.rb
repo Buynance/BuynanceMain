@@ -1,21 +1,51 @@
 class Offer < ActiveRecord::Base
-	belongs_to :business
+	before_create :init
+
+	belongs_to :business #delete
 	belongs_to :funder
+
+	belongs_to :lead, inverse_of: :offers
 	#before_create :init
 
-	scope :active, where(is_active: true)
-	scope :inactive, where(is_active: false)
-	scope :best_offers, where(is_best_offer: true)
+	scope :pending, where(state: "pending")
+	scope :accepted, where(state: "accepted")
+	scope :removed, where(state: "removed")
+	scope :rejected, where(state: "rejected")
+	scope :funded, where(state: "funded")
+
+	OFFER_TYPE = [new_loan_ach: 1, new_loan_credit: 2, refinance_ach: 3, refinance_credit: 4]
+
+	self.per_page = 10
+
 	
-	state_machine :state, :initial => :awaiting_action do
+	state_machine :state, :initial => :pending do
 	    event :accept do
-	      transition [:awaiting_action] => :accepted
+	      transition [:pending] => :accepted
 	    end
     
 	    event :reject do
-	      transition [:awaiting_action] => :rejected
+	      transition [:pending] => :rejected
+	    end
+
+	    event :fund do
+	      transition [:accepted] => :funded
+	    end
+
+	    event :remove do 
+	    	transition [:accepted, :pending] => :removed
 	    end
   	end
+
+
+  	def init
+  		self.factor_rate = self.total_payback_amount / self.cash_advance_amount
+  		if self.days_to_collect.nil?
+  			self.days_to_collect = self.total_payback_amount / self.daily_merchant_cash_advance 
+  		else
+  			self.daily_merchant_cash_advance = self.total_payback_amount / self.days_to_collect
+  		end
+  	end
+
 
 	def create_random_offers(min, max)
 		amount = rand(max - min + 1) + min

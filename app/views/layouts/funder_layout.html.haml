@@ -1,0 +1,68 @@
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+    %title Buynance - Faster, Cheaper, Merchant Cash Advances.
+    %link{href: "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600", rel: "stylesheet", type: "text/css"}/
+    %link{href: "http://fonts.googleapis.com/css?family=Lato", rel: "stylesheet", type: "text/css"}/
+    %script{href: "http://jquery.thewikies.com/browser/jquery.browser.min.js"}
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    %script{href: "http://www.decisionlogic.com/javascript/jquery-1.6.2.min.js"}
+    
+    
+    = csrf_meta_tags
+    = favicon_link_tag "favicon.ico"
+    = render :partial => 'layouts/analytics'
+  %body
+    #header.container-fluid
+      #logo.col-sm-4
+        .image
+          = link_to image_tag("logo.jpg", class: "logo", href: "/"), root_url
+      #nav.col-sm-8
+        .row-fluid
+          .fight.col-xs-3.header-text-padding
+            Funder Dashboard
+          .phone.col-xs-3
+            = image_tag("phone_icon.jpg")
+            %span.phone-text-padding 
+              1-888-906-4909
+          .col-xs-6.no-padding
+            .email.col-xs-3.header-text-padding
+              = image_tag("mail_icon.jpg")
+              Email Us
+            .login.col-xs-3.header-btn-padding-right
+              - if current_funder
+                /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+                /  LOGOUT
+                %a.flat-button.button-login{href: "/funder_logout"}
+                  Logout
+              - else
+                /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+                /  LOGIN
+                %a.flat-button.button-login{href: "/funder_login"}
+                  Login
+            .signup.col-xs-3.header-btn-padding-left
+              - if current_funder
+                /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+                /  ACCOUNT
+                %a.flat-button.button-signup{href: "/funder_dashboard/main"}
+                  Dashboard
+              - else
+                /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+                /  SIGNUP
+                %a.flat-button.button-signup{href: "/"}
+                  Main
+      - render :partial => "layouts/analytics" if Rails.env == "production"
+    = yield
+
+    = render :partial => 'layouts/footer'
+
+:javascript
+  
+  function login_link(){
+    window.location = "/login"
+  }
+
+  function logout_link(){
+    window.location = "/logout"
+  }

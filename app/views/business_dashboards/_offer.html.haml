@@ -1,0 +1,56 @@
+.business-offer 
+  .business-offer-body.row
+    .business-offer-body-image.col-xs-3
+      .business-offer-body-image-dummy
+    .business-offer-body-info.col-xs-9
+      .business-offer-body-info-top.row
+        .business-offer-body-info-top-amount.col-xs-6
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span Offer Amount
+            .business-offer-amount.col-xs-4
+              %span
+                = number_to_currency offer.cash_advance_amount
+          %hr
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span Payback Amount
+            .business-offer-amount.col-xs-4
+              %span
+                = number_to_currency offer.total_payback_amount
+          %hr
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span Daily Collection
+            .business-offer-amount.col-xs-4
+              %span
+                = number_to_currency offer.daily_merchant_cash_advance
+
+        .business-offer-body-info-top-rate.col-xs-6
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span Term
+            .business-offer-amount.col-xs-4
+              %span 6 Months
+          %hr
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span % of Daily Balance
+            .business-offer-amount.col-xs-4
+              %span 20%
+          %hr
+          .business-offer-section.row
+            .business-offer-label.col-xs-8
+              %span Factor Rate
+            .business-offer-amount.col-xs-4
+              %span 
+                = offer.factor_rate
+      %hr
+      .business-offer-body-info-bottom.row
+        .business-offer-body-info-text.col-xs-7
+          %span.business-offer-info-label 
+            = "Savings vs. Brokers  " 
+          %span.business-offer-info-amount $ 1,000
+        .business-offer-body-info-action.col-xs-5
+          .flat-button.blue-button
+            = link_to "Get funded", {controller: "business_dashboards", action: "accept_offer", offer_id: offer.id }, method: :post

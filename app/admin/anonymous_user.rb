@@ -1,15 +1,15 @@
-ActiveAdmin.register AnonymousUser do
+#ActiveAdmin.register AnonymousUser do
 
-  index do
-    column :id
-    column :ip
-    column :request_count
-    column :city
-    column :state
-    column :country
-    column :created_at
-    column :updated_at
-  end
+#  index do
+#    column :id
+#    column :ip
+#    column :request_count
+#    column :city
+##    column :state
+#    column :country
+#    column :created_at
+#    column :updated_at
+#  end
 
   
   
@@ -26,4 +26,4 @@ ActiveAdmin.register AnonymousUser do
   #  permitted
   # end
   
-end
+#end

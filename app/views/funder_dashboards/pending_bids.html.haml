@@ -1,0 +1,9 @@
+.web_body
+  .container{style: "width: 1200x;"}
+    = render 'funder_sidebar'
+    - @leads.each do |lead|
+      .funder-sidebar.col-sm-3
+      = render 'funder_lead', lead: lead, is_make_offer: false
+      
+    = will_paginate @leads
+      
