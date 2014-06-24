@@ -1,279 +1,565 @@
-html{ font-size: 100%; }
-body{font-size: 0.625em;}
-	.banner{
-		background-image: url(homepage_background.jpg);
-		background-repeat:no-repeat;
-		background-size:100%;
-		display: inline-block;
-	    position: relative;
-	    width: 100%;
+html {
+    font-size: 100%;
+}
 
-	    .banner-dummy{
-			padding-top: 41%;
-		}
+body {
+    font-size: 0.625em;
+}
 
-		.banner-content{
-			position: absolute;
-	    	top: 21%;
-	    	bottom: 0;
-	    	left: 0;
-	    	right: 0;
+  /**************************************************/
+ /*                    Banner                      */
+/**************************************************/
 
-	    	.banner-content-information{
-	    		.banner-content-information-header{
-	    		 	margin-bottom: 1.6em;
-	    		 	span{
-	    		 		font-size: 4.2em;
-	    		 		font-weight: 900;
-	    		 	}
-	    		 	.banner-content-information-header-top{
-	    		 		color: rgb(141, 198, 63);
-	    		 	}
-	    		 	.banner-content-information-header-bottom{
-	    		 		color: rgb(32, 172, 215);
-	    		 	}
-	    		}
-	    		.banner-content-information-subheader{
-	    		 	color: rgb(63, 63, 63);
-	    		 	margin-bottom: 5.0em;
-	    		 	text-align: left;
-	    		 	span{ font-size: 2.2em; }
-	    		}
-	    	}
-	    	.banner-content-information-action{
-	    		
-	    		.banner-content-information-action-get-financed{
-	    			float: left;
-	    			.flat-button.button-get-financed {
-  						background-color: rgb(32, 172, 215);
-  						color: white;
-  						font-size: 1.7em;
- 						font-weight: 900;
-  						width: 10.0em;
-  						border-size: 0px;
-  						padding-top: 0.8em;
-  						padding-bottom: 0.8em;
-					}
-					margin-right: 1em;
-				}
-				.banner-content-information-action-refinance{
-					float: left;
-					.flat-button.button-get-refinance {
-						font-size: 1.7em;
-  						background-color: rgb(141, 198, 63);
-  						color: white;
- 						font-weight: 900;
-  						width: 10.0em;
-  						border-size: 0px;
-  						padding-top: 0.8em;
-  						padding-bottom: 0.8em;
-					}
+.banner {
+    background-image: url(homepage_background.jpg);
+    background-repeat: no-repeat;
+    background-size: 100%;
+    display: inline-block;
+    position: relative;
+    width: 100%;
+    .banner-dummy {
+        padding-top: 41%;
+    }
+    .banner-content {
+        position: absolute;
+        top: 21%;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        .banner-content-information {
+            .banner-content-information-header {
+                margin-bottom: 1.6em;
+                span {
+                    font-size: 4.2em;
+                    font-weight: 900;
+                }
+                .banner-content-information-header-top {
+                    color: rgb(141, 198, 63);
+                }
+                .banner-content-information-header-bottom {
+                    color: rgb(32, 172, 215);
+                }
+            }
+            .banner-content-information-subheader {
+                color: rgb(63, 63, 63);
+                margin-bottom: 5.0em;
+                text-align: left;
+                span {
+                    font-size: 2.2em;
+                }
+            }
+        }
+        .banner-content-information-action {
+            .banner-content-information-action-get-financed {
+                float: left;
+                .flat-button.button-get-financed {
+                    background-color: rgb(32, 172, 215);
+                    color: white;
+                    font-size: 1.7em;
+                    font-weight: 900;
+                    width: 10.0em;
+                    border-size: 0px;
+                    padding-top: 0.8em;
+                    padding-bottom: 0.8em;
+                }
+                margin-right: 1em;
+            }
+            .banner-content-information-action-refinance {
+                float: left;
+                .flat-button.button-get-refinance {
+                    font-size: 1.7em;
+                    background-color: rgb(141, 198, 63);
+                    color: white;
+                    font-weight: 900;
+                    width: 10.0em;
+                    border-size: 0px;
+                    padding-top: 0.8em;
+                    padding-bottom: 0.8em;
+                }
+            }
+        }
+        .banner-content-information-bages {
+            .banner-content-information-badges-one {}
+            .banner-content-information-badges-two {}
+        }
+    }
+}
 
-	    		}
-	    	}
-	    	.banner-content-information-bages{
-	    		.banner-content-information-badges-one{
+  /**************************************************/
+ /*                How it Works                    */
+/**************************************************/
 
-	    		}
-        		.banner-content-information-badges-two{
+.homepage-wrapper {
+    width: 108em;
+    margin: 0 auto;
+    padding-bottom: 10.0em;
+    .how-works {
+        width: 100%;
+        padding-top: 2.0em;
+        padding-left: 15em;
+        padding-right: 15em;
+        .how-works-header {
+            text-align: center;
+            margin-bottom: 5.0em;
+            .how-works-header-top {
+                text-align: center;
+                span {
+                    font-size: 2.4em;
+                    font-weight: 900;
+                    color: rgb(96, 96, 96);
+                }
+            }
+            .how-works-header-bottom {
+                text-align: center;
+                span {
+                    font-size: 2.4em;
+                    font-weight: 900;
+                    color: rgb(32, 172, 215);
+                }
+            }
+        }
+        .how-works-steps {
+            width: 100%;
+            background-image: url("dot_divider.jpg");
+            background-position: left center;
+            background-repeat: repeat-x;
+            text-align: center;
+            img {
+                width: 11.3em;
+                height: 11.3em;
+            }
+            .how-works-steps-step1 {
+                display: inline-block;
+                float: left;
+                text-align: center;
+                .how-works-steps-step1-image {
+                    background-color: white;
+                    padding-left: 2.0em;
+                    padding-right: 2.0em;
+                }
+            }
+            .how-works-steps-step2 {
+                display: inline-block;
+                text-align: center;
+                .how-works-steps-step2-image {
+                    background-color: white;
+                    padding-left: 2.0em;
+                    padding-right: 2.0em;
+                }
+            }
+            .how-works-steps-step3 {
+                display: inline-block;
+                float: right;
+                text-align: center;
+                .how-works-steps-step3-image {
+                    background-color: white;
+                    padding-left: 2.0em;
+                    padding-right: 2.0em;
+                }
+            }
+        }
+        .how-works-information {
+            padding-top: 2.0em;
+            text-align: center;
+            font-color: rgb(115, 115, 115);
+            .how-works-information-step1 {
+                float: left;
+                display: inline-block;
+                width: 15.3em;
+                span {
+                    text-align: center;
+                    font-size: 1.6em;
+                }
+            }
+            .how-works-information-step2 {
+                display: inline-block;
+                width: 15.3em;
+                span {
+                    text-align: center;
+                    font-size: 1.6em;
+                }
+            }
+            .how-works-information-step3 {
+                float: right;
+                display: inline-block;
+                width: 15.3em;
+                span {
+                    text-align: center;
+                    font-size: 1.6em;
+                }
+            }
+        }
+    }
+}
+
+.homepage-fluid-container {
+    width: 100%;
+    padding-top: 5.0em;
+    padding-bottom: 10.0em;
+    .homepage-container {
+        width: 108.0em;
+        margin: 0 auto;
+    }
+}
+
+.container-gray {
+    background-color: rgb(242, 242, 242);
+}
+
+.container-white {
+    background-color: white;
+}
+
+
+.highlight-orange {
+	color: rgb(240, 217, 140);
+}
+
+.highlight-blue {
+	color: rgb(32, 172, 215);
+}
+
+.highlight-green {
+	color: rgb(141, 198, 63);
+}
+
+/**************************************************/
+/*                In The News                     */
+/**************************************************/
+
+.in-the-news {
+    width: 100%;
+    .in-the-news-header {
+        margin-bottom: 8.0em;
+        color: rgb(96, 96, 96);
+        span {
+            font-size: 2.4em;
+            font-weight: 900;
+            color: rgb(96, 96, 96);
+        }
+    }
+    .in-the-news-body {
+        margin: 0 auto;
+        display: inline-block;
+        .in-the-news-body-section {
+            width: 54.0em;
+            float: left;
+            display: inline-block;
+            .in-the-news-body-section-image-bloomberg {
+                width: 100%;
+                margin-bottom: 3.0em;
+                img {
+                    display: block;
+                    width: 21.93em;
+                    height: 5.0em;
+                    margin: 0 auto;
+                }
+            }
+            .in-the-news-body-section-image-alleywatch {
+                width: 100%;
+                margin-bottom: 3.0em;
+                img {
+                    display: block;
+                    width: 19.5em;
+                    height: 5.0em;
+                    margin: 0 auto;
+                }
+            }
+            .in-the-news-body-section-information {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 3.0em;
+                padding-left: 5.0em;
+                padding-right: 5.0em;
+                color: rgb(95, 99, 100);
+                span {
+                    display: inline-block;
+                    font-size: 1.4em;
+                    line-height: 2.0em;
+                }
+            }
+            .in-the-news-body-section-action {
+                width: 100%;
+                .flat-button.button-get-refinance {
+                    display: block;
+                    font-size: 1.7em;
+                    background-color: rgb(32, 172, 215);
+                    color: white;
+                    font-weight: 900;
+                    width: 10.0em;
+                    border-size: 0px;
+                    padding-top: 0.4em;
+                    padding-bottom: 0.4em;
+                    margin: 0 auto;
+                }
+            }
+        }
+    }
+}
+
+  /**************************************************/
+ /*                Benefits                        */
+/**************************************************/
+
+.benefits {
+	width: 100%;
+    .benefits-header {
+        margin-bottom: 5.0em;
+        span {
+            font-size: 2.4em;
+            font-weight: 900;
+            color: rgb(96, 96, 96);
+        }
+    }
+    .benefits-body {
+        margin-bottom: 5.0em;
+        .benefits-body-row-green {
+            .benefits-body-row-green-number {
+            	float: left;
+                display: inline-block;
+                padding-top: 7.2em;
+                margin-right: 2.0em;
+                img {
+                	display: block;
+                    width: 5.9em;
+                    height: 5.9em;
+                }
+            }
+            .benefits-body-row-green-image {
+                float: left;
+                display: inline-block;
+                margin-right: 2.0em;
+                img {
+                	display: block;
+                    width: 20.3em;
+                    height: 20.3em;
+                }
+            }
+            .benefits-body-row-green-information {
+                float: left;
+                display: inline-block;
+                width: 47.6em;
+                height: 20.3em;
+                position: relative;
+                .benefits-body-row-green-information-block {
+					position: absolute;                	
+					bottom: 0;
+					display: block;
+                	.benefits-body-row-green-information-block-text {
+                		font-size: 2.0em;
+                		text-align: center;
+                		margin-bottom: 3.0em;
+                		display: block;
+                	}
+                	.benefits-body-row-green-information-block-arrow {
+                		img {
+                			width: 2.64em;
+                			height: 1.6em;
+                			margin: 0 auto;
+                			display: block;
+                		}
+                		
+                	}
+            	}
+            }
+        }
+        .benefits-body-row-blue {
+        	margin-top: -2.0em;
+            .benefits-body-row-blue-number {
+                float: right;
+                display: inline-block;
+                padding-top: 7.2em;
+                margin-left: 2.0em;
+                img {
+                	display: block;
+                    width: 5.9em;
+                    height: 5.9em;
+                }
+            }
+            .benefits-body-row-blue-image {
+                float: right;
+                display: inline-block;
+                margin-left: 2.0em;
+                img {
+                	display: block;
+                    width: 20.3em;
+                    height: 20.3em;
+                }
+            }
+            .benefits-body-row-blue-information {
+                float: right;
+                display: inline-block;
+                width: 47.6em;
+                height: 20.3em;
+                position: relative;
+                .benefits-body-row-blue-information-block {
+					position: absolute;                	
+					bottom: 0;
+					display: block;
+                	.benefits-body-row-blue-information-block-text {
+                		font-size: 2.0em;
+                		text-align: center;
+                		margin-bottom: 3.0em;
+                		display: block;
+                	}
+                	.benefits-body-row-blue-information-block-arrow {
+                		img {
+                			width: 2.64em;
+                			height: 1.6em;
+                			margin: 0 auto;
+                			display: block;
+                		}
+                		
+                	}
+                }
+            }
+        }
+        .benefits-body-row-orange {
+        	margin-top: -4.0em;
+            .benefits-body-row-orange-number {
+                float: left;
+                display: inline-block;
+                padding-top: 7.2em;
+                margin-right: 2.0em;
+                img {
+                	display: block;
+                    width: 5.9em;
+                    height: 5.9em;
+                }
+            }
+            .benefits-body-row-orange-image {
+                float: left;
+                display: inline-block;
+                margin-right: 2.0em;
+                img {
+                	display: block;
+                    width: 20.3em;
+                    height: 20.3em;
+                }
+            }
+            .benefits-body-row-orange-information {
+                float: left;
+                display: inline-block;
+                width: 47.6em;
+                height: 20.3em;
+                position: relative;
+                .benefits-body-row-orange-information-block {
+					position: absolute;                	
+					bottom: 0;
+					display: block;
+                	.benefits-body-row-orange-information-block-text {
+                		font-size: 2.0em;
+                		text-align: center;
+                		margin-bottom: 3.0em;
+                		display: block;
+                	}
+                	.benefits-body-row-orange-information-block-arrow {
+                		img {
+                			width: 2.64em;
+                			height: 1.6em;
+                			margin: 0 auto;
+                			display: block;
+                		}
+                		
+                	}
+                }
+            }
+        }
+    }
+    .benefits-action-bar {
+        width: 100%;
+        text-align: center;
+        .benefits-action-bar-group {
+            
+            display: inline-block;
+            margin: 0 auto;
+            .benefits-action-bar-group-financed {
+                float: left;
+                margin-left: 2.0em;
+                .flat-button.button-get-financed {
+                    background-color: rgb(32, 172, 215);
+                    color: white;
+                    font-size: 1.7em;
+                    font-weight: 900;
+                    width: 10.0em;
+                    border-size: 0px;
+                    padding-top: 0.8em;
+                    padding-bottom: 0.8em;
+                }
+                margin-right: 1em;
+            }
+            .benefits-action-bar-group-refinance {
+                float: left;
+                .flat-button.button-get-refinance {
+                    font-size: 1.7em;
+                    background-color: rgb(141, 198, 63);
+                    color: white;
+                    font-weight: 900;
+                    width: 10.0em;
+                    border-size: 0px;
+                    padding-top: 0.8em;
+                    padding-bottom: 0.8em;
+                }
+            }
+        }
+    }
+}
+
+  /**************************************************/
+ /*                Testimonials                    */
+/**************************************************/
+
+.testimonials {
+  	.testimonials-header {
+  		margin-bottom: 5.0em;
+        span {
+            font-size: 2.4em;
+            font-weight: 900;
+            color: rgb(96, 96, 96);
+        }
+  	}
+  	.testimonials-body {
+        margin-left: 2.0em;
+    	.testimonials-body-left {
+    		float: left;
+    		margin-right: 4.0em;
+      		.testimonials-body-left-video {
+      			margin-bottom: 2.0em;
+      			img {
+      				width: 27.6em;
+      				height: 18.7em;
+      			}
+      		}
+      		.testimonials-body-left-subheader {
+        		.testimonials-body-left-subheader-name {
+        			text-align: center;
+        			margin-bottom: 1.0em;
+                    span{
+                        font-weight: 900;
+                        font-size: 1.4em;
+                    }
 
         		}
-	    	}
-        
+        		.testimonials-body-left-subheader-title {
+        			margin: 0 auto;
+                    text-align: center;
+                    span{
+                        font-size: 1.4em;
+                        color: rgb(32, 172, 215);
+                    }
 
-		}
-
-	}
-
-    /***************************************************************************************/
-   /*****************************                   ***************************************/
-  /*****************************    How it Works     *************************************/
- /*******************************                   *************************************/
-/***************************************************************************************/
-
-.homepage-wrapper{
-	width: 108em;
-	margin: 0 auto;
-	padding-bottom: 10.0em;
-
-	.how-works{
-		width: 100%;
-		padding-top: 2.0em;
-		padding-left: 15em;
-		padding-right: 15em;
-		.how-works-header{
-			text-align: center;
-			margin-bottom: 5.0em;
-			.how-works-header-top{
-				text-align: center;
-				span{
-					font-size: 2.4em;
-				}
-
-			}
-			.how-works-header-bottom{
-				text-align: center;
-				span{
-					font-size: 2.4em;
-					font-weight: 900;
-					color: rgb(32, 172, 215);
-				}
-
-			}
-		}
-		.how-works-steps{
-			width: 100%;
-			background-image: url("dot_divider.jpg");
-			background-position: left center;
-			background-repeat: repeat-x;
-			text-align: center;
-			img{width: 11.3em; height: 11.3em;}
-			.how-works-steps-step1{
-				display: inline-block;
-				float:left;
-				text-align: center;
-
-				.how-works-steps-step1-image{
-					background-color: white;
-					padding-left: 2.0em;
-					padding-right: 2.0em;
-				}
-			}
-			.how-works-steps-step2{
-				display: inline-block;
-				text-align: center;
-				
-				.how-works-steps-step2-image{
-					background-color: white;
-					padding-left: 2.0em;
-					padding-right: 2.0em;
-					
-				}
-			}
-			.how-works-steps-step3{
-				display: inline-block;
-				float: right;
-				text-align: center;
-				.how-works-steps-step3-image{
-					background-color: white;
-					padding-left: 2.0em;
-					padding-right: 2.0em;	
-				}
+        		}
       		}
-		}
-		.how-works-information{
-			padding-top: 2.0em;
-			text-align: center;
-			font-color: rgb(115, 115, 115);
-			.how-works-information-step1{
-				float: left;
-				display: inline-block;
-				width: 15.3em;
-				span{
-					text-align: center;
-					font-size: 1.6em;
-				}
-
-			}
-        
-      		.how-works-information-step2{
-      			display: inline-block;
-      			width: 15.3em;
-      			span{
-      				text-align: center;
-      				font-size: 1.6em;
+    	}
+    	.testimonials-body-right {
+    		float: left;
+    		width: 47em;
+      		.testimonials-body-right-text {
+      			span {
+      				line-height: 2.4em;
+      				font-size: 1.4em;
       			}
       		}
-  
-      		.how-works-information-step3{
-      			float: right;
-      			display: inline-block;
-      			width:15.3em;
-      			span{
-      				text-align: center;
-      				font-size: 1.6em;
-      			}
-
-      		}
-		}
-	}
+    	}
+  	}
 }
-
-.homepage-fluid-container{
-	width: 100%;
-	
-	padding-top: 10.0em;
-	padding-bottom: 10.0em;
-
-	.homepage-container{
-		width: 108.0em;
-		margin: 0 auto;
-	}
-}
-
-.container-gray{
-	background-color: rgb(242,242,242);
-}
-
-.container-white{
-	background-color: white;
-}
-
-.in-the-news{
-	width: 100%;
-	.in-the-news-header{
-
-	}
-	.in-the-news-body{
-		display: inline-block;
-		margin: 0 auto;
-		.in-the-news-body-section{
-			width: 35.5em;
-			float: left;
-			display: inline-block;
-			.in-the-news-body-section-image-bloomberg{
-				width: 100%;
-				img{
-					width:19.3em;
-					height: 4.4em;
-					margin: 0 auto;
-				}
-
-			}
-			.in-the-news-body-section-image-alleywatch{
-				width: 100%;
-				img{
-					width:19.5em;
-					height: 5.0em;
-					margin: 0 auto;
-				}
-
-			}
-			.in-the-news-body-section-information{
-				width: 100%;
-				text-align: center;
-				span{
-					display: inline-block;
-				}
-			}
-
-			.in-the-news-body-section-action{
-				width: 100%;
-				.flat-button.button-get-refinance {
-					font-size: 1.7em;
-					background-color: rgb(141, 198, 63);
-					color: white;
-					font-weight: 900;
-					width: 10.0em;
-					border-size: 0px;
-					padding-top: 0.4em;
-					padding-bottom: 0.4em;
-					margin: 0 auto;
-				}
-			}
-		}
-	}
-}
-
-
-
