@@ -11,7 +11,7 @@ body {
 /**************************************************/
 
 .banner {
-    background-image: url(homepage_background.jpg);
+    background-image: image-url('homepage_background.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;
@@ -120,7 +120,7 @@ body {
         }
         .how-works-steps {
             width: 100%;
-            background-image: url("dot_divider.jpg");
+            background-image: image-url("dot_divider.jpg");
             background-position: left center;
             background-repeat: repeat-x;
             text-align: center;

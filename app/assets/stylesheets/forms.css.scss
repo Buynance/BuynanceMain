@@ -56,7 +56,7 @@ select option:first-child {
         margin-left: 62px;
     }
     .paper-section-top {
-        background-image: url(image-path("paper_top_background_3.png"));
+        background-image: image-url(image-path("paper_top_background_3.png"));
         min-height: 62px;
         padding-top: 10px;
         padding-left: 50px;
@@ -192,7 +192,7 @@ select option:first-child {
         }
     }
     .paper-section-body {
-        background: url(image-path("paper_bottom_background.png")) bottom left no-repeat, url(image-path("paper_body_background.png")) top left;
+        background: image-url(image-path("paper_bottom_background.png")) bottom left no-repeat, image-url(image-path("paper_body_background.png")) top left;
         min-height: 185px;
         padding-top: 10px;
         padding-left: 50px;
@@ -231,13 +231,13 @@ select option:first-child {
         hr {}
     }
     .paper-section-bottom {
-        background-image: url(image-path("paper_bottom_background.png"));
+        background-image: image-url(image-path("paper_bottom_background.png"));
         min-height: 185px;
         padding-left: 50px;
         padding-right: 45px;
     }
     .paper-braker {
-        background-image: url(image-path("paper_bar.png"));
+        background-image: image-url(image-path("paper_bar.png"));
         width: 686px;
         height: 10px;
         margin-top: 10px;
