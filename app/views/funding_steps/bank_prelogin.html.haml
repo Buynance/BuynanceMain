@@ -13,11 +13,6 @@
             %span Your information is safe, secure, and private.
         .paper-section-bank-login-form
           = simple_form_for @business, url: wizard_path do |f|
-            - if flash[:notice]
-              %div{class: "alert alert-danger"}
-                %ul{style: "list-style: none;"}
-                  %li 
-                    = flash[:notice]
             - if @bank_account.errors.any?
               %div{class: "alert alert-danger"}
                 %ul{style: "list-style: none;"}

@@ -1,24 +1,10 @@
 .web_body
-  .module{style: "width: 980px;" }
-    %ul
-      %li.tab.activeTab
-        %img.icon{alt: "", src: "http://i.imgur.com/Fk1Urva.png"}/
-      %li.tab
-        %img.icon{alt: "", src: "http://i.imgur.com/ZsRgIDD.png"}/
-      %li.tab
-        %img.icon{alt: "", src: "http://i.imgur.com/34Q50wo.png"}/
-      %li.tab
-        %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
-    .form{style: "padding-bottom: 0px;" }
-      %iframe{id:"IFrameHolder", frameborder:"0", height:"480", width:"920", src:"https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"}
- 
-/.web_body
-/  .paper-section
-/    .paper-section-header
-/      Bank Login
-/    .paper-section-top
-/    .paper-section-body.paper-section-bank-login.row
-/      .paper-section-bank-login-left.col-xs-7
-/        %iframe{src: "/iframe.html", width: 416, height: 590, frameBorder: "0"}
-/      .paper-section-bank-login-right.col-xs-5
-/        = render "shared/bank_sidebar"
+  .paper-section
+    .paper-section-header
+      Bank Login
+    .paper-section-top
+    .paper-section-body.paper-section-bank-login.row
+      .paper-section-bank-login-left.col-xs-7
+        %iframe{id:"IFrameHolder", frameborder:"0", height:"590", width:"416", src:"https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"}
+      .paper-section-bank-login-right.col-xs-5
+        = render "shared/bank_sidebar"
