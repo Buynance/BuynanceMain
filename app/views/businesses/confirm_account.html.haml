@@ -1,14 +1,26 @@
-    .row.main-title-wrap
-      .col-md-6.col-md-offset-3
-        %h1.main-title Confirm Account
-    .row    
-      .col-md-6.col-md-offset-3.form-style
-        %h3.form-header Create Your Buynance Password
-        - if @business.errors.any?
-          %div{class: "alert alert-danger"}
-            %ul{style: "list-style: none;"}
-              - @business.errors.full_messages.each do |msg|
-                %li= msg
-
-        = form_for @business, url: url_for(controller: "businesses", action: "confirm"), class: "confirm_account", id: "confirm_account" do |f|
-          = render :partial => "_password_form", :locals => {:f => f}          
+.web_body
+  .paper-section
+    .paper-section-header
+      Mobile Confirmation
+    .paper-section-top
+    .paper-section-body.paper-section-bank-login.row
+      .paper-section-bank-login-left.col-xs-7
+        .paper-section-bank-login-left-header
+          %span Please Confirm your Mobile Number
+        .paper-section-bank-login-left-information
+          %span We have sent you a mobile code to your account. Please enter it below.
+        .paper-section-bank-login-form
+          = simple_form_for :mobile, url: '/confirm_mobile' do |f|
+            - unless flash.alert.nil?
+              %div{class: "alert alert-danger"}
+                %ul{style: "list-style: none;"}
+                  %li 
+                    = flash.alert
+            .paper-section-bank-login-form-label
+              %span What is the mobile code sent to your account?
+            .paper-section-bank-login-form-input
+              = f.input :mobile_opt_code, placeholder: 'Mobile Code', input_html: {class: 'textbox'}, label: false, as: :string
+            .paper-section-bank-login-form-action
+              = f.submit "Continue", class: "form-button flat-button button-submit"
+      .paper-section-bank-login-right.col-xs-5
+        = render "shared/funding_sidebar"

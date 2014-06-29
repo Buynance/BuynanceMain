@@ -6,5 +6,5 @@
     .paper-section-body.paper-section-bank-login.row
       .paper-section-bank-login-left.col-xs-7
         %iframe{id:"IFrameHolder", frameborder:"0", height:"590", width:"416", src:"https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"}
-      .paper-section-bank-login-right.col-xs-5
+      .paper-section-bank-login-right.col-xs-5.fix-overflow{style: "width: 40%;"}
         = render "shared/bank_sidebar"

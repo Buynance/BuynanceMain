@@ -235,6 +235,10 @@ GEM
     ox (2.1.1)
     pg (0.17.1)
     pg (0.17.1-x86-mingw32)
+    pluggable_js (2.0.0)
+      coffee-rails
+      jquery-rails
+      rails (>= 3.1)
     polyamorous (1.0.0)
       activerecord (>= 3.0)
     polyglot (0.3.5)
@@ -419,6 +423,7 @@ DEPENDENCIES
   maxminddb
   obfuscate_id!
   pg
+  pluggable_js (~> 2.0.0)
   quiet_assets
   rack-contrib
   rails (= 4.0.2)

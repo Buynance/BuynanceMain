@@ -33,6 +33,23 @@ module BusinessValidations
 	length: {minimum: 2, maximum: 20, message: "Please include a valid last name."},
 	if: -> {self.current_step == :personal}
 
+	validates :street_address_one,
+	length: {minimum: 3, maximum: 20, message: "Please include a valid street address."},
+	if: -> {self.current_step == :personal}
+
+	validates :city,
+	presence: {message: "Please include your city."},
+	if: -> {self.current_step == :personal}
+
+	validates :location_state,
+	presence: {message: "Please include your state.", allow_blank: false},
+	if: -> {self.current_step == :personal}
+
+	validates_format_of :zip_code, 
+	:with => /\A\d{5}-\d{4}|\A\d{5}\z/, 
+	:message => "Your zip code should be a number 5 digits long",
+	if: -> {self.current_step == :personal}
+
 	validates :phone_number,
 	presence: {message: "Please enter a valid US phone number."},
 	if: -> {self.current_step == :personal}
@@ -41,46 +58,27 @@ module BusinessValidations
 	presence: {message: "Plase enter a valid US mobile phone number."},
 	if: -> {self.current_step == :personal}
 
-    validates :street_address_one,
-	length: {minimum: 3, maximum: 20, message: "Please include a valid street address."},
+	validates :business_type_id,
+	presence: { message: "Please include your business type.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
-	validates :city,
-	presence: {message: "Please include your city."},
-	if: -> {self.current_step == :personal}
-
-	validates :state,
-	presence: {message: "Please include your state."},
-	if: -> {self.current_step == :personal}
-
-	validate :zip_code,
-	presence: {message: "Please include your five digit zip code"},
-	numericality: {only_integer: true, minimum: 5, maximum: 5, message: "Your zip code should only include number and be 5 digits long"},
-	if: -> {self.current_step == :personal}
-
-	validate :business_type_id,
-	presence: {message: "Please include what your business type."},
-	if: -> {self.current_step == :personal}
-
-	validate :years_in_business,
-	presence: {message: "Please include how many years you have been in business."},
+	validates :years_in_business,
+	presence: { message: "Please include how many years you have been in business.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
 
 	# Step - Financial
-
-	validates :is_paying_back,
-    inclusion: {:in => [true, false], message: "Please select whether you are paying back a merchant cash advance.", allow_blank: false},
-    if: -> {self.current_step == :financial}
-
-    validates :approximate_credit_score_range,
+	validates :approximate_credit_score_range,
     presence: {message: "Please select your approximate credit score."},
     if: -> {self.current_step == :financial}
-
-    validates :is_tax_lien,
+	
+	validates :is_tax_lien,
     inclusion: {:in => [true, false], message: "Please select whether you have ever has a tax lien."},
     if: -> {self.current_step == :financial}
 
+    validates :is_payment_plan,
+    inclusion: {:in => [true, false], message: "Please select whether you are making payments on your tax lien."},
+    if: -> {self.current_step == :financial and self.is_tax_lien == true}
 
     validates :is_ever_bankruptcy,
     inclusion: {:in => [true, false], message: "Please select whether you have ever filed for bankruptcy."},

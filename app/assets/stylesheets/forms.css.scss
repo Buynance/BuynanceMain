@@ -33,10 +33,6 @@
     background: #80b438;
 }
 
-select option:first-child {
-    color: green;
-}
-
 .paper-header.container {
     padding-top: 60px;
     padding-bottom: 40px;
@@ -63,10 +59,13 @@ select option:first-child {
         padding-right: 45px;
     }
     .paper-section-body.paper-section-bank-login {
+        position: relative;
         padding-right: 5px;
         color: rgb(135, 135, 135);
+        padding-bottom: 0;
         .paper-section-bank-login-left {
             float: left;
+            padding-bottom: 75px;
             .paper-section-bank-login-left-header {
                 color: rgb(141, 198, 63);
                 font-size: 20px;
@@ -102,7 +101,7 @@ select option:first-child {
                     /*margin-bottom: 50px;*/
                 }
                 .paper-section-bank-login-form-action {
-                    margin-top: 40px;
+                    margin-top: 20px;
                     .form-button.flat-button.button-submit {
                         padding-right: 50px;
                         padding-left: 50px;
@@ -110,9 +109,16 @@ select option:first-child {
                         width: 70%;
                     }
                 }
+                .paper-section-bank-login-form-recover{
+                    padding-left: 30%;
+                }
             }
         }
         .paper-section-bank-login-right {
+            position: relative;
+            top: 0;
+            right: 0;
+            bottom: 0;
             padding-bottom: 50px;
             padding-left: 25px;
             padding-right: 25px;
@@ -190,6 +196,10 @@ select option:first-child {
                 }
             }
         }
+        .paper-section-bank-login-right.fix-overflow{
+            position: absolute; 
+            margin-right: 5px;
+        }
     }
     .paper-section-body {
         background: image-url(image-path("paper_bottom_background.png")) bottom left no-repeat, image-url(image-path("paper_body_background.png")) top left;
@@ -264,4 +274,53 @@ select option:first-child {
     padding-right: 100px;
     padding-left: 100px;
     border-size: 0px;
+}
+
+.popover.error-popover {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    box-shadow: none;
+    color: #B94A48;
+    cursor: pointer;
+    max-width: none;
+    z-index: 1099;
+}
+.popover.error-popover .popover-content {
+    padding: 6px 14px;
+}
+.popover.error-popover.right .arrow {
+    border-right-color: #EED3D7;
+}
+.popover.error-popover.right .arrow:after {
+    border-right-color: #F2DEDE;
+}
+
+.popover.error-popover.top .arrow {
+    border-top-color: #EED3D7;
+    left: 30px;
+}
+.popover.error-popover.top .arrow:after {
+    border-top-color: #F2DEDE;
+}
+
+.alert.alert-danger{
+    width: 364px;
+    margin-bottom: 40px;
+    font-size: 12px;
+    ul{
+        list-style-type: decimal;
+        li{
+            margin-bottom: 5px;
+        }
+    }
+    
+}
+
+.field_with_errors{
+    input, select{
+        border-style: solid;
+        border-width: 1px !important;
+        border-color: #a94442;
+    }
+    
 }

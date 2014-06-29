@@ -8,6 +8,11 @@ class FundingStepsController < ApplicationController
 	def show
 		@business = current_business
 		case step
+		when :financial
+			pluggable_js(
+				is_financial: true
+			)
+			render_wizard
 		when :refinance
 			skip_step unless @business.is_refinance == true
 			render_wizard
@@ -60,6 +65,11 @@ class FundingStepsController < ApplicationController
 			end
 			render_wizard @bank_account
 		else
+			if step == :financial
+				pluggable_js(
+					is_financial: true
+				)
+			end
 			@business.update_attributes(business_params)
 			render_wizard @business
 		end	

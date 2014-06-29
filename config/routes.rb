@@ -9,6 +9,9 @@ Buynance::Application.routes.draw do
     collection do
       get 'about'
       get 'offer'
+      get 'tos'
+      get 'confirm_email'
+
     end
   end
   
@@ -33,6 +36,8 @@ Buynance::Application.routes.draw do
     end
     collection do
       get 'show_offers'
+      get 'confirm_account'
+      post 'confirm_mobile'
     end
   end
 
@@ -83,6 +88,7 @@ Buynance::Application.routes.draw do
   get 'blog'                  => 'static_pages#blog'
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
+  post 'confirm_mobile' => 'businesses#confirm_mobile'
 
   get 'details' => 'businesses#details'
   

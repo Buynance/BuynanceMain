@@ -7,6 +7,8 @@ class StaticPagesController < ApplicationController
 	end
 	def blog
 	end
+	def confirm_email
+	end
 
   def about
   end

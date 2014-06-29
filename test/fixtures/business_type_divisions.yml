@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  division_code: MyString
+  string: MyString
+
+two:
+  name: MyString
+  division_code: MyString
+  string: MyString

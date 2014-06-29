@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140616205025) do
+ActiveRecord::Schema.define(version: 20140629024241) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -95,11 +95,22 @@ ActiveRecord::Schema.define(version: 20140616205025) do
     t.integer  "total_negative_days"
   end
 
+  create_table "business_type_divisions", force: true do |t|
+    t.string   "name"
+    t.string   "division_code"
+    t.string   "string"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "business_types", force: true do |t|
     t.string   "name"
     t.boolean  "is_rejecting"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "division"
+    t.string   "sic_code_two"
+    t.integer  "business_type_division_id"
   end
 
   create_table "business_user_sessions", force: true do |t|
@@ -173,7 +184,7 @@ ActiveRecord::Schema.define(version: 20140616205025) do
     t.string   "street_address_two"
     t.string   "city"
     t.string   "location_state"
-    t.integer  "zip_code"
+    t.string   "zip_code"
     t.boolean  "is_paying_back"
     t.integer  "previous_merchant_id"
     t.integer  "total_previous_payback_amount"
@@ -228,6 +239,8 @@ ActiveRecord::Schema.define(version: 20140616205025) do
     t.date     "previous_loan_date"
     t.float    "closing_fee"
     t.float    "total_previous_loan_amount"
+    t.string   "mobile_opt_code"
+    t.string   "foward_number"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true

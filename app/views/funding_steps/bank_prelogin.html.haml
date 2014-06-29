@@ -15,7 +15,7 @@
           = simple_form_for @business, url: wizard_path do |f|
             - if @bank_account.errors.any?
               %div{class: "alert alert-danger"}
-                %ul{style: "list-style: none;"}
+                %ul
                   - @bank_account.errors.full_messages.each do |msg|
                     %li= msg
             = fields_for @bank_account do |ba|
@@ -27,9 +27,16 @@
                 %span Account Number *
               .paper-section-bank-login-form-input
                 = ba.text_field :account_number, class: 'textbox', label: false
-              .paper-section-bank-login-form-routing-info
-                %span * Where can i find the routing and account number?
+              .paper-section-bank-login-form-routing-info{data: {'toggle' => 'modal', 'target' => '#checkModal'}}
+                %a
+                  %span * Where can i find the routing and account number?
               .paper-section-bank-login-form-action
                 = f.submit "Continue", class: "form-button flat-button button-submit"
       .paper-section-bank-login-right.col-xs-5
         = render "shared/bank_sidebar"
+
+#checkModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "checkModalLabel", role: "dialog", tabindex: "-1"}
+  .modal-dialog{style: "width: 540px;"}
+    .modal-content
+      .modal-body
+        = image_tag("check_sample.png")

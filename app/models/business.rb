@@ -1,4 +1,5 @@
 require 'securerandom'
+require 'twilio_lib'
 
 class Business < ActiveRecord::Base
 
@@ -14,6 +15,8 @@ class Business < ActiveRecord::Base
 
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")
   scope :awaiting_bank_information, where(state: "awaiting_bank_information")
+  scope :awaiting_email_confirmation, where(state: "awaiting_email_confirmation")
+  scope :awaiting_mobile_confirmation, where(state: "awaiting_mobile_comfirmation")
   scope :awaiting_offer_acceptance, where(state: "awaiting_offer_acceptance")
   scope :awaiting_offer_completetion, where(state: "awaiting_offer_completetion")
   scope :awaiting_reenter_market, where(state: "awaiting_reenter_market")
@@ -26,7 +29,15 @@ class Business < ActiveRecord::Base
     end
 
     event :bank_information_provided do
-      transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_offer_acceptance
+      transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_email_confirmation
+    end
+
+    event :email_confirmation_provided do 
+      transition [:awaiting_email_confirmation] => :awaiting_mobile_confirmation
+    end
+
+    event :mobile_confirmation_provided do
+      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
     end
 
     event :offer_accepted do
@@ -108,6 +119,10 @@ class Business < ActiveRecord::Base
   # --------------------------------------------------#
   # Business type string from id                      #
   # --------------------------------------------------#
+
+  def send_mobile_confirmation!
+    TwilioLib.send_activation_code(self.mobile_number, self.mobile_opt_code)
+  end
   
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)
@@ -121,7 +136,6 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
-  handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!
@@ -296,6 +310,7 @@ class Business < ActiveRecord::Base
       self.activation_code = Business.generate_activation_code
       self.recovery_code = Business.generate_activation_code
       self.confirmation_code = Business.generate_activation_code
+      self.mobile_opt_code = Business.generate_mobile_opt_code
     end
 
     def get_average_last_three_months_earnings
@@ -314,5 +329,11 @@ class Business < ActiveRecord::Base
 
     def self.generate_activation_code
       return SecureRandom.hex
+    end
+
+    def self.generate_mobile_opt_code
+      virgin_code = SecureRandom.urlsafe_base64(24, false)
+      regular_code = virgin_code.downcase.gsub(/[-_]/,'')[0,8]
+      return regular_code
     end
 end

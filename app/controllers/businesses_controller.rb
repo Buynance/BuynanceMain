@@ -33,8 +33,12 @@ class BusinessesController < ApplicationController
   def show 
     #if @business.declined?
     #  render :action => :not_qualified
-    if @business.awaiting_personal_information?
+    if @business.awaiting_personal_information? or @business.awaiting_bank_information?
       redirect_to funding_steps_path
+    elsif @business.awaiting_email_confirmation?
+      redirect_to controller: 'static_pages', action: 'confirm_email'
+    elsif @business.awaiting_mobile_confirmation?
+      redirect_to action: 'confirm_account'
     elsif @business.awaiting_offer_acceptance?
       redirect_to display_offers_url
     elsif @business.awaiting_offer_completetion?
@@ -60,8 +64,10 @@ class BusinessesController < ApplicationController
 
   def activate
     @business = current_business
-    @business.comfirm_account
-    @business.save if @business.activate(params[:activation_code])
+    if @business.activate(params[:activation_code])
+      @business.email_confirmation_provided
+      @business.send_mobile_confirmation!
+    end
     redirect_to :action => :show
   end
 
@@ -72,6 +78,22 @@ class BusinessesController < ApplicationController
 
   def error
     
+  end
+
+  def confirm_account
+    @business = current_business
+  end
+
+  def confirm_mobile
+    business = current_business
+    if business.mobile_opt_code == params[:mobile][:mobile_opt_code]
+      business.mobile_confirmation_provided
+      business.save
+      redirect_to action: :show
+    else
+      flash[:alert] = "Mobile code is incorrect. Please try again."
+      render :confirm_account
+    end
   end
 
   private
