@@ -11,38 +11,38 @@
           = simple_form_for @business, url: wizard_path do |f|
             - if @business.errors.any?
               %div{class: "alert alert-danger"}
-                %ul{style: "list-style: none;"}
+                %ul
                   - @business.errors.full_messages.each do |msg|
                     %li= msg
             .paper-section-bank-login-form-label
               %span What type of deal are you currently in?
             .paper-section-bank-login-form-input
-              = f.input :deal_type, include_blank: 'What type of deal are you currently in?', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false
+              = f.input :deal_type, include_blank: 'What type of deal are you currently in?', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span Who is your current broker?
             .paper-section-bank-login-form-input
-              = f.input :previous_merchant_id, include_blank: "Who is you current broker?", as: :select, collection: CashAdvanceCompany.all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false
+              = f.input :previous_merchant_id, include_blank: "Who is you current broker?", as: :select, collection: CashAdvanceCompany.all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span When did you start your previous loan?
             .paper-section-bank-login-form-input
-              = f.input :previous_loan_date, include_blank: "When did you start your previous funding?", as: :string,  input_html: {class: 'textbox date_picker'}, label: false
+              = f.input :previous_loan_date, include_blank: "When did you start your previous funding?", as: :string,  input_html: {class: 'textbox date_picker'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span How much money did you recieve from your previous loan?
             .paper-section-bank-login-form-input
-              = f.input :total_previous_loan_amount, placeholder: 'Previous Loan Amount', input_html: {class: 'textbox'}, label: false
+              = f.input :total_previous_loan_amount, placeholder: 'Previous Loan Amount', input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span How much did you have to pay back in your previous loan?
             .paper-section-bank-login-form-input
-              = f.input :total_previous_payback_amount, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox'}, label: false
+              = f.input :total_previous_payback_amount, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span Did you pay a closing fee?
             .paper-section-bank-login-form-input
-              = f.input :is_closing_fee, include_blank: 'Did you pay a closing cost?', :as => :select, collection: [["No" , 0], ["Yes" , 1]],   input_html: {class: 'textbox'}, label: false
+              = f.input :is_closing_fee, :as => :select, collection: [["No" , 0], ["Yes" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span If you payed a closing fee, how much did you pay?
             .paper-section-bank-login-form-input
-              = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox'}, label: false
+              = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-action
               = f.submit "Continue", class: "form-button flat-button button-submit"
-      .paper-section-bank-login-right.col-xs-5
+      .paper-section-bank-login-right.col-xs-5.fix-overflow
         = render "shared/refinance_sidebar"
