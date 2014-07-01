@@ -1,7 +1,8 @@
 require 'decision_logic.rb'
+require 'twilio_lib'
 
 class BusinessesController < ApplicationController
-  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :activate]
+  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :activate, :comfirm_account, :comfirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
   #before_filter :standardize_params, :only => [:create]
@@ -88,12 +89,21 @@ class BusinessesController < ApplicationController
     business = current_business
     if business.mobile_opt_code == params[:mobile][:mobile_opt_code]
       business.mobile_confirmation_provided
+      business.setup_mobile_routing
       business.save
       redirect_to action: :show
     else
       flash[:alert] = "Mobile code is incorrect. Please try again."
       render :confirm_account
     end
+  end
+
+  def twiml
+    business = Business.find(params[:id], no_obfuscated_id: true)
+    twiml = ""
+    twiml = TwilioLib.generate_voice_xml(business.mobile_number) unless business.nil?
+    
+    render xml: twiml
   end
 
   private

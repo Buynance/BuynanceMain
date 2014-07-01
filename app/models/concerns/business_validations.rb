@@ -11,7 +11,7 @@ module BusinessValidations
 	#on: :create
 
 	validates :name, 
-	length: {minimum: 3, maximum: 20, message: "Your business name should be atleast 3 letters long."},
+	length: {minimum: 3, maximum: 35, message: "Your business name should be atleast 3 letters long."},
 	on: :create
 
 
@@ -88,7 +88,41 @@ module BusinessValidations
     inclusion: {:in => [true, false], message: "Please select whether you have any judgement."},
     if: -> {self.current_step == :financial}
 
-   
+   # Step - Refinance
+
+   	validates :deal_type,
+    inclusion: {:in => [0, 1], message: "Please selectyour deal type."},
+    if: -> {self.current_step == :refinance}
+
+    validates :previous_merchant_id,
+	presence: { message: "Please select your current funder.", allow_blank: false},
+	if: -> {self.current_step == :refinance}
+
+	validates :previous_loan_date,
+	presence: { message: "Please select a valid start date for your current funding.", allow_blank: false},
+	if: -> {self.current_step == :refinance}
+
+	validates :total_previous_loan_amount,
+	presence: { message: "Please input a valid funding amount.", allow_blank: false},
+	if: -> {self.current_step == :refinance}
+
+	validates :total_previous_payback_amount,
+	presence: { message: "Please input a valid payback amount.", allow_blank: false},
+	if: -> {self.current_step == :refinance}
+
+	validates :is_closing_fee,
+    inclusion: {:in => ["false", "true"], message: "Please select whether you paid a closing fee.", allow_blank: false},
+    if: -> {self.current_step == :refinance}
+
+    validates :closing_fee,
+    presence: { message: "Please include a valid closing fee amount."},
+    if: -> {self.current_step == :refinance and self.is_closing_fee == "true"}
+
+	
+
+
+		
+
 
 	# Step - Past Merchants
 

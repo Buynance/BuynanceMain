@@ -10,4 +10,4 @@ doc/app
 *~
 .DS_Store
 config/database.yml
-db/schema.rb
+db/schema.rb*ngrok.exe

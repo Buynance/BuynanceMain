@@ -6,11 +6,12 @@ class Business < ActiveRecord::Base
   before_save :parse_phone_number
   
   include BusinessValidations
-  attr_accessor :current_step, :is_closing_fee, :terms_of_service
+  attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible
   obfuscate_id :spin => 89238723
   #has_many :offers, :dependent => :destroy
   has_one :business_user, :dependent => :destroy
   has_one :bank_account, :dependent => :destroy
+  has_one :routing_number
   has_many :leads, :dependent => :destroy
 
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")
@@ -148,6 +149,12 @@ class Business < ActiveRecord::Base
   end
   handle_asynchronously :deliver_average_email!
   
+  def setup_mobile_routing
+    self.twimlet_url = TwilioLib.generate_twimlet_url(self.mobile_number)
+    routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url)
+    RoutingNumber.create(phone_number: routed_number, success_url: twimlet_url, business_id: self.id)
+  end
+
   def is_averaged_over_minimum
     minimum = 15000
     return true if get_average_last_three_months_earnings >= minimum
@@ -295,12 +302,12 @@ class Business < ActiveRecord::Base
         if phone_number_object.nil?
           self.phone_number = nil
         else
-          self.phone_number = phone_number_object.national_string
+          self.phone_number = phone_number_object.international_string
         end
         if mobile_number_object.nil?
           self.mobile_number = nil
         else
-          self.mobile_number = mobile_number_object.national_string      
+          self.mobile_number = mobile_number_object.international_string      
         end
       end
     end

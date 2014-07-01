@@ -3,9 +3,9 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 
-$(document).on "click", ".btn-offer", (e) ->
-  e.preventDefault()
-  _self = $(this)
-  lead_id = _self.data("leadid")
-  $("#offer_lead_id").val lead_id
-  $('#offerModal').modal "show"
+#$(document).on "click", ".btn-offer", (e) ->
+#  e.preventDefault()
+#  _self = $(this)
+#  lead_id = _self.data("leadid")
+#  $("#offer_lead_id").val lead_id
+#  $('#offerModal').modal "show"

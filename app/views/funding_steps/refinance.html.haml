@@ -1,12 +1,12 @@
 .web_body
   .paper-section
     .paper-section-header
-      Financial History
+      Refinance
     .paper-section-top
     .paper-section-body.paper-section-bank-login.row
       .paper-section-bank-login-left.col-xs-7
         .paper-section-bank-login-left-header
-          %span Financial Information
+          %span Current Funding Information
         .paper-section-bank-login-form
           = simple_form_for @business, url: wizard_path do |f|
             - if @business.errors.any?
@@ -17,15 +17,15 @@
             .paper-section-bank-login-form-label
               %span What type of deal are you currently in?
             .paper-section-bank-login-form-input
-              = f.input :deal_type, include_blank: 'What type of deal are you currently in?', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :deal_type, include_blank: '', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
-              %span Who is your current broker?
+              %span Who is your current funder?
             .paper-section-bank-login-form-input
-              = f.input :previous_merchant_id, include_blank: "Who is you current broker?", as: :select, collection: CashAdvanceCompany.all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :previous_merchant_id, include_blank: '', as: :select, collection: CashAdvanceCompany.order('name DESC').all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span When did you start your previous loan?
             .paper-section-bank-login-form-input
-              = f.input :previous_loan_date, include_blank: "When did you start your previous funding?", as: :string,  input_html: {class: 'textbox date_picker'}, label: false,  error: false
+              = f.input :previous_loan_date, include_blank: "03/24/2014", as: :string,  input_html: {class: 'textbox datepicker'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span How much money did you recieve from your previous loan?
             .paper-section-bank-login-form-input
@@ -37,11 +37,12 @@
             .paper-section-bank-login-form-label
               %span Did you pay a closing fee?
             .paper-section-bank-login-form-input
-              = f.input :is_closing_fee, :as => :select, collection: [["No" , 0], ["Yes" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
-            .paper-section-bank-login-form-label
-              %span If you payed a closing fee, how much did you pay?
-            .paper-section-bank-login-form-input
-              = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :is_closing_fee, :as => :select, collection: [["No" , false], ["Yes" , true]],   input_html: {class: 'textbox is_closing_fee_input'}, label: false,  error: false
+            .closing_fee_input_value
+              .paper-section-bank-login-form-label
+                %span If you payed a closing fee, how much did you pay?
+              .paper-section-bank-login-form-input
+                = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-action
               = f.submit "Continue", class: "form-button flat-button button-submit"
       .paper-section-bank-login-right.col-xs-5.fix-overflow

@@ -7,6 +7,7 @@ window['funding_steps#show'] = (data) ->
 			else
 			 	$(".paper-section-bank-login-form-section-payment").css("display", "none")
 
+
 window['funding_steps#update'] = (data) ->
 	if data.is_financial == true
 		$(".is_tax_lien_input").on "change", ->
@@ -14,6 +15,22 @@ window['funding_steps#update'] = (data) ->
 				$(".paper-section-bank-login-form-section-payment").css("display", "block")
 			else
 			 	$(".paper-section-bank-login-form-section-payment").css("display", "none")
+
+
+$( document ).ready ->
+	if $(".closing_fee_input_value").val() != "true"
+		$(".closing_fee_input_value").css("display", "none")
+	$(".is_closing_fee_input").on "change", ->
+			if $(".is_closing_fee_input").val() == "true"
+				$(".closing_fee_input_value").css("display", "block")
+			else
+			 	$(".closing_fee_input_value").css("display", "none")
+
+	$(".datepicker").datepicker({dateFormat: 'yy-mm-dd'})
+	$(".datepicker").datepicker "option", "showAnim", "slideDown"
+    
+
+
 
 
 		

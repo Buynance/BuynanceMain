@@ -189,8 +189,8 @@ body {
         padding-right: 6.0em;
         padding-bottom: 6.0em;
         width: 50.0em;
-        margin-right: 2.5em;
-        float: left;
+        margin-left: 2.5em;
+        float: right;
         position: relative;
         .homepage-slider-left-fold{
             position: absolute;
@@ -220,8 +220,8 @@ body {
         padding-right: 6.0em;
         padding-bottom: 6.0em;
         width: 50.0em;
-        margin-left: 4.0em;
-        float: right;
+        margin-right: 2.5em;
+        float: left;
         position: relative;
         .homepage-slider-right-fold{
             position: absolute;
@@ -944,7 +944,50 @@ body {
 }
 
   /**************************************************/
- /*                     Slider UI                    */
+ /*                 Media Queries                  */
 /**************************************************/
 
 
+/*@media all and (max-width: 1224px) { 
+    body {
+        font-size: 0.5625em;
+    }
+}
+
+@media all and (max-width: 1163px) { 
+    body {
+        font-size: 0.5em;
+    }
+}
+
+@media all and (max-width: 1080px) { 
+    body {
+        font-size: 0.5em;
+    }
+}
+
+
+
+@media all and (max-width: 953px) { 
+    body {
+        font-size: 0.435em;
+    }
+}
+
+
+@media all and (max-width: 816px) { 
+    body {
+        font-size: 0.375em;
+    }
+}
+
+
+
+@media all and (max-width: 680px) { 
+    body {
+        font-size: 0.3125em;
+    }
+}
+
+
+*/

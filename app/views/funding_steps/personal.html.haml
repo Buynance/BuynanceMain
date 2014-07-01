@@ -53,7 +53,7 @@
             .paper-section-bank-login-form-label
               %span What type of business do you own?
             .paper-section-bank-login-form-input
-              = f.input :business_type_id, include_blank: '', :as => :grouped_select, collection: BusinessTypeDivision.all, label_method: :name, group_method: :business_types, group_label_menthod: :name,  value_method: :id,  input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :business_type_id, include_blank: '', :as => :select, collection: BusinessType.all, label_method: :name, value_method: :id,  input_html: {class: 'textbox'}, label: false,  error: false
             .paper-section-bank-login-form-label
               %span How many years have you been in business?
             .paper-section-bank-login-form-input

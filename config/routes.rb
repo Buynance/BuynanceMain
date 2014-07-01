@@ -91,6 +91,7 @@ Buynance::Application.routes.draw do
   post 'confirm_mobile' => 'businesses#confirm_mobile'
 
   get 'details' => 'businesses#details'
+  get 'clients/twiml/:id' => 'businesses#twiml'
   
   get 'DLPHP/verification.php' => "bank_accounts#new"
   get '/bank_accounts/success' => "bank_accounts#success"

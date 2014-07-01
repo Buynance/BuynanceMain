@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140629024241) do
+ActiveRecord::Schema.define(version: 20140630054737) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -241,6 +241,7 @@ ActiveRecord::Schema.define(version: 20140629024241) do
     t.float    "total_previous_loan_amount"
     t.string   "mobile_opt_code"
     t.string   "foward_number"
+    t.string   "twimlet_url"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -371,6 +372,15 @@ ActiveRecord::Schema.define(version: 20140629024241) do
     t.integer  "other_monthly_loan_collection"
   end
 
+  create_table "routing_numbers", force: true do |t|
+    t.string   "phone_number"
+    t.string   "success_url"
+    t.integer  "business_id"
+    t.date     "last_active"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "settings", force: true do |t|
     t.string   "var",         null: false
     t.text     "value"
@@ -410,6 +420,10 @@ ActiveRecord::Schema.define(version: 20140629024241) do
   create_table "transactions_type_codes", force: true do |t|
     t.integer "transaction_id", null: false
     t.integer "type_code_id",   null: false
+  end
+
+  create_table "twimlet_url_for_businesses", force: true do |t|
+    t.string "twimlet_url"
   end
 
   create_table "type_codes", force: true do |t|

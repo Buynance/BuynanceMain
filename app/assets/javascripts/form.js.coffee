@@ -5,8 +5,8 @@ hide_or_show = ->
   s2.style.display = "none"  if s1.options[s1.selectedIndex].text is "No"
   return
 
-$(document).ready( ->
+#$(document).ready( ->
   #s2 = document.getElementsByClassName("tax_lien_payment_plan")
   #s2.style.display = "none"
   #return
-) 
+#) 

@@ -63,7 +63,7 @@ namespace :db do
     end
 
     desc "Add Business Types"
-    task :add_business_types => :environment do
+    task :add_business_types_sic => :environment do
         types = [ ["01", "Agricultural Production - Crops", "Agriculture, Forestry, & Fishing", "A"],
                   ["02", "Agricultural Production - Livestock", "Agriculture, Forestry, & Fishing", "A"],
                   ["07", "Agricultural Services", "Agriculture, Forestry, & Fishing", "A"],
@@ -157,5 +157,112 @@ namespace :db do
             business_type = BusinessType.create(name: types[value][1], sic_code_two: types[value][0], business_type_division_id: business_type_division.id)
         end
     end
-     
+    
+
+    desc "Add Business Types"
+    task :add_business_types => :environment do
+        BusinessType.destroy_all
+        types = [ 
+                  ["Administrative and Support Services"],
+                  ["Agriculture"],
+                  ["Arts, Entertainment, and Recreation"],
+                  ["Automobile Dealers"],
+                  ["Automotive Repair and Maintenance"],
+                  ["Business Services"],
+                  ["Construction"],
+                  ["Educational Services"],
+                  ["Finance and Insurance"],
+                  ["Forestry, Fishing, and Hunting"],
+                    ["Freight Trucking"],
+                    ["Gambling Industries"],
+                    ["Gas Stations"],
+                    ["Greenhouse, Nursery, and Floriculture"],
+                    ["Healthcare and Social Assistance"],
+                    ["Hotels and Travel Accomodations"],
+                    ["Information and Technology"],
+                    ["Legal Services"],
+                    ["Management of Companies"],
+                    ["Manufacturing"],
+                    ["Mining"],
+                    ["Non-Profit Organizations"],
+                    ["Other Services"],
+                    ["Personal Care Services"],
+                    ["Physician, Dentist, or Health Practitioner"],
+                    ["Public Administration"],
+                    ["Real Estate"],
+                    ["Religious Institutions"],
+                    ["Rental and Leasing"],
+                    ["Restaurants and Food Services"],
+                    ["Retail Stores"],
+                    ["Transportation"],
+                    ["Utilities"],
+                    ["Veterinarians"],
+                    ["Warehousing and Storage"],
+                    ["Waste Management &amp; Remediation Services"],
+                    ["Wholesale Trade"],
+                    ["Professional, Scientific, and Technical Services"]
+                ]
+
+        length = types.length
+
+        (0...length).each do |value|
+            business_type = BusinessType.create(name: types[value][0])
+        end
+    end 
+
+    desc "Add Past Funder"
+    task :add_previous_funder => :environment do
+        CashAdvanceCompany.destroy_all
+        companies = [ ["1st Merchant Funding"],
+                      ["AdvanceMe"],
+                      ["American Finance Solutions"],
+                      ["American Capital Advance"],
+                      ["AmeriMerchant"],
+                      ["Arch Capital Funding"],
+                      ["Bankcard Funding"],
+                      ["BizFunds"],
+                      ["The Business Backer"],
+                      ["Business Consulting Options"],
+                      ["Business Financial Services"],
+                      ["Capital For Merchants"],
+                      ["Centerboard Funding"],
+                      ["Express Working Capital"],
+                      ["Factor Funding"],
+                      ["First Funds"],
+                      ["Genesis Capital Enterprises"],
+                      ["Green Growth Funding"],
+                      ["Greystone Business Resources"],
+                      ["GRP Funding"],
+                      ["Happy Rock Merchant Solutions"],
+                      ["Infinity Capital Funding"],
+                      ["Max Advance"],
+                      ["Max Merchant Funding"],
+                      ["Merchant Advance Funding LP"],
+                      ["Merchant Cash Advance of Texas"],
+                      ["Merchant Cash and Capital"],
+                      ["Merchant Cash Funding"],
+                      ["Merchant Cash Group"],
+                      ["Merchants Capital Access"],
+                      ["Merchant Capital Source"],
+                      ["Merchant Resources International"],
+                      ["Money For Merchants"],
+                      ["Mother Fund"],
+                      ["Pinnacle Merchant Advance"],
+                      ["Professional Merchant Advance Capital"],
+                      ["Quick Cash Business Services"],
+                      ["RapidAdvance"],
+                      ["Smart Choice Capital"],
+                      ["Sterling Funding"],
+                      ["Strategic Funding Source"],
+                      ["Snap Advances"],
+                      ["EZ Business Cash Advance"],
+                      ["Other"]
+                    ]
+
+        length = companies.length
+
+        (0...length).each do |value|
+            CashAdvanceCompany.create(name: companies[value][0])
+        end
+    end 
 end
