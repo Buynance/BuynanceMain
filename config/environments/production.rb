@@ -80,6 +80,9 @@ Buynance::Application.configure do
 
   config.action_mailer.default_url_options = { :host => 'buynance.com' }
 
+  config.assets.paths << Rails.root.join("app", "assets", "fonts")
+  config.assets.precompile += %w( .svg .eot .woff .ttf )
+
   config.action_mailer.smtp_settings = {
     :address   => "smtp.mandrillapp.com",
     :port      => 25, # ports 587 and 2525 are also supported with STARTTLS
