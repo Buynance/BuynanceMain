@@ -1,62 +1,70 @@
-/.homepage-fluid-container.homepage-nav{style: "padding-top: 0; padding-bottom: 0;"}
-/  .homepage-header.homepage-container.clearfix
-/    .hompage-header-logo
-/      = image_tag("logo.jpg")
-/    .homepage-header-links
-/      %ul
-/        %li.homepage-header-links-section 
-/          %span How This Works
-/        %li.homepage-header-links-section  
-/          %span Blog
-/        %li.homepage-header-links-section 
-/          = image_tag("phone_icon.jpg")
-/          %span 1-800-906-4909
-/        %li.homepage-header-links-section 
-/          = image_tag("mail_icon.jpg")
-/          %span Email Us
-/    .homepage-header-actions
-/      %ul
-/        %li.homepage-header-actions-button
-/          %a.flat-button.homepage-button-login{href: "/login"}
-/            %span Login
-/        %li.homepage-header-actions-button
-/          %a.flat-button.homepage-button-login{href: "/login"}
-/            %span Login
-#header.container-fluid
-  #logo.col-sm-4
-    .image
-      = link_to image_tag("logo.jpg", class: "logo", href: "/"), root_url
-  #nav.col-sm-8
-    .row-fluid
-      .fight.col-xs-3.header-text-padding
-        HOW THIS WORKS
-      .phone.col-xs-3
-        = image_tag("phone_icon.jpg")
-        %span.phone-text-padding 
-          1-888-906-4909
-      .col-xs-6.no-padding
-        .email.col-xs-3.header-text-padding
+.homepage-fluid-container{style: "padding-top: 0; padding-bottom: 0;"}
+  .homepage-nav
+    .homepage-header.homepage-header-container.clearfix
+      .hompage-header-logo
+        = image_tag("logo.jpg")
+      .homepage-header-links.clearfix
+        .homepage-header-links-section.homepage-header-links-why
+          %span Why Buynance
+        .homepage-header-links-section.homepage-header-links-blog 
+          %span Blog
+        .homepage-header-links-section.homepage-header-links-phone
+          = image_tag("phone_icon.jpg")
+          %span 1-800-906-4909
+        .homepage-header-links-section.homepage-header-links-email
           = image_tag("mail_icon.jpg")
-          Email Us
-        .login.col-xs-3.header-btn-padding-right
-          - if current_business
-            /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
-            /  LOGOUT
-            %a.flat-button.button-login{href: "/logout"}
-              Logout
+          %span Email Us
+      .homepage-header-actions
+        .homepage-header-actions-button
+          - if current_business 
+            %a.flat-button.homepage-button-left{href: "/logout"}
+              %span Logout
           - else
-            /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
-            /  LOGIN
-            %a.flat-button.button-login{href: "/login"}
-              Login
-        .signup.col-xs-3.header-btn-padding-left
-          - if current_business
-            /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
-            /  ACCOUNT
-            %a.flat-button.button-signup{href: "/account"}
-              Account
+            %a.flat-button.homepage-button-left{href: "/login"}
+              %span Login
+          .homepage-header-actions-button
+          - if current_business 
+            %a.flat-button.homepage-button-right{href: "/Account"}
+              %span Account
           - else
-            /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
-            /  SIGNUP
-            %a.flat-button.button-signup{href: "/signup"}
-              Signup
+            %a.flat-button.homepage-button-right{href: "/signup"}
+              %span Signup
+
+/#header.container-fluid
+/  #logo.col-sm-4
+/    .image
+/      = link_to image_tag("logo.jpg", class: "logo", href: "/"), root_url
+/  #nav.col-sm-8
+/    .row-fluid
+/      .fight.col-xs-3.header-text-padding
+/        HOW THIS WORKS
+/      .phone.col-xs-3
+/        = image_tag("phone_icon.jpg")
+/        %span.phone-text-padding 
+/          1-888-906-4909
+/      .col-xs-6.no-padding
+/        .email.col-xs-3.header-text-padding
+/          = image_tag("mail_icon.jpg")
+/          Email Us
+/        .login.col-xs-3.header-btn-padding-right
+/          - if current_business
+/            /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+/            /  LOGOUT
+/            %a.flat-button.button-login{href: "/logout"}
+/              Logout
+/          - else
+/            /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+/            /  LOGIN
+/            %a.flat-button.button-login{href: "/login"}
+/              Login
+/        .signup.col-xs-3.header-btn-padding-left
+/          - if current_business
+/            /%button.btn.btn-green{type: "button", onclick: "logout_link()"} 
+/            /  ACCOUNT
+/            %a.flat-button.button-signup{href: "/account"}
+/              Account
+/          - else
+/            /%button.btn.btn-green{type: "button", href: "#", onclick: "login_link()"} 
+/            /  SIGNUP
+/            %a.flat-button.button-signup{href: "/signup"}
+/              Signup
