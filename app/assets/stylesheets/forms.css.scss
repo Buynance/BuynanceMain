@@ -52,7 +52,7 @@
         margin-left: 62px;
     }
     .paper-section-top {
-        background-image: image-url(image-path("paper_top_background_3.png"));
+        background-image: asset-url(image-path("paper_top_background_3.png"));
         min-height: 62px;
         padding-top: 10px;
         padding-left: 50px;
@@ -217,7 +217,7 @@
         }
     }
     .paper-section-body {
-        background: image-url(image-path("paper_bottom_background.png")) bottom left no-repeat, image-url(image-path("paper_body_background.png")) top left;
+        background: asset-url(image-path("paper_bottom_background.png")) bottom left no-repeat, asset-url(image-path("paper_body_background.png")) top left;
         min-height: 185px;
         padding-top: 10px;
         padding-left: 50px;
@@ -256,13 +256,13 @@
         hr {}
     }
     .paper-section-bottom {
-        background-image: image-url(image-path("paper_bottom_background.png"));
+        background-image: asset-url(image-path("paper_bottom_background.png"));
         min-height: 185px;
         padding-left: 50px;
         padding-right: 45px;
     }
     .paper-braker {
-        background-image: image-url(image-path("paper_bar.png"));
+        background-image: asset-url(image-path("paper_bar.png"));
         width: 686px;
         height: 10px;
         margin-top: 10px;

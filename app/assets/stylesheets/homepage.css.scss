@@ -113,7 +113,7 @@ body {
 
 .banner {
     background-color: #f2f2f2;
-    background-image: image-url('homepage_background.jpg');
+    background-image: asset-url('homepage_background.jpg');
     background-repeat: no-repeat;
     background-size: 100%;
     display: inline-block;
@@ -402,7 +402,7 @@ body {
             .homepage-slider-bubble{
                 width: 8.3em;
                 height: 3.1em;
-                background-image: image-url("homepage_slider_bubble.png");
+                background-image: asset-url("homepage_slider_bubble.png");
                 background-size: 100%;
                 margin-top: 1.0em;
                 margin-left: 1.0em;
@@ -523,7 +523,7 @@ body {
         }
         .how-works-steps {
             width: 100%;
-            background-image: image-url("dot_divider.jpg");
+            background-image: asset-url("dot_divider.jpg");
             background-position: left center;
             background-repeat: repeat-x;
             text-align: center;
