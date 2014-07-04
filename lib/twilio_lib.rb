@@ -17,7 +17,7 @@ class TwilioLib
 		send_text(phone_number, "A new Lead has entered the funnel")
 	end
 
-	def self.create_phone_number(local_number, state, success_url, routing_number)
+	def self.create_phone_number(local_number, state, success_url, routing_number_id)
 		area_code = local_number[2, 3]
 
 		numbers = @twilio_client.account.available_phone_numbers.get('US').local.list(:area_code => area_code)
@@ -29,17 +29,15 @@ class TwilioLib
 			end
 		end
 
-		routing_number.phone_number = numbers[0].phone_number
-		routing_number.save
-		voice_url = "http://buynance.ngrok.com/call/#{routing_number.id}"
+		voice_url = "http://buynance.ngrok.com/call/#{routing_number_id}"
 		if Rails.env.production?  
-			voice_url = "http://buynance-development.herokuapp.com/call/#{routing_number.id}"
+			voice_url = "http://buynance-development.herokuapp.com/call/#{routing_number_id}"
 		end
 
 		@twilio_client.account.incoming_phone_numbers.create(
 			:voice_url => voice_url,
 			:voice_fallback_url => success_url,
-			:phone_number => routing_number.phone_number
+			:phone_number => numbers[0].phone_number
 			)
 
   		return numbers[0].phone_number
