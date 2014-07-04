@@ -23,7 +23,8 @@ gem 'coffee-rails', '~> 4.0.0'
 # gem 'therubyracer', platforms: :ruby
 
 # Use jquery as the JavaScript library
-gem "jquery-rails", "< 3.0.0"
+gem "jquery-rails", "~> 2.3.0"
+gem 'jquery-ui-rails', '~>4.2.1'
 
 gem 'rename'
 

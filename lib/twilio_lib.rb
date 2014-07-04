@@ -31,9 +31,13 @@ class TwilioLib
 
 		routing_number.phone_number = numbers[0].phone_number
 		routing_number.save
+		voice_url = "http://buynance.ngrok.com/call/#{routing_number.id}"
+		if Rails.env.production?  
+			voice_url = "http://buynance-development.herokuapp.com/call/#{routing_number.id}"
+		end
 
 		@twilio_client.account.incoming_phone_numbers.create(
-			:voice_url => "http://buynance.ngrok.com/call/#{routing_number.id}",
+			:voice_url => voice_url,
 			:voice_fallback_url => success_url,
 			:phone_number => routing_number.phone_number
 			)
