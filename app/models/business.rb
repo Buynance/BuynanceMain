@@ -4,7 +4,7 @@ require 'twilio_lib'
 class Business < ActiveRecord::Base
 
   before_save :parse_phone_number
-  before_save :parse_date
+  #before_save :parse_date
   
   include BusinessValidations
   attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer

@@ -82,6 +82,8 @@ gem 'will_paginate', '~> 3.0'
 # Javascript
 gem 'pluggable_js', '~> 2.0.0'
 
+gem 'american_date'
+
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false

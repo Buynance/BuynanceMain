@@ -26,7 +26,7 @@ $( document ).ready ->
 			else
 			 	$(".closing_fee_input_value").css("display", "none")
 
-	$(".datepicker").datepicker({dateFormat: 'mm-dd-yy'})
+	$(".datepicker").datepicker({dateFormat: 'mm/dd/yy'})
 	$(".datepicker").datepicker "option", "showAnim", "slideDown"
     
 

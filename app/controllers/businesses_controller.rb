@@ -129,6 +129,8 @@ class BusinessesController < ApplicationController
   end
 
   def qualified_for_market
+    @business = current_business
+    
   end
 
   def disqualified
