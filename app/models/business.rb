@@ -188,7 +188,7 @@ class Business < ActiveRecord::Base
   def setup_mobile_routing
     self.mobile_confirmation_provided_market
     self.twimlet_url = TwilioLib.generate_twimlet_url(self.mobile_number)
-    routing_number = RoutingNumber.create(success_url: twimlet_url, business_id: self.id)
+    routing_number = RoutingNumber.create(success_url: twimlet_url, business_id: self.id, call_count: 0)
     routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url, routing_number_id)
     routing_number.phone_number = routed_number
     routing_number.save
