@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140630054737) do
+ActiveRecord::Schema.define(version: 20140703044728) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -242,6 +242,7 @@ ActiveRecord::Schema.define(version: 20140630054737) do
     t.string   "mobile_opt_code"
     t.string   "foward_number"
     t.string   "twimlet_url"
+    t.string   "qualification_state"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -379,6 +380,7 @@ ActiveRecord::Schema.define(version: 20140630054737) do
     t.date     "last_active"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "call_count"
   end
 
   create_table "settings", force: true do |t|

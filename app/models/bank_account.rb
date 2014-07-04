@@ -133,6 +133,20 @@ class BankAccount < ActiveRecord::Base
 		return monthly_deposit_array
 	end
 
+	def deposit_average_atleast(amount, is_last_three = false)	
+		deposit_sum = self.deposits_one_month_ago + self.deposits_two_months_ago
+		(deposit_sum = deposit_sum + self.deposits_three_months_ago) if is_last_three
+		return true if (deposit_sum / 2.0) >= amount
+		return_value = false
+	end
+
+	def average_daily_balance_atleast(amount, is_last_three = false)
+		deposit_sum = self.average_balance_one_month_ago + self.average_balance_two_months_ago
+		(deposit_sum = deposit_sum + self.average_balance_three_months_ago) if is_last_three
+		return true if (deposit_sum / 2.0) >= amount
+		return_value = false
+	end
+
 	def calculate_last_three_months_daily_balance
 		monthly_daily_balance_array = [0,0,0]
 		monthly_transaction_array = [0,0,0]

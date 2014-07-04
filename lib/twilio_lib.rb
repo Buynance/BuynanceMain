@@ -17,7 +17,7 @@ class TwilioLib
 		send_text(phone_number, "A new Lead has entered the funnel")
 	end
 
-	def self.create_phone_number(local_number, state, success_url)
+	def self.create_phone_number(local_number, state, success_url, routing_number)
 		area_code = local_number[2, 3]
 
 		numbers = @twilio_client.account.available_phone_numbers.get('US').local.list(:area_code => area_code)
@@ -29,9 +29,13 @@ class TwilioLib
 			end
 		end
 
+		routing_number.phone_number = numbers[0].phone_number
+		routing_number.save
+
 		@twilio_client.account.incoming_phone_numbers.create(
-			:voice_url => success_url,
-			:phone_number => numbers[0].phone_number
+			:voice_url => "http://buynance.ngrok.com/call/#{routing_number.id}",
+			:voice_fallback_url => success_url,
+			:phone_number => routing_number.phone_number
 			)
 
   		return numbers[0].phone_number
@@ -41,15 +45,12 @@ class TwilioLib
 		options[:record] ||= true
 		options[:transcribe] ||= false
 
-		response = Twilio::TwiML::Response.new do |r|
-  			r.Dial phone_number, :record => "true",  timeout: "20"
-		end
-
+		response = '<?xml version="1.0" encoding="UTF-8"?><Response><Dial timeout="20" record="true">#{phone_number}</Dial></Response>'
 		response.text
 	end
 
 	def self.generate_twimlet_url(phone_number, options={})
-		return "http://twimlets.com/forward?PhoneNumber=#{phone_number[2, 10]}&Timeout=20&FailUrl=http%3A%2F%2Ftwimlets.com%2Fvoicemail%3FEmail%3Dedwin%2540buynance.com%26Message%3DThe%2520person%2520you%2520are%2520currently%2520calling%2520is%2520unavailable.%26Transcribe%3Dfalse%26&"
+		return "http://twimlets.com/forward?PhoneNumber=#{phone_number[2, 10]}&CallerId=7166083596&Timeout=20&FailUrl=http%3A%2F%2Ftwimlets.com%2Fvoicemail%3FEmail%3Dedwin%2540buynance.com%26Message%3DSorry%2520I%2520am%2520unavailable%2520at%2520them%2520moment.%2520Please%2520call%2520me%2520back%2520later.%2520Thank%2520You.%26Transcribe%3Dtrue%26&"
 	end
 
 	private

@@ -2,11 +2,16 @@ require 'decision_logic.rb'
 class FundingStepsController < ApplicationController
 	include Wicked::Wizard
 
-	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information
+	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information, :disclaimer
 	before_filter :require_business_user
 	
 	def show
 		@business = current_business
+		
+		if step != :disclaimer and @business.awaiting_disclaimer_acceptance?
+			jump_to(:disclaimer)
+		end
+		
 		case step
 		when :financial
 			pluggable_js(
@@ -55,15 +60,46 @@ class FundingStepsController < ApplicationController
 		@business.current_step = step
 		if step == :bank_prelogin
 			if @business.bank_account.nil?
+				
 				@bank_account = BankAccount.new(bank_account_params)
-				@bank_account.current_step = step
-				@bank_account.save
-				@bank_account.business_id = @business.id
+
+				if @business.is_refinance
+					if @bank_account.routing_number == "skip"
+						@business.accept_as_lead
+						@business.qualify_for_refu
+						redirect_to account_url
+					else
+						@bank_account.current_step = step
+						@bank_account.save
+						@bank_account.business_id = @business.id
+						render_wizard @bank_account
+					end
+				else
+					if @bank_account.routing_number == "market"
+						@business.accept_as_lead
+						@business.qualify_for_market
+						redirect_to account_url
+					elsif @bank_account.routing_number == "funder"
+						@business.accept_as_lead
+						@business.qualify_for_funder
+						redirect_to account_url
+					else
+						@bank_account.current_step = step
+						@bank_account.save
+						@bank_account.business_id = @business.id
+						render_wizard @bank_account
+					end
+				end
+				
 			else
 				@bank_account = @business.bank_account
 				@bank_account.assign_attributes(bank_account_params)
+				render_wizard @bank_account
 			end
-			render_wizard @bank_account
+		elsif step == :disclaimer
+			@business.disclaimer_acceptance_provided
+			@business.setup_mobile_routing
+			render_wizard @business
 		else
 			if step == :financial
 				pluggable_js(
@@ -73,6 +109,10 @@ class FundingStepsController < ApplicationController
 			@business.update_attributes(business_params)
 			render_wizard @business
 		end	
+	end
+
+	def finish_wizard_path
+  		account_url
 	end
 
 	private

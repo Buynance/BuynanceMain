@@ -33,7 +33,6 @@ class BankAccountsController < ApplicationController
 				@bank_account.total_negative_days = @bank_account.get_negative_days
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
-				@business.deliver_activation_instructions!
 				@bank_account.save
 				redirect_to account_url
 			else

@@ -4,14 +4,15 @@ require 'twilio_lib'
 class Business < ActiveRecord::Base
 
   before_save :parse_phone_number
+  before_save :parse_date
   
   include BusinessValidations
-  attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible
+  attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer
   obfuscate_id :spin => 89238723
   #has_many :offers, :dependent => :destroy
   has_one :business_user, :dependent => :destroy
   has_one :bank_account, :dependent => :destroy
-  has_one :routing_number
+  has_one :routing_number, :dependent => :destroy
   has_many :leads, :dependent => :destroy
 
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")
@@ -37,8 +38,16 @@ class Business < ActiveRecord::Base
       transition [:awaiting_email_confirmation] => :awaiting_mobile_confirmation
     end
 
+    event :mobile_confirmation_provided_market do
+      transition [:awaiting_mobile_confirmation] => :awaiting_disclaimer_acceptance
+    end
+
     event :mobile_confirmation_provided do
       transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
+    end
+
+    event :disclaimer_acceptance_provided do
+      transition [:awaiting_disclaimer_acceptance] => :awaiting_offer_acceptance
     end
 
     event :offer_accepted do
@@ -46,21 +55,48 @@ class Business < ActiveRecord::Base
     end
    
     event :offer_funded do
-      transition [:awaiting_offer_completetion] => :awaiting_reenter_market
+      transition [:awaiting_offer_completetion] => :awaiting_requalification
     end
 
     event :offer_rejected do
-      transition [:awaiting_offer_completetion] => :awaiting_offer_acceptance
+      transition [:awaiting_offer_completetion, :awaiting_offer_acceptance] => :awaiting_offer_acceptance
     end
 
-    event :reenter_market do
-      transition [:awaiting_reenter_market] => :awaiting_bank_information_refresh
+    event :requalified do
+      transition [:awaiting_requalification] => :awaiting_bank_information_refresh
     end
 
     event :bank_information_refreshed do
-      transition [:awaiting_reenter_market, :awaiting_bank_information_refresh] => :awaiting_offer_acceptance
+      transition [:awaiting_bank_information_refresh] => :awaiting_offer_acceptance
     end
 
+
+  end
+
+  state_machine :qualification_state, :initial => :awaiting_qualification_information do
+    event :qualify_for_refi do
+      transition [:awaiting_qualification_information] => :qualified_for_refi
+    end
+
+    event :disqualify_for_refi do
+      transition [:awaiting_qualification_information] => :disqualified_for_refi
+    end
+
+    event :qualify_for_funder do
+      transition [:awaiting_qualification_information] => :qualified_for_funder
+    end
+
+    event :qualify_for_market do
+      transition [:awaiting_qualification_information] => :qualified_for_market
+    end
+
+    event :disqualify_for_refi do
+      transition [:awaiting_qualification_information] => :disqualified_for_refi
+    end
+    
+    event :disqualify do
+      transition [:awaiting_qualification_information] => :disqualified_for_funder
+    end
 
   end
   
@@ -150,9 +186,38 @@ class Business < ActiveRecord::Base
   handle_asynchronously :deliver_average_email!
   
   def setup_mobile_routing
+    self.mobile_confirmation_provided_market
     self.twimlet_url = TwilioLib.generate_twimlet_url(self.mobile_number)
-    routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url)
-    RoutingNumber.create(phone_number: routed_number, success_url: twimlet_url, business_id: self.id)
+    routing_number = RoutingNumber.create(success_url: twimlet_url, business_id: self.id)
+    routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url, routing_number)
+    routing_number.save
+  end
+
+  def qualify
+
+    unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market?  
+      is_qualified = false
+      if self.is_refinance
+        if has_paid_enough
+          is_qualified = true
+          self.qualified_for_refi
+        else
+          self.disqualify_for_refi
+        end
+      else
+        if false # Funder Qualification
+          
+        elsif true # Market Qualification
+          is_qualified = true
+          self.qualify_for_market
+        else # No Qualification
+          self.disqualify
+        end
+      end
+    else
+      return true
+    end
+    return is_qualified
   end
 
   def is_averaged_over_minimum
@@ -162,7 +227,7 @@ class Business < ActiveRecord::Base
   end
   
   def has_paid_enough
-    return true if !is_payback_amount_set || is_previous_funding_atleast(0.6) 
+    return true if !is_payback_amount_set || is_previous_funding_atleast(0.5) 
     return false
   end
 
@@ -286,6 +351,7 @@ class Business < ActiveRecord::Base
   end
 
   def accept_as_lead
+    self..deliver_activation_instructions!
     Lead.create(business_id: self.id)
     self.bank_information_provided
   end
@@ -308,6 +374,25 @@ class Business < ActiveRecord::Base
           self.mobile_number = nil
         else
           self.mobile_number = mobile_number_object.international_string      
+        end
+      end
+    end
+
+    def parse_date
+      if self.current_step == :refinance
+        date_array = self.previous_loan_date.split('-')
+        self.previous_loan_date = nil
+        if date_array.length == 3
+          if date_array[0].to_i <= 12
+            if date_array[1].to_i <= 31
+              if date_array[2].to_i <= 3000
+                new_date = Date.new(date_array[2],date_array[1],date_array[0])
+                if new_date.is_valid? and new_date <= Date.today
+                  self.previous_loan_date = new_date
+                end
+              end
+            end  
+          end
         end
       end
     end

@@ -107,8 +107,13 @@ module BusinessValidations
 	if: -> {self.current_step == :refinance}
 
 	validates :total_previous_payback_amount,
-	presence: { message: "Please input a valid payback amount.", allow_blank: false},
+	presence: { message: "Current Payback.", allow_blank: false},
 	if: -> {self.current_step == :refinance}
+
+	validates :total_previous_payback_balance,
+	presence: { message: "Loan Balance", allow_blank: false},
+	if: -> {self.current_step == :refinance}
+	
 
 	validates :is_closing_fee,
     inclusion: {:in => ["false", "true"], message: "Please select whether you paid a closing fee.", allow_blank: false},
@@ -118,6 +123,8 @@ module BusinessValidations
     presence: { message: "Please include a valid closing fee amount."},
     if: -> {self.current_step == :refinance and self.is_closing_fee == "true"}
 
+
+    # Step - Disclaimer
 	
 
 

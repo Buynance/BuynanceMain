@@ -104,6 +104,8 @@ Buynance::Application.routes.draw do
   get 'recover'                  => 'business_users#recover', :as => :recovery_path
   get 'activation'               => 'business_users#recovery_instructions', :as => :recovery_instructions_path
   match 'recover/:recovery_code' => "business_users#password", via: :get
+
+  get 'call/:id' => 'routing_numbers#call'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]

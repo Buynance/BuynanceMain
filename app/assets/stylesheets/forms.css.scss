@@ -66,6 +66,21 @@
         .paper-section-bank-login-left {
             float: left;
             padding-bottom: 75px;
+            padding-right: 50px;
+            .paper-section-bank-login-left-disclaimer{
+              textarea{
+                width: 100%;
+                -webkit-box-sizing: border-box;
+                    -moz-box-sizing: border-box;
+                        box-sizing: border-box;
+                height: 500px;
+                font-size: 12px;
+                padding: 20px;
+                text-align: justify;
+                white-space: normal;
+                margin-bottom: 25px;
+              }
+            }
             .paper-section-bank-login-left-header {
                 color: rgb(141, 198, 63);
                 font-size: 20px;

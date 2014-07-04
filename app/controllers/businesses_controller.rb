@@ -36,10 +36,20 @@ class BusinessesController < ApplicationController
     #  render :action => :not_qualified
     if @business.awaiting_personal_information? or @business.awaiting_bank_information?
       redirect_to funding_steps_path
+    elsif @business.awaiting_disclaimer_acceptance?
+      redirect_to funding_steps_path
     elsif @business.awaiting_email_confirmation?
       redirect_to controller: 'static_pages', action: 'confirm_email'
     elsif @business.awaiting_mobile_confirmation?
       redirect_to action: 'confirm_account'
+    elsif @business.qualified_for_funder?
+      render 'qualified_funder'
+    elsif @business.qualified_for_refi?
+      render 'qualified_refi'
+    elsif @business.qualified_for_market?
+      render 'qualified_market'
+    elsif @business.disqualified_for_refi? || @business.disqualified_for_funder?
+      render 'disqualified'
     elsif @business.awaiting_offer_acceptance?
       redirect_to display_offers_url
     elsif @business.awaiting_offer_completetion?
@@ -88,9 +98,15 @@ class BusinessesController < ApplicationController
   def confirm_mobile
     business = current_business
     if business.mobile_opt_code == params[:mobile][:mobile_opt_code]
-      business.mobile_confirmation_provided
-      business.setup_mobile_routing
-      business.save
+      if business.qualify
+        if business.qualified_for_funder?
+          business.mobile_confirmation_provided
+        elsif business.qualified_for_refi?
+          business.mobile_confirmation_provided
+        elsif business.qualified_for_market?
+          business.mobile_confirmation_provided
+        end
+      end
       redirect_to action: :show
     else
       flash[:alert] = "Mobile code is incorrect. Please try again."
@@ -105,6 +121,19 @@ class BusinessesController < ApplicationController
     
     render xml: twiml
   end
+
+  def qualified_for_funder
+  end
+
+  def qualified_for_refi
+  end
+
+  def qualified_for_market
+  end
+
+  def disqualified
+  end
+
 
   private
 
