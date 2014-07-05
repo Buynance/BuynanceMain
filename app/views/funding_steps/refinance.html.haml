@@ -29,15 +29,15 @@
             .paper-section-bank-login-form-label
               %span How much money did you recieve from your current loan?
             .paper-section-bank-login-form-input
-              = f.input :total_previous_loan_amount, placeholder: 'Previous Loan Amount', input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :total_previous_loan_amount, placeholder: 'Previous Loan Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
             .paper-section-bank-login-form-label
               %span How much do you have to pay back in your current loan?
             .paper-section-bank-login-form-input
-              = f.input :total_previous_payback_amount, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :total_previous_payback_amount, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
             .paper-section-bank-login-form-label
               %span What is your current balance on your current loan?
             .paper-section-bank-login-form-input
-              = f.input :total_previous_payback_balance, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox'}, label: false,  error: false
+              = f.input :total_previous_payback_balance, placeholder: 'Previous Payback Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
             .paper-section-bank-login-form-label
               %span Did you pay a closing fee?
             .paper-section-bank-login-form-input
@@ -46,7 +46,7 @@
               .paper-section-bank-login-form-label
                 %span If you payed a closing fee, how much did you pay?
               .paper-section-bank-login-form-input
-                = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox'}, label: false,  error: false
+                = f.input :closing_fee, placeholder: "Closing Fee?",  input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
             .paper-section-bank-login-form-action
               = f.submit "Continue", class: "form-button flat-button button-submit"
       .paper-section-bank-login-right.col-xs-5.fix-overflow

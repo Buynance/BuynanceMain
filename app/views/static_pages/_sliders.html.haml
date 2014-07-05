@@ -30,7 +30,7 @@
               .flat-button.button-get-financed
                 Get Financed
             .homepage-slider-action-subheader
-              %span How it Works
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 0);"}How it Works
       .homepage-slider-left.paper.paper-green
         .homepage-slider-left-fold
           = image_tag("homepage_slider_fold_green.png")
@@ -58,5 +58,5 @@
             .homepage-slider-main-action-button
               .flat-button.button-get-refinance
                 Re-Fi
-            .homepage-slider-action-subheader
-              %span How it Works
+            .homepage-slider-action-subheader.slider-right
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 1);"}How it Works

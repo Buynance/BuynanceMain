@@ -16,4 +16,5 @@
 //= require turbolinks
 //= require jquery-ui
 //= require_tree ./load_one
+//= require_tree ./load_two
 //= require_tree ./load_rest

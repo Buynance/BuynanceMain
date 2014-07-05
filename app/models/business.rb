@@ -157,6 +157,7 @@ class Business < ActiveRecord::Base
   # Business type string from id                      #
   # --------------------------------------------------#
 
+
   def send_mobile_confirmation!
     TwilioLib.send_activation_code(self.mobile_number, self.mobile_opt_code)
   end
@@ -164,15 +165,18 @@ class Business < ActiveRecord::Base
   def deliver_qualified_signup!
     AdminMailer.delay.qualified_signup(self)
   end
+  handle_asynchronously :deliver_qualified_signup!
 
   def deliver_offer_email!
     AdminMailer.delay.offer_notification(self)
   end
+  handle_asynchronously :deliver_offer_email!
 
   def deliver_activation_instructions!
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
+  handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!

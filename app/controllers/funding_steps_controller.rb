@@ -4,6 +4,7 @@ class FundingStepsController < ApplicationController
 
 	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information, :disclaimer
 	before_filter :require_business_user
+	before_filter :standardize_params, :only => [:update]
 	
 	def show
 		@business = current_business
@@ -130,6 +131,15 @@ class FundingStepsController < ApplicationController
 
 	def bank_account_params
 		return params.require(:bank_account).permit(:account_number, :routing_number) if step == :bank_prelogin		
+	end
+
+	def standardize_params
+	    if step == :refinance
+	      	params[:business][:total_previous_payback_amount].gsub!( /[^\d]/, '')
+	      	params[:business][:total_previous_payback_balance].gsub!( /[^\d]/, '')
+	      	params[:business][:closing_fee].gsub!( /[^\d]/, '')
+	      	params[:business][:total_previous_loan_amount].gsub!( /[^\d]/, '')
+	    end	
 	end
 end
 
