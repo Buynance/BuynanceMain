@@ -176,7 +176,7 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
-  handle_asynchronously :deliver_activation_instructions!
+  #handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!
