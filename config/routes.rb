@@ -86,6 +86,7 @@ Buynance::Application.routes.draw do
   get 'privacy'               => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog'                  => 'static_pages#blog'
+  get 'about'                 => 'static_pages#about'
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
   post 'confirm_mobile' => 'businesses#confirm_mobile'

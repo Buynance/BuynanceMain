@@ -10,9 +10,13 @@ class BusinessesController < ApplicationController
   def new 
       @business_user = BusinessUser.new 
       @business = Business.new   
-      @business.is_refinance = false
-      @business.is_refinance = true if params[:is_refinance] == "true"
-
+      @show_funding_source = false
+      if params[:is_refinance].nil? and params[:is_funding].nil?
+        @show_funding_source = true 
+      else
+        @business.is_refinance = true unless params[:is_refinance].nil?
+        @business.is_refinance = false unless params[:is_funding].nil?
+      end
   end
 
   def create

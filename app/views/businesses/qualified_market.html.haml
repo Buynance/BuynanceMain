@@ -1,9 +1,14 @@
 .web_body
   .paper-section
     .paper-section-header
-      Account
+      %span Account
     .paper-section-top
     .paper-section-body.paper-section-bank-login.row
-      %p Unfortunately we could not pair you up with one of our funding partners but you have been entered into the broker market. We have given you the phone number below.
-      %p
-        = @business.routing_number.phone_number
+      .account
+        .account-header
+          %span You Qualify for Funding Market
+        .account-body
+          %span Unfortunately we could not pair you up with one of our funding partners but we have entered you into into a broker market. To protect your identity and provided you with the best funding exprience, we have provided you with a new phone number. Any call from brokers will be routed from this phone number to your cell phone number, securing you from being harrased by any deviant brokers.
+
+          %p 
+            = "Phone Number #{ @business.routing_number.phone_number} "

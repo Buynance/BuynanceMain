@@ -18,39 +18,7 @@ input.form-input :focus
 border-color:yellow;
 }
 
-.flat-button {
-  margin-top: 0px;
-  margin-right: 0px;
-  padding: 10px 10px;
-  font-size: 14px;
-  line-height: 100%;
-  color: #fff;
-  display:inline-block;
-  vertical-align: middle;
-  text-align: center;
-  cursor: pointer;
-  font-weight: bold;
-  transition: background 0.1s ease-in-out;
-  -webkit-transition: background 0.1s ease-in-out;
-  -moz-transition: background 0.1s ease-in-out;
-  -ms-transition: background 0.1s ease-in-out;
-  -o-transition: background 0.1s ease-in-out;
-  color: #fff;
-  -webkit-border-radius: 3px;
-  -moz-border-radius: 3px;
-  border-radius: 3px;
-  font-family: 'Lato', sans-serif;
-}
 
-.flat-button:active {
-  
-}
-
-.flat-button, .flat-button:hover, .flat-button:active {
-  outline: 0 none;
-  text-decoration: none;
-  color: #fff;
-}
 
 .button-signup {
   background-color: #F0BC1B;

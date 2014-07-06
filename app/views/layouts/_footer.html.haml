@@ -10,22 +10,35 @@
               USEFUL LINKS
           .footer-section-body
             %ul
+              %li
+                - if current_page?('/') 
+                  %span{onclick: "$('body').scrollTo('body', 800)"} Home
+                - else
+                  %a{href: '/'} Home
               %li 
-                %span Home
+                - if current_page?('/') 
+                  %span{onclick: "$('body').scrollTo('#slider', 800)"} Slider
+                - else
+                  %a{href: '/#slider'} Slider
               %li 
-                %span How Buynance Works
+                - if current_page?('/')
+                  %span{onclick: "$('body').scrollTo('#benefits', 800)"} Benefits
+                - else
+                  %a{href: '/#benefits'} Benefits
               %li 
-                %span Benefits
+                - if current_page?('/') 
+                  %span{onclick: "$('body').scrollTo('#testimonials', 800)"} Testimonials
+                - else
+                  %a{href: '/#testimonials'} Testimonials
+              %li
+                - if current_page?('/')  
+                  %span{onclick: "$('body').scrollTo('#in_the_news', 800)"} In The News
+                - else
+                  %a{href: '/#in_the_news'} In The News
               %li 
-                %span How We Help
+                %a{href: '/tos'} Terms of Service
               %li 
-                %span Blog
-              %li 
-                %span Merchant Cash Advance
-              %li 
-                %span Terms of Service
-              %li 
-                %span Privacy Policy
+                %a{href: '/privacy'} Privacy Policy
         .col-xs-6.footer-section
           .footer-section-header
             %span WE ARE SOCIAL

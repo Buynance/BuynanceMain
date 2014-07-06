@@ -1,0 +1,62 @@
+#slider.homepage-fluid-container.container-gray
+  .homepage-container
+    .homepage-sliders.clearfix
+      .homepage-slider-right.paper.paper-green
+        .homepage-slider-right-fold
+          = image_tag("homepage_slider_fold_blue.png")
+        .homepage-slider-header.paper-header
+          %span Get Financed
+        .homepage-slider-subheader
+          %span Adjust Your Financed Amount to View Savings
+        .homepage-slider-main.paper-body
+          .homepage-slider-main-section
+            #slider-range-funder
+            .homepage-slider-main-section-label.clearfix
+              .homepage-slider-main-section-label-left
+                %span.homepage-slider-right-main-section-label-left-min
+              .homepage-slider-main-section-label-right
+                %span.homepage-slider-right-main-section-label-right-max
+          .homepage-slider-main-result
+            %hr
+            .homepage-slider-main-result-text.clearfix
+              .homepage-slider-main-result-text-left
+                %span.blue-highlight Savings 
+                %span vs Broker
+              .homepage-slider-main-result-text-right
+                %span.slider-right-value $750
+            %hr
+          .homepage-slider-main-action
+            .homepage-slider-main-action-button
+              .flat-button.button-get-financed
+                Get Financed
+            .homepage-slider-action-subheader
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 0);"}How it Works
+      .homepage-slider-left.paper.paper-green
+        .homepage-slider-left-fold
+          = image_tag("homepage_slider_fold_green.png")
+        .homepage-slider-header.paper-header
+          %span Re-Finance
+        .homepage-slider-subheader
+          %span Use Slider to Customize your Payments
+        .homepage-slider-main.paper-body
+          .homepage-slider-main-section
+            #slider-range-refi
+            .homepage-slider-main-section-label.clearfix
+              .homepage-slider-main-section-label-left
+                %span.homepage-slider-left-main-section-label-left-min
+              .homepage-slider-main-section-label-right
+                %span.homepage-slider-left-main-section-label-right-max
+          .homepage-slider-main-result
+            %hr
+            .homepage-slider-main-result-text.clearfix
+              .homepage-slider-main-result-text-left
+                %span Reduce Daily Collection
+              .homepage-slider-main-result-text-right.slider-left
+                %span.slider-left-value $50
+            %hr
+          .homepage-slider-main-action
+            .homepage-slider-main-action-button
+              .flat-button.button-get-refinance
+                Re-Fi
+            .homepage-slider-action-subheader.slider-right
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 1);"}How it Works

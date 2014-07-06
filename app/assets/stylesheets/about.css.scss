@@ -1,0 +1,280 @@
+$dark-gray: rgb(96, 96, 96);
+$buynance-blue: rgb(37, 170, 225);
+$lato-bold: "latobold", Arial, sans-serif;
+$lato-regular: "latoregular", Arial, sans-serif;
+$lato-italics: "latoitalics", Arial, sans-serif;
+$lato-light: 'latolight', Arial, sans-serif;
+
+.about-fluid-container {
+    width: 100%;
+    padding-top: 5.0em;
+    padding-bottom: 5.0em;
+    .about-container {
+        width: 84.0em;
+        margin: 0 auto;
+    }
+}
+
+.about-fluid-submenu-container{
+  min-height: 5.1em;
+    background: asset-url("about_submenu_bg.png") no-repeat;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+.why-buynance-submenu {
+    width: 116em;
+    padding-left: 41.2em;
+    margin: 0 auto;
+    .why-buynance-submenu-item{
+      display: inline-block;
+      font-family: $lato-bold;
+      margin-right: 4em;
+      color: rgb(147, 155, 157);
+      span{
+        font-size: 1.5em;
+        line-height: 3.5em;
+        text-shadow: 0px -1px 0px rgba(135,142,144,.5);
+        cursor: pointer;
+      }
+    }
+
+    .why-buynance-submenu-item:first-child{
+      color: white;
+      span{
+        text-shadow: none;
+      }
+    }
+}
+
+.why-buynance-our-story {
+    padding-bottom: 5.0em;
+    font-family: $lato-bold;
+    .why-buynance-our-story-header {
+        margin-bottom: 4.0em;
+        span {
+            font-size: 3.0em;
+            color: $dark-gray;
+        }
+    }
+    .why-buynance-our-story-subheader {
+        font-family: $lato-regular;
+        margin-bottom: 3.0em;
+        span {
+            font-size: 1.8em;
+            color: $buynance-blue;
+        }
+    }
+    .why-buynance-our-story-body {
+        font-family: $lato-regular;
+        margin-bottom: 2.0em;
+        span {
+            font-size: 1.6em;
+            color: $dark-gray;
+            line-height: 1.8em;
+        }
+    }
+}
+
+.why-buynance-we-vs-retail_brokers {
+    .why-buynance-we-vs-retail-brokers-header {
+        display: block;
+        font-family: $lato-regular;
+        text-align: center;
+        margin-bottom: 7.5em;
+        word-spacing: 1.0em;
+        color: $dark-gray;
+        span {
+            font-size: 2.8em;
+        }
+        span:first-child {
+            font-family: $lato-bold;
+        }
+    }
+    .why-buynance-we-vs-retail-brokers-body {
+        width: 90%;
+        display: block;
+        margin: 0 auto;
+        margin-bottom: 6.5em;
+        .why-buynance-we-vs-retail-brokers-body-bar {
+            margin-bottom: 1.5em;
+            position: relative;
+            height: 6em;
+            .why-buynance-we-vs-retail-brokers-body-bar-circle {
+                width: 6em;
+                height: 6em;
+                border-radius: 50%;
+                border-style: solid;
+            }
+            .circle-left {
+                float: left;
+                background-color: rgb(205, 229, 120);
+                border-color: rgb(141, 198, 63);
+                border-width: 1px;
+            }
+            .circle-right {
+                float: right;
+                background-color: rgb(242, 242, 242);
+                border-color: rgb(202, 202, 202);
+                border-width: 1px;
+            }
+            .why-buynance-we-vs-retail-brokers-body-bar-body {
+                height: 6em;
+                width: 34em;
+                border-left-width: 0;
+                border-right-width: 0;
+                font-family: $lato-bold;
+                span {
+                    font-size: 2.4em;
+                    line-height: 2.5em;
+                }
+            }
+            .bar-body-left {
+                float: left;
+                background-color: rgb(205, 229, 120);
+                border-color: rgb(141, 198, 63);
+                border-top-width: 1px;
+                border-bottom-width: 1px;
+                border-style: solid;
+                margin-left: -3em;
+                padding-left: 6em;
+                span {
+                    color: rgb(105, 156, 35);
+                }
+            }
+            .bar-body-right {
+                float: right;
+                background-color: rgb(242, 242, 242);
+                border-color: rgb(202, 202, 202);
+                border-top-width: 1px;
+                border-bottom-width: 1px;
+                margin-right: -3em;
+                border-style: solid;
+                padding-left: 10em;
+                span {
+                    color: rgb(134, 134, 134);
+                }
+            }
+            .why-buynance-we-vs-retail-brokers-body-bar-middle {
+                border-radius: 50%;
+                position: absolute;
+                margin-left: auto;
+                margin-right: auto;
+                left: 0;
+                right: 0;
+                border-width: .75em;
+                margin-top: -.75em;
+                border-color: white;
+                width: 8em;
+                height: 8em;
+                border-style: solid;
+                background-color: $buynance-blue;
+                font-family: $lato-bold;
+                padding-left: 1.8em;
+                padding-top: 1.5em;
+                span {
+                    color: white;
+                    font-size: 2.4em;
+                }
+            }
+        }
+    }
+    .why-buynance-we-vs-retail-brokers-body-action {
+        .flat-button.button-about-get-funded {
+
+            font-family: $lato-regular;
+            display: block;
+            background-color: $buynance-blue;
+            color: white;
+            width: 24.0em;
+            border-size: 0px;
+            padding-top: 1.4em;
+            padding-bottom: 1.4em;
+            margin: 0 auto;
+            padding-left: 1.6em;
+            padding-right: 1.6em;
+            a {
+                font-size: 1.8em;
+                text-decoration: none;
+                line-height: 1em;
+            }
+        }
+    }
+}
+
+.why-buynance-team {
+    padding-top: 2.5em;
+    padding-bottom: 2.5em;
+    .why-buynance-team-header {
+        font-family: $lato-bold;
+        margin-bottom: 2.0em;
+        color: $dark-gray;
+        span {
+            font-size: 2.8em;
+        }
+    }
+    .why-buynance-team-body {
+        font-family: $lato-regular;
+        color: $buynance-blue;
+        span {
+            font-size: 1.6em;
+        }
+    }
+}
+
+.why-buynance-team-memebers {
+    .why-buynance-team-members-section {
+        margin-bottom: 7.5em;
+        .why-buynance-team-members-section-image {
+            display: block;
+            margin-bottom: 1.0em;
+            text-align: center;
+            img {
+                width: 16em;
+                height: 16em;
+            }
+        }
+        .why-buynance-team-members-section-name {
+            text-align: center;
+            span {
+                color: $dark-gray;
+                font-family: $lato-bold;
+                font-size: 1.8em;
+                
+            }
+        }
+        .why-buynance-team-members-section-title {
+            margin-bottom: 2.0em;
+            text-align: center;
+            span {
+                font-size: 1.8em;
+                color: $buynance-blue;
+                font-family: $lato-regular;
+                
+            }
+        }
+        .why-buynance-team-members-section-info {
+            color: $dark-gray;
+            text-align: center;
+            span {
+              font-family: $lato-light;
+                font-size: 1.6em;
+            }
+        }
+    }
+    .why-buynance-team-members-left {
+        float: left;
+        width: 34em;
+
+        .jay {}
+        .edwin {}
+    }
+    .why-buynance-team-members-right {
+        float: right;
+        width: 34em;
+        padding-top: 28em;
+        .yuliya {}
+    }
+}

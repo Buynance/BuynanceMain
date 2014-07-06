@@ -7,6 +7,21 @@ body {
 
 }
 
+.web_body {
+  background:#f5f5f5;
+  min-height: 75%;
+  height: auto;
+  width: 100%;
+  padding-top: 20px;
+  padding-bottom: 20px; 
+}
+
+.row {
+margin-left:0;
+margin-right:0
+}
+
+
   /**************************************************/
  /*                    Nav Bar                     */
 /**************************************************/
@@ -19,8 +34,8 @@ body {
         margin: 0 auto;
         width: 116.0em;
         .homepage-header{
-            padding-top: 1.0em; 
-            padding-bottom: 1.0em;
+            padding-top: 2.0em; 
+            padding-bottom: 1.5em;
 
             .hompage-header-logo{
                 float: left;
@@ -40,13 +55,16 @@ body {
                 .homepage-header-links-why{
                     color: #20acd7;
                 }
+
+
                 
                 .homepage-header-links-section{
                     float: left;
                     width: 25%;
 
-                    span{
+                    span, a{
                         font-size: 1.5em;
+                        text-decoration: none;
                     }
                 }
 
@@ -621,26 +639,6 @@ body {
     }
 }
 
-.container-gray {
-    background-color: rgb(242, 242, 242);
-}
-
-.container-white {
-    background-color: white;
-}
-
-
-.highlight-orange {
-	color: rgb(240, 217, 140);
-}
-
-.highlight-blue {
-	color: rgb(32, 172, 215);
-}
-
-.highlight-green {
-	color: rgb(141, 198, 63);
-}
 
 .jcarousel {
     position: relative;
@@ -1038,8 +1036,10 @@ body {
       margin-right: 0;
       li {
         margin-top: .6em;
-        span{
+        span, a{
             font-size: 1.4em;
+            text-decoration: none;
+            cursor: pointer;
         }
         img {
           margin-right: .4em;

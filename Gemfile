@@ -29,7 +29,7 @@ gem 'jquery-ui-rails', '~>4.2.1'
 gem 'rename'
 
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
-gem 'turbolinks'
+#gem 'turbolinks'
 
 # Buynanceild JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 1.2'
@@ -96,6 +96,7 @@ group :development do
   gem 'quiet_assets'
   gem 'sqlite3'
   gem 'html2haml'
+  gem 'ruby-graphviz'
 end
 
 group :production do
