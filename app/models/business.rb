@@ -15,6 +15,8 @@ class Business < ActiveRecord::Base
   has_one :routing_number, :dependent => :destroy
   has_many :leads, :dependent => :destroy
 
+  FUNDING_TYPES = {refinance: 1, funding: 0}
+
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")
   scope :awaiting_bank_information, where(state: "awaiting_bank_information")
   scope :awaiting_email_confirmation, where(state: "awaiting_email_confirmation")

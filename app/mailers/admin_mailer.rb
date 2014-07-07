@@ -13,4 +13,14 @@ class AdminMailer < ActionMailer::Base
          :to      => "jay@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
+
+  def business_qualified_market(business)
+
+  end
+
+  def business_qualified_funder(business)
+  end
+
+  def business_qualified_refinance(business)
+  end
 end

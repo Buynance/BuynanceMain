@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140704061424) do
+ActiveRecord::Schema.define(version: 20140707230208) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -157,11 +157,11 @@ ActiveRecord::Schema.define(version: 20140704061424) do
   end
 
   create_table "businesses", force: true do |t|
-    t.string   "crypted_password",                   default: "",    null: false
+    t.string   "crypted_password",                               default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "login_count",                        default: 0,     null: false
+    t.integer  "login_count",                                    default: 0,     null: false
     t.datetime "current_login_at"
     t.datetime "last_login_at"
     t.string   "current_login_ip"
@@ -194,11 +194,11 @@ ActiveRecord::Schema.define(version: 20140704061424) do
     t.string   "persistence_token"
     t.string   "single_access_token"
     t.string   "perishable_token"
-    t.integer  "failed_login_count",                 default: 0,     null: false
+    t.integer  "failed_login_count",                             default: 0,     null: false
     t.datetime "last_request_at"
-    t.boolean  "passed_recent_earnings",             default: false
-    t.boolean  "passed_personal_information",        default: false
-    t.boolean  "passed_merchant_history",            default: false
+    t.boolean  "passed_recent_earnings",                         default: false
+    t.boolean  "passed_personal_information",                    default: false
+    t.boolean  "passed_merchant_history",                        default: false
     t.boolean  "is_finished_application"
     t.string   "activation_code"
     t.string   "most_recent_funder"
@@ -220,11 +220,11 @@ ActiveRecord::Schema.define(version: 20140704061424) do
     t.integer  "total_monthly_bills"
     t.integer  "main_user_id"
     t.boolean  "is_accept_offer_disclaimer"
-    t.boolean  "is_completed_application",           default: false
+    t.boolean  "is_completed_application",                       default: false
     t.integer  "main_offer_id"
-    t.string   "email",                              default: "",    null: false
+    t.string   "email",                                          default: "",    null: false
     t.string   "mobile_number"
-    t.boolean  "is_first_contact",                   default: true
+    t.boolean  "is_first_contact",                               default: true
     t.integer  "status"
     t.integer  "main_business_user_id"
     t.string   "state"
@@ -241,8 +241,9 @@ ActiveRecord::Schema.define(version: 20140704061424) do
     t.float    "total_previous_loan_amount"
     t.string   "mobile_opt_code"
     t.string   "foward_number"
-    t.string   "twimlet_url"
+    t.text     "twimlet_url",                        limit: 255
     t.string   "qualification_state"
+    t.integer  "funding_type",                                   default: 0
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
