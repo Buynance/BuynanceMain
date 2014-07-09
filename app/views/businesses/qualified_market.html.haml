@@ -8,7 +8,16 @@
         .account-header
           %span You Qualify for Funding Market
         .account-body
-          %span Unfortunately we could not pair you up with one of our funding partners but we have entered you into into a broker market. To protect your identity and provided you with the best funding exprience, we have provided you with a new phone number. Any call from brokers will be routed from this phone number to your cell phone number, securing you from being harrased by any deviant brokers.
-
-          %p 
-            = "Phone Number #{@business.routing_number.phone_number} "
+          .account-body-info
+            %span We can't fund you at this time, however, we can quickly start a competition amongst competing firms who specialize in helping business owners like you. As you know, when 'funders compete, you win.
+          .account-body-how-it-works
+            .account-body-how-it-works-header
+              %span How it Works
+            .account-body-how-it-works-body
+              %ol
+                %li
+                  %span We give you a temporary mobile phone number to mask your real number. This prevents anyone abusing the use of your mobile phone number while protecting your privacy.
+                %li
+                  %span We post your deal to our preferred funders.
+                %li
+                  %span They will compete for your business guaranteeing you the lowest rate possible.
