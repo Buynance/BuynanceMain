@@ -93,7 +93,7 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def months_of_transactions
-		return ( days_of_transactions / 30).to_f
+		return ( days_of_transactions / 30.0).to_f
 	end
 
 	def get_negative_days_monthly_average
@@ -109,7 +109,7 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def days_of_transactions
-		return (self.transactions[0].transaction_date.to_date - self.transactions.last.transaction_date.to_date)
+		return (self.transactions[0].transaction_date.to_date - self.transactions.last.transaction_date.to_date).to_i
 	end
 
 
@@ -117,9 +117,54 @@ class BankAccount < ActiveRecord::Base
 		current_deposit_average = 0
 		current_deposit_average = deposits_one_month_ago if days_of_transactions >= 30
 		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/2 if days_of_transactions >= 60
-		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/3 if days_of_transactions >= 90
+		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/3 if days_of_transactions >= 86
 
 		return (current_deposit_average >= amount)
+	end
+
+	def average_amount_of_transactions_atleast(amount, transaction_type)
+		transaction_list = get_transactions_by_type_code(transaction_type)
+		current_transaction_date = transactions.first.transaction_date.to_date
+		date_count = 0
+		transaction_count = 0
+		month1 = -1
+		month2 = -1
+		month3 = -1
+
+		transaction_list.each do |transaction|
+			if date_count > 30
+				if month1 == -1
+					month1 = transaction_count - 1
+				elsif month2 == -1
+					month2 = transaction_count - 1
+				elsif month3 == -1
+					month3 = transaction_count - 1
+				end
+				date_count = 
+				transaction_count = 1
+			end
+
+			transaction_count  = transaction_count + 1
+			if transaction.transaction_date.to_date  < current_transaction_date
+				date_count = date_count + (current_transaction_date - transaction.transaction_date.to_date)
+
+				current_transaction_date = transaction.transaction_date.to_date
+			end
+		end
+
+		if date_count > 26
+			if month3 == -1 and month1 > -1 and month2 > -1
+				month3 = transaction_count
+			elsif month2  == -1 and month1 > -1
+				month3 = transaction_count
+			elsif month1 == -1
+				month3 = transaction_count
+			end
+		end
+
+		return ((month1+month2+month3)/3) if month1 > -1 and month2 > -1 and month3 > -1
+		return ((month1+month2)/2) if month1 > -1 and month2 > -1 and month3 == -1
+		return -1
 	end
 
 
@@ -178,6 +223,13 @@ class BankAccount < ActiveRecord::Base
 
 	def get_transactions_by_type_code(type_code)
 		return self.transactions.where("type_code like ?", "%#{type_code}%")
+	end
+
+	def get_transactions_by_type_code_x_months_ago(type_code, month)
+		first_transaction_date = self.transactions.first.transaction_date
+		start_transaction_date = first_transaction_date.ago( 86400 * 30 * month)
+		end_transaction_date = start_transaction_date.ago( 86400 * 30)
+		self.transactions.where("transaction_date between ? and ?", start_transaction_date, end_transaction_date).size
 	end
 	
 	def average_deposits_amount_last_x_days(days)

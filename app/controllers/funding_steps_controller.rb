@@ -67,7 +67,7 @@ class FundingStepsController < ApplicationController
 				if @business.is_refinance
 					if @bank_account.routing_number == "skip"
 						@business.accept_as_lead
-						@business.qualify_for_refi
+						@business.qualify_for_market
 						redirect_to account_url
 					elsif @bank_account.routing_number == "market"
 						@business.accept_as_lead

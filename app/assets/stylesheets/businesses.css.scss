@@ -1,3 +1,5 @@
+$buynance-blue: rgb(37, 170, 225);
+
 .account{
 	min-height: 500px;
 	padding-left: 20px;
@@ -11,10 +13,22 @@
 		}
 	}
     .account-body{
-    	span, p{
+    	span, p, a{
     		color: #6f6f6f;
     		font-size: 14px;
     		line-height: 28px;
+    	}
+
+    	a {
+    		color: $buynance-blue;
+    	}
+
+    	ul {
+    		list-style-type: none;
+    	}
+    	.account-body-info{
+    		margin-bottom: 2.0em;
+
     	}
     }        
 }

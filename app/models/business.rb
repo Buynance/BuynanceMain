@@ -197,7 +197,7 @@ class Business < ActiveRecord::Base
   handle_asynchronously :deliver_average_email!
   
   def setup_mobile_routing
-    self.mobile_confirmation_provided_market
+    self.mobile_confirmation_provided_phone
     self.twimlet_url = TwilioLib.generate_twimlet_url(self.mobile_number)
     routing_number = RoutingNumber.create(success_url: twimlet_url, business_id: self.id, call_count: 0)
     routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url, routing_number.id)
@@ -206,26 +206,45 @@ class Business < ActiveRecord::Base
   end
 
   def is_qualified_for_funder(amount, days)
-    return (self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transaction >= days))
+    return (self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transactions >= days))
   end
   
   def qualify
-    unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market?  
-      is_qualified = false
-      if self.is_refinance
-        if has_paid_enough
-          is_qualified = true
-          self.qualified_for_refi
+    unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market? 
+      if true
+        is_qualified = false
+        if self.is_refinance
+          if is_qualified_for_funder(15000, 6)
+            p "qualify"
+            is_qualified = true
+            self.qualify_for_market
+          else
+            self.disqualify
+          end
         else
-          self.qualify_for_market
+          if is_qualified_for_funder(15000, 6)
+            p "qualify"
+            is_qualified = true
+            self.qualify_for_market
+          end
         end
       else
-        if is_qualified_for_funder(15000, 6)
-          is_qualified = true
-          self.qualified_for_funder
+        is_qualified = false
+        if self.is_refinance
+          if has_paid_enough
+            is_qualified = true
+            self.qualify_for_refi
+          else
+            self.qualify_for_market
+          end
         else
-          is_qualified = true
-          self.qualify_for_market
+          if is_qualified_for_funder(15000, 6)
+            is_qualified = true
+            self.qualify_for_funder
+          else
+            is_qualified = true
+            self.qualify_for_market
+          end
         end
       end
     else

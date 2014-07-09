@@ -139,7 +139,9 @@ $lato-light: 'latolight', Arial, sans-serif;
                 border-bottom-width: 1px;
                 border-style: solid;
                 margin-left: -3em;
-                padding-left: 6em;
+                padding-left: 0em;
+                padding-right: 4em;
+                text-align: center;
                 span {
                     color: rgb(105, 156, 35);
                 }
@@ -152,7 +154,8 @@ $lato-light: 'latolight', Arial, sans-serif;
                 border-bottom-width: 1px;
                 margin-right: -3em;
                 border-style: solid;
-                padding-left: 10em;
+                padding-left: 4em;
+                text-align: center;
                 span {
                     color: rgb(134, 134, 134);
                 }

@@ -52,7 +52,7 @@ Buynance::Application.routes.draw do
   end
 
   resources :funders
-  resources :funding_steps, :path => "after_signups"
+  resources :funding_steps, :path => "funding"
   resources :funder_sessions, :path => "funder_session", :only => [:new, :create, :destoy]
   resources :business_user_sessions, :path => "session", :only => [:new, :create, :destoy]
   
@@ -68,7 +68,6 @@ Buynance::Application.routes.draw do
   
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 
-  resources :funding_steps
   
   #resources :calculator, :controller => "profitabilities", :path_names => { :new => "merchant-cash-advance" }
 

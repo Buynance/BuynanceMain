@@ -110,6 +110,12 @@ class BusinessesController < ApplicationController
         elsif business.qualified_for_market?
           business.mobile_confirmation_provided_phone
         end
+        unless business.bank_account.nil? or business.bank_account.institution_name.nil?
+          business.deliver_qualified_signup!
+        end
+      else
+        business.mobile_confirmation_provided
+        business.disqualify
       end
       redirect_to action: :show
     else
