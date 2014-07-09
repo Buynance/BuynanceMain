@@ -25,6 +25,14 @@ class BusinessMailer < ActionMailer::Base
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
+  def qualified_signup(business)
+    @business = business
+    mail :subject => "You have a new qualified person signup to buynance",
+         :to      => "edwin@buynance.com",
+         :from    => "edwin@buynance.com"
+  end
+
+
   
   
 end

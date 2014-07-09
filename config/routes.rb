@@ -1,4 +1,5 @@
 Buynance::Application.routes.draw do
+
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope(:path_names => { :new => "merchant-cash-advance" }) do
@@ -85,7 +86,7 @@ Buynance::Application.routes.draw do
   get 'tos'                   => 'static_pages#tos'
   get 'privacy'               => 'static_pages#privacy'
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
-  get 'blog'                  => 'static_pages#blog'
+  get 'blog2'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
@@ -163,7 +164,6 @@ Buynance::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
 
 
 end

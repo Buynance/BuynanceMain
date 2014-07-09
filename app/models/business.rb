@@ -40,7 +40,7 @@ class Business < ActiveRecord::Base
       transition [:awaiting_email_confirmation] => :awaiting_mobile_confirmation
     end
 
-    event :mobile_confirmation_provided_market do
+    event :mobile_confirmation_provided_phone do
       transition [:awaiting_mobile_confirmation] => :awaiting_disclaimer_acceptance
     end
 
@@ -104,6 +104,7 @@ class Business < ActiveRecord::Base
   
   LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
   CREDIT_SCORE_RANGES = ["0", "450-500", "501-550", "551-600", "601-650", "651-700", "701-750", "751-800"]
+  DEAL_TYPE_ARRAY = ["Money Collected from Credit Card", "Money Collected from Bank Account"]
   INVALID_LOAN_REASONS = [6]
 
   STATUS_AWAITING_ACTIVATION = 1
@@ -165,9 +166,13 @@ class Business < ActiveRecord::Base
   end
   
   def deliver_qualified_signup!
-    AdminMailer.delay.qualified_signup(self)
+    AdminMailer.qualified_signup(self.id).deliver!
   end
-  handle_asynchronously :deliver_qualified_signup!
+
+  def deliver_qualified_signup2!
+    BusinessMailer.qualified_signup(self).deliver!
+  end
+  #handle_asynchronously :deliver_qualified_signup!
 
   def deliver_offer_email!
     AdminMailer.delay.offer_notification(self)
@@ -200,8 +205,11 @@ class Business < ActiveRecord::Base
     routing_number.save
   end
 
+  def is_qualified_for_funder(amount, days)
+    return (self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transaction >= days))
+  end
+  
   def qualify
-
     unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market?  
       is_qualified = false
       if self.is_refinance
@@ -209,16 +217,15 @@ class Business < ActiveRecord::Base
           is_qualified = true
           self.qualified_for_refi
         else
-          self.disqualify_for_refi
+          self.qualify_for_market
         end
       else
-        if false # Funder Qualification
-          
-        elsif true # Market Qualification
+        if is_qualified_for_funder(15000, 6)
+          is_qualified = true
+          self.qualified_for_funder
+        else
           is_qualified = true
           self.qualify_for_market
-        else # No Qualification
-          self.disqualify
         end
       end
     else
@@ -358,11 +365,18 @@ class Business < ActiveRecord::Base
   end
 
   def accept_as_lead
-    self..deliver_activation_instructions!
+    self.deliver_activation_instructions!
     Lead.create(business_id: self.id)
     self.bank_information_provided
   end
+
+  def get_credit_score_label(number)
+    return CREDIT_SCORE_RANGES[number]
+  end
   
+  def get_deal_type_label(number)
+    return DEAL_TYPE_ARRAY[number]
+  end
 
   private
 

@@ -113,7 +113,14 @@ class BankAccount < ActiveRecord::Base
 	end
 
 
+	def is_average_deposit_atleast(amount)
+		current_deposit_average = 0
+		current_deposit_average = deposits_one_month_ago if days_of_transactions >= 30
+		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/2 if days_of_transactions >= 60
+		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/3 if days_of_transactions >= 90
 
+		return (current_deposit_average >= amount)
+	end
 
 
 	def calculate_last_three_months_deposits

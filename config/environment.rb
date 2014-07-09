@@ -5,4 +5,3 @@ require File.expand_path('../application', __FILE__)
 Buynance::Application.initialize!
 
 Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
-

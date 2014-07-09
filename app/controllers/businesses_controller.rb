@@ -106,9 +106,9 @@ class BusinessesController < ApplicationController
         if business.qualified_for_funder?
           business.mobile_confirmation_provided
         elsif business.qualified_for_refi?
-          business.mobile_confirmation_provided
+          business.mobile_confirmation_provided_phone
         elsif business.qualified_for_market?
-          business.mobile_confirmation_provided_market
+          business.mobile_confirmation_provided_phone
         end
       end
       redirect_to action: :show

@@ -8,6 +8,7 @@ class StaticPagesController < ApplicationController
 	def blog
 	end
 	def confirm_email
+		@business = current_business
 	end
 
   def about

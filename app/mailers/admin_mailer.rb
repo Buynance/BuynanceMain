@@ -1,8 +1,8 @@
 class AdminMailer < ActionMailer::Base
-  def qualified_signup(business)
-  	@business = business
+  def qualified_signup(business_id)
+  	@business = Business.find(business_id, no_obfuscated_id: true)
     mail :subject => "You have a new qualified person signup to buynance",
-         :to      => "jay@buynance.com",
+         :to      => "edwin@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
@@ -16,11 +16,5 @@ class AdminMailer < ActionMailer::Base
 
   def business_qualified_market(business)
 
-  end
-
-  def business_qualified_funder(business)
-  end
-
-  def business_qualified_refinance(business)
   end
 end

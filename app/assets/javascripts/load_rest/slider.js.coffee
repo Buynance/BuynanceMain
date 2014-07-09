@@ -16,8 +16,8 @@ $(document).ready ->
       $('.slider-left-value').text "$"+parseInt(ui.value * 0.5).formatMoney(0, ",", ".")
 
       return
-  $("span.homepage-slider-left-main-section-label-left-min").html "$ 100<br/> per day"
-  $("span.homepage-slider-left-main-section-label-right-max").html "$ 2,000<br/> per day"
+  $("span.homepage-slider-left-main-section-label-left-min").html "$ 100<br/> paid per day"
+  $("span.homepage-slider-left-main-section-label-right-max").html "$ 2,000<br/> paid per day"
 
   min2 = 10000
   max2 = 250000
