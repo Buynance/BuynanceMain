@@ -12,6 +12,7 @@ Buynance::Application.routes.draw do
       get 'offer'
       get 'tos'
       get 'confirm_email'
+      get 'error'
 
     end
   end
@@ -87,6 +88,7 @@ Buynance::Application.routes.draw do
   get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
   get 'blog2'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
+
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
   post 'confirm_mobile' => 'businesses#confirm_mobile'
