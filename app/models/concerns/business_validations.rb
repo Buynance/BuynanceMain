@@ -16,7 +16,7 @@ module BusinessValidations
 
 
 	validates :is_refinance,
-	presence: {message: "An error has occured. Please contact us for further assistance"},
+	inclusion: {:in => [true, false], message: "Please select your business funding type."},
 	on: :save
 
 	

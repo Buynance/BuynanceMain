@@ -45,6 +45,12 @@
                   %span Comfirm your buynance password
                 .paper-section-bank-login-form-input
                   = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
+                .paper-section-bank-login-form-disclaimer
+                  %span 
+                    By continuing you are accepting our 
+                    %a{href:"/tos"} Terms of Service
+                    and
+                    %a{href:"/privacy"} Privacy Policy
                 .paper-section-bank-login-form-action
                   = f.submit "Continue", class: "form-button flat-button button-submit"
       .paper-section-bank-login-right.col-xs-5.fix-overflow

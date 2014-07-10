@@ -206,7 +206,7 @@ class Business < ActiveRecord::Base
   end
 
   def is_qualified_for_funder(amount, days)
-    return (self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transactions >= days))
+    return ((self.years_in_business >= 1) and (self.approximate_credit_score_range >= 3) and self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transactions >= days))
   end
   
   def qualify
