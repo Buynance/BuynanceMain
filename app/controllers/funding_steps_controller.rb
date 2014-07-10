@@ -2,7 +2,7 @@ require 'decision_logic.rb'
 class FundingStepsController < ApplicationController
 	include Wicked::Wizard
 
-	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information, :disclaimer
+	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information
 	before_filter :require_business_user
 	before_filter :standardize_params, :only => [:update]
 	
@@ -101,10 +101,6 @@ class FundingStepsController < ApplicationController
 				@bank_account.assign_attributes(bank_account_params)
 				render_wizard @bank_account
 			end
-		elsif step == :disclaimer
-			@business.disclaimer_acceptance_provided
-			@business.setup_mobile_routing
-			render_wizard @business
 		else
 			if step == :financial
 				pluggable_js(
