@@ -16,15 +16,11 @@ ActiveAdmin.register_page "Dashboard" do
       end
 
       column do
-        panel "Last 10 Offers" do
-          table_for Offer.all.order('id desc').limit(10).each do |offer|
-            column("Offer", :sortable => :id)             {|offer| "##{offer.id}"}
-            column("Merchant")                            {|offer| offer.lead.business.name}
-            column("Funder")                              {|offer| offer.funder.name}
-            column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
-            column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
-            column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
-            column("Factor Rate")                         {|offer| number_with_precision offer.factor_rate, precision: 2}
+        panel "Last 10 Leads" do
+          table_for Lead.order('id desc').limit(10).each do |lead|
+            column("Business", :sortable => :id) {|business| link_to "##{business.id}", grubraise_business_path(business)}
+            column("State")                      {|business| status_tag(business.state) }
+            # column("Email")                     {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
           end
         end
       end
@@ -42,18 +38,15 @@ ActiveAdmin.register_page "Dashboard" do
         end
       end
       column do
-
-      end
-    end
-
-    columns do
-      column do
         panel "Statistics" do
           #column("Number of Business") {||}
 
         end
       end
+
     end
+
+    
   ### 
     #columns do
     #  column do
