@@ -4,11 +4,8 @@ ActiveAdmin.register Business do
 
   scope :all, :default => true
   scope :awaiting_persona_information
-  scope :awaiting_bank_information
-  scope :awaiting_offer_acceptance
-  scope :awaiting_offer_completetion
-  scope :awaiting_reenter_market
-  scope :awaiting_bank_information_refresh
+  scope :awaiting_email_confirmation
+  scope :awaiting_mobile_confirmation
 
 
   index do 
@@ -17,8 +14,8 @@ ActiveAdmin.register Business do
     column("Business Name")              {|business| business.name}
     #column("State")                      {|business| status_tag(business.state) }
     column("Email")                      {|business| link_to business.business_user.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
-    column("Owner's First Name")         {|business| business.first_name}
-    column("Owner's Last Name")          {|business| business.last_name}
+    column("Owner's First Name")         {|business| business.owner_first_name}
+    column("Owner's Last Name")          {|business| business.owner_last_name}
     #column("Address Line One")           {|business| business.street_address_one}
     #column("City")                       {|business| business.city}
     column("State")                      {|business| business.location_state}
@@ -78,9 +75,9 @@ ActiveAdmin.register Business do
             row("Total Number of Deposits") {|business| business.bank_account.total_number_of_deposits if business.bank_account.bank_information_retrieved?}
             row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) if business.bank_account.bank_information_retrieved?} 
             row("Total Negative Days")      {|business| business.bank_account.total_negative_days if business.bank_account.bank_information_retrieved?}
-            #row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
-            #row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
-            #row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
+            row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
+            row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
+            row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
             #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
             #row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
@@ -95,9 +92,9 @@ ActiveAdmin.register Business do
               range = "751-800" if business.approximate_credit_score_range == 7
               range
             end
-            row("Tax Lien?") {|business| business.is_tax_lien}
-            row("Payment Plan?") {|business| business.is_payment_plan}
-            row("Bankruptcy?") {|business| business.is_ever_bankruptcy}
+            row("Tax Lien?") {|business| (business.is_tax_lien ? status_tag( "yes", :ok ) : status_tag( "no" ))}
+            row("Payment Plan?") {|business| (business.is_payment_plan ? status_tag( "yes", :ok ) : status_tag( "no" ))}
+            row("Bankruptcy?") {|business| (business.is_ever_bankruptcy ? status_tag( "yes", :ok ) : status_tag( "no" ))}
           end
         end
 
@@ -115,21 +112,6 @@ ActiveAdmin.register Business do
       end
     end     
   end
-
-  panel 'Offers' do
-        table_for business.offers do
-          column("Offer", :sortable => :id)             {|offer| "##{offer.id} "}
-          column("Active")                              {|offer| offer.is_active }
-          column("Best Offer")                          {|offer| offer.is_best_offer }
-          column("Date", :created_at)
-          column("Customer", :sortable => :business_id) {|offer| BusinessUser.find(Business.find(offer.business_id, no_obfuscated_id: true).main_business_user_id, no_obfuscated_id: true).email if !Business.find(offer.business_id, no_obfuscated_id: true).nil?}
-          column("Cash Advance Amount")                 {|offer| number_to_currency offer.cash_advance_amount}
-          column("Daily Collection")                    {|offer| number_to_currency offer.daily_merchant_cash_advance}
-          column("Payback Amount")                      {|offer| number_to_currency offer.total_payback_amount}
-          column("Factor Rate")                         {|offer| offer.factor_rate}
-        end
-      end
-      active_admin_comments
   end
 
   form do |f|
