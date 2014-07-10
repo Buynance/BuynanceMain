@@ -41,7 +41,7 @@ class Business < ActiveRecord::Base
     end
 
     event :mobile_confirmation_provided_phone do
-      transition [:awaiting_mobile_confirmation] => :awaiting_disclaimer_acceptance
+      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
     end
 
     event :mobile_confirmation_provided do
