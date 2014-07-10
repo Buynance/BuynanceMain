@@ -64,17 +64,17 @@ ActiveAdmin.register Business do
         panel 'Financial & Bank Information' do
           attributes_table_for business do
             row("Bank Account State")      {|business| status_tag(business.bank_account.state) if !business.bank_account.nil?}
-            row("Bank Name")               {|business| business.bank_account.institution_name if business.bank_account.bank_information_retrieved?}
-            row("Account Number")          {|business| business.bank_account.account_number if business.bank_account.bank_information_retrieved?}
-            row("Routing Number")          {|business| business.bank_account.routing_number if business.bank_account.bank_information_retrieved?}
-            row("Oldest Transaction Date") {|business| business.bank_account.transactions_from_date if business.bank_account.bank_information_retrieved?}
-            row("Newest Transaction Date") {|business| business.bank_account.transactions_to_date if business.bank_account.bank_information_retrieved?}
-            row("Days of Transaction")     {|business| business.bank_account.days_of_transactions if business.bank_account.bank_information_retrieved?}
-            row("Available Balance")       {|business| (number_to_currency business.bank_account.available_balance) if business.bank_account.bank_information_retrieved?}
-            row("Average Balance")         {|business| (number_to_currency business.bank_account.average_balance) if business.bank_account.bank_information_retrieved?}
-            row("Total Number of Deposits") {|business| business.bank_account.total_number_of_deposits if business.bank_account.bank_information_retrieved?}
-            row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) if business.bank_account.bank_information_retrieved?} 
-            row("Total Negative Days")      {|business| business.bank_account.total_negative_days if business.bank_account.bank_information_retrieved?}
+            row("Bank Name")               {|business| business.bank_account.institution_name }
+            row("Account Number")          {|business| business.bank_account.account_number }
+            row("Routing Number")          {|business| business.bank_account.routing_number }
+            row("Oldest Transaction Date") {|business| business.bank_account.transactions_from_date }
+            row("Newest Transaction Date") {|business| business.bank_account.transactions_to_date }
+            row("Days of Transaction")     {|business| business.bank_account.days_of_transactions }
+            row("Available Balance")       {|business| (number_to_currency business.bank_account.available_balance) }
+            row("Average Balance")         {|business| (number_to_currency business.bank_account.average_balance) }
+            row("Total Number of Deposits") {|business| business.bank_account.total_number_of_deposits }
+            row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) } 
+            row("Total Negative Days")      {|business| business.bank_account.total_negative_days }
             row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
             row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
             row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
