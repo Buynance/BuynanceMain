@@ -75,8 +75,8 @@ class FundingStepsController < ApplicationController
 						redirect_to account_url	
 					else
 						@bank_account.current_step = step
-						@bank_account.save
 						@bank_account.business_id = @business.id
+						@bank_account.save
 						render_wizard @bank_account
 					end
 				else
@@ -90,8 +90,8 @@ class FundingStepsController < ApplicationController
 						redirect_to account_url
 					else
 						@bank_account.current_step = step
-						@bank_account.save
 						@bank_account.business_id = @business.id
+						@bank_account.save
 						render_wizard @bank_account
 					end
 				end
@@ -125,7 +125,7 @@ class FundingStepsController < ApplicationController
 	def business_params
 		return params.require(:business).permit( :years_in_business, :owner_first_name, :owner_last_name, 
 			:street_address_one, :street_address_two, :city, :location_state, :mobile_number, :zip_code, :phone_number, 
-			:business_type_id) if step == :personal
+			:business_type_id, :mobile_disclaimer) if step == :personal
 		return params.require(:business).permit(:deal_type, :previous_merchant_id, :previous_loan_date, :total_previous_loan_amount,
 	    		:total_previous_payback_amount, :is_closing_fee, :closing_fee, :total_previous_payback_balance)  if step == :refinance
 		return params.require(:business).permit(:approximate_credit_score_range, :is_tax_lien, :is_payment_plan,
