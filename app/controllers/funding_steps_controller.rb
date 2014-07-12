@@ -7,6 +7,8 @@ class FundingStepsController < ApplicationController
 	before_filter :standardize_params, :only => [:update]
 	
 	def show
+		pluggable_js(step: step)
+
 		@business = current_business
 		
 		if step != :disclaimer and @business.awaiting_disclaimer_acceptance?
@@ -15,9 +17,6 @@ class FundingStepsController < ApplicationController
 		
 		case step
 		when :financial
-			pluggable_js(
-				is_financial: true
-			)
 			render_wizard
 		when :refinance
 			skip_step unless @business.is_refinance == true

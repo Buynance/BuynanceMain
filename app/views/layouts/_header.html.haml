@@ -17,15 +17,15 @@
       .homepage-header-actions
         .homepage-header-actions-button
           - if current_business 
-            %a.flat-button.homepage-button-left{href: "/logout"}
+            %a#header-logout-button.flat-button.homepage-button-left{href: "/logout"}
               %span Logout
           - else
-            %a.flat-button.homepage-button-left{href: "/login"}
+            %a#header-login-button.flat-button.homepage-button-left{href: "/login"}
               %span Login
           .homepage-header-actions-button
           - if current_business 
-            %a.flat-button.homepage-button-right{href: "/account"}
+            %a#header-account-button.flat-button.homepage-button-right{href: "/account"}
               %span Account
           - else
-            %a.flat-button.homepage-button-right{href: "/signup"}
+            %a#header-signup-button.flat-button.homepage-button-right{href: "/signup"}
               %span Signup

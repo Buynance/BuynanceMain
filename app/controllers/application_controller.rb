@@ -7,12 +7,16 @@ class ApplicationController < ActionController::Base
   before_filter :make_action_mailer_use_request_host_and_protocol
   helper_method :current_business_user_session, :current_business_user, 
     :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
-     :current_business, :current_funder, :require_funder, :to_boolean
+     :current_business, :current_funder, :require_funder, :to_boolean, :send_production_js
   force_ssl if: :ssl_configured?
 
   private
 
   # Business and Business User
+
+    def send_production_js
+      pluggable_js(is_production: true) if Rails.env.production?
+    end
 
     def to_boolean(str)
       str == 'true'

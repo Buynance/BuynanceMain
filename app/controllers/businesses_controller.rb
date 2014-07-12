@@ -5,6 +5,7 @@ class BusinessesController < ApplicationController
   before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :activate, :comfirm_account, :comfirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
+  before_filter :send_production_js, only: [:new]
   #before_filter :standardize_params, :only => [:create]
 
   def new 
