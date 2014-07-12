@@ -35,7 +35,7 @@ ActiveAdmin.register Business do
             row :id
             row("Business User ID")           {|business| link_to business.business_user.id, grubraise_business_user_path(business.business_user)}
             row("Business Name")              {|business| business.name}
-            row("Business Type")              {|business| BusinessType.find(business.business_type_id).name} 
+            row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
             row("State")                      {|business| status_tag(business.state) }
             #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
@@ -64,17 +64,17 @@ ActiveAdmin.register Business do
         panel 'Financial & Bank Information' do
           attributes_table_for business do
             row("Bank Account State")      {|business| status_tag(business.bank_account.state) if !business.bank_account.nil?}
-            row("Bank Name")               {|business| business.bank_account.institution_name }
-            row("Account Number")          {|business| business.bank_account.account_number }
-            row("Routing Number")          {|business| business.bank_account.routing_number }
-            row("Oldest Transaction Date") {|business| business.bank_account.transactions_from_date }
-            row("Newest Transaction Date") {|business| business.bank_account.transactions_to_date }
-            row("Days of Transaction")     {|business| business.bank_account.days_of_transactions }
-            row("Available Balance")       {|business| (number_to_currency business.bank_account.available_balance) }
-            row("Average Balance")         {|business| (number_to_currency business.bank_account.average_balance) }
-            row("Total Number of Deposits") {|business| business.bank_account.total_number_of_deposits }
-            row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) } 
-            row("Total Negative Days")      {|business| business.bank_account.total_negative_days }
+            row("Bank Name")               {|business| (business.bank_account.institution_name) unless business.bank_account.nil? }
+            row("Account Number")          {|business| (business.bank_account.account_number) unless business.bank_account.nil? }
+            row("Routing Number")          {|business| (business.bank_account.routing_number) unless business.bank_account.nil? }
+            row("Oldest Transaction Date") {|business| (business.bank_account.transactions_from_date) unless business.bank_account.nil? }
+            row("Newest Transaction Date") {|business| (business.bank_account.transactions_to_date) unless business.bank_account.nil? }
+            row("Days of Transaction")     {|business| (business.bank_account.days_of_transactions) unless business.bank_account.nil? }
+            row("Available Balance")       {|business| (number_to_currency business.bank_account.available_balance) unless business.bank_account.nil? }
+            row("Average Balance")         {|business| (number_to_currency business.bank_account.average_balance) unless business.bank_account.nil? }
+            row("Total Number of Deposits") {|business| (business.bank_account.total_number_of_deposits) unless business.bank_account.nil? }
+            row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) unless business.bank_account.nil?} 
+            row("Total Negative Days")      {|business| (business.bank_account.total_negative_days) unless business.bank_account.nil? }
             row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
             row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
             row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}

@@ -17,12 +17,13 @@ class BusinessesController < ApplicationController
         @business.is_refinance = true unless params[:is_refinance].nil?
         @business.is_refinance = false unless params[:is_funding].nil?
       end
+      session[:show_funding_type] = @show_funding_source
   end
 
   def create
-
-    @business_user = BusinessUser.new(business_user_params)
     @business = Business.new(business_params)
+    @business_user = BusinessUser.new(business_user_params)
+    
     if @business_user.valid? && @business.valid?
       @business_user.save
       @business.save
@@ -31,6 +32,7 @@ class BusinessesController < ApplicationController
       @business.update_attribute(:email, @business_user.email)
       redirect_to funding_steps_path
     else
+      @show_funding_source = session[:show_funding_type]
       render :action => :new
     end
   end

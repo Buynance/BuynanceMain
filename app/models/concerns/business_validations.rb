@@ -11,13 +11,13 @@ module BusinessValidations
 	#on: :create
 
 	validates :name, 
-	length: {minimum: 3, maximum: 35, message: "Your business name should be atleast 3 letters long."},
+	length: {minimum: 3, maximum: 35, message: "Please enter a valid business name."},
 	on: :create
 
 
 	validates :is_refinance,
-	inclusion: {:in => [true, false], message: "Please select your business funding type."},
-	on: :save
+	inclusion: {:in => [true, false], message: "Please select your business financing type."},
+	on: :create
 
 	
 
@@ -42,28 +42,28 @@ module BusinessValidations
 	if: -> {self.current_step == :personal}
 
 	validates :location_state,
-	presence: {message: "Please include your state.", allow_blank: false},
+	presence: {message: "Please select a state.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
 	validates_format_of :zip_code, 
 	:with => /\A\d{5}-\d{4}|\A\d{5}\z/, 
-	:message => "Your zip code should be a number 5 digits long",
+	:message => "Please input a input five digit zipcode.",
 	if: -> {self.current_step == :personal}
 
 	validates :phone_number,
-	presence: {message: "Please enter a valid US phone number."},
+	presence: {message: "Please input a valid US phone number."},
 	if: -> {self.current_step == :personal}
 
 	validates :mobile_number,
-	presence: {message: "Plase enter a valid US mobile phone number."},
+	presence: {message: "Plase input a valid US mobile phone number."},
 	if: -> {self.current_step == :personal}
 
 	validates :business_type_id,
-	presence: { message: "Please include your business type.", allow_blank: false},
+	presence: { message: "Please select your business type.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
 	validates :years_in_business,
-	presence: { message: "Please include how many years you have been in business.", allow_blank: false},
+	presence: { message: "Please select how many years you have been in business.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
 
@@ -107,11 +107,11 @@ module BusinessValidations
 	if: -> {self.current_step == :refinance}
 
 	validates :total_previous_payback_amount,
-	presence: { message: "Current Payback.", allow_blank: false},
+	presence: { message: "Please input a valid payback amount..", allow_blank: false},
 	if: -> {self.current_step == :refinance}
 
 	validates :total_previous_payback_balance,
-	presence: { message: "Loan Balance", allow_blank: false},
+	presence: { message: "Please input a valid balance amount", allow_blank: false},
 	if: -> {self.current_step == :refinance}
 	
 
