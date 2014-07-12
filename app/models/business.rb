@@ -15,6 +15,8 @@ class Business < ActiveRecord::Base
   has_one :routing_number, :dependent => :destroy
   has_many :leads, :dependent => :destroy
 
+  belongs_to :business_type, inverse_of: :businesses
+
   FUNDING_TYPES = {refinance: 1, funding: 0}
 
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")

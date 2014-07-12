@@ -1,3 +1,11 @@
+$dark-gray: rgb(96, 96, 96);
+$buynance-blue: rgb(37, 170, 225);
+$buynance-green: #8dc63f;
+$lato-bold: "latobold", Arial, sans-serif;
+$lato-regular: "latoregular", Arial, sans-serif;
+$lato-italics: "latoitalics", Arial, sans-serif;
+$lato-light: 'latolight', Arial, sans-serif;
+
 html {
     font-size: 100%;
 }
@@ -527,7 +535,7 @@ margin-right:0
 .homepage-wrapper {
     width: 108em;
     margin: 0 auto;
-    padding-bottom: 10.0em;
+    padding-bottom: 8.0em;
     .how-works {
         width: 108em;
         padding-top: 2.0em;
@@ -1082,6 +1090,64 @@ margin-right:0
   }
 
 
+}
+
+
+.jcarousel-pagination{
+  text-align: center;
+  margin-top: 2.0em;
+}
+
+.jcarousel-pagination a.active {
+    background: none repeat scroll 0 0 $buynance-green;
+    box-shadow: 0 0 0.2em #f0efe7;
+    color: #fff;
+    opacity: 1;
+}
+.jcarousel-pagination a {
+    background: none repeat scroll 0 0 $buynance-blue;
+    border-radius: 1.0em;
+    box-shadow: 0 0 0.2em #4e443c;
+    color: #4e443c;
+    display: inline-block;
+    font-size: 1.1em;
+    height: 1.0em;
+    line-height: 1.0em;
+    margin-right: 0.7em;
+    text-decoration: none;
+    text-indent: -999.9em;
+    width: 1.0em;
+}
+
+.jcarousel-control-prev {
+    left: 1.5em;
+}
+
+.jcarousel-control-next {
+    right: 1.5em;
+    padding-left: 0.3em;
+}
+
+a.jcarousel-control-prev, a.jcarousel-control-next {
+    background: none repeat scroll 0 0 #8dc63f;;
+    border-radius: 3.0em;
+    text-decoration:  none;
+    height: 3.0em;
+    margin-top: -1.5em;
+    position: absolute;
+    text-align: center;
+    text-decoration: none;
+    top: 50%;
+    width: 3.0em;
+
+    span{
+      font: 2.4em/1.1em Arial,sans-serif;
+      color: white;
+    }
+}
+
+#how-works{
+  position: relative;
 }
 
   /**************************************************/
