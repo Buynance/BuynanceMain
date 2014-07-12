@@ -24,7 +24,7 @@ gem 'coffee-rails', '~> 4.0.0'
 
 # Use jquery as the JavaScript library
 gem "jquery-rails", "~> 2.3.0"
-gem 'jquery-ui-rails', '~>4.2.1'
+gem 'jquery-ui-rails'
 
 gem 'rename'
 
