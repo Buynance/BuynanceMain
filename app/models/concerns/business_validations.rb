@@ -66,6 +66,10 @@ module BusinessValidations
 	presence: { message: "Please select how many years you have been in business.", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
+	validates :mobile_disclaimer,
+	presence: {message: "na", allow_blank: false},
+	if: -> {self.current_step == :personal}
+
 
 	# Step - Financial
 	validates :approximate_credit_score_range,

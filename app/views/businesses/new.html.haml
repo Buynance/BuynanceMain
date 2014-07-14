@@ -6,10 +6,10 @@
     .paper-section-body.paper-section-bank-login.row
       .paper-section-bank-login-left.col-xs-7
         .paper-section-bank-login-left-header
-          %span Create a buynance Account
+          %span Create a Buynance Account
         .paper-section-bank-login-left-information
           .paper-section-bank-login-left-information-important
-            %span Creating a buynance password is fast, safe, and secure.
+            %span Creating a Buynance password is fast, safe, and secure.
         .paper-section-bank-login-form
           = simple_form_for @business, defaults: { input_html: { novalidate: "novalidate" } } do |f|
             - if @business.errors.any? || @business_user.errors.any?
@@ -23,9 +23,9 @@
             .row
               -if @show_funding_source
                 .paper-section-bank-login-form-label
-                  %span What type of financing are you applying for?
+                  %span Are you ReNewing  an existing funding arrangement or starting from scratch?
                 .paper-section-bank-login-form-input
-                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['Business Funding',false],['Refinance Current Financing',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false         
+                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReNewing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
               - else
                 = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
               .paper-section-bank-login-form-label

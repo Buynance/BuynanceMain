@@ -35,25 +35,6 @@ class FundingStepsController < ApplicationController
 		else
 			render_wizard
 		end
-
-		#@business = current_business
-		#@bank_account = BankAccount.new if step == :bank_prelogin
-		#if step == :refinance
-		#	skip_step unless @business.is_refinance == true
-		#	render_wizard
-		#elsif step == :bank_information
-		#    @business.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=QBZKMWHRHND5&profileGuid=9538c1e4-2a44-4eca-9587-e5d5bd1fcf65&siteUserGuid=76246387-0c72-401a-b629-b5b102859bb3&customerId=&firstName=#{@business.owner_first_name}&lastName=#{@business.owner_last_name}&routingNumber=#{@business.bank_account.routing_number}&accountNumber=#{@business.bank_account.account_number}") 
-		#	unless @business.initial_request_code.length > 20
-		#		@business.bank_account.create_first_request_code
-		#		@business.save
-		#		render_wizard
-		#	else
-		#		redirect_to wizard_path(:bank_prelogin), notice: "Your routing number and/or account number are incorrect."
-		#	end
-		#else
-		#	render_wizard
-		#end
-		
 	end
 
 	def update
@@ -102,13 +83,24 @@ class FundingStepsController < ApplicationController
 				render_wizard @bank_account
 			end
 		else
+			
 			if step == :financial
 				pluggable_js(
 					is_financial: true
 				)
 			end
-			@business.update_attributes(business_params)
-			render_wizard @business
+
+			if @business.update_attributes(business_params)
+				if @business.years_in_business == 0
+					@business.disqualify!
+					@business.save
+					redirect_to account_url
+				else
+					render_wizard @business
+				end
+			else
+				render_wizard @business
+			end
 		end	
 	end
 
