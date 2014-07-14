@@ -221,6 +221,9 @@ GEM
       excon (>= 0.16.0, < 1.0)
       json (>= 1.7.7, < 2.0)
     maxminddb (0.1.1)
+    meta_events (1.2.0)
+      activesupport (>= 3.0, <= 4.99.99)
+      json (~> 1.0)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (4.7.5)
@@ -430,6 +433,7 @@ DEPENDENCIES
   ledermann-rails-settings
   mandrill-api
   maxminddb
+  meta_events
   mixpanel-ruby
   obfuscate_id!
   pg
