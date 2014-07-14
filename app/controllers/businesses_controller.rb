@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :activate, :comfirm_account, :comfirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
-  before_filter :send_production_js, only: [:new]
+  before_filter :send_production_js, only: [:new, :qualified_for_funder, :qualified_for_market, :disqualified]
   #before_filter :standardize_params, :only => [:create]
 
   def new 
@@ -31,6 +31,7 @@ class BusinessesController < ApplicationController
       @business_user.update_attribute(:business_id, @business.id)
       @business.update_attribute(:main_business_user_id, @business_user.id)
       @business.update_attribute(:email, @business_user.email)
+      flash[:signup] = true
       redirect_to funding_steps_path
     else
       @show_funding_source = session[:show_funding_type]
@@ -46,6 +47,7 @@ class BusinessesController < ApplicationController
     elsif @business.awaiting_disclaimer_acceptance?
       redirect_to funding_steps_path
     elsif @business.awaiting_email_confirmation?
+      flash[:is_bank_account_success] = flash[:is_bank_account]
       redirect_to controller: 'static_pages', action: 'confirm_email'
     elsif @business.awaiting_mobile_confirmation?
       redirect_to action: 'confirm_account'
@@ -85,6 +87,7 @@ class BusinessesController < ApplicationController
     if @business.activate(params[:activation_code])
       @business.email_confirmation_provided
       @business.send_mobile_confirmation!
+      flash[:is_email_confirmed] = true
     end
     redirect_to :action => :show
   end
@@ -99,6 +102,7 @@ class BusinessesController < ApplicationController
   end
 
   def confirm_account
+    pluggable_js(is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
   end
 
@@ -121,6 +125,7 @@ class BusinessesController < ApplicationController
         business.mobile_confirmation_provided
         business.disqualify
       end
+      
       redirect_to action: :show
     else
       flash[:alert] = "Mobile code is incorrect. Please try again."

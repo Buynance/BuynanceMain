@@ -224,6 +224,7 @@ GEM
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (4.7.5)
+    mixpanel-ruby (1.4.0)
     multi_json (1.10.1)
     multi_xml (0.5.5)
     netrc (0.7.7)
@@ -429,6 +430,7 @@ DEPENDENCIES
   ledermann-rails-settings
   mandrill-api
   maxminddb
+  mixpanel-ruby
   obfuscate_id!
   pg
   pluggable_js (~> 2.0.0)

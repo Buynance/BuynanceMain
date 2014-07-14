@@ -1,4 +1,6 @@
 require 'decision_logic.rb'
+require 'mixpanel_lib'
+
 class FundingStepsController < ApplicationController
 	include Wicked::Wizard
 
@@ -6,9 +8,7 @@ class FundingStepsController < ApplicationController
 	before_filter :require_business_user
 	before_filter :standardize_params, :only => [:update]
 	
-	def show
-		pluggable_js(step: step)
-
+	def show	
 		@business = current_business
 		
 		if step != :disclaimer and @business.awaiting_disclaimer_acceptance?
@@ -16,15 +16,25 @@ class FundingStepsController < ApplicationController
 		end
 		
 		case step
+		when :personal
+			is_signup = (flash[:signup] == true)
+			funding_type = "funder"
+			funding_type = "renew" if @business.is_refinance
+			pluggable_js(is_production: is_production, step: step, is_signup: is_signup, email: @business.business_user.email, business_name: @business.name, funding_type: funding_type)
+			render_wizard
 		when :financial
+			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
 			render_wizard
 		when :refinance
+			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
 			skip_step unless @business.is_refinance == true
 			render_wizard
 		when :bank_prelogin
+			pluggable_js(is_production: is_production, step: step)
 			@bank_account = BankAccount.new
 			render_wizard
 		when :bank_information
+			pluggable_js(is_production: is_production, step: step)
 			if @business.create_request_code
 				@business.bank_account.create_first_request_code
 				render_wizard
@@ -32,27 +42,9 @@ class FundingStepsController < ApplicationController
 				redirect_to wizard_path(:bank_prelogin), notice: "Your routing number and/or account number are incorrect."
 			end
 		else
+			pluggable_js(is_production: is_production, step: step)
 			render_wizard
 		end
-
-		#@business = current_business
-		#@bank_account = BankAccount.new if step == :bank_prelogin
-		#if step == :refinance
-		#	skip_step unless @business.is_refinance == true
-		#	render_wizard
-		#elsif step == :bank_information
-		#    @business.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=QBZKMWHRHND5&profileGuid=9538c1e4-2a44-4eca-9587-e5d5bd1fcf65&siteUserGuid=76246387-0c72-401a-b629-b5b102859bb3&customerId=&firstName=#{@business.owner_first_name}&lastName=#{@business.owner_last_name}&routingNumber=#{@business.bank_account.routing_number}&accountNumber=#{@business.bank_account.account_number}") 
-		#	unless @business.initial_request_code.length > 20
-		#		@business.bank_account.create_first_request_code
-		#		@business.save
-		#		render_wizard
-		#	else
-		#		redirect_to wizard_path(:bank_prelogin), notice: "Your routing number and/or account number are incorrect."
-		#	end
-		#else
-		#	render_wizard
-		#end
-		
 	end
 
 	def update
@@ -98,15 +90,17 @@ class FundingStepsController < ApplicationController
 			else
 				@bank_account = @business.bank_account
 				@bank_account.assign_attributes(bank_account_params)
+				track_mixpanel_errors(@bank_account, step)
 				render_wizard @bank_account
 			end
 		else
-			if step == :financial
-				pluggable_js(
-					is_financial: true
-				)
+			if @business.update_attributes(business_params)
+				if step == :personal
+					flash[:personal_passed] = true
+				end
 			end
-			@business.update_attributes(business_params)
+			@business.assign_attributes(business_params)
+			track_mixpanel_errors(@business, step)
 			render_wizard @business
 		end	
 	end
@@ -140,5 +134,42 @@ class FundingStepsController < ApplicationController
 	      	params[:business][:total_previous_loan_amount].gsub!( /[^\d]/, '')
 	    end	
 	end
+
+
+
+	def track_mixpanel_errors(object, step)
+		unless object.valid?
+			humanized_keys = get_errors_humanized(object, step)
+			humanized_keys.each do |keys|
+				MixpanelLib.track(current_business.email, "Error - #{keys} Input")
+			end
+		end
+	end
+
+	def get_errors_humanized(object, step)
+		humanized_keys = []
+		object.errors.keys.each do |key|
+			humanized_keys << humanized_hash_keys(step)[key]
+		end
+		return humanized_keys
+	end
+	
+	def humanized_hash_keys(step)
+		case step
+		when :personal
+			return {:years_in_business => "Years in Business", :owner_first_name => "Owner's First Name", :owner_last_name => "Owner's Last Name", 
+				:street_address_one => "Street Address One", :street_address_two => "Street Address Two", :city => "City", :location_state => "State", :mobile_number => "Mobile Number", :zip_code => "Zip Code", :phone_number => "Phone Number", 
+				:business_type_id => "Business Type"}
+		when :refinance
+			return {:deal_type => "Deal Type", :previous_merchant_id => "Current Funder", :previous_loan_date => "Current Loan Start Date", :total_previous_loan_amount => "Current MCA Given Amount",
+	    		:total_previous_payback_amount => "Current MCA Payback Amount", :is_closing_fee => "Closing Fee", :closing_fee => "Closing Fee Amount", :total_previous_payback_balance => "Current MCA Balance"}
+		when :financial
+			return {:approximate_credit_score_range => "Credit Score", :is_tax_lien => "Tax Lien", :is_payment_plan => "Tax Lien Payment Plan",
+	    		:is_ever_bankruptcy => "Bankruptcy", :is_judgement => "Judgement"}
+		when :bank_prelogin
+			return {:account_number => "Account Number", :routing_number => "Routing Number"}
+		end
+	end
+
 end
 

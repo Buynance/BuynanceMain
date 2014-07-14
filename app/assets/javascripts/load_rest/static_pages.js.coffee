@@ -30,6 +30,15 @@ window['static_pages#about'] = (data) ->
   if data.is_production
     mixpanel.track("View - View About Page");
 
+window['static_pages#confirm_email'] = (data) ->
+  if data.is_production
+    if data.is_bank_account_success
+      mixpanel.track("Success - Bank Account Login")
+      mixpanel.people.set_once({
+          'Success - Email Confirmation': data.mobile_disclaimer_accepted
+      });
+    mixpanel.track("View - View About Page");
+
 
 
 setup_carousel = () ->

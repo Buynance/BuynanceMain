@@ -34,6 +34,7 @@ class BankAccountsController < ApplicationController
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
 				@bank_account.save
+				flash[:is_bank_account] = true
 				redirect_to account_url
 			else
 				@is_error = true

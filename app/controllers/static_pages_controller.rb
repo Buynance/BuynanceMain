@@ -19,6 +19,7 @@ class StaticPagesController < ApplicationController
 	end
 	
 	def confirm_email
+		pluggable_js(is_production: is_production, is_bank_account_success: (flash[:is_bank_account_success] == true))
 		@business = current_business
 	end
 
