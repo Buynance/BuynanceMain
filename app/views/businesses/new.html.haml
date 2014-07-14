@@ -25,13 +25,9 @@
                 .paper-section-bank-login-form-label
                   %span What type of financing are you applying for?
                 .paper-section-bank-login-form-input
-<<<<<<< HEAD
-                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['Business Funding',false],['Renew Current Financing',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false          
-=======
-                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['Business Funding',false],['Refinance Current Loan',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false         
+                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['Business Funding',false],['Refinance Current Financing',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false         
               - else
                 = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
->>>>>>> hotfix_development
               .paper-section-bank-login-form-label
                 %span What is your business name?
               .paper-section-bank-login-form-input
