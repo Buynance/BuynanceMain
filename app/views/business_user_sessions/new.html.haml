@@ -6,7 +6,7 @@
     .paper-section-body.paper-section-bank-login.row
       .paper-section-bank-login-left.col-xs-7
         .paper-section-bank-login-left-header
-          %span Login to your buynance account
+          %span Login to your Buynance account
         .paper-section-bank-login-form
           = form_for @business_user_session, :as => :business_user_session, :url => { :action => "create" } do |f|
             - if @business_user_session.errors.any?
