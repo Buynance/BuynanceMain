@@ -193,7 +193,7 @@ class ApplicationController < ActionController::Base
       when "Signup Personal"
         return {:years_in_business => "Years in Business", :owner_first_name => "Owner's First Name", :owner_last_name => "Owner's Last Name", 
           :street_address_one => "Street Address One", :street_address_two => "Street Address Two", :city => "City", :location_state => "State", :mobile_number => "Mobile Number", :zip_code => "Zip Code", :phone_number => "Phone Number", 
-          :business_type_id => "Business Type"}
+          :business_type_id => "Business Type", :mobile_disclaimer => "Mobile Disclaimer"}
       when "Signup Refinance"
         return {:deal_type => "Deal Type", :previous_merchant_id => "Current Funder", :previous_loan_date => "Current Loan Start Date", :total_previous_loan_amount => "Current MCA Given Amount",
             :total_previous_payback_amount => "Current MCA Payback Amount", :is_closing_fee => "Closing Fee", :closing_fee => "Closing Fee Amount", :total_previous_payback_balance => "Current MCA Balance"}

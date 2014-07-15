@@ -17,10 +17,9 @@ class FundingStepsController < ApplicationController
 		
 		case step
 		when :personal
-			is_signup = (flash[:signup] == true)
 			funding_type = "funder"
 			funding_type = "renew" if @business.is_refinance
-			pluggable_js(is_production: is_production, step: step, is_signup: is_signup, email: @business.business_user.email, business_name: @business.name, funding_type: funding_type)
+			pluggable_js(is_production: is_production, step: step, is_signup: (flash[:signup] == true), email: @business.business_user.email, business_name: @business.name, funding_type: funding_type)
 			render_wizard
 		when :financial
 			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
@@ -108,7 +107,7 @@ class FundingStepsController < ApplicationController
 					render_wizard @business
 				end
 			else
-				log_input_error(@business, "Signup #{step.to_s.titlelize}")
+				log_input_error(@business, "Signup #{step.to_s.titleize}")
 				render_wizard @business
 			end
 		end	
