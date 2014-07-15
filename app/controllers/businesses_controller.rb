@@ -35,6 +35,8 @@ class BusinessesController < ApplicationController
       redirect_to funding_steps_path
     else
       @show_funding_source = session[:show_funding_type]
+      #log_input_error(@business, "Signup Main") 
+      #log_input_error(@business_user, "Signup Main") 
       render :action => :new
     end
   end

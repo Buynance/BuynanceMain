@@ -1,5 +1,4 @@
 window['funding_steps#show'] = (data) ->
-	
 	if data.is_production == true
 		if data.step == "financial"
 			mixpanel.track("View - Signup Finance Page");
@@ -44,14 +43,7 @@ window['funding_steps#show'] = (data) ->
 				"View - Signup Personal": true
 				})
 
-
-
-
-
-
-
 $( document ).ready ->
-	console.log error_array
 	if $(".closing_fee_input_value").val() != "true"
 		$(".closing_fee_input_value").css("display", "none")
 	$(".is_closing_fee_input").on "change", ->
@@ -63,21 +55,6 @@ $( document ).ready ->
 	$(".datepicker").datepicker({dateFormat: 'mm/dd/yy'})
 	$(".datepicker").datepicker "option", "showAnim", "slideDown"
 	    
-	window['funding_steps#update'] = (data) ->
-		console.log "update"
-		if data.is_production == true
-			if data.step == "financial"
-				$(".is_tax_lien_input").on "change", ->
-					if $(".is_tax_lien_input").val() == "true"
-						$(".paper-section-bank-login-form-section-payment").css("display", "block")
-					else
-					 	$(".paper-section-bank-login-form-section-payment").css("display", "none")
-			for error_string in data.error_array
-				console.log error_string
-				mixpanel.track(("Error - "+error_string+" Input"))
-
-
-
 
 			
 

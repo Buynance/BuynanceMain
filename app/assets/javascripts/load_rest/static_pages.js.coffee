@@ -16,19 +16,19 @@ window['static_pages#index'] = (data) ->
 
 window['static_pages#privacy'] = (data) ->
   if data.is_production
-    mixpanel.track("View - Privacy Policy");
+    mixpanel.track("View - Privacy Policy Page");
 
 window['static_pages#tos'] = (data) ->
   if data.is_production
-    mixpanel.track("View - Terms of Service");
+    mixpanel.track("View - Terms of Service Page");
 
 window['static_pages#blog'] = (data) ->
   if data.is_production
-    mixpanel.track("View - View Blog");
+    mixpanel.track("View - Blog Page");
 
 window['static_pages#about'] = (data) ->
   if data.is_production
-    mixpanel.track("View - View About Page");
+    mixpanel.track("View - About Page");
 
 window['static_pages#confirm_email'] = (data) ->
   if data.is_production
@@ -139,8 +139,6 @@ setup_slider = () ->
   return
 
 setup_homepage_analytics = () ->
-  $('.ui-slider-handle').click ->
-    mixpanel.track("Use - Slider")
   $('#funder-slider').find('.ui-slider-handle').click ->
     mixpanel.track("Use - Funder Slider")
   $('#refi-slider').find('.ui-slider-handle').click ->

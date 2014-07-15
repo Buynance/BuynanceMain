@@ -185,7 +185,6 @@ namespace :db do
                     ["Manufacturing"],
                     ["Mining"],
                     ["Non-Profit Organizations"],
-                    ["Other Services"],
                     ["Personal Care Services"],
                     ["Physician, Dentist, or Health Practitioner"],
                     ["Public Administration"],
@@ -200,7 +199,8 @@ namespace :db do
                     ["Warehousing and Storage"],
                     ["Waste Management &amp; Remediation Services"],
                     ["Wholesale Trade"],
-                    ["Professional, Scientific, and Technical Services"]
+                    ["Professional, Scientific, and Technical Services"],
+                    ["Other Services"]
                 ]
 
         length = types.length
