@@ -4,46 +4,50 @@ window['businesses#new'] = (data) ->
 
 window['businesses#qualified_for_market'] = (data) ->
  if data.is_production
-   if data.is_mobile_confirmed
-     mixpanel.track("Succes - Mobile Number Confirmed")
-     mixpanel.people.set_once({
-      'Success - Mobile Confirmation': data.mobile_disclaimer_accepted
-	 } ) ;
+   mixpanel.identify(data.email)
    mixpanel.people.set_once({
-      'Success - Qualified for Market': true
-   } ) ;
+    'Confirmed Mobile Number': true,
+    'Phone Number Created': true,
+    'Qualified for Market': true
+	 }) ;
    mixpanel.track("View - Qualified For Market Page") ;
+   mixpanel.track("Success - Confirmed Mobile Number")
+   mixpanel.track("Success - New Phone Number Created")
 
 window['businesses#disqualified'] = (data) ->
  if data.is_production
-   if data.is_mobile_confirmed
-     mixpanel.track("Success: Mobile Number Confirmed")
-     mixpanel.people.set_once({
-      'Success - Mobile Confirmation': data.mobile_disclaimer_accepted
-	 } ) ;
-   mixpanel.people.set_once({
-      'Success - Disqualified Page': true
-   } ) ;
+     mixpanel.identify(data.email)
+     if data.has_bank_account
+       mixpanel.people.set_once({
+        'Confirmed Mobile Number': true,
+        'Disqualified': true
+	     } ) ;
+       mixpanel.track("Success - Confirmed Mobile Number")
+     else
+       mixpanel.people.set_once({
+        'Disqualified' : true
+        })
+
    mixpanel.track("View - Disqualified Page") ;
 
 
 window['businesses#qualified_for_funder'] = (data) ->
  if data.is_production
-   if data.is_mobile_confirmed
-     mixpanel.track("Success - Mobile Number Confirmed")
-     mixpanel.people.set_once({
-      'Success - Mobile Confirmation': data.mobile_disclaimer_accepted
-	 } ) ;
-   mixpanel.people.set_once({
-      'Success - Qualified for Funder': true
+  mixpanel.identify(data.email)
+  mixpanel.track("Success - Mobile Number Confirmed")
+  mixpanel.people.set_once({
+    'Confirmed Mobile Number': true,
+    'Qualified for Funder': true
    } ) ;
-   mixpanel.track("View - QUalified For Funder")
+  mixpanel.track("View - Qaalified For Funder Page")
+  mixpanel.track("Success - Confirmed Mobile Number")
+  mixpanel.track("Success - New Phone Number Created")
 
 
 window['businesses#confirm_account'] = (data) ->
  if data.is_production
    if data.is_email_confirmed
-    mixpanel.track("Success - Mobile Number Confirmed")
-    mixpanel.people.set_once({'Success - Email Confirmation': true} ) ;
-   mixpanel.track("View - Confirm Email Page") ;
+    mixpanel.identify(data.email)
+    mixpanel.people.set_once({'Confirmed Email': true} ) ;
+   mixpanel.track("View - Mobile Number Confirmation") ;
 

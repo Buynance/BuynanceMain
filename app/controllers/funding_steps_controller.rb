@@ -89,7 +89,7 @@ class FundingStepsController < ApplicationController
 			else
 				@bank_account = @business.bank_account
 				@bank_account.assign_attributes(bank_account_params)
-				log_input_error(@bank_account, "Signup #{step.to_s.titlelize}")
+				log_input_error(@bank_account, "Signup #{step.to_s.titleize}")
 				render_wizard @bank_account
 			end
 		else

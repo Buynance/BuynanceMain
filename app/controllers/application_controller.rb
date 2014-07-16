@@ -22,7 +22,11 @@ class ApplicationController < ActionController::Base
     end
 
     def send_production_js
-      pluggable_js(is_production: is_production())
+      if current_business
+        pluggable_js(is_production: is_production, email: current_business.business_user.email)
+      else
+        pluggable_js(is_production: is_production)
+      end
     end
 
     def to_boolean(str)

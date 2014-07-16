@@ -36,7 +36,6 @@ class BusinessesController < ApplicationController
       redirect_to funding_steps_path
     else
       @show_funding_source = session[:show_funding_type]
-      flash[:signup_error] = @business
       #log_input_error(@business, "Signup Main") 
       #log_input_error(@business_user, "Signup Main") 
       render :action => :new
@@ -60,9 +59,9 @@ class BusinessesController < ApplicationController
     elsif @business.qualified_for_refi?
       render 'qualified_refi'
     elsif @business.qualified_for_market?
-      render 'qualified_market'
+      redirect_to action: 'qualified_market'
     elsif @business.disqualified_for_refi? || @business.disqualified_for_funder?
-      render 'disqualified'
+      redirect_to action: 'disqualified'
     elsif @business.awaiting_offer_acceptance?
       redirect_to display_offers_url
     elsif @business.awaiting_offer_completetion?
@@ -106,7 +105,7 @@ class BusinessesController < ApplicationController
   end
 
   def confirm_account
-    pluggable_js(is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
+    pluggable_js(email: current_business.current_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
   end
 
@@ -152,11 +151,13 @@ class BusinessesController < ApplicationController
   end
 
   def qualified_for_market
+    pluggable_js(email: current_business.current_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
     
   end
 
   def disqualified
+    pluggable_js(email: current_business.business_user.email, has_bank_account: !current_business.bank_account.nil?, is_production: is_production)
   end
 
 

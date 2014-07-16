@@ -33,11 +33,11 @@ window['static_pages#about'] = (data) ->
 window['static_pages#confirm_email'] = (data) ->
   if data.is_production
     if data.is_bank_account_success
-      mixpanel.track("Success - Bank Account Login")
+      mixpanel.identify(data.email)
       mixpanel.people.set_once({
-          'Success - Email Confirmation': data.mobile_disclaimer_accepted
+          'Logged In Bank Account': true
       });
-    mixpanel.track("View - View About Page");
+    mixpanel.track("View - Email Confirmation Page")
 
 
 

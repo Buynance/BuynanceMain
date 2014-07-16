@@ -1,5 +1,6 @@
 require 'securerandom'
 require 'twilio_lib'
+require 'decision_logic'
 
 class Business < ActiveRecord::Base
 
