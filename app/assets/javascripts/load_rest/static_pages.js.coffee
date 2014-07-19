@@ -45,14 +45,12 @@ setup_carousel = () ->
 
   $(".jcarousel").jcarousel({ 
     animation:
-      duration: 800
+      duration: 1000
       easing: "linear"
     wrap: "circular"
     complete: ->
-    }).jcarouselAutoscroll
-    interval: 10000
-    target: "+=1"
-    autostart: false 
+    })
+ 
 
   $(".jcarousel-pagination").jcarouselPagination( 
     item: (page) ->
@@ -64,7 +62,7 @@ setup_carousel = () ->
       $(this).removeClass "active"
       return
     ).on "click", (e) ->
-      e.preventDefault()
+      preventDefault
       return
 
   $(".jcarousel-control-prev").on("jcarouselcontrol:active", ->
