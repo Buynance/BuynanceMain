@@ -5,7 +5,7 @@
         = link_to(image_tag("logo.jpg"), "/")
       .homepage-header-links.clearfix
         .homepage-header-links-section.homepage-header-links-why
-          %a{href: '/about'} Why Buynance
+          = link_to('Why Buynance', :signup)
         .homepage-header-links-section.homepage-header-links-blog 
           %a{href: "/blog"} Blog
         .homepage-header-links-section.homepage-header-links-phone
