@@ -6,15 +6,18 @@ class ApplicationController < ActionController::Base
   Authlogic::Session::Base.controller = Authlogic::ControllerAdapters::RailsAdapter.new(self)
 
   protect_from_forgery 
-  before_filter :make_action_mailer_use_request_host_and_protocol
+  before_filter :make_action_mailer_use_request_host_and_protocol, :set_gettext_locale
   helper_method :current_business_user_session, :current_business_user, 
     :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
      :current_business, :current_funder, :require_funder, :to_boolean, :send_production_js, :is_production,
-     :log_input_error
+     :log_input_error, :set_translator_page, :locale
   force_ssl if: :ssl_configured?
 
   private
 
+    def set_translator_page(controller, page)
+      @page = TranslatorPage.find_by!(controller: controller, page: page)
+    end
   # Business and Business User
     def is_production
       #Rails.env.production?
@@ -207,5 +210,15 @@ class ApplicationController < ActionController::Base
       when "Signup Bank Prelogin"
         return {:account_number => "Account Number", :routing_number => "Routing Number"}
       end
+    end
+
+    def locale
+      default_locale = "en"
+      params[:locale] || session[:locale] || default_locale
+    end
+
+    def set_gettext_locale
+      session[:locale] = I18n.locale = FastGettext.set_locale(locale)
+      super
     end
 end

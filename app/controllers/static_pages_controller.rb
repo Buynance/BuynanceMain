@@ -3,7 +3,7 @@ class StaticPagesController < ApplicationController
 	before_filter :send_production_js, only: [:index, :privacy, :tos, :blog, :about]
 	
 	def index
-		
+		set_translator_page("StaticPages", "Index")
 	end
 	
 	def privacy

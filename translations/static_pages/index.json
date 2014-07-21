@@ -1,0 +1,51 @@
+{
+  "en":[
+    {"banner-title-top":"Faster, More Affordable,"},
+    {"banner-title-bottom":"Small Business Funding"},
+    {"banner-subheader": "Shop for small business funding or restructure an existing funding arrangement."},
+    
+
+    {"slider-finance-header":"Get Financed"},
+    {"slider-finance-subheader":"Adjust Your Funded Amount to View Savings"},
+    {"slider-finance-savings":"Savings"},
+    {"slider-finance-vs":"vs."},
+    {"slider-finance-others":"Others"},
+    {"slider-renew-header":"ReNew"},
+    {"slider-renew-subheader":"Use Slider to Reset Your Daily Collection"},
+    {"slider-renew-result":"ReNew Daily Collection"},
+
+    {"how-this-works-finance-header":"How this Works"},
+    {"how-this-works-finance-subheader":"Get Financed"},
+    {"how-this-works-finance-step1":"Sign Up & Tell Us a Bit About Your Business"},
+    {"how-this-works-finance-step2":"View Offers"},
+    {"how-this-works-finance-step3":"Select the One That Works Best For You"},
+
+    {"how-this-works-renew-header":"How this Works"},
+    {"how-this-works-renew-subheader":"ReNew"},
+    {"how-this-works-renew-step1":"We Analyze Your Current Loan"},
+    {"how-this-works-renew-step2":"Funders Present New Terms"},
+    {"how-this-works-renew-step3":"Get a Reduced Daily Payment or Interest Rate"},
+
+    {"benefits-header":"Benefits"},
+    {"benefits-one-information-one": "Save an Average of "},
+    {"benefits-one-information-two":"vs Dealing with Retail Brokers."},
+    {"benefits-two-information-one": "Save an Average of "},
+    {"benefits-two-information-two":"7 Days Worth "},
+    {"benefits-two-information-three": "of Time in Securing Funding."},
+    {"benefits-three-information-one ":"Save "},
+    {"benefits-three-information-two": "FICO Points "},
+    {"benefits-three-information-three":"by Avoiding Excessive Credit Checks."},
+
+    {"testimonial-name":"Jay Ballentine"},
+    {"testimonial-title":"Buynance"},
+    {"testimonial-body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut ultrices tempor sem sit amet rhoncus. Duis interdum viverra arcu, mattis volutpat odio cursus id. Etiam a augue vitae dolor lobortis iaculis at non elit. Ut ac gravida nisi. Proin tempor risus ac malesuada vehicula. Nulla eu lectus dui. Phasellus sed mi tortor. Integer aliquet pulvinar fermentum. Ut consectetur, lorem vitae fringilla dictum"},
+
+    {"testimonial-bloomberg-body":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus quam, convallis ut eros sit amet, posuere viverra lectus. Vivamus lobortis erat sed laoreet faucibus. Fusce porttitor."}, 
+    {"testimonial-read-more":"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus quam, convallis ut eros sit amet, posuere viverra lectus. Vivamus lobortis erat sed laoreet faucibus. Fusce porttitor."},
+    {"testimonial-alleywatch-body":"Read More"},
+
+    {"button-new":"Get New Deal"},
+    {"button-renew":"ReNew Current Deal"},
+    {"how-this-works":"How this Works"},
+  ]
+}

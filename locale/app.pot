@@ -1,0 +1,103 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: app 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-20 19:13-0400\n"
+"PO-Revision-Date: 2014-07-20 19:13-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+
+msgid "$5,000 "
+msgstr ""
+
+msgid "$50"
+msgstr ""
+
+msgid "$750"
+msgstr ""
+
+msgid "7 Days Worth "
+msgstr ""
+
+msgid "Adjust Your Funded Amount to View Savings"
+msgstr ""
+
+msgid "Benefits"
+msgstr ""
+
+msgid "FICO Points "
+msgstr ""
+
+msgid "Faster, More Affordable "
+msgstr ""
+
+msgid "Get Financed"
+msgstr ""
+
+msgid "Get New Deal"
+msgstr ""
+
+msgid "How this Works"
+msgstr ""
+
+msgid "In the News"
+msgstr ""
+
+msgid "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus quam, convallis ut eros sit amet, posuere viverra lectus. Vivamus lobortis erat sed laoreet faucibus. Fusce porttitor."
+msgstr ""
+
+msgid "ReNew"
+msgstr ""
+
+msgid "ReNew Current Deal"
+msgstr ""
+
+msgid "ReNew Daily Collection"
+msgstr ""
+
+msgid "Read More"
+msgstr ""
+
+msgid "Save"
+msgstr ""
+
+msgid "Save an Average of"
+msgstr ""
+
+msgid "Save an Average of "
+msgstr ""
+
+msgid "Savings "
+msgstr ""
+
+msgid "Shop for small business funding or restructure an existing funding arrangement."
+msgstr ""
+
+msgid "Small Business Funding"
+msgstr ""
+
+msgid "Use Slider to Reset Your Daily Collection"
+msgstr ""
+
+msgid "by Avoiding Excessive Credit Checks."
+msgstr ""
+
+msgid "of Time in Securing Funding."
+msgstr ""
+
+msgid "vs Dealing with Retail Brokers."
+msgstr ""
+
+msgid "vs. Others"
+msgstr ""

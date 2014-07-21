@@ -264,5 +264,11 @@ namespace :db do
         (0...length).each do |value|
             CashAdvanceCompany.create(name: companies[value][0])
         end
-    end 
+    end
+
+    desc "Import Translation File"
+    task :import_translation => :environment do
+       
+
+    end
 end

@@ -2,7 +2,8 @@
   .homepage-container
     .benefits
       .benefits-header
-        %span Benefits
+        %span 
+          = _('Benefits')
       .benefits-body
         .benefits-body-row-green.clearfix
           .benefits-body-row-green-number
@@ -12,10 +13,10 @@
           .benefits-body-row-green-information
             .benefits-body-row-green-information-block
               %span.benefits-body-row-green-information-block-text
-                Save an Average of 
+                = _('Save an Average of') 
                 %span.highlight-green
-                  $5,000 
-                vs Dealing with Retail Brokers.
+                  = _('$5,000 ') 
+                = _('vs Dealing with Retail Brokers.')
               .benefits-body-row-green-information-block-arrow
                 = image_tag("homepage_arrow.gif")
         .benefits-body-row-blue.clearfix
@@ -26,10 +27,10 @@
           .benefits-body-row-blue-information
             .benefits-body-row-blue-information-block
               %span.benefits-body-row-blue-information-block-text
-                Save an Average of 
+                = _('Save an Average of ')
                 %span.highlight-blue
-                  7 Days Worth  
-                of Time in Securing Funding.
+                  = _('7 Days Worth ') 
+                = _('of Time in Securing Funding.')
               .benefits-body-row-blue-information-block-arrow
                 = image_tag("homepage_arrow.gif")
         .benefits-body-row-orange.clearfix
@@ -40,16 +41,18 @@
           .benefits-body-row-orange-information
             .benefits-body-row-orange-information-block
               %span.benefits-body-row-orange-information-block-text
-                Save 
+                = _('Save') 
                 %span.highlight-orange
-                  FICO Points 
-                by Avoiding Excessive Credit Checks.
+                  = _('FICO Points ') 
+                = _('by Avoiding Excessive Credit Checks.')
       .benefits-action-bar
         .benefits-action-bar-group.clearfix
           .benefits-action-bar-group-financed
             %a.flat-button.button-get-financed{href: "/signup?is_funding=true"}
-              %span Get New Deal
+              %span 
+                = _('Get New Deal')
           .benefits-action-bar-group-refinance
             %a.flat-button.button-get-refinance{href: "/signup.html?is_refinance=true"}
-              %span ReNew Current Deal
+              %span 
+                = _('ReNew Current Deal')
           

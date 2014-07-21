@@ -5,9 +5,11 @@
         .homepage-slider-right-fold
           = image_tag("homepage_slider_fold_blue.png")
         .homepage-slider-header.paper-header
-          %span Get Financed
+          %span 
+            = _('Get Financed')
         .homepage-slider-subheader
-          %span Adjust Your Funded Amount to View Savings
+          %span 
+            = _('Adjust Your Funded Amount to View Savings')
         #funder-slider.homepage-slider-main.paper-body
           .homepage-slider-main-section
             #slider-range-funder
@@ -20,24 +22,30 @@
             %hr
             .homepage-slider-main-result-text.clearfix
               .homepage-slider-main-result-text-left
-                %span.blue-highlight Savings 
-                %span vs. Others
+                %span.blue-highlight 
+                  = _('Savings ')
+                %span 
+                  = _('vs. Others')
               .homepage-slider-main-result-text-right
-                %span.slider-right-value $750
+                %span.slider-right-value 
+                  = _('$750')
             %hr
           .homepage-slider-main-action
             .homepage-slider-main-action-button
               .flat-button.button-get-financed
-                Get New Deal
+                = _('Get New Deal')
             .homepage-slider-action-subheader
-              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 0);"}How this Works
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 0);"}
+                = _('How this Works')
       #refi-slider.homepage-slider-left.paper.paper-green
         .homepage-slider-left-fold
           = image_tag("homepage_slider_fold_green.png")
         .homepage-slider-header.paper-header
-          %span ReNew
+          %span 
+            = _('ReNew')
         .homepage-slider-subheader
-          %span Use Slider to Reset Your Daily Collection
+          %span 
+            = _('Use Slider to Reset Your Daily Collection')
         .homepage-slider-main.paper-body
           .homepage-slider-main-section
             #slider-range-refi
@@ -50,13 +58,16 @@
             %hr
             .homepage-slider-main-result-text.clearfix
               .homepage-slider-main-result-text-left
-                %span ReNew Daily Collection
+                %span 
+                  = _('ReNew Daily Collection')
               .homepage-slider-main-result-text-right.slider-left
-                %span.slider-left-value $50
+                %span.slider-left-value 
+                  = _('$50')
             %hr
           .homepage-slider-main-action
             .homepage-slider-main-action-button
               .flat-button.button-get-refinance
-                ReNew Current Deal
+                = _('ReNew Current Deal')
             .homepage-slider-action-subheader.slider-right
-              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 1);"}How this Works
+              %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 1);"}
+                = _('How this Works')

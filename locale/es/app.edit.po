@@ -1,0 +1,108 @@
+# Spanish translations for app package.
+# Copyright (C) 2014 THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the app package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: app 1.0.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2014-07-20 19:13-0400\n"
+"PO-Revision-Date: 2014-07-20 21:35-0400\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: Spanish\n"
+"Language: es\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n != 1;\n"
+"\n"
+
+msgid "$5,000 "
+msgstr ""
+
+msgid "$50"
+msgstr ""
+
+msgid "$750"
+msgstr ""
+
+msgid "7 Days Worth "
+msgstr ""
+
+msgid "Adjust Your Funded Amount to View Savings"
+msgstr "Uno dos tres quatro cinco"
+
+msgid "Benefits"
+msgstr "Uno dos"
+
+msgid "FICO Points "
+msgstr "Uno dos tres "
+
+msgid "Faster, More Affordable "
+msgstr "Uno dos tres quatro "
+
+msgid "Get Financed"
+msgstr "Uno dos tres"
+
+msgid "Get New Deal"
+msgstr "Uno dos tres"
+
+msgid "How this Works"
+msgstr "Uno dos tres"
+
+msgid "In the News"
+msgstr "Uno dos tres"
+
+msgid ""
+"Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent tellus quam,"
+" convallis ut eros sit amet, posuere viverra lectus. Vivamus lobortis erat sed"
+" laoreet faucibus. Fusce porttitor."
+msgstr ""
+
+msgid "ReNew"
+msgstr "Uno"
+
+msgid "ReNew Current Deal"
+msgstr "Uno dos tres quatro"
+
+msgid "ReNew Daily Collection"
+msgstr "Uno dos tres quatro"
+
+msgid "Read More"
+msgstr "Uno dos"
+
+msgid "Save"
+msgstr "Uno"
+
+msgid "Save an Average of"
+msgstr "Uno dos tres quatro"
+
+msgid "Save an Average of "
+msgstr "Uno dos tres quatro "
+
+msgid "Savings "
+msgstr "Uno dos "
+
+msgid ""
+"Shop for small business funding or restructure an existing funding arrangement"
+"."
+msgstr ""
+
+msgid "Small Business Funding"
+msgstr "Uno dos tres quatro"
+
+msgid "Use Slider to Reset Your Daily Collection"
+msgstr "Uno dos tres quatro cinco Uno dos tres quatro"
+
+msgid "by Avoiding Excessive Credit Checks."
+msgstr "Uno dos tres quatro cinco Uno dos tres"
+
+msgid "of Time in Securing Funding."
+msgstr "Uno dos tres quatro cinco Uno"
+
+msgid "vs Dealing with Retail Brokers."
+msgstr ""
+
+msgid "vs. Others"
+msgstr ""
