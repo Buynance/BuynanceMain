@@ -80,8 +80,8 @@ Buynance::Application.routes.draw do
   get 'funder_logout' => "funder_sessions#destroy", :as => :funder_logout
 
 
-  get 'signup' => 'businesses#new', :as => :signup
-  get 'account' => 'businesses#show', :as => :account
+  get '/signup' => 'businesses#new', :as => :signup
+  get '/account' => 'businesses#show', :as => :account
 
   #get 'activate_account' => 'businesses#activate_account'
 
@@ -117,7 +117,6 @@ Buynance::Application.routes.draw do
   # You can have the root of your site routed with "root"
   root 'static_pages#index'
 
-  get '*path' => redirect('/')
   
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
