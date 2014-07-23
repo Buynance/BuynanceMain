@@ -1,3 +1,7 @@
+html,body {
+    height:100%;
+}
+
 .textbox {
     height: 50px;
     width: 100%;
@@ -51,192 +55,233 @@
         margin-bottom: 50px;
         margin-left: 62px;
     }
-    .paper-section-top {
+/*=======================================================================================*/
+    .paper-section-main {
+        
+        .paper-section-main-sheet.first-paper-section {
+            margin-top: 0;
+            margin-left: 0;
+            background: asset-url(image-path("paper_1_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-1.png")) top left no-repeat, asset-url(image-path("paper-body-1.png")) 0 53px/100% 100% no-repeat ;
+            -webkit-box-shadow: -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
+            -moz-box-shadow:    -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
+            box-shadow:         -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
+        }
+        .paper-section-main-sheet.last-paper-section {
+            padding-top: 53px;
+            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-3.png")) top left no-repeat, asset-url(image-path("paper-body-3.png")) 0 53px/100% 100% no-repeat ;
+            min-height: 185px;
+            padding-left: 50px;
+        }
+        .paper-section-main-sheet {
+            width: 800px;
+            float: left;
+            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-2.png")) top left no-repeat, asset-url(image-path("paper-body-2.png")) 0 53px/100% 100% no-repeat ;
+            margin-top: 5px;
+            margin-left: 5px;
+
+            .paper-section-bank-login {
+                position: relative;
+                padding-right: 1px;
+                color: rgb(135, 135, 135);
+                padding-bottom: 0;
+                .paper-section-bank-login-left {
+                    float: left;
+                    padding-bottom: 75px;
+                    padding-right: 50px;
+                    .paper-section-bank-login-left-disclaimer{
+                      textarea{
+                        width: 100%;
+                        -webkit-box-sizing: border-box;
+                            -moz-box-sizing: border-box;
+                                box-sizing: border-box;
+                        height: 500px;
+                        font-size: 12px;
+                        padding: 20px;
+                        text-align: justify;
+                        white-space: normal;
+                        margin-bottom: 25px;
+                      }
+                    }
+                    .paper-section-bank-login-left-header {
+                        color: rgb(141, 198, 63);
+                        font-size: 20px;
+                        font-weight: 700;
+                        margin-bottom: 50px;
+                        
+                    }
+                    .paper-section-bank-login-left-information {
+                        margin-bottom: 50px;
+                        font-size: 16px;
+                        line-height: 24px;
+                        width: 80%;
+                        .paper-section-bank-login-left-information-important {
+                            color: rgb(37, 170, 225);
+                            font-weight: 700;
+                        }
+                    }
+                    .paper-section-bank-login-form {
+                        color: rgb(68, 63, 63);
+                        .paper-section-bank-login-form-label {
+                            font-size: 12px;
+                            margin-bottom: 20px;
+                            font-weight: 900;
+                            color: rgb(68, 63, 63);
+                            width: 80%;
+                        }
+                        .paper-section-bank-login-form-input {
+                            select.textbox, input.textbox {
+                                font-size: 12px;
+                                background-color: rgb(242, 242, 242);
+                                border-width: 0px;
+                                width: 80%;
+                            }
+                        }
+                        .paper-section-bank-login-form-routing-info {
+                            font-weight: 700;
+                            /*margin-bottom: 50px;*/
+                        }
+                        .paper-section-bank-login-form-action {
+                            margin-top: 20px;
+                            .form-button.flat-button.button-submit {
+                                padding-right: 50px;
+                                padding-left: 50px;
+                                color: white;
+                                width: 70%;
+                            }
+                        }
+                        .paper-section-bank-login-form-recover{
+                            text-align: center;
+                            width: 70%;
+                            margin-top: 20px;
+                            font-size: 11px
+
+                        }
+                    }
+                }
+                .paper-section-bank-login-right {
+                    position: relative;
+                    top: 0;
+                    right: 0;
+                    bottom: 0;
+                    padding-bottom: 50px;
+                    padding-left: 25px;
+                    padding-right: 25px;
+                    padding-top: 50px;
+                    background: #ffffff;
+                    /* Old browsers */
+                    background: -moz-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
+                    /* FF3.6+ */
+                    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(20%, #f2f2f2), color-stop(100%, #f2f2f2));
+                    /* Chrome,Safari4+ */
+                    background: -webkit-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
+                    /* Chrome10+,Safari5.1+ */
+                    background: -o-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
+                    /* Opera 11.10+ */
+                    background: -ms-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
+                    /* IE10+ */
+                    background: linear-gradient(to bottom, white 0%, #f2f2f2 20%, #f2f2f2 100%);
+                    /* W3C */
+                    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
+                    /* IE6-9 */
+                    font-family: 'latoregular', Arial, sans-serif;
+                    .paper-section-bank-login-right-top {
+                        .paper-section-bank-login-right-top-image {
+                            float: left;
+                            display: inline-block;
+                            margin-top: 8.5px;
+                            img{
+                                width: 69px;
+                                height: 69px;
+                            }
+                            
+                        }
+                        .paper-section-bank-login-right-top-information {
+                            float: right;
+                            display: inline-block;
+                            width: 70%;
+                            .paper-section-bank-login-right-top-information-header {
+                                color: rgb(37, 170, 225);
+                                font-size: 22px;
+                                margin-bottom: 5px;
+                                font-family: 'latobold', Arial, sans-serif;
+                            }
+                            .paper-section-bank-login-right-top-information-subheader {
+                                color: rgb(111, 111, 111);
+                                font-size: 16px;
+                            }
+                        }
+                    }
+                    .paper-section-bank-login-subsection {
+                        .paper-section-bank-login-subsection-points {
+                            font-size: 14px;
+                            margin-bottom: 15px;
+                            position: relative;
+                            img {
+                                top: 6px;
+                                left: 0px;
+                                position: absolute;
+                            }
+                            span {
+                                margin-left: 15px;
+                                display: block;
+                            }
+                        }
+                        .paper-section-bank-login-subsection-questions {
+                            font-family: 'latobold', Arial, sans-serif;
+                            color: rgb(37, 170, 225);
+                            font-size: 16px;
+                            line-height: 25px;
+                        }
+                        .paper-section-bank-login-subsection-phone-number {
+                            font-family: 'latobold', Arial, sans-serif;
+                            color: rgb(99, 99, 99);
+                            font-size: 16px;
+                            margin-left: 10px;
+                            line-height: 25px;
+                        }
+                        .paper-section-bank-login-subsection-security-image-left {
+                            float: left;
+                            padding-bottom: 20px;
+                            img{
+                                width: 116px;
+                            }
+                        }
+                        .paper-section-bank-login-subsection-security-image-right {
+                            float: right;
+                            padding-bottom: 20px;
+                            padding-top: 11px;
+                            img {
+                                width: 127px;
+                            } 
+                        }
+
+                        .paper-section-bank-login-subsection-about{
+                            font-size: 12px;
+                        }
+                    }
+                }
+                .paper-section-bank-login-right.fix-overflow{
+                    position: absolute; 
+                    margin-right: 1px;
+                }
+            }
+        }
+    }
+    /*.paper-section-top {
         background-image: asset-url(image-path("paper_top_background_3.png"));
         min-height: 62px;
         padding-top: 10px;
         padding-left: 50px;
         padding-right: 45px;
-    }
-    .paper-section-body.paper-section-bank-login {
-        position: relative;
-        padding-right: 5px;
-        color: rgb(135, 135, 135);
-        padding-bottom: 0;
-        .paper-section-bank-login-left {
-            float: left;
-            padding-bottom: 75px;
-            padding-right: 50px;
-            .paper-section-bank-login-left-disclaimer{
-              textarea{
-                width: 100%;
-                -webkit-box-sizing: border-box;
-                    -moz-box-sizing: border-box;
-                        box-sizing: border-box;
-                height: 500px;
-                font-size: 12px;
-                padding: 20px;
-                text-align: justify;
-                white-space: normal;
-                margin-bottom: 25px;
-              }
-            }
-            .paper-section-bank-login-left-header {
-                color: rgb(141, 198, 63);
-                font-size: 20px;
-                font-weight: 700;
-                margin-bottom: 50px;
-                
-            }
-            .paper-section-bank-login-left-information {
-                margin-bottom: 50px;
-                font-size: 16px;
-                line-height: 24px;
-                width: 80%;
-                .paper-section-bank-login-left-information-important {
-                    color: rgb(37, 170, 225);
-                    font-weight: 700;
-                }
-            }
-            .paper-section-bank-login-form {
-                color: rgb(68, 63, 63);
-                .paper-section-bank-login-form-label {
-                    font-size: 12px;
-                    margin-bottom: 20px;
-                    font-weight: 900;
-                    color: rgb(68, 63, 63);
-                    width: 80%;
-                }
-                .paper-section-bank-login-form-input {
-                    select.textbox, input.textbox {
-                        font-size: 12px;
-                        background-color: rgb(242, 242, 242);
-                        border-width: 0px;
-                        width: 80%;
-                    }
-                }
-                .paper-section-bank-login-form-routing-info {
-                    font-weight: 700;
-                    /*margin-bottom: 50px;*/
-                }
-                .paper-section-bank-login-form-action {
-                    margin-top: 20px;
-                    .form-button.flat-button.button-submit {
-                        padding-right: 50px;
-                        padding-left: 50px;
-                        color: white;
-                        width: 70%;
-                    }
-                }
-                .paper-section-bank-login-form-recover{
-                    text-align: center;
-                    width: 70%;
-                    margin-top: 20px;
-                    font-size: 11px
+    }*/
+/*=======================================================================================*/
 
-                }
-            }
-        }
-        .paper-section-bank-login-right {
-            position: relative;
-            top: 0;
-            right: 0;
-            bottom: 0;
-            padding-bottom: 50px;
-            padding-left: 25px;
-            padding-right: 25px;
-            padding-top: 50px;
-            background: #ffffff;
-            /* Old browsers */
-            background: -moz-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
-            /* FF3.6+ */
-            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, white), color-stop(20%, #f2f2f2), color-stop(100%, #f2f2f2));
-            /* Chrome,Safari4+ */
-            background: -webkit-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
-            /* Chrome10+,Safari5.1+ */
-            background: -o-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
-            /* Opera 11.10+ */
-            background: -ms-linear-gradient(top, white 0%, #f2f2f2 20%, #f2f2f2 100%);
-            /* IE10+ */
-            background: linear-gradient(to bottom, white 0%, #f2f2f2 20%, #f2f2f2 100%);
-            /* W3C */
-            filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#f2f2f2',GradientType=0 );
-            /* IE6-9 */
-            font-family: 'latoregular', Arial, sans-serif;
-            .paper-section-bank-login-right-top {
-                .paper-section-bank-login-right-top-image {
-                    float: left;
-                    display: inline-block;
-                    margin-top: 8.5px;
-                    img{
-                        width: 69px;
-                        height: 69px;
-                    }
-                    
-                }
-                .paper-section-bank-login-right-top-information {
-                    float: right;
-                    display: inline-block;
-                    width: 70%;
-                    .paper-section-bank-login-right-top-information-header {
-                        color: rgb(37, 170, 225);
-                        font-size: 22px;
-                        margin-bottom: 5px;
-                        font-family: 'latobold', Arial, sans-serif;
-                    }
-                    .paper-section-bank-login-right-top-information-subheader {
-                        color: rgb(111, 111, 111);
-                        font-size: 16px;
-                    }
-                }
-            }
-            .paper-section-bank-login-subsection {
-                .paper-section-bank-login-subsection-points {
-                    font-size: 14px;
-                    margin-bottom: 15px;
-                    position: relative;
-                    img {
-                        top: 6px;
-                        left: 0px;
-                        position: absolute;
-                    }
-                    span {
-                        margin-left: 15px;
-                        display: block;
-                    }
-                }
-                .paper-section-bank-login-subsection-questions {
-                    font-family: 'latobold', Arial, sans-serif;
-                    color: rgb(37, 170, 225);
-                    font-size: 16px;
-                    line-height: 25px;
-                }
-                .paper-section-bank-login-subsection-phone-number {
-                    font-family: 'latobold', Arial, sans-serif;
-                    color: rgb(99, 99, 99);
-                    font-size: 16px;
-                    margin-left: 10px;
-                    line-height: 25px;
-                }
-                .paper-section-bank-login-subsection-security-image-left {
-                    float: left;
-                    padding-bottom: 20px;
-                }
-                .paper-section-bank-login-subsection-security-image-right {
-                    float: right;
-                    padding-bottom: 20px;
-                }
 
-                .paper-section-bank-login-subsection-about{
-                    font-size: 12px;
-                }
-            }
-        }
-        .paper-section-bank-login-right.fix-overflow{
-            position: absolute; 
-            margin-right: 5px;
-        }
+    .paper-section-top{
+        width: 800px;
     }
+
+    
     .paper-section-body {
         background: asset-url(image-path("paper_bottom_background.png")) bottom left no-repeat, asset-url(image-path("paper_body_background.png")) top left;
         min-height: 185px;
@@ -370,9 +415,11 @@
 
 .paper-section-bank-login-form-disclaimer {
     display: block;
+    width: 80%;
         padding-bottom: 20px;
         span{
             font-size: 11px;
+            line-height: 1.5;
         }
 
 }

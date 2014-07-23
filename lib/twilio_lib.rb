@@ -55,6 +55,12 @@ class TwilioLib
 		return "http://twimlets.com/forward?PhoneNumber=#{phone_number[2, 10]}&CallerId=7166083596&Timeout=20&FailUrl=http%3A%2F%2Ftwimlets.com%2Fvoicemail%3FEmail%3Dedwin%2540buynance.com%26Message%3DSorry%2520I%2520am%2520unavailable%2520at%2520them%2520moment.%2520Please%2520call%2520me%2520back%2520later.%2520Thank%2520You.%26Transcribe%3Dtrue%26&"
 	end
 
+	def self.send_text(phone_number, message)
+		return_val = @twilio_client.account.messages.create(:body => message,
+    		:to => phone_number,
+    		:from => @twilio_phone_number)
+	end
+
 	private
 
 	def send_opt_code(business)
@@ -64,10 +70,6 @@ class TwilioLib
 		send_text(phone_number, text)
 	end
 
-	def self.send_text(phone_number, message)
-		return_val = @twilio_client.account.messages.create(:body => message,
-    		:to => phone_number,
-    		:from => @twilio_phone_number)
-	end
+	
 
 end

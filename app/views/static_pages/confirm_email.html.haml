@@ -2,12 +2,14 @@
   .paper-section
     .paper-section-header
       Success!
-    .paper-section-top
-    .paper-section-body.paper-section-bank-login.row
-      .paper-section-bank-login-left.col-xs-7
-        .paper-section-bank-login-left-header
-          %span Please check your email now.
-        .paper-section-bank-login-left-information
-          %span Check your email to validate your identity and to confirm your account creation.
-      .paper-section-bank-login-right.col-xs-5
-        = render "shared/funding_sidebar"
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .paper-section-bank-login-left.col-xs-7
+              .paper-section-bank-login-left-header
+                %span Please check your email now.
+              .paper-section-bank-login-left-information
+                %span Check your email to validate your identity and to confirm your account creation.
+            .paper-section-bank-login-right.col-xs-5
+              = render "shared/funding_sidebar"

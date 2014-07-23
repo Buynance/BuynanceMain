@@ -41,7 +41,7 @@ window['funding_steps#show'] = (data) ->
 				    "Funding Type": data.funding_type,
 				    "Registered User": true
 				});
-				mixpanel.track("Success - Signup")
+				mixpanel.track("Success - Signup")	
 			mixpanel.track("View - Signup Personal Page");
 			mixpanel.people.set_once({
 				"Viewed Personal Information Signup Page": true

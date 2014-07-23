@@ -2,59 +2,66 @@
   .paper-section
     .paper-section-header
       Signup
-    .paper-section-top
-    .paper-section-body.paper-section-bank-login.row
-      .paper-section-bank-login-left.col-xs-7
-        .paper-section-bank-login-left-header
-          %span Create a Buynance Account
-        .paper-section-bank-login-left-information
-            %span Creating a Buynance password is fast, safe, and secure.
-        .paper-section-bank-login-form
-          = simple_form_for @business, defaults: { input_html: { novalidate: "novalidate" } } do |f|
-            - if @business.errors.any? || @business_user.errors.any?
-              %div{class: "alert alert-danger"}
-                %ul
-                  - @business.errors.full_messages.each do |msg|
-                    %li= msg
-                  - @business_user.errors.full_messages.each do |msg|
-                    - if /[[:upper:]]/.match(msg[0])
-                      %li= msg
-            .row
-              -if @show_funding_source
-                .paper-section-bank-login-form-label
-                  %span Are you ReNewing  an existing funding arrangement or starting from scratch?
-                .paper-section-bank-login-form-input
-                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReNewing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
-              - else
-                = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
-              .paper-section-bank-login-form-label
-                %span What is your business name?
-              .paper-section-bank-login-form-input
-                = f.input :name, placeholder: 'Business Name', input_html: {class: 'textbox required'}, label: false, error: false          
-            .row
-              = fields_for @business_user do |business_fields|
-                .paper-section-bank-login-form-label
-                  %span What is your email address?
-                .paper-section-bank-login-form-input
-                  = business_fields.text_field :email, placeholder: 'Email', class: 'textbox form-control required email', label: false
-                .paper-section-bank-login-form-label
-                  %span Create your buynance password
-                .paper-section-bank-login-form-input
-                  = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
-                .paper-section-bank-login-form-label
-                  %span Comfirm your buynance password
-                .paper-section-bank-login-form-input
-                  = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
-                .paper-section-bank-login-form-disclaimer
-                  %span 
-                    By continuing you are accepting our 
-                    %a{href:"/tos", target: "_blank"} Terms of Service
-                    and
-                    %a{href:"/privacy", target: "_blank"} Privacy Policy
-                .paper-section-bank-login-form-action
-                  = f.submit "Continue", class: "form-button flat-button button-submit"
-      .paper-section-bank-login-right.col-xs-5.fix-overflow
-        - if @business.is_refinance?
-          = render "shared/refinance_sidebar"
-        - else
-          = render "shared/funding_sidebar"
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.clearfix
+          .paper-section-main-sheet.clearfix
+            .paper-section-main-sheet.clearfix
+              .paper-section-main-sheet.clearfix
+                .paper-section-main-sheet.clearfix
+                  .paper-section-main-sheet.last-paper-section
+                    .paper-section-bank-login.row
+                      .paper-section-bank-login-left.col-xs-7
+                        .paper-section-bank-login-left-header
+                          %span Create a Buynance Account
+                        .paper-section-bank-login-left-information
+                          %span Creating a Buynance password is fast, safe, and secure.
+                        .paper-section-bank-login-form
+                          = simple_form_for @business, defaults: { input_html: { novalidate: "novalidate" } } do |f|
+                            - if @business.errors.any? || @business_user.errors.any?
+                              %div{class: "alert alert-danger"}
+                                %ul
+                                  - @business.errors.full_messages.each do |msg|
+                                    %li= msg
+                                  - @business_user.errors.full_messages.each do |msg|
+                                    - if /[[:upper:]]/.match(msg[0])
+                                      %li= msg
+                            .row
+                              -if @show_funding_source
+                                .paper-section-bank-login-form-label
+                                  %span Are you ReNewing  an existing funding arrangement or starting from scratch?
+                                .paper-section-bank-login-form-input
+                                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReNewing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+                              - else
+                                = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
+                              .paper-section-bank-login-form-label
+                                %span What is your business name?
+                              .paper-section-bank-login-form-input
+                                = f.input :name, placeholder: 'Business Name', input_html: {class: 'textbox required'}, label: false, error: false          
+                            .row
+                              = fields_for @business_user do |business_fields|
+                                .paper-section-bank-login-form-label
+                                  %span What is your email address?
+                                .paper-section-bank-login-form-input
+                                  = business_fields.text_field :email, placeholder: 'Email', class: 'textbox form-control required email', label: false
+                                .paper-section-bank-login-form-label
+                                  %span Create your buynance password
+                                .paper-section-bank-login-form-input
+                                  = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
+                                .paper-section-bank-login-form-label
+                                  %span Comfirm your buynance password
+                                .paper-section-bank-login-form-input
+                                  = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
+                                .paper-section-bank-login-form-disclaimer
+                                  %span 
+                                    By continuing you are accepting our 
+                                    %a{href:"/tos", target: "_blank"} Terms of Service
+                                    and
+                                    %a{href:"/privacy", target: "_blank"} Privacy Policy
+                                .paper-section-bank-login-form-action
+                                  = f.submit "Continue", class: "form-button flat-button button-submit"
+                      .paper-section-bank-login-right.col-xs-5.fix-overflow
+                        - if @business.is_refinance?
+                          = render "shared/refinance_sidebar"
+                        - else
+                          = render "shared/funding_sidebar"

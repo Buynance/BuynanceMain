@@ -105,7 +105,7 @@ class BusinessesController < ApplicationController
   end
 
   def confirm_account
-    pluggable_js(email: current_business.current_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
+    pluggable_js(email: current_business.business_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
   end
 
@@ -144,14 +144,14 @@ class BusinessesController < ApplicationController
     render xml: twiml
   end
 
-  def qualified_for_funder
+  def qualified_funder
   end
 
-  def qualified_for_refi
+  def qualified_refi
   end
 
-  def qualified_for_market
-    pluggable_js(email: current_business.current_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
+  def qualified_market
+    pluggable_js(email: current_business.business_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
     
   end

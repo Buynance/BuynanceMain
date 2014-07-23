@@ -2,43 +2,47 @@
   .paper-section
     .paper-section-header
       Tell us a bit about you...
-    .paper-section-top
-    .paper-section-body.paper-section-bank-login.row
-      .paper-section-bank-login-left.col-xs-7
-        .paper-section-bank-login-left-header
-          %span Financial Information
-        .paper-section-bank-login-form
-          = simple_form_for @business, url: wizard_path, method: :put do |f|
-            - if @business.errors.any?
-              %div{class: "alert alert-danger"}
-                %ul
-                  - @business.errors.full_messages.each do |msg|
-                    %li= msg
-            .paper-section-bank-login-form-label
-              %span What is your approximate credit score?
-            .paper-section-bank-login-form-input
-              = f.input :approximate_credit_score_range, include_blank: '', :as => :select, collection: [["451-500" , 1], ["501-550" , 2], ["551-600" , 3], ["601-650" , 4], ["651-700" , 5], ["701-750" , 6], ["751-800" , 7]],   input_html: {class: 'textbox'}, label: false, error: false
-            .paper-section-bank-login-form-label
-              %span Do you have any tax liens?
-            .paper-section-bank-login-form-input
-              = f.input :is_tax_lien, include_blank: '',  :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox is_tax_lien_input'}, label: false, error: false          
-            .paper-section-bank-login-form-section-payment
-              .paper-section-bank-login-form-label
-                %span Are you making payments on your tax liens?
-              .paper-section-bank-login-form-input
-                = f.input :is_payment_plan, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "", input_html: {class: 'textbox', id: "is_payment_group"},  label: false, error: false
-            .paper-section-bank-login-form-label
-              %span Have you ever filed for bankruptcy?
-            .paper-section-bank-login-form-input
-              = f.input :is_ever_bankruptcy, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
-            .paper-section-bank-login-form-label
-              %span Do you have any judgements?
-            .paper-section-bank-login-form-input
-              = f.input :is_judgement, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
-            .paper-section-bank-login-form-action
-              = f.submit "Continue", class: "form-button flat-button button-submit"
-      .paper-section-bank-login-right.col-xs-5.fix-overflow
-        - if @business.is_refinance
-          = render "shared/refinance_sidebar"
-        - else
-          = render "shared/funding_sidebar"
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.clearfix
+          .paper-section-main-sheet.clearfix
+            .paper-section-main-sheet.last-paper-section
+              .paper-section-bank-login.row
+                .paper-section-bank-login-left.col-xs-7
+                  .paper-section-bank-login-left-header
+                    %span Financial Information
+                  .paper-section-bank-login-form
+                    = simple_form_for @business, url: wizard_path, method: :put do |f|
+                      - if @business.errors.any?
+                        %div{class: "alert alert-danger"}
+                          %ul
+                            - @business.errors.full_messages.each do |msg|
+                              %li= msg
+                      .paper-section-bank-login-form-label
+                        %span What is your approximate credit score?
+                      .paper-section-bank-login-form-input
+                        = f.input :approximate_credit_score_range, include_blank: '', :as => :select, collection: [["451-500" , 1], ["501-550" , 2], ["551-600" , 3], ["601-650" , 4], ["651-700" , 5], ["701-750" , 6], ["751-800" , 7]],   input_html: {class: 'textbox'}, label: false, error: false
+                      .paper-section-bank-login-form-label
+                        %span Do you have any tax liens?
+                      .paper-section-bank-login-form-input
+                        = f.input :is_tax_lien, include_blank: '',  :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox is_tax_lien_input'}, label: false, error: false          
+                      .paper-section-bank-login-form-section-payment
+                        .paper-section-bank-login-form-label
+                          %span Are you making payments on your tax liens?
+                        .paper-section-bank-login-form-input
+                          = f.input :is_payment_plan, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "", input_html: {class: 'textbox', id: "is_payment_group"},  label: false, error: false
+                      .paper-section-bank-login-form-label
+                        %span Have you ever filed for bankruptcy?
+                      .paper-section-bank-login-form-input
+                        = f.input :is_ever_bankruptcy, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+                      .paper-section-bank-login-form-label
+                        %span Do you have any judgements?
+                      .paper-section-bank-login-form-input
+                        = f.input :is_judgement, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+                      .paper-section-bank-login-form-action
+                        = f.submit "Continue", class: "form-button flat-button button-submit"
+                .paper-section-bank-login-right.col-xs-5.fix-overflow
+                  - if @business.is_refinance
+                    = render "shared/refinance_sidebar"
+                  - else
+                    = render "shared/funding_sidebar"

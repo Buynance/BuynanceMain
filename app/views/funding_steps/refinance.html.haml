@@ -2,52 +2,57 @@
   .paper-section
     .paper-section-header
       Tell us about your current deal...
-    .paper-section-top
-    .paper-section-body.paper-section-bank-login.row
-      .paper-section-bank-login-left.col-xs-7
-        .paper-section-bank-login-left-header
-          %span Current Deal Info.
-        .paper-section-bank-login-form
-          = simple_form_for @business, url: wizard_path do |f|
-            - if @business.errors.any?
-              %div{class: "alert alert-danger"}
-                %ul
-                  - @business.errors.full_messages.each do |msg|
-                    %li= msg
-            .paper-section-bank-login-form-label
-              %span How is the money being collected?
-            .paper-section-bank-login-form-input
-              = f.input :deal_type, include_blank: '', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
-            .paper-section-bank-login-form-label
-              %span Who is your current funder?
-            .paper-section-bank-login-form-input
-              = f.input :previous_merchant_id, include_blank: '', as: :select, collection: CashAdvanceCompany.order('name DESC').all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
-            .paper-section-bank-login-form-label
-              %span When were you funded?
-            .paper-section-bank-login-form-input
-              = f.input :previous_loan_date, include_blank: "03/24/2014", as: :string,  input_html: {class: 'textbox datepicker'}, label: false,  error: false
-            .paper-section-bank-login-form-label
-              %span What was your total wired amount (after fees)?
-            .paper-section-bank-login-form-input
-              = f.input :total_previous_loan_amount, placeholder: 'Wired Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
-            .paper-section-bank-login-form-label
-              %span What was your total payback amount (before fees)?
-            .paper-section-bank-login-form-input
-              = f.input :total_previous_payback_amount, placeholder: 'Payback Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
-            .paper-section-bank-login-form-label
-              %span What is your current balance?
-            .paper-section-bank-login-form-input
-              = f.input :total_previous_payback_balance, placeholder: 'Current Balance', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
-            .paper-section-bank-login-form-label
-              %span Did you pay a closing fee?
-            .paper-section-bank-login-form-input
-              = f.input :is_closing_fee, :as => :select, collection: [["No" , false], ["Yes" , true]],   input_html: {class: 'textbox is_closing_fee_input'}, label: false,  error: false
-            .closing_fee_input_value
-              .paper-section-bank-login-form-label
-                %span If you payed a closing fee, how much did you pay?
-              .paper-section-bank-login-form-input
-                = f.input :closing_fee, placeholder: "Enter Fee Amount",  input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
-            .paper-section-bank-login-form-action
-              = f.submit "Continue", class: "form-button flat-button button-submit"
-      .paper-section-bank-login-right.col-xs-5.fix-overflow
-        = render "shared/refinance_sidebar"
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.clearfix
+          .paper-section-main-sheet.clearfix
+            .paper-section-main-sheet.clearfix
+              .paper-section-main-sheet.last-paper-section
+                .paper-section-bank-login.row
+                  .paper-section-bank-login-left.col-xs-7
+                    .paper-section-bank-login-left-header
+                      %span Current Deal Info.
+                    .paper-section-bank-login-form
+                      = simple_form_for @business, url: wizard_path do |f|
+                        - if @business.errors.any?
+                          %div{class: "alert alert-danger"}
+                            %ul
+                              - @business.errors.full_messages.each do |msg|
+                                %li= msg
+                        .paper-section-bank-login-form-label
+                          %span How is the money being collected?
+                        .paper-section-bank-login-form-input
+                          = f.input :deal_type, include_blank: '', :as => :select, collection: [["Money is being collected from my credit cards sales" , 0], ["Money is being collected from my bank account" , 1]],   input_html: {class: 'textbox'}, label: false,  error: false
+                        .paper-section-bank-login-form-label
+                          %span Who is your current funder?
+                        .paper-section-bank-login-form-input
+                          = f.input :previous_merchant_id, include_blank: '', as: :select, collection: CashAdvanceCompany.order('name DESC').all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
+                        .paper-section-bank-login-form-label
+                          %span When were you funded?
+                        .paper-section-bank-login-form-input
+                          = f.input :previous_loan_date, include_blank: "03/24/2014", as: :string,  input_html: {class: 'textbox datepicker'}, label: false,  error: false
+                        .paper-section-bank-login-form-label
+                          %span What was your total wired amount (after fees)?
+                        .paper-section-bank-login-form-input
+                          = f.input :total_previous_loan_amount, placeholder: 'Wired Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
+                        .paper-section-bank-login-form-label
+                          %span What was your total payback amount (before fees)?
+                        .paper-section-bank-login-form-input
+                          = f.input :total_previous_payback_amount, placeholder: 'Payback Amount', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
+                        .paper-section-bank-login-form-label
+                          %span What is your current balance?
+                        .paper-section-bank-login-form-input
+                          = f.input :total_previous_payback_balance, placeholder: 'Current Balance', input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
+                        .paper-section-bank-login-form-label
+                          %span Did you pay a closing fee?
+                        .paper-section-bank-login-form-input
+                          = f.input :is_closing_fee, :as => :select, collection: [["No" , false], ["Yes" , true]],   input_html: {class: 'textbox is_closing_fee_input'}, label: false,  error: false
+                        .closing_fee_input_value
+                          .paper-section-bank-login-form-label
+                            %span If you payed a closing fee, how much did you pay?
+                          .paper-section-bank-login-form-input
+                            = f.input :closing_fee, placeholder: "Enter Fee Amount",  input_html: {class: 'textbox currency_convert'}, label: false,  error: false, as: :string
+                        .paper-section-bank-login-form-action
+                          = f.submit "Continue", class: "form-button flat-button button-submit"
+                  .paper-section-bank-login-right.col-xs-5.fix-overflow
+                    = render "shared/refinance_sidebar"
