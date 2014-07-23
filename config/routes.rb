@@ -40,6 +40,8 @@ Buynance::Application.routes.draw do
       get 'show_offers'
       get 'confirm_account'
       post 'confirm_mobile'
+      get 'disqualified'
+      get 'qualified_market'
     end
   end
 
@@ -85,7 +87,7 @@ Buynance::Application.routes.draw do
 
   get 'tos'                   => 'static_pages#tos'
   get 'privacy'               => 'static_pages#privacy'
-  get 'merchant-cash-advance' => 'static_pages#merchantcashadvance'
+  get 'merchant-cash-advance' => 'profitabilities#new'
   get 'blog2'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
 

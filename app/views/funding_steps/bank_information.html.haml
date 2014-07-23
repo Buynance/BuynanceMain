@@ -2,9 +2,11 @@
   .paper-section
     .paper-section-header
       Bank Login
-    .paper-section-top
-    .paper-section-body.paper-section-bank-login.row
-      .paper-section-bank-login-left.col-xs-7
-        %iframe{id:"IFrameHolder", frameborder:"0", height:"590", width:"416", src:"https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"}
-      .paper-section-bank-login-right.col-xs-5.fix-overflow{style: "width: 40%;"}
-        = render "shared/bank_sidebar"
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .paper-section-bank-login-left.col-xs-7
+              %iframe{id:"IFrameHolder", frameborder:"0", height:"590", width:"416", src:"https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"}
+            .paper-section-bank-login-right.col-xs-5.fix-overflow{style: "width: 40%;"}
+              = render "shared/bank_sidebar"

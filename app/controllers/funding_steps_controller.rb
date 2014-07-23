@@ -1,4 +1,6 @@
 require 'decision_logic.rb'
+require 'mixpanel_lib'
+
 class FundingStepsController < ApplicationController
 	include Wicked::Wizard
 
@@ -6,7 +8,7 @@ class FundingStepsController < ApplicationController
 	before_filter :require_business_user
 	before_filter :standardize_params, :only => [:update]
 	
-	def show
+	def show	
 		@business = current_business
 		
 		if step != :disclaimer and @business.awaiting_disclaimer_acceptance?
@@ -14,18 +16,24 @@ class FundingStepsController < ApplicationController
 		end
 		
 		case step
+		when :personal
+			funding_type = "funder"
+			funding_type = "renew" if @business.is_refinance
+			pluggable_js(is_production: is_production, step: step, is_signup: (flash[:signup] == true), email: @business.business_user.email, business_name: @business.name, funding_type: funding_type)
+			render_wizard
 		when :financial
-			pluggable_js(
-				is_financial: true
-			)
+			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
 			render_wizard
 		when :refinance
+			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
 			skip_step unless @business.is_refinance == true
 			render_wizard
 		when :bank_prelogin
+			pluggable_js(is_production: is_production, step: step)
 			@bank_account = BankAccount.new
 			render_wizard
 		when :bank_information
+			pluggable_js(is_production: is_production, step: step)
 			if @business.create_request_code
 				@business.bank_account.create_first_request_code
 				render_wizard
@@ -33,6 +41,7 @@ class FundingStepsController < ApplicationController
 				redirect_to wizard_path(:bank_prelogin), notice: "Your routing number and/or account number are incorrect."
 			end
 		else
+			pluggable_js(is_production: is_production, step: step)
 			render_wizard
 		end
 	end
@@ -80,25 +89,25 @@ class FundingStepsController < ApplicationController
 			else
 				@bank_account = @business.bank_account
 				@bank_account.assign_attributes(bank_account_params)
+				log_input_error(@bank_account, "Signup #{step.to_s.titleize}")
 				render_wizard @bank_account
 			end
 		else
-			
-			if step == :financial
-				pluggable_js(
-					is_financial: true
-				)
-			end
-
 			if @business.update_attributes(business_params)
-				if @business.years_in_business == 0
-					@business.disqualify!
-					@business.save
-					redirect_to account_url
+				if step == :personal
+					if @business.years_in_business == 0
+						@business.disqualify!
+						@business.save
+						redirect_to account_url
+					else
+						flash[:personal_passed] = true
+						render_wizard @business
+					end
 				else
 					render_wizard @business
 				end
 			else
+				log_input_error(@business, "Signup #{step.to_s.titleize}")
 				render_wizard @business
 			end
 		end	

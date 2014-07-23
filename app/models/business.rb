@@ -1,5 +1,6 @@
-require 'securerandom'
+'securerandom'
 require 'twilio_lib'
+require 'decision_logic'
 
 class Business < ActiveRecord::Base
 
@@ -167,6 +168,10 @@ class Business < ActiveRecord::Base
     TwilioLib.send_activation_code(self.mobile_number, self.mobile_opt_code)
   end
   
+  def send_mobile_information!
+    TwilioLib.send_text(self.mobile_number, "Congratutalions, you have been accepted to participate in our program. To protect your anonymity and provide you with the best exprience possible we have create a new phone number to mask your current one. Your new phone number is #{self.routing_number.phone_number}")
+  end
+
   def deliver_qualified_signup!
     AdminMailer.qualified_signup(self.id).deliver!
   end
@@ -205,7 +210,10 @@ class Business < ActiveRecord::Base
     routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url, routing_number.id)
     routing_number.phone_number = routed_number
     routing_number.save
+    self.send_mobile_information!
   end
+
+
 
   def is_qualified_for_funder(amount, days)
     return ((self.years_in_business >= 1) and (self.approximate_credit_score_range >= 3) and self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transactions >= days))
