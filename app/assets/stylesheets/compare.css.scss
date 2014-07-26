@@ -67,7 +67,7 @@ $table-odd-blue: rgb(222, 243, 251);
     width: 116.0em;
     margin: 0 auto;
     .compare-table-column{
-     s display:table-cell;
+      display:table-cell;
       width: 23.7em;
       border-width: 0;
       border-right-width: 1.0em;
@@ -84,7 +84,6 @@ $table-odd-blue: rgb(222, 243, 251);
       }
       .compare-table-column:first-child{
         font-family: $lato-bold;
-        color:
       }
     }
     
