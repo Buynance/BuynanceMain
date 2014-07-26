@@ -13,7 +13,7 @@ Buynance::Application.routes.draw do
       get 'tos'
       get 'confirm_email'
       get 'error'
-
+      get 'compare'
     end
   end
   
@@ -90,6 +90,7 @@ Buynance::Application.routes.draw do
   get 'merchant-cash-advance' => 'profitabilities#new'
   get 'blog2'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
+  get 'compare'                 => 'static_pages#compare'
 
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get

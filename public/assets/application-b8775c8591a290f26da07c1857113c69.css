@@ -10657,12 +10657,12 @@ button.close {
   font-weight: normal;
   font-style: normal;
 }
-/* line 1, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 10, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 html, body {
   height: 100%;
 }
 
-/* line 5, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 14, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .textbox {
   height: 50px;
   width: 100%;
@@ -10673,14 +10673,14 @@ html, body {
   margin-bottom: 30px;
 }
 
-/* line 15, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 24, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .textbox:focus {
   outline: none;
   border: #1895d7 2px solid;
   color: #1895d7;
 }
 
-/* line 21, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 30, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .form-button {
   height: 50px;
   width: 100%;
@@ -10696,19 +10696,19 @@ html, body {
   cursor: pointer;
 }
 
-/* line 36, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 45, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .form-button:hover {
   background: #80b438;
 }
 
-/* line 40, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 49, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-header.container {
   padding-top: 60px;
   padding-bottom: 40px;
   padding-left: 200px;
 }
 
-/* line 46, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 55, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section {
   color: #7b7b7b;
   width: 820px;
@@ -10724,7 +10724,7 @@ html, body {
   }*/
   /*=======================================================================================*/
 }
-/* line 51, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 60, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-header {
   font-size: 18px;
   font-weight: 700;
@@ -10732,7 +10732,7 @@ html, body {
   margin-bottom: 50px;
   margin-left: 62px;
 }
-/* line 61, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 70, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet.first-paper-section {
   margin-top: 0;
   margin-left: 0;
@@ -10741,14 +10741,14 @@ html, body {
   -moz-box-shadow: -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
   box-shadow: -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
 }
-/* line 69, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 78, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet.last-paper-section {
   padding-top: 53px;
   background: url(/assets/paper_2_bottom.png) bottom left no-repeat, url(/assets/paper-top-3.png) top left no-repeat, url(/assets/paper-body-3.png) 0 53px/100% 100% no-repeat;
   min-height: 185px;
   padding-left: 50px;
 }
-/* line 75, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 84, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet {
   width: 800px;
   float: left;
@@ -10756,20 +10756,20 @@ html, body {
   margin-top: 5px;
   margin-left: 5px;
 }
-/* line 82, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 91, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login {
   position: relative;
   padding-right: 1px;
   color: #878787;
   padding-bottom: 0;
 }
-/* line 87, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 96, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left {
   float: left;
   padding-bottom: 75px;
   padding-right: 50px;
 }
-/* line 92, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 101, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-left-disclaimer textarea {
   width: 100%;
   -webkit-box-sizing: border-box;
@@ -10782,68 +10782,69 @@ html, body {
   white-space: normal;
   margin-bottom: 25px;
 }
-/* line 105, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 114, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-left-header {
   color: #8dc63f;
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 50px;
 }
-/* line 112, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 121, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-left-information {
   margin-bottom: 50px;
-  font-size: 16px;
+  font-size: 12pt;
   line-height: 24px;
   width: 80%;
+  font-family: "latoregular", Arial, sans-serif;
 }
-/* line 117, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 127, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-left-information .paper-section-bank-login-left-information-important {
   color: #25aae1;
   font-weight: 700;
 }
-/* line 122, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 132, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form {
   color: #443f3f;
 }
-/* line 124, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 134, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-label {
-  font-size: 12px;
+  font-size: 10pt;
   margin-bottom: 20px;
-  font-weight: 900;
   color: #443f3f;
   width: 80%;
+  font-weight: 900;
 }
-/* line 132, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 142, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-input select.textbox, .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-input input.textbox {
   font-size: 12px;
   background-color: #f2f2f2;
   border-width: 0px;
   width: 80%;
 }
-/* line 139, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 149, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-routing-info {
   font-weight: 700;
   /*margin-bottom: 50px;*/
 }
-/* line 143, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 153, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-action {
   margin-top: 20px;
 }
-/* line 145, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 155, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-action .form-button.flat-button.button-submit {
   padding-right: 50px;
   padding-left: 50px;
   color: white;
   width: 70%;
 }
-/* line 152, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 162, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-left .paper-section-bank-login-form .paper-section-bank-login-form-recover {
   text-align: center;
   width: 70%;
   margin-top: 20px;
   font-size: 11px;
 }
-/* line 161, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 171, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right {
   position: relative;
   top: 0;
@@ -10871,60 +10872,60 @@ html, body {
   /* IE6-9 */
   font-family: 'latoregular', Arial, sans-serif;
 }
-/* line 188, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 198, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-right-top .paper-section-bank-login-right-top-image {
   float: left;
   display: inline-block;
   margin-top: 8.5px;
 }
-/* line 192, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 202, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-right-top .paper-section-bank-login-right-top-image img {
   width: 69px;
   height: 69px;
 }
-/* line 198, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 208, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-right-top .paper-section-bank-login-right-top-information {
   float: right;
   display: inline-block;
   width: 70%;
 }
-/* line 202, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 212, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-right-top .paper-section-bank-login-right-top-information .paper-section-bank-login-right-top-information-header {
   color: #25aae1;
   font-size: 22px;
   margin-bottom: 5px;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 208, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 218, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-right-top .paper-section-bank-login-right-top-information .paper-section-bank-login-right-top-information-subheader {
   color: #6f6f6f;
   font-size: 16px;
 }
-/* line 215, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 225, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-points {
   font-size: 14px;
   margin-bottom: 15px;
   position: relative;
 }
-/* line 219, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 229, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-points img {
   top: 6px;
   left: 0px;
   position: absolute;
 }
-/* line 224, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 234, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-points span {
   margin-left: 15px;
   display: block;
 }
-/* line 229, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 239, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-questions {
   font-family: 'latobold', Arial, sans-serif;
   color: #25aae1;
   font-size: 16px;
   line-height: 25px;
 }
-/* line 235, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 245, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-phone-number {
   font-family: 'latobold', Arial, sans-serif;
   color: #636363;
@@ -10932,39 +10933,39 @@ html, body {
   margin-left: 10px;
   line-height: 25px;
 }
-/* line 242, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 252, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-security-image-left {
   float: left;
   padding-bottom: 20px;
 }
-/* line 245, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 255, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-security-image-left img {
   width: 116px;
 }
-/* line 249, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 259, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-security-image-right {
   float: right;
   padding-bottom: 20px;
   padding-top: 11px;
 }
-/* line 253, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 263, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-security-image-right img {
   width: 127px;
 }
-/* line 258, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 268, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right .paper-section-bank-login-subsection .paper-section-bank-login-subsection-about {
   font-size: 12px;
 }
-/* line 263, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 273, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-main .paper-section-main-sheet .paper-section-bank-login .paper-section-bank-login-right.fix-overflow {
   position: absolute;
   margin-right: 1px;
 }
-/* line 280, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 290, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-top {
   width: 800px;
 }
-/* line 285, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 295, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body {
   background: url(/assets/paper_bottom_background.png) bottom left no-repeat, url(/assets/paper_body_background.png) top left;
   min-height: 185px;
@@ -10973,33 +10974,33 @@ html, body {
   padding-right: 50px;
   margin-bottom: 10px;
 }
-/* line 292, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 302, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .row {
   vertical-align: center;
 }
-/* line 294, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 304, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .row .paper-section-body-label {
   height: 50px;
   font-size: 15px;
   font-weight: 700;
 }
-/* line 298, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 308, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .row .paper-section-body-label span {
   line-height: 50px;
 }
-/* line 303, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 313, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .row .paper-section-body-input .textbox {
   margin-bottom: 0px;
   background-color: #f2f2f2;
   border-width: 0px;
   width: 100%;
 }
-/* line 311, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 321, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .paper-section-body-submit {
   padding-top: 50px;
   text-align: center;
 }
-/* line 313, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 323, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-body .paper-section-body-submit .form-button {
   background-color: #1FACD7;
   padding: 5px 50px;
@@ -11007,14 +11008,14 @@ html, body {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 324, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 334, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-bottom {
   background-image: url(/assets/paper_bottom_background.png);
   min-height: 185px;
   padding-left: 50px;
   padding-right: 45px;
 }
-/* line 330, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 340, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-braker {
   background-image: url(/assets/paper_bar.png);
   width: 686px;
@@ -11023,18 +11024,18 @@ html, body {
   margin-bottom: 10px;
   margin: 10px auto;
 }
-/* line 338, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 348, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-label {
   text-align: left;
   vertical-align: middle;
 }
-/* line 344, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 354, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section .paper-section-input .input .textbox {
   margin-bottom: 0px;
   height: 40px;
 }
 
-/* line 352, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 362, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .flat-button.button-submit {
   background-color: #20acd7;
   color: #8c8c8c;
@@ -11043,7 +11044,7 @@ html, body {
   border-size: 0px;
 }
 
-/* line 360, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 370, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover {
   background-color: #F2DEDE;
   border-color: #EED3D7;
@@ -11054,55 +11055,55 @@ html, body {
   z-index: 1099;
 }
 
-/* line 369, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 379, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover .popover-content {
   padding: 6px 14px;
 }
 
-/* line 372, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 382, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover.right .arrow {
   border-right-color: #EED3D7;
 }
 
-/* line 375, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 385, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover.right .arrow:after {
   border-right-color: #F2DEDE;
 }
 
-/* line 379, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 389, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover.top .arrow {
   border-top-color: #EED3D7;
   left: 30px;
 }
 
-/* line 383, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 393, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .popover.error-popover.top .arrow:after {
   border-top-color: #F2DEDE;
 }
 
-/* line 387, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 397, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .alert.alert-danger {
   width: 364px;
   margin-bottom: 40px;
   font-size: 12px;
 }
-/* line 391, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 401, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .alert.alert-danger ul {
   list-style-type: decimal;
 }
-/* line 393, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 403, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .alert.alert-danger ul li {
   margin-bottom: 5px;
 }
 
-/* line 401, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 411, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .field_with_errors input, .field_with_errors select {
   border-style: solid;
   border-width: 1px !important;
   border-color: #a94442;
 }
 
-/* line 409, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 419, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .ui-widget-header {
   border: 1px solid #e78f08;
   background: #f6a828 url("calender_bg.png") 50% 50% repeat-x;
@@ -11110,19 +11111,19 @@ html, body {
   font-weight: bold;
 }
 
-/* line 416, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 426, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section-bank-login-form-disclaimer {
   display: block;
   width: 80%;
   padding-bottom: 20px;
 }
-/* line 420, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 430, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 .paper-section-bank-login-form-disclaimer span {
   font-size: 11px;
   line-height: 1.5;
 }
 
-/* line 427, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
+/* line 437, C:/Sites/example/buynance-testing/app/assets/stylesheets/forms.css.scss */
 input.business_mobile_disclaimer {
   float: left;
 }
