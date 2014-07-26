@@ -44,7 +44,7 @@ class Business < ActiveRecord::Base
     end
 
     event :mobile_confirmation_provided_phone do
-      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
+      transition [:awaiting_mobile_confirmatioon] => :awaiting_offer_acceptance
     end
 
     event :mobile_confirmation_provided do
@@ -169,7 +169,7 @@ class Business < ActiveRecord::Base
   end
   
   def send_mobile_information!
-    TwilioLib.send_text(self.mobile_number, "Congratutalions, you have been accepted to participate in our program. To protect your anonymity and provide you with the best exprience possible we have create a new phone number to mask your current one. Your new phone number is #{self.routing_number.phone_number}")
+    TwilioLib.send_text(self.mobile_number, "Your Buynance Number Is: #{GlobalPhone.parse(self.routing_number.phone_number).national_format}. Use it to keep solicitors from spamming your cell phone! Have a successful day!")
   end
 
   def deliver_qualified_signup!

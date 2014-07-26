@@ -37,6 +37,9 @@ class StaticPagesController < ApplicationController
 		end
 	end
 
+	def comapare
+	end
+
 	private
 
 		

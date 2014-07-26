@@ -10,7 +10,7 @@
               .paper-section-bank-login-left-header
                 %span Please Confirm your Mobile Number
               .paper-section-bank-login-left-information
-                %span We have sent you a mobile code to your account. Please enter it below.
+                %span To protect your privacy and combat against fraud, we have sent an account confirmation code to your mobile number phone.  Please enter it below.
               .paper-section-bank-login-form
                 = simple_form_for :mobile, url: '/confirm_mobile' do |f|
                   - unless flash.alert.nil?
