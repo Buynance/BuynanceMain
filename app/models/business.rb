@@ -35,6 +35,7 @@ class Business < ActiveRecord::Base
       transition [:awaiting_personal_information] => :awaiting_bank_information
     end
 
+    # Business activate account is dependant on awaiting email confirmation
     event :bank_information_provided do
       transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_email_confirmation
     end

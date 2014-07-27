@@ -1,15 +1,14 @@
 .web_body
   .paper-section
     .paper-section-header
-      Success!
+      %span Success
     .paper-section-main.clearfix   
       .paper-section-main-sheet.first-paper-section.clearfix
         .paper-section-main-sheet.last-paper-section
           .paper-section-bank-login.row
-            .paper-section-bank-login-left.col-xs-7
-              .paper-section-bank-login-left-header
+            .account
+              .account-header
                 %span Please check your email now.
-              .paper-section-bank-login-left-information
-                %span Check your email to validate your identity and to confirm your account creation.
-            .paper-section-bank-login-right.col-xs-5
-              = render "shared/funding_sidebar"
+              .account-body
+                .account-body-info
+                  %span Check your email to validate your identity and to confirm your account creation. Please make sure to check your spam folder incase the email was sent there by mistake. If you are a gmail user, please check all your category tabs if the message was not sent directly to your inbox.

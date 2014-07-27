@@ -16,6 +16,18 @@
                       %ul
                         - @business_user_session.errors.full_messages.each do |msg|
                           %li= msg
+                  - if flash[:success_activation_message]
+                    %div{class: "alert alert-success"}
+                      %span.alert-status
+                        = "Success! "
+                      %span
+                        = flash[:success_activation_message]
+                  - elsif flash[:faliure_activation_message]
+                    %div{class: "alert alert-warning"}
+                      %span.alert-status
+                        = "Warning! "
+                      %span 
+                        = flash[:faliure_activation_message]
                   .paper-section-bank-login-form-label
                     %span Buyanance Email
                   .paper-section-bank-login-form-input

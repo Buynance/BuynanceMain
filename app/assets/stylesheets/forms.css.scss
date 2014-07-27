@@ -58,11 +58,11 @@ html,body {
     margin: 0 auto;
     margin-bottom: 100px;
     .paper-section-header {
-        font-size: 18px;
-        font-weight: 700;
+        font-size: 22px;
         margin-top: 50px;
         margin-bottom: 50px;
         margin-left: 62px;
+        font-family: 'latobold', Arial, sans-serif;
     }
 /*=======================================================================================*/
     .paper-section-main {
@@ -70,24 +70,26 @@ html,body {
         .paper-section-main-sheet.first-paper-section {
             margin-top: 0;
             margin-left: 0;
-            background: asset-url(image-path("paper_1_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-1.png")) top left no-repeat, asset-url(image-path("paper-body-1.png")) 0 53px/100% 100% no-repeat ;
             -webkit-box-shadow: -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
             -moz-box-shadow:    -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
             box-shadow:         -1px -1px 3px 0px rgba(221, 221, 221, 0.75);
+            background: asset-url(image-path("paper_1_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-1.png")) top left no-repeat, asset-url(image-path("paper-body-1.png")) 0 53px no-repeat ; 
+            background-size: auto auto, auto auto, 100% 100%;       
         }
         .paper-section-main-sheet.last-paper-section {
             padding-top: 53px;
-            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-3.png")) top left no-repeat, asset-url(image-path("paper-body-3.png")) 0 53px/100% 100% no-repeat ;
             min-height: 185px;
             padding-left: 50px;
+            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-3.png")) top left no-repeat, asset-url(image-path("paper-body-3.png")) 0 53px no-repeat ;
+            background-size: auto auto, auto auto, 100% 100%;  
         }
         .paper-section-main-sheet {
             width: 800px;
             float: left;
-            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-2.png")) top left no-repeat, asset-url(image-path("paper-body-2.png")) 0 53px/100% 100% no-repeat ;
             margin-top: 5px;
             margin-left: 5px;
-
+            background: asset-url(image-path("paper_2_bottom.png")) bottom left no-repeat, asset-url(image-path("paper-top-2.png")) top left no-repeat, asset-url(image-path("paper-body-2.png")) 0 53px no-repeat ;
+            background-size: auto auto, auto auto, 100% 100%;  
             .paper-section-bank-login {
                 position: relative;
                 padding-right: 1px;
@@ -97,6 +99,7 @@ html,body {
                     float: left;
                     padding-bottom: 75px;
                     padding-right: 50px;
+                    width: 56%;
                     .paper-section-bank-login-left-disclaimer{
                       textarea{
                         width: 100%;
@@ -113,9 +116,9 @@ html,body {
                     }
                     .paper-section-bank-login-left-header {
                         color: rgb(141, 198, 63);
-                        font-size: 20px;
-                        font-weight: 700;
+                        font-size: 22px;
                         margin-bottom: 50px;
+                        font-family: "latobold", Arial, sans-serif;
                         
                     }
                     .paper-section-bank-login-left-information {
@@ -126,17 +129,33 @@ html,body {
                         font-family: $lato-regular;
                         .paper-section-bank-login-left-information-important {
                             color: rgb(37, 170, 225);
-                            font-weight: 700;
                         }
                     }
                     .paper-section-bank-login-form {
                         color: rgb(68, 63, 63);
+                        .alert{
+                            width: 85%;
+                            margin-bottom: 50px;
+                            font-family: $lato-regular;
+                            .alert-status{
+                                font-family: $lato-bold;
+                            }
+                            ul{
+                                list-style-type: decimal;
+                                li{
+                                    margin-bottom: 5px;
+                                }
+                            }
+                            span {
+                                font-size: 14px;
+                            } 
+                        } 
                         .paper-section-bank-login-form-label {
-                            font-size: 10pt;
+                            font-size: 12pt;
                             margin-bottom: 20px;
                             color: rgb(68, 63, 63);
                             width: 80%;
-                            font-weight: 900;
+                            font-family: $lato-regular;
                         }
                         .paper-section-bank-login-form-input {
                             select.textbox, input.textbox {
@@ -147,8 +166,11 @@ html,body {
                             }
                         }
                         .paper-section-bank-login-form-routing-info {
-                            font-weight: 700;
+                            width: 75%;
+                            margin-bottom: 70px;
+                            font-size: 15px;
                             /*margin-bottom: 50px;*/
+                            font-family: $lato-bold;
                         }
                         .paper-section-bank-login-form-action {
                             margin-top: 20px;
@@ -157,14 +179,16 @@ html,body {
                                 padding-left: 50px;
                                 color: white;
                                 width: 70%;
+                                font-family: $lato-regular;
+                                font-size: 22px;
                             }
                         }
                         .paper-section-bank-login-form-recover{
                             text-align: center;
                             width: 70%;
                             margin-top: 20px;
-                            font-size: 11px
-
+                            font-size: 14px;
+                            font-family: $lato-bold;
                         }
                     }
                 }
@@ -173,6 +197,7 @@ html,body {
                     top: 0;
                     right: 0;
                     bottom: 0;
+                    width: 44%;
                     padding-bottom: 50px;
                     padding-left: 25px;
                     padding-right: 25px;
@@ -200,8 +225,8 @@ html,body {
                             display: inline-block;
                             margin-top: 8.5px;
                             img{
-                                width: 69px;
-                                height: 69px;
+                                width: 60px;
+                                height: 60px;
                             }
                             
                         }
@@ -293,18 +318,18 @@ html,body {
 
     
     .paper-section-body {
-        background: asset-url(image-path("paper_bottom_background.png")) bottom left no-repeat, asset-url(image-path("paper_body_background.png")) top left;
         min-height: 185px;
         padding-top: 10px;
         padding-left: 50px;
         padding-right: 50px;
         margin-bottom: 10px;
+        background: asset-url(image-path("paper_bottom_background.png")) bottom left no-repeat, asset-url(image-path("paper_body_background.png")) top left;
+
         .row {
             vertical-align: center;
             .paper-section-body-label {
                 height: 50px;
                 font-size: 15px;
-                font-weight: 700;
                 span {
                     line-height: 50px;
                 }
@@ -332,18 +357,20 @@ html,body {
         hr {}
     }
     .paper-section-bottom {
-        background-image: asset-url(image-path("paper_bottom_background.png"));
         min-height: 185px;
         padding-left: 50px;
         padding-right: 45px;
+        background-image: asset-url(image-path("paper_bottom_background.png"));
+
     }
     .paper-braker {
-        background-image: asset-url(image-path("paper_bar.png"));
         width: 686px;
         height: 10px;
         margin-top: 10px;
         margin-bottom: 10px;
         margin: 10px auto;
+        background-image: asset-url(image-path("paper_bar.png"));
+
     }
     .paper-section-label {
         text-align: left;
@@ -394,18 +421,7 @@ html,body {
     border-top-color: #F2DEDE;
 }
 
-.alert.alert-danger{
-    width: 364px;
-    margin-bottom: 40px;
-    font-size: 12px;
-    ul{
-        list-style-type: decimal;
-        li{
-            margin-bottom: 5px;
-        }
-    }
-    
-}
+
 
 .field_with_errors{
     input, select{
@@ -418,9 +434,10 @@ html,body {
 
 .ui-widget-header {
     border: 1px solid #e78f08;
-    background: #f6a828 url("calender_bg.png") 50% 50% repeat-x;
     color: #ffffff;
     font-weight: bold;
+    background: #f6a828 url("calender_bg.png") 50% 50% repeat-x;
+
 }
 
 .paper-section-bank-login-form-disclaimer {
@@ -428,8 +445,9 @@ html,body {
     width: 80%;
         padding-bottom: 20px;
         span{
-            font-size: 11px;
+            font-size: 10pt;
             line-height: 1.5;
+            font-family: "latoregular", Arial, sans-serif;
         }
 
 }

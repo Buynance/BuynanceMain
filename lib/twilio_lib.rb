@@ -66,7 +66,7 @@ class TwilioLib
 	def send_opt_code(business)
 		code = business.mobile_opt_code
 		phone_number = business.mobile_number
-		text = "Your buynance mobile code is #{business.mobile_opt_code}"
+		text = "Your Buynance mobile code is #{business.mobile_opt_code}"
 		send_text(phone_number, text)
 	end
 
