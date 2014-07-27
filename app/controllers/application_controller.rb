@@ -64,6 +64,8 @@ class ApplicationController < ActionController::Base
       unless current_business_user
         store_location
         flash[:notice] = "You must be logged in to access this page"
+        flash[:success_activation_message] = flash[:success_activation_message]
+        flash[:faliure_activation_message] = flash[:faliure_activation_message]
         redirect_to new_business_user_session_url
         return false
       end

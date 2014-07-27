@@ -2,7 +2,7 @@ require 'decision_logic.rb'
 require 'twilio_lib'
 
 class BusinessesController < ApplicationController
-  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :activate, :comfirm_account, :comfirm_mobile]
+  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :comfirm_account, :comfirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
   before_filter :send_production_js, only: [:new, :qualified_for_funder, :qualified_for_market, :disqualified]
@@ -86,11 +86,15 @@ class BusinessesController < ApplicationController
   end
 
   def activate
-    @business = current_business
-    if @business.activate(params[:activation_code])
+    #@business = current_business
+    @business = Business.where("activation_code = ? AND state = ?", params[:activation_code], "awaiting_email_confirmation").last
+    unless @business.nil?
       @business.email_confirmation_provided
       @business.send_mobile_confirmation!
       flash[:is_email_confirmed] = true
+      flash[:success_activation_message] = "Your account has been activated. Please login to continue with your application."
+    else
+      flash[:faliure_activation_message] = "Your account is already activated or the activation link is invalid."
     end
     redirect_to :action => :show
   end
