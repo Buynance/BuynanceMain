@@ -3,7 +3,7 @@ module BusinessValidations
 
   included do
   	#########################################################################
-	###################### Step - Signup ####################################
+	###################### Step - Sign up ####################################
 	#########################################################################
 
 	#validates :terms_of_service, 
@@ -47,7 +47,7 @@ module BusinessValidations
 
 	validates_format_of :zip_code, 
 	:with => /\A\d{5}-\d{4}|\A\d{5}\z/, 
-	:message => "Please input a input five digit zipcode.",
+	:message => "Please input a input five digit zip-code.",
 	if: -> {self.current_step == :personal}
 
 	validates :phone_number,
@@ -67,7 +67,7 @@ module BusinessValidations
 	if: -> {self.current_step == :personal}
 
 	validates :mobile_disclaimer,
-	presence: {message: "na", allow_blank: false},
+	presence: {message: "Na", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
 
@@ -89,13 +89,13 @@ module BusinessValidations
     if: -> {self.current_step == :financial}
 
     validates :is_judgement,
-    inclusion: {:in => [true, false], message: "Please select whether you have any judgement."},
+    inclusion: {:in => [true, false], message: "Please select whether you have any judgment."},
     if: -> {self.current_step == :financial}
 
    # Step - Refinance
 
    	validates :deal_type,
-    inclusion: {:in => [0, 1], message: "Please selectyour deal type."},
+    inclusion: {:in => [0, 1], message: "Please select your deal type."},
     if: -> {self.current_step == :refinance}
 
     validates :previous_merchant_id,
