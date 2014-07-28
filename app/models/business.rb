@@ -45,7 +45,7 @@ class Business < ActiveRecord::Base
     end
 
     event :mobile_confirmation_provided_phone do
-      transition [:awaiting_mobile_confirmatioon] => :awaiting_offer_acceptance
+      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
     end
 
     event :mobile_confirmation_provided do
@@ -211,7 +211,7 @@ class Business < ActiveRecord::Base
     routed_number = TwilioLib.create_phone_number(self.mobile_number, self.location_state, self.twimlet_url, routing_number.id)
     routing_number.phone_number = routed_number
     routing_number.save
-    self.send_mobile_information!
+    self.send_mobile_information! 
   end
 
 
@@ -228,20 +228,25 @@ class Business < ActiveRecord::Base
   def qualify
     unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market? 
       if true
-        is_qualified = false
-        if self.is_refinance
-          if is_qualified_for_funder(15000, 6)
-            p "qualify"
-            is_qualified = true
-            self.qualify_for_market
-          else
-            self.disqualify
-          end
+        if Buynance::Application.config.market_everyone == true
+          is_qualified = true
+          self.qualify_for_market
         else
-          if is_qualified_for_funder(15000, 6)
-            p "qualify"
-            is_qualified = true
-            self.qualify_for_market
+          is_qualified = false
+          if self.is_refinance
+            if is_qualified_for_funder(15000, 6)
+              p "qualify"
+              is_qualified = true
+              self.qualify_for_market
+            else
+              self.disqualify
+            end
+          else
+            if is_qualified_for_funder(15000, 6)
+              p "qualify"
+              is_qualified = true
+              self.qualify_for_market
+            end
           end
         end
       else
