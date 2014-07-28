@@ -5,6 +5,7 @@ $lato-regular: "latoregular", Arial, sans-serif;
 $lato-italics: "latoitalics", Arial, sans-serif;
 $lato-light: 'latolight', Arial, sans-serif;
 $light-gray: #F5F5F5;
+$buynance-green: #8dc63f;
 
 .about-fluid-container {
     width: 100%;
@@ -185,10 +186,13 @@ $light-gray: #F5F5F5;
         }
     }
     .why-buynance-we-vs-retail-brokers-body-action {
+        display: block;
+        margin: 0 auto;
+        text-align: center;
         .flat-button.button-about-get-funded {
 
             font-family: $lato-regular;
-            display: block;
+            display: inline-block;
             background-color: $buynance-blue;
             color: white;
             width: 24.0em;
@@ -198,8 +202,30 @@ $light-gray: #F5F5F5;
             margin: 0 auto;
             padding-left: 1.6em;
             padding-right: 1.6em;
+            margin-right: 2.0em;
             a {
-                font-size: 1.8em;
+                font-size: 2.2em;
+                text-decoration: none;
+                line-height: 1em;
+            }
+        }
+
+        .flat-button.button-about-renew {
+
+            font-family: $lato-regular;
+            display: inline-block;
+            background-color: $buynance-green;
+            color: white;
+            width: 22.0em;
+            border-size: 0px;
+            padding-top: 1.4em;
+            padding-bottom: 1.4em;
+            margin: 0 auto;
+            padding-left: 1.6em;
+            padding-right: 1.6em;
+            
+            a {
+                font-size: 2.2em;
                 text-decoration: none;
                 line-height: 1em;
             }
