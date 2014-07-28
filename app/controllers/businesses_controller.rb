@@ -127,7 +127,7 @@ class BusinessesController < ApplicationController
         unless business.bank_account.nil? or business.bank_account.institution_name.nil?
           business.deliver_qualified_signup!
         end
-        business.setup_mobile_routing
+        business.setup_mobile_routing if Rails.env.production?
       else
         business.mobile_confirmation_provided
         business.disqualify
