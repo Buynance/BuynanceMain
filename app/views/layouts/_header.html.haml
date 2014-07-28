@@ -18,14 +18,14 @@
         .homepage-header-actions-button
           - if current_business 
             %a#header-logout-button.flat-button.homepage-button-left{href: "/logout"}
-              %span Logout
+              %span Log Out
           - else
             %a#header-login-button.flat-button.homepage-button-left{href: "/login"}
-              %span Login
+              %span Log In
           .homepage-header-actions-button
           - if current_business 
             %a#header-account-button.flat-button.homepage-button-right{href: "/account"}
               %span Account
           - else
             %a#header-signup-button.flat-button.homepage-button-right{href: "/signup"}
-              %span Signup
+              %span Sign Up
