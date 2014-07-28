@@ -23,7 +23,7 @@ class Business < ActiveRecord::Base
   scope :awaiting_persona_information, where(state: "awaiting_personal_information")
   scope :awaiting_bank_information, where(state: "awaiting_bank_information")
   scope :awaiting_email_confirmation, where(state: "awaiting_email_confirmation")
-  scope :awaiting_mobile_confirmation, where(state: "awaiting_mobile_comfirmation")
+  scope :awaiting_mobile_confirmation, where(state: "awaiting_mobile_confirmation")
   scope :awaiting_offer_acceptance, where(state: "awaiting_offer_acceptance")
   scope :awaiting_offer_completetion, where(state: "awaiting_offer_completetion")
   scope :awaiting_reenter_market, where(state: "awaiting_reenter_market")

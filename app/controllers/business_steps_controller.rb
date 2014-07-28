@@ -19,7 +19,7 @@ class BusinessStepsController < ApplicationController
 				if Rails.env.production?
 				  @business.deliver_activation_instructions! 
 				else
-				  @business.comfirm_account
+				  @business.confirm_account
 				end
 				@business.create_offers(12)
 				

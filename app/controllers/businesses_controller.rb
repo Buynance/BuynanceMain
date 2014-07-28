@@ -2,7 +2,7 @@ require 'decision_logic.rb'
 require 'twilio_lib'
 
 class BusinessesController < ApplicationController
-  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :comfirm_account, :comfirm_mobile]
+  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :confirm_account, :confirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
   before_filter :send_production_js, only: [:new, :qualified_for_funder, :qualified_for_market, :disqualified]
