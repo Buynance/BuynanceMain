@@ -11,3 +11,9 @@ doc/app
 .DS_Store
 config/database.yml
 db/schema.rb*ngrok.exe
+/474a5eda74b9d.crt
+/combined.crt
+/gd_bundle-g2-g1.crt
+/ngrok.exe
+/server.crt
+/server.key
