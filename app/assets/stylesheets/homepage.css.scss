@@ -202,30 +202,49 @@ margin-right:0
             }
         }
         .banner-content-information-action {
-            font-family: 'latobold', Arial, sans-serif;
+          display: block;
             .banner-content-information-action-get-financed {
-                float: left;
-                .flat-button.button-get-financed {
-                    background-color: rgb(32, 172, 215);
-                    color: white;
-                    font-size: 1.7em;
-                    width: 12.0em;
-                    border-size: 0em;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
-                }
+                display: inline-block;
                 margin-right: 1em;
+                .flat-button.button-get-financed{
+                  font-family: $lato-bold;
+                  
+                  background-color: $buynance-blue;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
+                } 
             }
             .banner-content-information-action-refinance {
-                float: left;
+                display: inline-block;
                 .flat-button.button-get-refinance {
-                    font-size: 1.7em;
-                    background-color: rgb(141, 198, 63);
-                    color: white;
-                    width: 12.0em;
-                    border-size: 0em;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
+                  font-family: $lato-bold;
+                  
+                  background-color: $buynance-green;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
                 }
             }
         }
@@ -482,32 +501,47 @@ margin-right:0
             }
         }
         .homepage-slider-main-action{
-            font-family: 'latobold', Arial, sans-serif;
             .homepage-slider-main-action-button{
-                
-                margin-top: 4.0em;
                 text-align: center;
-                .flat-button.button-get-financed {
-                    margin: 0 auto;
-                    background-color:  rgb(32, 172, 215);
-                    color: white;
-                    font-size: 1.7em;
-                    width: 12.0em;
-                    border-size: 0em;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
-                }
+                .flat-button.button-get-financed{
+                  font-family: $lato-bold;
+                  display: inline-block;
+                  margin-right: 1em;
+                  background-color: $buynance-blue;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
+                } 
 
-                .flat-button.button-get-refinance {
-                    margin: 0 auto;
-                    font-size: 1.7em;
-                    background-color: rgb(141, 198, 63);
-                    color: white;
-                    width: 12.0em;
-                    border-size: 0em;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
-                }
+                .flat-button.button-get-refinance{
+                  font-family: $lato-bold;
+                  display: inline-block;
+                  margin-right: 1em;
+                  background-color: $buynance-green;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
+                } 
             }
             .homepage-slider-action-subheader{
                 text-align: center;
@@ -727,16 +761,25 @@ margin-right:0
             .in-the-news-body-section-action {
                 width: 100%;
                 font-family: 'latobold', Arial, sans-serif;
+                text-align: center;
                 .flat-button.button-get-refinance {
-                    display: block;
-                    font-size: 1.7em;
-                    background-color: rgb(32, 172, 215);
-                    color: white;
-                    width: 10.0em;
-                    border-size: 0px;
-                    padding-top: 0.8em;
-                    padding-bottom: 0.8em;
-                    margin: 0 auto;
+                  font-family: $lato-bold;
+                  display: inline-block;
+                  margin-right: 1em;
+                  background-color: $buynance-blue;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
                 }
             }
         }
@@ -760,6 +803,7 @@ margin-right:0
     .benefits-body {
         margin-bottom: 5.0em;
         color: (96, 96, 96);
+        font-family: $lato-regular;
         .benefits-body-row-green {
             .benefits-body-row-green-number {
             	float: left;
@@ -919,32 +963,49 @@ margin-right:0
         font-family: 'latobold', Arial, sans-serif;
         .benefits-action-bar-group {
             
-            display: inline-block;
-            margin: 0 auto;
+            display: block;
+            text-align: center;
             .benefits-action-bar-group-financed {
-                float: left;
-                margin-left: 2.0em;
-                .flat-button.button-get-financed {
-                    background-color: rgb(32, 172, 215);
-                    color: white;
-                    font-size: 1.7em;
-                    width: 12.0em;
-                    border-size: 0px;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
-                }
+                display: inline-block;
                 margin-right: 1em;
+                .flat-button.button-get-financed{
+                  font-family: $lato-bold;
+                  background-color: $buynance-blue;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
+                } 
             }
             .benefits-action-bar-group-refinance {
-                float: left;
+                display: inline-block;
                 .flat-button.button-get-refinance {
-                    font-size: 1.7em;
-                    background-color: rgb(141, 198, 63);
-                    color: white;
-                    width: 12.0em;
-                    border-size: 0px;
-                    padding-top: 1.0em;
-                    padding-bottom: 1.0em;
+                  font-family: $lato-bold;
+                  
+                  background-color: $buynance-green;
+                  color: white;
+                  width: 24.0em;
+                  border-size: 0px;
+                  padding-top: 1.4em;
+                  padding-bottom: 1.4em;
+                  margin: 0 auto;
+                  padding-left: 1.6em;
+                  padding-right: 1.6em;
+                  
+                  span {
+                      font-size: 2.0em;
+                      text-decoration: none;
+                      line-height: 1em;
+                  }
                 }
             }
         }
