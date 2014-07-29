@@ -1,11 +1,11 @@
-#slider.homepage-fluid-container.container-gray
+#slider.homepage-fluid-container.container-gray{style: "margin-top: -10px;"}
   .homepage-container
     .homepage-sliders.clearfix
       .homepage-slider-right.paper.paper-green
         .homepage-slider-right-fold
           = image_tag("homepage_slider_fold_blue.png")
         .homepage-slider-header.paper-header
-          %span Get Financed
+          %span Get New Deal
         .homepage-slider-subheader
           %span Adjust Your Funded Amount to View Savings
         #funder-slider.homepage-slider-main.paper-body
@@ -27,7 +27,7 @@
             %hr
           .homepage-slider-main-action
             .homepage-slider-main-action-button
-              .flat-button.button-get-financed
+              %a.flat-button.button-get-financed{href: "/signup?is_funding=true"}
                 %span Get New Deal
             .homepage-slider-action-subheader
               %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 0);"}How this Works
@@ -35,7 +35,7 @@
         .homepage-slider-left-fold
           = image_tag("homepage_slider_fold_green.png")
         .homepage-slider-header.paper-header
-          %span ReNew
+          %span ReNew Current Deal
         .homepage-slider-subheader
           %span Use Slider to Reset Your Daily Collection
         .homepage-slider-main.paper-body
@@ -56,7 +56,7 @@
             %hr
           .homepage-slider-main-action
             .homepage-slider-main-action-button
-              .flat-button.button-get-refinance
+              %a.flat-button.button-get-refinance{href: "/signup?is_refinance=true"}
                 %span ReNew Current Deal
             .homepage-slider-action-subheader.slider-right
               %span{onclick: "$('body').scrollTo('#how-works', 800);$('.jcarousel').jcarousel('scroll', 1);"}How this Works
