@@ -1,0 +1,115 @@
+$dark-gray: rgb(96, 96, 96);
+$buynance-blue: rgb(37, 170, 225);
+$buynance-green: #8dc63f;
+$lato-bold: "latobold", Arial, sans-serif;
+$lato-regular: "latoregular", Arial, sans-serif;
+$lato-italics: "latoitalics", Arial, sans-serif;
+$lato-light: "latolight", Arial, sans-serif;
+$light-gray: #F5F5F5;
+$section-highlight-blue: #DFF3FC;
+$buynance-orange: rgb(237, 189, 24);
+$table-odd-gray: rgb(235, 235, 235);
+$table-even-gray: rgb(242, 242, 242);
+$table-odd-blue: rgb(222, 243, 251);
+
+
+.mca-information{
+	font-family: $lato-regular;
+	color: $dark-gray;
+	.mca-information-section{
+		padding-bottom: 15px;
+		padding-top: 15px;
+		span{
+			font-size: 15.4px;
+		}
+	}
+	.mca-information-header{
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #c4c4c4;
+		span{
+			font-family: $lato-bold;
+			font-size: 18px;
+		}
+	}
+
+	.mca-information-subheader{
+		border-bottom-style: solid;
+		border-bottom-color: #c4c4c4;
+		border-bottom-width: 1px;
+		color: $buynance-blue;
+		span{
+			font-family: $lato-regular;
+			
+		}
+	}
+
+	.mca-information-section-highlighted{
+		background-color: #DFF3FC;
+		border-radius: 0.2em;
+		padding: 12px;
+		span{
+			font-size: 14px;
+			font-family: $lato-italics;
+			line-height: 1.25;
+		}
+	}
+
+	.mca-information-section-list{
+
+		.mca-information-section-list-header{
+			span{
+				font-family: $lato-bold;
+				font-size: 14.3px;
+				font-family: $lato-bold;
+			}
+		}
+		.mca-information-section-list-section{
+			padding-bottom: 15px;
+			border-bottom-style: solid;
+			border-bottom-color: #c4c4c4;
+			border-bottom-width: 1px;
+			.mca-information-section-list-item{
+				padding-top: 20px;
+				.mca-information-section-list-item-image{
+					float: left;
+				}
+				.mca-information-section-list-item-text{
+					float: left;
+					font-size: 13.5px;
+				}
+			}
+		}
+	}
+
+	.mca-information-section-regular{
+		border-bottom-style: solid;
+		border-bottom-width: 1px;
+		border-bottom-color: #c4c4c4;
+		
+		span{
+			font-size: 13.5px;
+		}
+	}
+
+	.mca-information-section-link{
+		color: $buynance-blue;
+		padding-bottom: 0;
+		span {
+			font-size: 13.5px;
+			a{
+				color: $dark-gray;
+				font-family: $lato-bold;
+			}
+		}
+	}
+
+	.mca-information-section-help{
+		color: $buynance-green;
+		font-family: $lato-bold;
+		span{
+			font-size: 13.5px;
+		}
+	}
+
+}
