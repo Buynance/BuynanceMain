@@ -443,13 +443,15 @@ html,body {
 .paper-section-bank-login-form-disclaimer {
     display: block;
     width: 80%;
-        padding-bottom: 20px;
-        span{
-            font-size: 10pt;
-            line-height: 1.5;
-            font-family: "latoregular", Arial, sans-serif;
-        }
-
+    padding-bottom: 20px;
+    span{
+        font-size: 10pt;
+        line-height: 1.5;
+        font-family: "latoregular", Arial, sans-serif;
+    }
+    a{
+        text-decoration: underline;
+    }
 }
 
 input.business_mobile_disclaimer{

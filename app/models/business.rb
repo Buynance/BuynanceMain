@@ -170,7 +170,7 @@ class Business < ActiveRecord::Base
   end
   
   def send_mobile_information!
-    TwilioLib.send_text(self.mobile_number, "Your Buynance Number Is: #{GlobalPhone.parse(self.routing_number.phone_number).national_format}. Use it to keep solicitors from spamming your cell phone! Have a successful day!")
+    TwilioLib.send_text(self.mobile_number, "Your 100% FREE Buynance Number Is: #{GlobalPhone.parse(self.routing_number.phone_number).national_format}.  It keeps solicitors from spamming your cell phone!  See e-mail for usage info. Have a successful day!")
   end
 
   def deliver_qualified_signup!
