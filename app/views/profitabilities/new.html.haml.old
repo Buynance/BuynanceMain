@@ -1,0 +1,77 @@
+- if @saved_profitability
+  :javascript
+    included_result = true
+- else
+  :javascript
+    included_result = false
+
+.homepage-fluid-container.container-gray
+  .homepage-container
+    .mca-calculator.clearfix
+      .mca-calculator-right.paper.paper-green
+        .mca-calculator-right-fold
+          = image_tag("homepage_slider_fold_blue.png")
+        .mca-calculator-header.paper-header
+          %span Merchant Cash Advance
+        .mca-calculator-section 
+          %span Merchant cash advances are a short-term form of alternative business funding most commonly used for things like unexpected expenses, expansion, payroll, marketing, or facility upgrades.
+        .mca-calculator-section
+          %span The product was originally created as a means to solve the problem small business owners face when they are turned away for working capital loans.
+        .mca-calculator-section
+          %span Merchant cash advances are based on what is referred to as a factor rate. A factor rate represents the final cost of funds after fee.
+        .mca-calculator-section 
+          %span For example, if you receive a merchant cash advance in the amount of $10,000 with a factor rate of 1.30, then you will pay back $13,000.
+        .mca-calculator-subheader
+          %span Your merchant cash advance can be paid back in one of two ways:
+        .mca-calculator-section 
+          %span  Through a small portion of your future credit card sales will go to pay the money back plus fee.
+        .mca-calculator-section 
+          %span  Through a daily debit made to your business or checking account.
+        .mca-calculator-section
+          %span You qualify for a merchant cash advance if you have been in business for at least one year, and earn at least $15,000 per month.
+        .mca-calculator-section
+          %span
+            More information on merchant cash advances can be found on Wikipedia by clicking
+            = succeed "." do
+              %a{href: "http://en.wikipedia.org/wiki/Merchant_cash_advance"} here
+            = succeed "Use the calculator on this page to better understand your P&L during the life of your merchant cash advance." do
+              %br/
+        
+      .mca-calculator-left.paper.paper-green
+        .mca-calculator-left-fold
+          = image_tag("homepage_slider_fold_green.png")
+        .mca-calculator-header.paper-header
+          %span Cash Advance Profit Calculator
+        .paper-section-bank-login-left-header
+          %span Financial Information
+        .paper-section-bank-login-form
+          = simple_form_for Business.new do |f|
+            - if Business.new.errors.any?
+              %div{class: "alert alert-danger"}
+                %ul
+                  - Business.new.errors.full_messages.each do |msg|
+                    %li= msg
+            .paper-section-bank-login-form-label
+              %span What is your credit score?
+            .paper-section-bank-login-form-input
+              = f.input :approximate_credit_score_range, include_blank: '', :as => :select, collection: [["451-500" , 1], ["501-550" , 2], ["551-600" , 3], ["601-650" , 4], ["651-700" , 5], ["701-750" , 6], ["751-800" , 7]],   input_html: {class: 'textbox'}, label: false, error: false
+            .paper-section-bank-login-form-label
+              %span Do you have any tax liens?
+            .paper-section-bank-login-form-input
+              = f.input :is_tax_lien, include_blank: '',  :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox is_tax_lien_input'}, label: false, error: false          
+            .paper-section-bank-login-form-section-payment
+              .paper-section-bank-login-form-label
+                %span Are you making payments on your tax liens?
+              .paper-section-bank-login-form-input
+                = f.input :is_payment_plan, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "", input_html: {class: 'textbox', id: "is_payment_group"},  label: false, error: false
+            .paper-section-bank-login-form-label
+              %span Have you ever filed for bankruptcy?
+            .paper-section-bank-login-form-input
+              = f.input :is_ever_bankruptcy, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+            .paper-section-bank-login-form-label
+              %span Do you have any judgments?
+            .paper-section-bank-login-form-input
+              = f.input :is_judgement, include_blank: '', :as => :select, collection: [['No',false],['Yes',true]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+            .paper-section-bank-login-form-action
+              = f.submit "Continue", class: "form-button flat-button button-submit"
+        
