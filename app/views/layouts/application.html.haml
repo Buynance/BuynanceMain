@@ -2,9 +2,6 @@
 %html{xmlns: "http://www.w3.org/1999/xhtml"}
   %head
     %title Faster, More Affordable, Small Business Funding.
-    %link{href: "http://yui.yahooapis.com/3.17.2/build/cssreset/cssreset-min.css", rel: "stylesheet", type: "text/css"}/
-    %link{href: "http://fonts.googleapis.com/css?family=Source+Sans+Pro:400,600", rel: "stylesheet", type: "text/css"}/
-    %link{href: "http://fonts.googleapis.com/css?family=Lato", rel: "stylesheet", type: "text/css"}/
     %script{href: "http://jquery.thewikies.com/browser/jquery.browser.min.js"}
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
@@ -15,19 +12,10 @@
     = javascript_include_tag "zopim.js"
     
     = csrf_meta_tags
+    = render "layouts/facebook_pixel"
     = favicon_link_tag "favicon.ico"
   %body
     = render "layouts/header"
     = yield
 
     = render :partial => 'layouts/footer'
-
-:javascript
-  
-  function login_link(){
-    window.location = "/login"
-  }
-
-  function logout_link(){
-    window.location = "/logout"
-  }
