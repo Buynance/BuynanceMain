@@ -37,5 +37,51 @@
                     %a{href: "http://en.wikipedia.org/wiki/Merchant_cash_advance"} here
                   .mca-information-section.mca-information-section-help
                     %span Use the calculator on this page to better understand your P&L during the life of your merchant cash advance.
+                .mca-result
+                  .mca-result-gross
+                    %span Your gross profit margin is 
+                    %span
+                      = number_to_percentage @saved_profitability.gross_profit_margin*100, precision: 1 
+                  .mca-result-monthly
+                    %span Your projected monthly profit is
+                    %span 
+                      = number_to_currency @saved_profitability.projected_monthly_profit, precision: 0
+                  - if @saved_profitability.projected_monthly_profit < 0
+                    - if @saved_profitability.total_month_fully_profitable_again != -1
+                      .mca-result-months
+                        %span Below is the total number of months it will take for you to be fully profitable again
+                        %span
+                          = @saved_profitability.total_month_fully_profitable_again
+                  .mca-result-action
+                    = link_to "CLICK TO GET 114% OFF YOUR NEXT CASH ADVANCE", "http://goo.gl/uYHqFf", class: "btn btn-primary  btn-lg btn-block teal-btn", id: "btnClickHere"
+
 
               .paper-section-bank-login-right.col-xs-5.fix-overflow
+                .mca-calculator
+                  .mca-calculator-header
+                    %span Cash Advance Profit Calculator
+                  .mca-calculator-main
+                    = simple_form_for @profitability do |f|
+
+                      .mca-calculator-main-group
+                        .mca-calculator-main-group-label
+                          %span How much money does your business earn each month before you pay the bills?
+                        .mca-calculator-main-group-input
+                          = f.input :monthly_cash_collection_amount, placeholder: '$50,000', input_html: {class: 'textbox'}, label: false,  error: false
+                      .mca-calculator-main-group
+                        .mca-calculator-main-group-label
+                          %span How much money How much are your total monthly bills?
+                        .mca-calculator-main-group-input
+                          = f.input :total_monthly_bills, placeholder: '$40,000', input_html: {class: 'textbox'}, label: false,  error: false
+                      .mca-calculator-main-group
+                        .mca-calculator-main-group-label
+                          %span How much is your current merchant cash advance company collecting daily?
+                        .mca-calculator-main-group-input
+                          = f.input :daily_merchant_cash_advance, placeholder: '$280', input_html: {class: 'textbox'}, label: false,  error: false
+                      .mca-calculator-main-group
+                        .mca-calculator-main-group-label
+                          %span How much is the monthly collection amount for all other loan ?
+                        .mca-calculator-main-group-input
+                          = f.input :other_monthly_loan_collection, placeholder: '$0', input_html: {class: 'textbox'}, label: false,  error: false
+                      .mca-calculator-main-group-action
+                        = f.submit "Continue", class: "form-button flat-button button-submit"

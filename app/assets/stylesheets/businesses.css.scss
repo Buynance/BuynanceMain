@@ -10,33 +10,62 @@ $lato-light: 'latolight', Arial, sans-serif;
 	min-height: 500px;
 	padding-left: 20px;
 	padding-right: 50px;
-	.account-header{
-		color: rgb(141, 198, 63);
-        margin-bottom: 50px;
-		span{
-			font-size: 24px;
+
+    .account-top{
+        padding-bottom: 46px;
+        .account-top-image{
+            float: left;
+            margin-right: 24px;
+        }
+
+        .account-top-info{
+            float: left;
             font-family: $lato-bold;
-		}
-	}
+            
+
+            .account-top-info-greeting{
+                margin-bottom: 16px;
+                span{
+
+                }
+            }   
+
+            .account-top-info-message{
+                span{
+
+                }
+            }
+        }
+    }
+
     .account-body{
         font-family: $lato-regular;
-    	span, p, a{
-    		color: #6f6f6f;
-    		font-size: 16px;
-    		line-height: 28px;
-    	}
+        padding-top: 40px;
+        padding-bottom: 40px;
+        .account-body-header{
+            span{
 
-    	a {
-    		color: $buynance-blue;
-    	}
+            }
+        }
+        .account-body-list{
+            .account-body-list-item{
+                margin-top: 40px;
+                .account-body-list-item-icon{
+                    float: left;
+                }
+                .account-body-list-item-text{
+                    float: left;
 
-    	ul {
-    		list-style-type: none;
-    	}
-    	.account-body-info{
-    		margin-bottom: 2.0em;
+                }
+            }
+        }
+    }
+	
+    .account-footer{
+        padding-top: 40px;
+        span{
 
-    	}
-    }        
+        }
+    }
 }
     

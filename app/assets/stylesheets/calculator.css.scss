@@ -46,7 +46,7 @@ $table-odd-blue: rgb(222, 243, 251);
 
 	.mca-information-section-highlighted{
 		background-color: #DFF3FC;
-		border-radius: 0.2em;
+		border-radius: 2px;
 		padding: 12px;
 		span{
 			font-size: 14px;
@@ -112,4 +112,57 @@ $table-odd-blue: rgb(222, 243, 251);
 		}
 	}
 
+}
+
+
+.mca-calculator{
+	.mca-calculator-header{
+		padding-bottom: 16px;
+		color: $buynance-green;
+		font-family: $lato-bold;
+		width: 67%;
+		span{
+			font-size: 21px;
+		}
+	}
+	.mca-calculator-main{
+		.mca-calculator-main-group{
+			border-bottom-style: solid;
+			border-bottom-width: 1px;
+			border-bottom-color: #c4c4c4;
+			padding-top: 20px;
+			padding-bottom: 20px;
+			font-family: $lato-bold;
+			.mca-calculator-main-group-label{
+				padding-bottom: 16px;
+				color: rgb(68, 63, 63);
+				span{
+					font-size: 15px;
+				}
+				
+			}
+
+			.mca-calculator-main-group-input{
+				input{
+					border-width: 0px;
+					margin-bottom: 0px;
+					height: 40px;
+					text-align: center;
+					font-size: 16px;
+					font-family: $lato-regular;
+				}
+			}
+		}
+
+		.mca-calculator-main-group-action{
+			margin-top: 20px;
+			.flat-button{
+				font-family: $lato-regular;
+				font-size: 24px;
+				color: white;
+				padding-left: 0;
+				padding-right: 0;
+			}
+		}
+	}
 }
