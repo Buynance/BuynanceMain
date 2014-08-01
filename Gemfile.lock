@@ -84,6 +84,10 @@ GEM
       gyoku (>= 0.4.0)
       nokogiri
     american_date (1.1.0)
+    appsignal (0.9.3)
+      activesupport (>= 3.0)
+      rack
+      thread_safe
     arbre (1.0.1)
       activesupport (>= 3.0.0)
     arel (4.0.2)
@@ -413,6 +417,7 @@ DEPENDENCIES
   aggcat
   airbrake
   american_date
+  appsignal
   authlogic
   better_errors
   binding_of_caller
