@@ -25,7 +25,7 @@
 .paper-section-bank-login-subsection
   .paper-section-bank-login-subsection-security.row
     %span.paper-section-bank-login-subsection-security-image-left
-      = image_tag("norton_secured_seal.png")
+       = link_to image_tag("norton_secured_seal.png"), "https://trustsealinfo.verisign.com/splash?form_file=fdf/splash.fdf&dn=www.buynance.com&lang=en", target: "_blank"
     %span.paper-section-bank-login-subsection-security-image-right
       %a{href: "#", onclick: "window.open('https://www.sitelock.com/verify.php?site=www.buynance.com','SiteLock','width=600,height=600,left=160,top=170');"}
         %img{alt: "website security", src: "//shield.sitelock.com/shield/www.buynance.com", title: "SiteLock"}/
