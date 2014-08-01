@@ -103,3 +103,38 @@ $lato-light: "latolight", Arial, sans-serif;
 	    }
 	}
 }
+
+
+.email-confirmation{
+	min-height: 500px;
+	padding-left: 20px;
+	padding-right: 50px;
+	.email-confirmation-header{
+		color: rgb(141, 198, 63);
+        margin-bottom: 50px;
+		span{
+			font-size: 24px;
+            font-family: $lato-bold;
+		}
+	}
+    .email-confirmation-body{
+        font-family: $lato-regular;
+    	span, p, a{
+    		color: #6f6f6f;
+    		font-size: 16px;
+    		line-height: 28px;
+    	}
+
+    	a {
+    		color: $buynance-blue;
+    	}
+
+    	ul {
+    		list-style-type: none;
+    	}
+    	.email-confirmation-body-info{
+    		margin-bottom: 2.0em;
+
+    	}
+    }        
+}
