@@ -3,7 +3,7 @@
     .paper-section-top
     .paper-section-body.form-style
       - if @business.errors.any?
-        %div{class: "alert alert-danger"}
+        %div{class: "alert alert-danger validation-errors"}
           %ul{style: "list-style: none;"}
             - @business.errors.full_messages.each do |msg|
               %li= msg

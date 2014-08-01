@@ -19,7 +19,7 @@
                         .paper-section-bank-login-form
                           = simple_form_for @business, defaults: { input_html: { novalidate: "novalidate" } } do |f|
                             - if @business.errors.any? || @business_user.errors.any?
-                              %div{class: "alert alert-danger"}
+                              %div{class: "alert alert-danger validation-errors"}
                                 %ul
                                   - @business.errors.full_messages.each do |msg|
                                     %li= msg
@@ -29,9 +29,9 @@
                             .row
                               -if @show_funding_source
                                 .paper-section-bank-login-form-label
-                                  %span Are you ReViseing an existing funding arrangement or starting from scratch?
+                                  %span Are you ReVising an existing funding arrangement or starting from scratch?
                                 .paper-section-bank-login-form-input
-                                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReViseing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+                                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReVising',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
                               - else
                                 = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
                               .paper-section-bank-login-form-label
