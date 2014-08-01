@@ -47,7 +47,7 @@
         .paper-section-bank-login-form
           = simple_form_for Business.new do |f|
             - if Business.new.errors.any?
-              %div{class: "alert alert-danger"}
+              %div{class: "alert alert-danger validation-errors"}
                 %ul
                   - Business.new.errors.full_messages.each do |msg|
                     %li= msg

@@ -11,7 +11,7 @@
         %img.icon{alt: "", src: "http://i.imgur.com/LCCJ06E.png"}/
     .form
       - if @funder_session.errors.any?
-        %div{class: "alert alert-danger"}
+        %div{class: "alert alert-danger validation-errors"}
           %ul{style: "list-style: none;"}
             - @funder_session.errors.full_messages.each do |msg|
               %li= msg

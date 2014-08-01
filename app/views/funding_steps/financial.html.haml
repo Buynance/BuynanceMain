@@ -14,7 +14,7 @@
                   .paper-section-bank-login-form
                     = simple_form_for @business, url: wizard_path, method: :put do |f|
                       - if @business.errors.any?
-                        %div{class: "alert alert-danger"}
+                        %div{class: "alert alert-danger validation-errors"}
                           %ul
                             - @business.errors.full_messages.each do |msg|
                               %li= msg
