@@ -1,4 +1,5 @@
 $dark-gray: rgb(96, 96, 96);
+$border-color: rgb(196, 196, 196);
 $buynance-blue: rgb(37, 170, 225);
 $buynance-green: #8dc63f;
 $lato-bold: "latobold", Arial, sans-serif;
@@ -10,9 +11,13 @@ $lato-light: 'latolight', Arial, sans-serif;
 	min-height: 500px;
 	padding-left: 20px;
 	padding-right: 50px;
+    margin-bottom: 190px;
 
     .account-top{
-        padding-bottom: 46px;
+        padding-bottom: 50px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-color: $border-color;
         .account-top-image{
             float: left;
             margin-right: 24px;
@@ -21,19 +26,18 @@ $lato-light: 'latolight', Arial, sans-serif;
         .account-top-info{
             float: left;
             font-family: $lato-bold;
-            
+            width: 72%;
+            color: $dark-gray;
+            padding-top: 10px;
+            span{font-size: 20px;}
 
             .account-top-info-greeting{
                 margin-bottom: 16px;
-                span{
-
-                }
+                color: $buynance-blue;
             }   
 
             .account-top-info-message{
-                span{
 
-                }
             }
         }
     }
@@ -42,19 +46,33 @@ $lato-light: 'latolight', Arial, sans-serif;
         font-family: $lato-regular;
         padding-top: 40px;
         padding-bottom: 40px;
+        border-bottom-width: 1px;
+        border-bottom-style: solid;
+        border-color: $border-color;
         .account-body-header{
             span{
-
+                font-size: 21px;
+                color: $buynance-green;
             }
         }
         .account-body-list{
             .account-body-list-item{
                 margin-top: 40px;
+                position: relative;
                 .account-body-list-item-icon{
                     float: left;
+                    position: absolute;
+                    top: 50%;
+                    margin-top: -16px;
                 }
                 .account-body-list-item-text{
                     float: left;
+                    width: 85%;
+                    color: rgb(66, 66, 66);
+                    margin-left: 50px;
+                    span{
+                        font-size: 18px;
+                    }
 
                 }
             }
@@ -64,7 +82,9 @@ $lato-light: 'latolight', Arial, sans-serif;
     .account-footer{
         padding-top: 40px;
         span{
-
+            color: $buynance-blue;
+            font-family: $lato-bold;
+            font-size: 20px;
         }
     }
 }
