@@ -7,12 +7,33 @@
         .paper-section-main-sheet.last-paper-section
           .paper-section-bank-login.row
             .account
-              .account-header
-                %span Next Steps
+              .account-top.clearfix
+                .account-top-image
+                  = image_tag("yuliya_account.png")
+                .account-top-info
+                  .account-top-info-greeting
+                    %span 
+                      = "Hi, #{@business.owner_first_name}"
+                  .account-top-info-message
+                    %span I'm excited because it looks like we will be able to start a competition to get your daily collection reduced! When funders compete you win.
               .account-body
-                .account-body-info
-                  %span Based on the information you provided us, we will not be able to fund you at this time.  However, we have good news!  We have a network of partners who are ready to compete for your business.  As you know, when funders compete you win.  
-                .account-body-info
-                  %span We have created a masked phone number for you that will prevent your mobile phone number from being abused.  Funders will contact you on that number and calls will be routed to your cell phone.  When you are tired of dealing with them, simply tell us when you'd like us to terminate your masked phone number.  
-                .account-body-info
-                  %span Please check your SMS messages for your Buynance Number™
+                .account-body-header
+                  %span Here Is How We Protect You During The Proccess
+                .account-body-list
+                  .account-body-list-item.clearfix
+                    .account-body-list-item-icon
+                      = image_tag("check.png")
+                    .account-body-list-item-text
+                      %span We preserve your FICO score. You'll be able to get great offers without getting your credit dinged.
+                  .account-body-list-item.clearfix
+                    .account-body-list-item-icon
+                      = image_tag("check.png")
+                    .account-body-list-item-text
+                      %span We protect your mobile number. We've given you a Buynance Number. This number masks your cell phone numbers. It was all my idea - a simple of of keeping people from abusing your number. 
+                  .account-body-list-item.clearfix
+                    .account-body-list-item-icon
+                      = image_tag("check.png")
+                    .account-body-list-item-text
+                      We've pre-screened our partners. If there is any issue with any partner, let us know and they will get the boot.
+              .account-footer
+                %span If you have any questions do not hesitate to call us.
