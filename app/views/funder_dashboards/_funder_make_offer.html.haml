@@ -3,7 +3,7 @@
 .paper-make-offer-body
   = simple_form_for @offer, url: url_for(:controller => 'funder_dashboards', :action => 'make_offer') do |f|
     - if @offer.errors.any?
-      %div{class: "alert alert-danger"}
+      %div{class: "alert alert-danger validation-errors"}
         %ul{style: "list-style: none;"}
           - @offer.errors.full_messages.each do |msg|
             %li= msg

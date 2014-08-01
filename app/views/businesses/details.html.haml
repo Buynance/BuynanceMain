@@ -12,7 +12,7 @@
     .form
       = simple_form_for @business do |f|
         - if @business.errors.any?
-          %div{class: "alert alert-danger"}
+          %div{class: "alert alert-danger validation-errors"}
             %ul{style: "list-style: none;"}
               - @business.errors.full_messages.each do |msg|
                 %li= msg

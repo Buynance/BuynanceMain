@@ -457,3 +457,12 @@ html,body {
 input.business_mobile_disclaimer{
     float: left;
 }
+
+.validation-errors{
+    ul{
+        padding-left: 15px;
+        li{
+            font-size: 13px;
+        }
+    }
+}

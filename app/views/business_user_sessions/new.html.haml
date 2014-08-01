@@ -12,7 +12,7 @@
               .paper-section-bank-login-form
                 = form_for @business_user_session, :as => :business_user_session, :url => { :action => "create" } do |f|
                   - if @business_user_session.errors.any?
-                    %div{class: "alert alert-danger"}
+                    %div{class: "alert alert-danger validation-errors"}
                       %ul
                         - @business_user_session.errors.full_messages.each do |msg|
                           %li= msg

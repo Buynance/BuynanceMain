@@ -22,7 +22,7 @@
                       .paper-section-bank-login-form
                         = simple_form_for @business, url: wizard_path do |f|
                           - if @business.errors.any? and !(@business.errors[:mobile_disclaimer] and @business.errors.keys.length == 1)
-                            %div{class: "alert alert-danger"}
+                            %div{class: "alert alert-danger validation-errors"}
                               %ul
                                 - @business.errors.full_messages.each do |msg|
                                   - if msg != "na"
