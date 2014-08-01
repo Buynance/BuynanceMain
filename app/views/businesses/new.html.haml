@@ -29,9 +29,9 @@
                             .row
                               -if @show_funding_source
                                 .paper-section-bank-login-form-label
-                                  %span Are you ReNewing  an existing funding arrangement or starting from scratch?
+                                  %span Are you ReViseing an existing funding arrangement or starting from scratch?
                                 .paper-section-bank-login-form-input
-                                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReNewing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
+                                  = f.input :is_refinance, include_blank: '',  :as => :select, collection: [['ReViseing',true], ['Starting from Scratch',false]], selected: "",  input_html: {class: 'textbox'}, label: false, error: false
                               - else
                                 = f.input :is_refinance, :as => :hidden, :input_html => { :value => @business.is_refinance } 
                               .paper-section-bank-login-form-label
@@ -49,7 +49,7 @@
                                 .paper-section-bank-login-form-input
                                   = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
                                 .paper-section-bank-login-form-label
-                                  %span Comfirm your Buynance password
+                                  %span Confirm your Buynance password
                                 .paper-section-bank-login-form-input
                                   = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
                                 .paper-section-bank-login-form-disclaimer
