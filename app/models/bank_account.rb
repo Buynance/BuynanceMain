@@ -213,7 +213,8 @@ class BankAccount < ActiveRecord::Base
 		end
 
 		(0...monthly_daily_balance_array.length).each do |i|
-			monthly_daily_balance_array[i] = monthly_daily_balance_array[i] / monthly_transaction_array[i]
+			monthly_daily_balance_array[i] = 0
+			monthly_daily_balance_array[i] = monthly_daily_balance_array[i] / monthly_transaction_array[i] if monthly_transaction_array[i] > 0
 		end
 
 		self.average_balance_one_month_ago = monthly_daily_balance_array[0]
