@@ -27,6 +27,15 @@ class BankAccount < ActiveRecord::Base
 
 	end
 
+	def proccess_bank_information(report)
+		self.add_transactions_from_report4(report)
+		self.add_transaction_summaries_from_report4(report)
+		self.calculate_last_three_months_deposits
+		self.calculate_last_three_months_daily_balance
+		self.total_negative_days = self.get_negative_days
+	end
+	handle_asynchronously :proccess_bank_information
+
 	def self.status
 		return {bank_error: -2, account_error: -1, not_started: 0, started_not_completed: 1, login_not_verified: 2, login_verified: 3}
 	end
