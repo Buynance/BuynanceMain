@@ -166,3 +166,64 @@ $table-odd-blue: rgb(222, 243, 251);
 		}
 	}
 }
+
+.mca-result{
+
+  .mca-result-header{
+  	text-align: center;
+	padding-bottom: 30px;
+	padding-top: 30px;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #c4c4c4;
+
+    span{
+    	font-size: 21px;
+		color: #25aae1;
+		font-family: latobold;
+    }
+  }
+  .mca-result-item{
+  	color: #443f3f;
+    padding-bottom: 10px;
+    span{
+    	font-family: latobold;
+		font-size: 18px;
+		
+    }
+    span:last-child{
+    	float: right;
+		color: $buynance-green;
+    }
+    span.mca-gross-value{}
+    span.mca-monthly-profit-value{}
+
+    span.highlight-red {
+  		color: #a94442 !important;
+  	}
+    
+  } 
+  .mca-result-item.mca-result-months{
+  	padding-top: 20px;
+  	span {color: #443f3f;float: none !important;}
+  	text-align: center;
+  	.mca-months-value{
+  		
+  		padding-top: 10px;
+  		
+  	}
+
+
+  }
+  .mca-result-action{
+  	margin-top: 20px;
+    a{
+    	font-family: "latoregular", Arial, sans-serif;
+		font-size: 20px;
+		color: white;
+		line-height: 1.3;
+		padding-left: 10px;
+		padding-right: 15px;
+    } 
+  }
+}

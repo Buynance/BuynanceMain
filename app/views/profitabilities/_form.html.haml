@@ -1,6 +1,6 @@
 = form_for @profitability, class: "new_profitability", id: "new_profitability" do |f|
   - if @profitability.errors.any?
-    %div{class: "alert alert-danger"}
+    %div{class: "alert alert-danger validation-errors"}
       %ul
         - @profitability.errors.each do |attr, error|
           %li= error

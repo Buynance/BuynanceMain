@@ -14,7 +14,7 @@
               .paper-section-bank-login-form
                 = simple_form_for :mobile, url: '/confirm_mobile' do |f|
                   - unless flash.alert.nil?
-                    %div{class: "alert alert-danger"}
+                    %div{class: "alert alert-danger validation-errors"}
                       %ul{style: "list-style: none;"}
                         %li 
                           = flash.alert

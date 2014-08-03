@@ -16,13 +16,13 @@
                 .paper-section-bank-login-form
                   = simple_form_for @business_user, url: {controller: :business_users, action: :recover_account}, defaults: { input_html: { novalidate: "novalidate" } } do |f|
                     - if @business_user.errors.any?
-                      %div{class: "alert alert-danger"}
+                      %div{class: "alert alert-danger validation-errors"}
                         %ul
                           - @business_user.errors.full_messages.each do |msg|
                             - if /[[:upper:]]/.match(msg[0])
                               %li= msg
                     - unless flash[:alert].nil?
-                      %div{class: "alert alert-danger"}
+                      %div{class: "alert alert-danger validation-errors"}
                         = flash[:alert]
                     .row
                       .paper-section-bank-login-form-label

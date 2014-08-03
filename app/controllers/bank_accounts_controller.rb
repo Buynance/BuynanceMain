@@ -26,11 +26,7 @@ class BankAccountsController < ApplicationController
 				@bank_account.populate_from_report4(@report)
 				@bank_account.retrieve_bank_information
 				@bank_account.save
-				@bank_account.add_transactions_from_report4(@report)
-				@bank_account.add_transaction_summaries_from_report4(@report)
-				@bank_account.calculate_last_three_months_deposits
-				@bank_account.calculate_last_three_months_daily_balance
-				@bank_account.total_negative_days = @bank_account.get_negative_days
+				@bank_account.proccess_bank_information(@report)
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
 				@bank_account.save

@@ -143,7 +143,7 @@ html,body {
                             ul{
                                 list-style-type: decimal;
                                 li{
-                                    margin-bottom: 5px;
+                                    margin-bottom: 10px;
                                 }
                             }
                             span {
@@ -456,4 +456,13 @@ html,body {
 
 input.business_mobile_disclaimer{
     float: left;
+}
+
+.validation-errors{
+    ul{
+        padding-left: 15px;
+        li{
+            font-size: 13px;
+        }
+    }
 }
