@@ -15,6 +15,12 @@ class BankAccountsController < ApplicationController
 
 	end
 
+	def failure
+		@business = current_business
+		@business.bank_error_occured
+
+	end
+
 	def success
 		@business = current_business
 		if @business.bank_account.institution_name.nil?

@@ -101,6 +101,7 @@ Buynance::Application.routes.draw do
   
   get 'DLPHP/verification.php' => "bank_accounts#new"
   get '/bank_accounts/success' => "bank_accounts#success"
+  get '/bank_accounts/failure' => "bank_accounts#failure", as: :bank_failure
 
   get '/offers/:offer_id/accept' => 'offers#accept'
   put '/offers/:offer_id/update' => 'offers#update'

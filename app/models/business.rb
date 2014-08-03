@@ -40,6 +40,10 @@ class Business < ActiveRecord::Base
       transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_email_confirmation
     end
 
+    event :bank_error_occured do
+      transition [:awaiting_personal_information , :awaiting_bank_information] => :bank_error
+    end
+
     event :email_confirmation_provided do 
       transition [:awaiting_email_confirmation] => :awaiting_mobile_confirmation
     end
