@@ -5,34 +5,29 @@ class Lead < ActiveRecord::Base
 	has_many :offers, :dependent => :destroy
 
 	scope :pending, where(state: "pending")
-	scope :awaiting_completion, where(state: "awaiting_completion")
-	scope :funded, where(state: "funded")
+    scope :qualified_market, where(state: "qualified_market")
+    scope :sold, where(state: "sold")
 
     self.per_page = 10
 
 	state_machine :state, :initial => :pending do
-   
-    	event :accept_offer do
-      		transition [:pending] => :awaiting_completion
-    	end
+        after_transition :on => :qualified_market, :do => :set_qualification_type
 
-    	event :reject_offer do
-    		transition [:awaiting_completion] => :pending
-    	end
+        event :qualify_for_market do
+            transition [:pending] => :qualified_market
+        end
 
-    	event :fund do
-    		transition [:awaiting_completion] => :funded
-    	end
+        event :sell do 
+            transition [:pending, :qualified_market] => :sold 
+        end
     end
 
-    def self.no_offer_by(funder_id)
-        #Offer.where('offers.funder_id == ?', funder_id).leads
-        #lead_not_offers = Lead.includes('offers').where('offers.funder_id != ? ', funder_id)
-        #lead_not_offers.merge(Lead.where('lead.offers.size == ?', 0))
-        Lead.includes('offers').where("offers.funder_id != ? OR offers.id IS NULL", funder_id)
+    def set_qualification_type
+        case self.state
+        when "qualified_market"
+            self.qualification_type = "market"
+        end
     end
 
-    def self.offer_by(funder_id)
-        Lead.includes('offers').where("offers.funder_id == ?", funder_id)
-    end
+
 end

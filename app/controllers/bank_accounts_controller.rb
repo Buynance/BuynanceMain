@@ -5,14 +5,12 @@ class BankAccountsController < ApplicationController
 
 	def new
 		@iframe_code = '<iframe id="IFrameHolder" frameborder="0" height="450" width="900" src="https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"></iframe>'
-	
 	end
 
-	def found
-		business = current_business
-		bank_account = business.bank_account
-		bank_account.populate
-
+	def failure
+		@business = current_business
+		@business.bank_error_occured
+		@business.error_bank_prelogin
 	end
 
 	def success
@@ -20,21 +18,14 @@ class BankAccountsController < ApplicationController
 		if @business.bank_account.institution_name.nil?
 			request_code = params[:requestCode]
 			@report = DecisionLogic.get_report_detail_from_request_code_4(request_code)
-			@is_error = false
 			if(request_code == @report[:request_code] )
-				@bank_account = BankAccount.new
-				@bank_account.populate_from_report4(@report)
-				@bank_account.retrieve_bank_information
-				@bank_account.save
+				@bank_account = BankAccount.create
 				@bank_account.proccess_bank_information(@report)
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
 				@bank_account.save
-				flash[:is_bank_account_success] = true
 				redirect_to account_url
 			else
-				@is_error = true
-				@output = "POOOP"
 			end
 		else
 			redirect_to controller: 'static_pages', action: 'error', error_code: 1004

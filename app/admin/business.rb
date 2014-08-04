@@ -2,28 +2,27 @@ ActiveAdmin.register Business do
 
   actions :index, :show, :destroy
 
-  scope :all, :default => true
-  scope :awaiting_persona_information
-  scope :awaiting_email_confirmation
-  scope :awaiting_mobile_confirmation
-
+  scope :personal
+  scope :financial
+  scope :revise
+  scope :bank_prelogin
+  scope :bank_login
+  scope :bank_login_error
+  scope :email_confirmation
+  scope :mobile_confirmation
+  scope :accepted_market
 
   index do 
-    column("Business", :sortable => :id) {|business| "##{business.id} "}
-    column("Business State")             {|business| business.state}
-    column("Business Name")              {|business| business.name}
-    #column("State")                      {|business| status_tag(business.state) }
-    column("Email")                      {|business| link_to business.business_user.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+    column("Business", :sortable => :id) {|business| link_to "#{business.name}", grubraise_business_path(business)}
+    column("Email")                      {|business| business.email}
+    column("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
+    column("Current Step")               {|business| status_tag(business.step) }
     column("Owner's First Name")         {|business| business.owner_first_name}
     column("Owner's Last Name")          {|business| business.owner_last_name}
-    #column("Address Line One")           {|business| business.street_address_one}
-    #column("City")                       {|business| business.city}
     column("State")                      {|business| business.location_state}
-    #column("Zip Code")                   {|business| business.zip_code}
     column("Business Phone")             {|business| business.phone_number}
     column("Mobile Phone")               {|business| business.mobile_number}
-    #column("")
-    
+          
     actions
   end
 
@@ -36,9 +35,8 @@ ActiveAdmin.register Business do
             row("Business User ID")           {|business| link_to business.business_user.id, grubraise_business_user_path(business.business_user)}
             row("Business Name")              {|business| business.name}
             row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
-            row("State")                      {|business| status_tag(business.state) }
-            #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
-            #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
+            row("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
+            row("Current Step")                      {|business| status_tag(business.step) }
           end
         end
 
@@ -46,8 +44,8 @@ ActiveAdmin.register Business do
           attributes_table_for business do
             row("Email")                      {|business| business.email}
             row("Name") {|business| business.name}
-            row("Owners First Name") {|business| business.first_name}
-            row("Owners Last Name") {|business| business.last_name}
+            row("Owners First Name") {|business| business.owner_first_name}
+            row("Owners Last Name") {|business| business.owner_last_name}
             row("Phone Number") {|business| business.phone_number}
             row("Mobile Number") {|business| business.mobile_number}
             row("Street Adress Line One") {|business| business.street_address_one}
@@ -55,7 +53,7 @@ ActiveAdmin.register Business do
             row("City") {|business| business.city}
             row("State") {|business| business.location_state}
             row("Zip Code") {|business| business.zip_code}
-
+            
           end
         end  
       end
@@ -75,9 +73,9 @@ ActiveAdmin.register Business do
             row("Total Number of Deposits") {|business| (business.bank_account.total_number_of_deposits) unless business.bank_account.nil? }
             row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) unless business.bank_account.nil?} 
             row("Total Negative Days")      {|business| (business.bank_account.total_negative_days) unless business.bank_account.nil? }
-            row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
-            row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
-            row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
+            row("Deposit One Months Ago") {|business| number_to_currency business.bank_account.deposits_one_month_ago unless business.bank_account.nil?}
+            row("Deposit Two Months Ago") {|business| number_to_currency business.bank_account.deposits_two_months_ago unless business.bank_account.nil?}
+            row("Deposit Three Months Ago") {|business| number_to_currency business.bank_account.deposits_three_months_ago unless business.bank_account.nil?}
             #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
             #row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}

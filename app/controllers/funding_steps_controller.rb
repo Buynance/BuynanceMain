@@ -7,41 +7,29 @@ class FundingStepsController < ApplicationController
 	steps :personal, :refinance, :financial, :bank_prelogin, :bank_information
 	before_filter :require_business_user
 	before_filter :standardize_params, :only => [:update]
+	before_filter :set_business_step, only: [:show]
+	before_filter :send_javascript, only: [:show]
 	
 	def show	
 		@business = current_business
-		
-		if step != :disclaimer and @business.awaiting_disclaimer_acceptance?
-			jump_to(:disclaimer)
-		end
-		
 		case step
 		when :personal
-			funding_type = "funder"
-			funding_type = "renew" if @business.is_refinance
-			pluggable_js(is_production: is_production, step: step, is_signup: (flash[:signup] == true), email: @business.business_user.email, business_name: @business.name, funding_type: funding_type)
 			render_wizard
 		when :financial
-			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
 			render_wizard
 		when :refinance
-			pluggable_js(is_production: is_production, step: step, personal_passed: (flash[:personal_passed] == true), mobile_disclaimer_accepted: @business.mobile_disclaimer)
-			skip_step unless @business.is_refinance == true
+			skip_step unless @business.is_refinance
 			render_wizard
 		when :bank_prelogin
-			pluggable_js(is_production: is_production, step: step)
 			@bank_account = BankAccount.new
 			render_wizard
 		when :bank_information
-			pluggable_js(is_production: is_production, step: step)
 			if @business.create_request_code
-				@business.bank_account.create_first_request_code
 				render_wizard
 			else
 				redirect_to wizard_path(:bank_prelogin), notice: "Your routing number and/or account number are incorrect."
 			end
 		else
-			pluggable_js(is_production: is_production, step: step)
 			render_wizard
 		end
 	end
@@ -51,9 +39,7 @@ class FundingStepsController < ApplicationController
 		@business.current_step = step
 		if step == :bank_prelogin
 			if @business.bank_account.nil?
-				
 				@bank_account = BankAccount.new(bank_account_params)
-
 				if @business.is_refinance
 					if @bank_account.routing_number == "skip"
 						@business.accept_as_lead
@@ -141,6 +127,30 @@ class FundingStepsController < ApplicationController
 	      	params[:business][:closing_fee].gsub!( /[^\d]/, '')
 	      	params[:business][:total_previous_loan_amount].gsub!( /[^\d]/, '')
 	    end	
+	end
+
+	def set_business_step
+		case step
+		when :personal
+		when :refinance
+			current_business.passed_personal
+			current_business.passed_revise if current_business.is_refinance	
+		when :financial
+			current_business.passed_revise
+		when :bank_prelogin
+			current_business.passed_financial
+		when :bank_information
+			current_business.passed_bank_prelogin
+		end
+	end
+
+	def send_javascript
+		funding_type = ("revise" if current_business.is_refinance) || ("funder")
+		if (step == :financial or step == :refinance)
+			pluggable_js(is_production: is_production, step: step, email: current_business.business_user.email, business_name: current_business.name, funding_type: funding_type, mobile_disclaimer_accepted: true, name: "#{current_business.owner_first_name} #{current_business.owner_last_name}")
+		else
+			pluggable_js(is_production: is_production, step: step, email: current_business.business_user.email, business_name: current_business.name, funding_type: funding_type)
+		end
 	end
 end
 
