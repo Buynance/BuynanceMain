@@ -44,8 +44,8 @@ ActiveAdmin.register Business do
           attributes_table_for business do
             row("Email")                      {|business| business.email}
             row("Name") {|business| business.name}
-            row("Owners First Name") {|business| business.first_name}
-            row("Owners Last Name") {|business| business.last_name}
+            row("Owners First Name") {|business| business.owner_first_name}
+            row("Owners Last Name") {|business| business.owner_last_name}
             row("Phone Number") {|business| business.phone_number}
             row("Mobile Number") {|business| business.mobile_number}
             row("Street Adress Line One") {|business| business.street_address_one}
@@ -73,9 +73,9 @@ ActiveAdmin.register Business do
             row("Total Number of Deposits") {|business| (business.bank_account.total_number_of_deposits) unless business.bank_account.nil? }
             row("Total Deposits Value")     {|business| (number_to_currency business.bank_account.total_deposits_value) unless business.bank_account.nil?} 
             row("Total Negative Days")      {|business| (business.bank_account.total_negative_days) unless business.bank_account.nil? }
-            row("Earned One Months Ago") {|business| number_to_currency business.earned_one_month_ago}
-            row("Earned Two Months Ago") {|business| number_to_currency business.earned_two_months_ago}
-            row("Earned Three Months Ago") {|business| number_to_currency business.earned_three_months_ago}
+            row("Deposit One Months Ago") {|business| number_to_currency business.bank_account.deposits_one_month_ago unless business.bank_account.nil?}
+            row("Deposit Two Months Ago") {|business| number_to_currency business.bank_account.deposits_two_months_ago unless business.bank_account.nil?}
+            row("Deposit Three Months Ago") {|business| number_to_currency business.bank_account.deposits_three_months_ago unless business.bank_account.nil?}
             #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
             #row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
