@@ -2,11 +2,15 @@ ActiveAdmin.register Business do
 
   actions :index, :show, :destroy
 
-  scope :all, :default => true
-  scope :awaiting_persona_information
-  scope :awaiting_email_confirmation
-  scope :awaiting_mobile_confirmation
-
+  scope :personal
+  scope :financial
+  scope :revise
+  scope :bank_prelogin
+  scope :bank_login
+  scope :bank_login_error
+  scope :email_confirmation
+  scope :mobile_confirmation
+  scope :accepted_market
 
   index do 
     column("Business", :sortable => :id) {|business| "##{business.id} "}
@@ -36,7 +40,7 @@ ActiveAdmin.register Business do
             row("Business User ID")           {|business| link_to business.business_user.id, grubraise_business_user_path(business.business_user)}
             row("Business Name")              {|business| business.name}
             row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
-            row("State")                      {|business| status_tag(business.state) }
+            row("Current Step")                      {|business| status_tag(business.step) }
             #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
           end

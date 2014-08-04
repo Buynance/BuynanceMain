@@ -12,9 +12,6 @@ class BankAccount < ActiveRecord::Base
 
 	DAYS_ENOUGH_TRANSACTIONS = 60
 
-	#scope :transactions_past_month, includes(:transactions).where("transactions.transaction_date > ?", DateTime.now.change(month: (DateTime.now.month - 1)))
-	#scope :transactions_past_month_from_last_transaction, includes(:transactions).where("transactions.transaction_date > ?", self.transactions.last.transaction_date.change(month: (self.transactions.last.transaction_date.month - 1)))
-	
 	state_machine :state, :initial => :awaiting_request_code do
 
 		event :create_first_request_code do
@@ -28,6 +25,9 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def proccess_bank_information(report)
+		self.populate_from_report4(report)
+		self..retrieve_bank_information
+		self.save
 		self.add_transactions_from_report4(report)
 		self.add_transaction_summaries_from_report4(report)
 		self.calculate_last_three_months_deposits

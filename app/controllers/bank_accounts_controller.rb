@@ -5,14 +5,12 @@ class BankAccountsController < ApplicationController
 
 	def new
 		@iframe_code = '<iframe id="IFrameHolder" frameborder="0" height="450" width="900" src="https://widget.decisionlogic.com/Service.aspx?requestCode=#{@business.initial_request_code}"></iframe>'
-	
 	end
 
-	def found
-		business = current_business
-		bank_account = business.bank_account
-		bank_account.populate
-
+	def failure
+		@business = current_business
+		@business.bank_error_occured
+		@business.error_bank_prelogin
 	end
 
 	def success
@@ -23,9 +21,6 @@ class BankAccountsController < ApplicationController
 			@is_error = false
 			if(request_code == @report[:request_code] )
 				@bank_account = BankAccount.new
-				@bank_account.populate_from_report4(@report)
-				@bank_account.retrieve_bank_information
-				@bank_account.save
 				@bank_account.proccess_bank_information(@report)
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
