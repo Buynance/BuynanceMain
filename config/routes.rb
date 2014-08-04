@@ -87,7 +87,7 @@ Buynance::Application.routes.draw do
 
   get 'tos'                   => 'static_pages#tos'
   get 'privacy'               => 'static_pages#privacy'
-  get 'merchant-cash-advance' => 'profitabilities#new'
+  get 'business-funding-calculator' => 'profitabilities#new'
   get 'blog'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
   get 'compare'                 => 'static_pages#compare'
