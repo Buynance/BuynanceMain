@@ -18,7 +18,7 @@ class FundingStepsController < ApplicationController
 		when :financial
 			render_wizard
 		when :refinance
-			skip_step if @business.is_refinance
+			skip_step unless @business.is_refinance
 			render_wizard
 		when :bank_prelogin
 			@bank_account = BankAccount.new
