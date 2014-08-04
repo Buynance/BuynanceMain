@@ -2,7 +2,7 @@ window['businesses#new'] = (data) ->
   if data.is_production
     mixpanel.track("View - Signup Page") ;
 
-window['businesses#qualified_for_market'] = (data) ->
+window['businesses#qualified_market'] = (data) ->
   if data.is_production
     mixpanel.identify(data.email)
     mixpanel.people.set_once({

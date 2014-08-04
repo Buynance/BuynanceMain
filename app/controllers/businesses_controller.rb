@@ -109,6 +109,7 @@ class BusinessesController < ApplicationController
   def confirm_account
     pluggable_js(email: current_business.business_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
     @business = current_business
+    @business.passed_email_confirmation
   end
 
   def confirm_mobile
