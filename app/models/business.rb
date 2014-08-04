@@ -288,8 +288,8 @@ class Business < ActiveRecord::Base
 
   def accept_as_lead
     self.deliver_activation_instructions!
-    #Lead.create(business_id: self.id)
     self.bank_information_provided
+    self.passed_bank_login
   end
 
   def get_credit_score_label(number)

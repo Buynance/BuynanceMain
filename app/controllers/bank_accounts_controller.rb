@@ -18,18 +18,14 @@ class BankAccountsController < ApplicationController
 		if @business.bank_account.institution_name.nil?
 			request_code = params[:requestCode]
 			@report = DecisionLogic.get_report_detail_from_request_code_4(request_code)
-			@is_error = false
 			if(request_code == @report[:request_code] )
 				@bank_account = BankAccount.create
 				@bank_account.proccess_bank_information(@report)
 				@business.bank_account = @bank_account
 				@business.accept_as_lead
 				@bank_account.save
-				flash[:is_bank_account_success] = true
 				redirect_to account_url
 			else
-				@is_error = true
-				@output = "POOOP"
 			end
 		else
 			redirect_to controller: 'static_pages', action: 'error', error_code: 1004
