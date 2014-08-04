@@ -42,7 +42,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Last 10 Leads" do
           table_for Lead.order('id desc').limit(10).each do |lead|
             column("Business", :sortable => :id) {|lead| link_to "#{lead.business.name}", grubraise_business_path(lead.business)}
-            column("Email")                      {|lead| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: lead.business.email))}
+            column("Email")                      {|lead| link_to lead.business.email, grubraise_business_user_path(BusinessUser.find_by(email: lead.business.email))}
             column("Funnel")                     {|lead| status_tag(lead.business.is_refinance ? "Revise" : "Funder")}
             column("Owner's First Name")         {|lead| lead.business.owner_first_name}
             column("Owner's Last Name")          {|lead| lead.business.owner_last_name}
