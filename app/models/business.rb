@@ -4,13 +4,15 @@ require 'decision_logic'
 
 class Business < ActiveRecord::Base
 
-  before_save :parse_phone_number
-  #before_save :parse_date
-  
   include BusinessValidations
+  include BusinessStates
+  
   attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer
+
+  before_save :parse_phone_number
+
   obfuscate_id :spin => 89238723
-  #has_many :offers, :dependent => :destroy
+
   has_one :business_user, :dependent => :destroy
   has_one :bank_account, :dependent => :destroy
   has_one :routing_number, :dependent => :destroy
@@ -19,96 +21,6 @@ class Business < ActiveRecord::Base
   belongs_to :business_type, inverse_of: :businesses
 
   FUNDING_TYPES = {refinance: 1, funding: 0}
-
-  scope :awaiting_persona_information, where(state: "awaiting_personal_information")
-  scope :awaiting_bank_information, where(state: "awaiting_bank_information")
-  scope :awaiting_email_confirmation, where(state: "awaiting_email_confirmation")
-  scope :awaiting_mobile_confirmation, where(state: "awaiting_mobile_confirmation")
-  scope :awaiting_offer_acceptance, where(state: "awaiting_offer_acceptance")
-  scope :awaiting_offer_completetion, where(state: "awaiting_offer_completetion")
-  scope :awaiting_reenter_market, where(state: "awaiting_reenter_market")
-  scope :awaiting_bank_information_refresh, where(state: "awaiting_bank_information_refresh")
-
-  state_machine :state, :initial => :awaiting_personal_information do
-   
-    event :personal_information_provided do
-      transition [:awaiting_personal_information] => :awaiting_bank_information
-    end
-
-    # Business activate account is dependant on awaiting email confirmation
-    event :bank_information_provided do
-      transition [:awaiting_personal_information , :awaiting_bank_information] => :awaiting_email_confirmation
-    end
-
-    event :bank_error_occured do
-      transition [:awaiting_personal_information , :awaiting_bank_information] => :bank_error
-    end
-
-    event :email_confirmation_provided do 
-      transition [:awaiting_email_confirmation] => :awaiting_mobile_confirmation
-    end
-
-    event :mobile_confirmation_provided_phone do
-      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
-    end
-
-    event :mobile_confirmation_provided do
-      transition [:awaiting_mobile_confirmation] => :awaiting_offer_acceptance
-    end
-
-    event :disclaimer_acceptance_provided do
-      transition [:awaiting_disclaimer_acceptance] => :awaiting_offer_acceptance
-    end
-
-    event :offer_accepted do
-      transition [:awaiting_offer_acceptance] => :awaiting_offer_completetion
-    end
-   
-    event :offer_funded do
-      transition [:awaiting_offer_completetion] => :awaiting_requalification
-    end
-
-    event :offer_rejected do
-      transition [:awaiting_offer_completetion, :awaiting_offer_acceptance] => :awaiting_offer_acceptance
-    end
-
-    event :requalified do
-      transition [:awaiting_requalification] => :awaiting_bank_information_refresh
-    end
-
-    event :bank_information_refreshed do
-      transition [:awaiting_bank_information_refresh] => :awaiting_offer_acceptance
-    end
-
-
-  end
-
-  state_machine :qualification_state, :initial => :awaiting_qualification_information do
-    event :qualify_for_refi do
-      transition [:awaiting_qualification_information] => :qualified_for_refi
-    end
-
-    event :disqualify_for_refi do
-      transition [:awaiting_qualification_information] => :disqualified_for_refi
-    end
-
-    event :qualify_for_funder do
-      transition [:awaiting_qualification_information] => :qualified_for_funder
-    end
-
-    event :qualify_for_market do
-      transition [:awaiting_qualification_information] => :qualified_for_market
-    end
-
-    event :disqualify_for_refi do
-      transition [:awaiting_qualification_information] => :disqualified_for_refi
-    end
-    
-    event :disqualify do
-      transition [:awaiting_qualification_information] => :disqualified_for_funder
-    end
-
-  end
   
   LOAN_REASON = ["Invest In Marketing","Pay Old Bills", "Expansion", "Payroll", "Invest In Inventory", "Capital Improvement", "Pay Rent / Mortgage"]
   CREDIT_SCORE_RANGES = ["0", "450-500", "501-550", "551-600", "601-650", "651-700", "701-750", "751-800"]
@@ -232,50 +144,14 @@ class Business < ActiveRecord::Base
   end
 
   def qualify
+    is_qualified = false
     unless self.qualified_for_funder? or self.qualified_for_refi? or self.qualified_for_market? 
-      if true
-        if Buynance::Application.config.market_everyone == true
-          is_qualified = true
-          self.qualify_for_market
-        else
-          is_qualified = false
-          if self.is_refinance
-            if is_qualified_for_funder(15000, 6)
-              p "qualify"
-              is_qualified = true
-              self.qualify_for_market
-            else
-              self.disqualify
-            end
-          else
-            if is_qualified_for_funder(15000, 6)
-              p "qualify"
-              is_qualified = true
-              self.qualify_for_market
-            end
-          end
-        end
-      else
-        is_qualified = false
-        if self.is_refinance
-          if has_paid_enough
-            is_qualified = true
-            self.qualify_for_refi
-          else
-            self.qualify_for_market
-          end
-        else
-          if is_qualified_for_funder(15000, 6)
-            is_qualified = true
-            self.qualify_for_funder
-          else
-            is_qualified = true
-            self.qualify_for_market
-          end
-        end
+      if Buynance::Application.config.market_everyone == true
+        is_qualified = true
+        self.qualify_for_market
+        lead = Lead.create(business_id: self.id)
+        lead.qualify_for_market
       end
-    else
-      return true
     end
     return is_qualified
   end
@@ -412,7 +288,7 @@ class Business < ActiveRecord::Base
 
   def accept_as_lead
     self.deliver_activation_instructions!
-    Lead.create(business_id: self.id)
+    #Lead.create(business_id: self.id)
     self.bank_information_provided
   end
 

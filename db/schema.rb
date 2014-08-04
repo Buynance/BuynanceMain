@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140710021226) do
+ActiveRecord::Schema.define(version: 20140804043312) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -245,6 +245,7 @@ ActiveRecord::Schema.define(version: 20140710021226) do
     t.string   "qualification_state"
     t.integer  "funding_type",                                   default: 0
     t.boolean  "mobile_disclaimer"
+    t.string   "step"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -369,6 +370,8 @@ ActiveRecord::Schema.define(version: 20140710021226) do
     t.datetime "updated_at"
     t.integer  "business_id"
     t.boolean  "is_sponsor"
+    t.string   "funding_type"
+    t.string   "qualification_type"
   end
 
   create_table "offers", force: true do |t|
@@ -456,6 +459,24 @@ ActiveRecord::Schema.define(version: 20140710021226) do
   create_table "transactions_type_codes", force: true do |t|
     t.integer "transaction_id", null: false
     t.integer "type_code_id",   null: false
+  end
+
+  create_table "translator_pages", force: true do |t|
+    t.string   "controller"
+    t.string   "page"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "section"
+    t.string   "action"
+  end
+
+  create_table "translator_values", force: true do |t|
+    t.string   "key"
+    t.string   "locale",             default: "en"
+    t.text     "value",              default: ""
+    t.integer  "translator_page_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "twimlet_url_for_businesses", force: true do |t|
