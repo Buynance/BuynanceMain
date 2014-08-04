@@ -73,26 +73,32 @@
                     %span Cash Advance Profit Calculator
                   .mca-calculator-main
                     = simple_form_for @profitability do |f|
+                      - if @profitability.errors.any?
+                        %div{class: "alert alert-danger validation-errors"}
+                          %ul
+                            - @profitability.errors.full_messages.each do |msg|
+                              %li= msg
+
 
                       .mca-calculator-main-group
                         .mca-calculator-main-group-label
                           %span How much money does your business earn each month before you pay the bills?
                         .mca-calculator-main-group-input
-                          = f.input :monthly_cash_collection_amount, placeholder: '$50,000', input_html: {class: 'textbox currency_convert'}, label: false,  error: false
+                          = f.input :monthly_cash_collection_amount, input_html: {class: 'textbox currency_convert', style: "width: 100%;", value: (@saved_profitability ? @saved_profitability.monthly_cash_collection_amount : '$50,000')}, label: false,  error: false, as: :string
                       .mca-calculator-main-group
                         .mca-calculator-main-group-label
-                          %span How much money How much are your total monthly bills?
+                          %span How much are your total monthly bills?
                         .mca-calculator-main-group-input
-                          = f.input :total_monthly_bills, placeholder: '$40,000', input_html: {class: 'textbox currency_convert'}, label: false,  error: false
+                          = f.input :total_monthly_bills, input_html: {class: 'textbox currency_convert', style: "width: 100%;", value: (@saved_profitability ? @saved_profitability.total_monthly_bills : '$40,000')}, label: false,  error: false, as: :string
                       .mca-calculator-main-group
                         .mca-calculator-main-group-label
                           %span How much is your current merchant cash advance company collecting daily?
                         .mca-calculator-main-group-input
-                          = f.input :daily_merchant_cash_advance, placeholder: '$280', input_html: {class: 'textbox currency_convert'}, label: false,  error: false
+                          = f.input :daily_merchant_cash_advance, input_html: {class: 'textbox currency_convert', style: "width: 100%;", value: (@saved_profitability ? @saved_profitability.daily_merchant_cash_advance : '$280')}, label: false,  error: false, as: :string
                       .mca-calculator-main-group
                         .mca-calculator-main-group-label
                           %span How much is the monthly collection amount for all other loan ?
                         .mca-calculator-main-group-input
-                          = f.input :other_monthly_loan_collection, placeholder: '$0', input_html: {class: 'textbox currency_convert'}, label: false,  error: false
+                          = f.input :other_monthly_loan_collection, input_html: {class: 'textbox currency_convert', style: "width: 100%;", value: (@saved_profitability ? @saved_profitability.other_monthly_loan_collection : '$0')}, label: false,  error: false, as: :string
                       .mca-calculator-main-group-action
                         = f.submit "Continue", class: "form-button flat-button button-submit"
