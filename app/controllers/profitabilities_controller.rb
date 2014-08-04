@@ -46,9 +46,9 @@ class ProfitabilitiesController < ApplicationController
 
     # remove $
     def standardize_params
-      params[:profitability][:monthly_cash_collection_amount].gsub!( /\$/, '')
-      params[:profitability][:total_monthly_bills].gsub!( /\$/, '')
-      params[:profitability][:daily_merchant_cash_advance].gsub!( /\$/, '')
-      params[:profitability][:other_monthly_loan_collection].gsub!( /\$/, '')
+      params[:profitability][:monthly_cash_collection_amount].gsub!( /[^\d]/, '')
+      params[:profitability][:total_monthly_bills].gsub!( /[^\d]/, '')
+      params[:profitability][:daily_merchant_cash_advance].gsub!( /[^\d]/, '')
+      params[:profitability][:other_monthly_loan_collection].gsub!( /[^\d]/, '')
     end
 end
