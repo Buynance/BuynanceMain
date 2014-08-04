@@ -13,21 +13,16 @@ ActiveAdmin.register Business do
   scope :accepted_market
 
   index do 
-    column("Business", :sortable => :id) {|business| "##{business.id} "}
-    column("Business State")             {|business| business.state}
-    column("Business Name")              {|business| business.name}
-    #column("State")                      {|business| status_tag(business.state) }
-    column("Email")                      {|business| link_to business.business_user.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+    column("Business", :sortable => :id) {|business| link_to "#{business.name}", grubraise_business_path(business)}
+    column("Email")                      {|business| link_to business.email, grubraise_business_user_path(business.business_user)}
+    column("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
+    column("Current Step")               {|business| status_tag(business.step) }
     column("Owner's First Name")         {|business| business.owner_first_name}
     column("Owner's Last Name")          {|business| business.owner_last_name}
-    #column("Address Line One")           {|business| business.street_address_one}
-    #column("City")                       {|business| business.city}
     column("State")                      {|business| business.location_state}
-    #column("Zip Code")                   {|business| business.zip_code}
     column("Business Phone")             {|business| business.phone_number}
     column("Mobile Phone")               {|business| business.mobile_number}
-    #column("")
-    
+          
     actions
   end
 
@@ -40,9 +35,8 @@ ActiveAdmin.register Business do
             row("Business User ID")           {|business| link_to business.business_user.id, grubraise_business_user_path(business.business_user)}
             row("Business Name")              {|business| business.name}
             row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
+            row("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
             row("Current Step")                      {|business| status_tag(business.step) }
-            #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
-            #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
           end
         end
 
@@ -59,7 +53,7 @@ ActiveAdmin.register Business do
             row("City") {|business| business.city}
             row("State") {|business| business.location_state}
             row("Zip Code") {|business| business.zip_code}
-
+            
           end
         end  
       end
