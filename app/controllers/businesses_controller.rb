@@ -5,7 +5,7 @@ class BusinessesController < ApplicationController
   before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :confirm_account, :confirm_mobile]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
-  before_filter :send_production_js, only: [:new, :qualified_for_funder, :qualified_for_market, :disqualified]
+  before_filter :send_production_js, only: [:new, :qualified_funder, :qualified_market, :disqualified]
   #before_filter :standardize_params, :only => [:create]
 
 
@@ -45,12 +45,11 @@ class BusinessesController < ApplicationController
   def show 
     #if @business.declined?
     #  render :action => :not_qualified
-    if @business.awaiting_personal_information? or @business.awaiting_bank_information?
-      redirect_to funding_steps_path
-    elsif @business.awaiting_disclaimer_acceptance?
+    if @business.bank_error?
+      redirect_to bank_failure_path
+    elsif @business.awaiting_personal_information? or @business.awaiting_bank_information?
       redirect_to funding_steps_path
     elsif @business.awaiting_email_confirmation?
-      flash[:is_bank_account_success] = flash[:is_bank_account]
       redirect_to controller: 'static_pages', action: 'confirm_email'
     elsif @business.awaiting_mobile_confirmation?
       redirect_to action: 'confirm_account'
@@ -86,7 +85,6 @@ class BusinessesController < ApplicationController
   end
 
   def activate
-    #@business = current_business
     @business = Business.where("activation_code = ? AND state = ?", params[:activation_code], "awaiting_email_confirmation").last
     unless @business.nil?
       @business.email_confirmation_provided
@@ -117,19 +115,22 @@ class BusinessesController < ApplicationController
     business = current_business
     if business.mobile_opt_code == params[:mobile][:mobile_opt_code]
       if business.qualify
-        if business.qualified_for_funder?
-          business.mobile_confirmation_provided
-        elsif business.qualified_for_refi?
-          business.mobile_confirmation_provided_phone
-        elsif business.qualified_for_market?
-          business.mobile_confirmation_provided_phone
-        end
-        unless business.bank_account.nil? or business.bank_account.institution_name.nil?
-          business.deliver_qualified_signup!
-        end
+        #if business.qualified_for_funder?
+        #  business.mobile_confirmation_provided
+        #elsif business.qualified_for_refi?
+        #  business.mobile_confirmation_provided_phone
+        #elsif business.qualified_for_market?
+        #  business.mobile_confirmation_provided_phone
+        #end
+        #unless business.bank_account.nil? or business.bank_account.institution_name.nil?
+        #  business.deliver_qualified_signup!
+        #end
+        business.mobile_confirmation_provided
+        business.passed_mobile_confirmation
         business.setup_mobile_routing if Rails.env.production?
       else
         business.mobile_confirmation_provided
+        business.passed_mobile_confirmation
         business.disqualify
       end
       
@@ -155,13 +156,10 @@ class BusinessesController < ApplicationController
   end
 
   def qualified_market
-    pluggable_js(email: current_business.business_user.email, is_production: is_production, is_email_confirmed: (flash[:is_email_confirmed] == true))
-    @business = current_business
-    
+    @business = current_business 
   end
 
   def disqualified
-    pluggable_js(email: current_business.business_user.email, has_bank_account: !current_business.bank_account.nil?, is_production: is_production)
   end
 
 

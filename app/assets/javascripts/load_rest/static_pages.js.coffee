@@ -145,8 +145,8 @@ setup_homepage_analytics = () ->
     mixpanel.track("Click - Funder How It Works Link")
   $('#refi-slider').find('.homepage-slider-action-subheader').click ->
     mixpanel.track("Click - ReVise How It Works Link")
-  #mixpanel.track_links('.banner-content-information-action-get-financed', 'Click - Homepage Banner Funder Button')
-  #mixpanel.track_links('.banner-content-information-action-refinance', 'Click - Homepage Banner ReVise Button')
+  mixpanel.track_links('#banner-get-financed', 'Click - Homepage Banner Funder Button')
+  mixpanel.track_links('#banner-refinance', 'Click - Homepage Banner ReVise Button')
   mixpanel.track_links('#header-logout-button', 'Click - Header Logout Button')
   mixpanel.track_links('#header-login-button', 'Click - Header Login Button')
   mixpanel.track_links('#header-signup-button', 'Click - Header Signup Button')

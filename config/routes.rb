@@ -101,6 +101,7 @@ Buynance::Application.routes.draw do
   
   get 'DLPHP/verification.php' => "bank_accounts#new"
   get '/bank_accounts/success' => "bank_accounts#success"
+  get '/bank_accounts/failure' => "bank_accounts#failure", as: :bank_failure
 
   get '/offers/:offer_id/accept' => 'offers#accept'
   put '/offers/:offer_id/update' => 'offers#update'
@@ -164,9 +165,5 @@ Buynance::Application.routes.draw do
   # Example resource route within a namespace:
   #   namespace :admin do
   #     # Directs /admin/products/* to Admin::ProductsController
-  #     # (app/controllers/admin/products_controller.rb)
-  #     resources :products
-  #   end
-
-
+  #     # (app/controlle
 end
