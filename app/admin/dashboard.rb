@@ -25,7 +25,7 @@ ActiveAdmin.register_page "Dashboard" do
         panel "Last 10 Businesses Signups" do
           table_for Business.order('id desc').limit(10).each do |business|
             column("Business", :sortable => :id) {|business| link_to "#{business.name}", grubraise_business_path(business)}
-            column("Email")                      {|business| link_to business.email, grubraise_business_user_path(BusinessUser.find_by(email: business.email))}
+            column("Email")                      {|business| link_to business.email}
             column("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
             column("Current Step")               {|business| status_tag(business.step) }
             column("Owner's First Name")         {|business| business.owner_first_name}
