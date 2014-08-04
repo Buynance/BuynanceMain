@@ -63,6 +63,6 @@ class Profitability < ActiveRecord::Base
   private
 
     def monthly_cash_should_be_greater_than_monthly_bills
-      errors.add(:total_monthly_bills, "should be less that the monthly cash collected") if total_monthly_bills > monthly_cash_collection_amount
+      errors.add(:total_monthly_bills, "Total monthly bills should be less that the monthly cash collected.") if total_monthly_bills > monthly_cash_collection_amount
     end
 end
