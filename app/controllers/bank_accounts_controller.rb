@@ -20,7 +20,7 @@ class BankAccountsController < ApplicationController
 			@report = DecisionLogic.get_report_detail_from_request_code_4(request_code)
 			@is_error = false
 			if(request_code == @report[:request_code] )
-				@bank_account = BankAccount.new
+				@bank_account = BankAccount.create
 				@bank_account.proccess_bank_information(@report)
 				@business.bank_account = @bank_account
 				@business.accept_as_lead

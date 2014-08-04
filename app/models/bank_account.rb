@@ -26,13 +26,13 @@ class BankAccount < ActiveRecord::Base
 
 	def proccess_bank_information(report)
 		self.populate_from_report4(report)
-		self..retrieve_bank_information
-		self.save
 		self.add_transactions_from_report4(report)
 		self.add_transaction_summaries_from_report4(report)
 		self.calculate_last_three_months_deposits
 		self.calculate_last_three_months_daily_balance
 		self.total_negative_days = self.get_negative_days
+		self.retrieve_bank_information
+		self.save
 	end
 	handle_asynchronously :proccess_bank_information
 
