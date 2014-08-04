@@ -158,6 +158,7 @@ class BusinessesController < ApplicationController
 
   def qualified_market
     @business = current_business 
+    @business.passed_mobile_confirmation
   end
 
   def disqualified
