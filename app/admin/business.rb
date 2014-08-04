@@ -14,7 +14,7 @@ ActiveAdmin.register Business do
 
   index do 
     column("Business", :sortable => :id) {|business| link_to "#{business.name}", grubraise_business_path(business)}
-    column("Email")                      {|business| link_to business.email, grubraise_business_user_path(business.business_user)}
+    column("Email")                      {|business| business.email}
     column("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
     column("Current Step")               {|business| status_tag(business.step) }
     column("Owner's First Name")         {|business| business.owner_first_name}
