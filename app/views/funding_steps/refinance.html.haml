@@ -26,7 +26,7 @@
                         .paper-section-bank-login-form-label
                           %span Who is your current funder?
                         .paper-section-bank-login-form-input
-                          = f.input :previous_merchant_id, include_blank: '', as: :select, collection: CashAdvanceCompany.order('name DESC').all, label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
+                          = f.input :previous_merchant_id, include_blank: '', as: :select, collection: CashAdvanceCompany.where.not(name: "Other").order('name ASC').all.push(CashAdvanceCompany.where(name: "Other").first), label_method: :name, value_method: :id, input_html: {class: 'textbox'}, label: false,  error: false
                         .paper-section-bank-login-form-label
                           %span When were you funded?
                         .paper-section-bank-login-form-input

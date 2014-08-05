@@ -11,7 +11,7 @@ class Lead < ActiveRecord::Base
     self.per_page = 10
 
 	state_machine :state, :initial => :pending do
-        after_transition :on => :qualified_market, :do => :set_qualification_type
+        after_transition :on => :qualify_for_market, :do => :set_qualification_type
 
         event :qualify_for_market do
             transition [:pending] => :qualified_market

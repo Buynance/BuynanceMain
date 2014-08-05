@@ -24,6 +24,18 @@ module BusinessStates
 
     state_machine :step, :initial => :personal do
 
+      after_transition :on => :passed_financial do |business, t|
+        business.send_bank_prelogin_notification!
+      end
+
+      after_transition :on => :passed_bank_prelogin do |business, t|
+        business.send_bank_login_notification!
+      end
+
+      after_transition :on => :passed_bank_login do |business, t|
+        business.send_qulaified_lead_notifications!
+      end
+
       event :passed_personal do
         transition [:personal] => :revise
       end

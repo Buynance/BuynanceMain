@@ -10,11 +10,11 @@ class TwilioLib
 	end
 
 	def self.send_new_user_notification(phone_number)
-		send_text(phone_number, "A new user has signed up")
+		self.send_text(phone_number, "A new user has signed up")
 	end
 
 	def self.send_new_lead_to_funder_notification(phone_number, lead)
-		send_text(phone_number, "A new Lead has entered the funnel")
+		self.send_text(phone_number, "A new Lead has entered the funnel")
 	end
 
 	def self.create_phone_number(local_number, state, success_url, routing_number_id)
