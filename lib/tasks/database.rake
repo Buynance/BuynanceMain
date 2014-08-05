@@ -265,4 +265,57 @@ namespace :db do
             CashAdvanceCompany.create(name: companies[value][0])
         end
     end 
+
+    desc "Add More Past Funder"
+    task :add_more_previous_funder => :environment do
+        companies = [ ["Business Credit and Capital"],
+                      ["CAN CAPITAL"],
+                      ["CAPITAL FOR MERCHANT"],
+                      ["Capital Stack"],
+                      ["Cash Cow Capital LLC"],
+                      ["Commonwealth Merchant Advance"],
+                      ["CORONA ADVANCES"],
+                      ["Corporation Service Company"],
+                      ["Credit Cash"],
+                      ["DF Merchant Advance"],
+                      ["DIRECT MERCHANT FUNDING"],
+                      ["EMPIRE MERCHANT ADVANCE LLC"],                                               
+                      ["Experience Finance"],
+                      ["FIRST DATA"],
+                      ["FORA Financial"],
+                      ["FORWARDLINE PAYMENT"],
+                      ["GBR Funding"],
+                      ["Gibraltar Capital Advance"],
+                      ["GLOBAL MERCHANT CASH "],
+                      ["GOLDEN PEAR FUNDING"],
+                      ["GRP Funding"],
+                      ["IRN Payment Systems"],
+                      ["Kabbage Inc"],
+                      ['Merchant Business Credit, Inc.'],
+                      ["New Era Lending"],
+                      ["NewLogic Business Loans"],
+                      ["Nextwave Funding"],
+                      ["ON DECK CAPITAL"],
+                      ["Par Funding"],
+                      ["Pearl Capital"],
+                      ["Prosperity Gold Capital"],
+                      ["Quick Cash Business Services"],
+                      ["Rapid Capital Funding"],
+                      ["RAPID FUNDING SOLUTIONS"],
+                      ["Retail Capital"],
+                      ["Romi Merchant Services"],
+                      ["SFS"],
+                      ["Swift Financial"],
+                      ["Viking Funding Group"],
+                      ["World Global Financing "],
+                      ["YELLOWSTONE CAPITAL"]
+                    ]
+
+        length = companies.length
+
+        (0...length).each do |value|
+            name = companies[value][0].downcase.titleize
+            CashAdvanceCompany.create(name: name)
+        end
+    end 
 end

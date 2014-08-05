@@ -12,9 +12,10 @@ class BusinessMailer < ActionMailer::Base
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
-  def average_less_than(business)
-    mail :subject => "We will keep in touch",
-         :to      => business.email,
+  def qualified_user(business)
+    @business = business
+    mail :subject => "New Qualified User",
+         :to      => "jay@buynance.com, yuliya@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
@@ -29,7 +30,14 @@ class BusinessMailer < ActionMailer::Base
     @business = business
     mail :subject => "You have a new qualified person signup to buynance",
          :to      => "edwin@buynance.com",
-         :from    => "edwin@buynance.com"
+         :from    => "Team Buynance <noreply@buynance.com>"
+  end
+
+  def bank_interuption(business)
+    @business = business
+    mail :subject => "Warning: A user has dropped out of bank login!",
+         :to      => "jay@buynance.com, yuliya@buynance.com",
+         :from    => "Team Buynance <noreply@buynance.com>"
   end
 
 
