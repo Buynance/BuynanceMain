@@ -5,9 +5,9 @@ module API
       format :json # We don't like xml anymore
 
       resource :businesses do
-        desc "Return list of businesses"
-        get do
-          Business.all # obviously you never want to call #all here
+        desc "Returns business count"
+        get :count do
+          Business.all.size
         end
       end
     end
