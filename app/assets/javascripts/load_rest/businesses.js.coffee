@@ -8,9 +8,10 @@ window['businesses#qualified_market'] = (data) ->
     mixpanel.people.set_once({
       'Confirmed Mobile Number': true,
       'Phone Number Created': true,
-      'Qualified for Market': true
+      'Qualified for Market': true,
+      'Success - Signup'
 	  }) ;
-    mixpanel.track("View - Qualified For Market Page") ;
+    mixpanel.track("View - Qualified For Market Page") 
     mixpanel.track("Success - Confirmed Mobile Number")
     mixpanel.track("Success - New Phone Number Created")
 

@@ -8,33 +8,14 @@
     <p>
       Snapshot: 
     </p>
-    <p>------------------------------------</p>
-      - if @offer.is_first_contact
-        ="This is a first time customer"
-      - else
-        ="This is a returning customer"
-    <p>------------------------------------</p>
     <p> Email: <%=@business.email %></p>
     <p> First Name: <%=@business.owner_first_name %> </p>
     <p> Last Name: <%=@business.owner_last_name %></p>
     <p> Business Name: <%=@business.name %></p>
     <p> Phone Number: <%=@business.phone_number %></p> 
     <p> Mobile Number: <%=@business.mobile_number %></p>
-    <p> How much did you earn last month: <%=@business.earned_one_month_ago %> </p>
-    <p> How much did you earn two months ago: <%=@business.earned_two_months_ago %> </p>
-    <p> How much did you earn three months ago: <%=@business.earned_three_months_ago %> </p>
     <p>------------------------------------</p>
-    <p> Offer Amount: <%=@offer.cash_advance_amount %> </p>
-    <p> Daily Payback: <%=@offer.daily_merchant_cash_advance %></p>
-    <p> Days to Collect: <%=@offer.days_to_collect %></p>
-    <p> Total Payback Amount: <%=@offer.total_payback_amount %></p> 
-    <p> Factor Rate: <%=@offer.factor_rate %></p>
-    <p>------------------------------------</p>
-    <p> Paying Merhcant Cash Advance? <%=@business.is_paying_back %></p>
-    <p> Approximate Credit Score: <%=@business.approximate_credit_score_range %></p>
     <p> Tax Liens? <%=@business.is_tax_lien %></p>
     <p> Payment Plan? <%=@business.is_payment_plan %></p>
     <p> Bankruptcy? <%=@business.is_ever_bankruptcy %></p>
-    <p> Average daily balance bank account: <%=@business.average_daily_balance_bank_account %></p>
-    <p> How many times negative? <%=@business.amount_negative_balance_past_month %></p>
 </html>

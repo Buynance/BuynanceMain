@@ -1,0 +1,17 @@
+!!!
+%html{xmlns: "http://www.w3.org/1999/xhtml"}
+  %head
+  %body
+    %h1 The following user has dropped out of the bank funnel
+    %p Snapshot: 
+    %p Current Step: #{@business.step}
+    %p Email: #{@business.email }
+    %p First Name: #{@business.owner_first_name } 
+    %p Last Name: #{@business.owner_last_name }
+    %p Business Name: #{@business.name }
+    %p Phone Number: #{@business.phone_number } 
+    %p Mobile Number: #{@business.mobile_number }
+    %p ------------------------------------
+    %p Tax Liens? #{@business.is_tax_lien }
+    %p Payment Plan? #{@business.is_payment_plan }
+    %p Bankruptcy? #{@business.is_ever_bankruptcy }

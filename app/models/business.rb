@@ -1,4 +1,4 @@
-'securerandom'
+require 'securerandom'
 require 'twilio_lib'
 require 'decision_logic'
 
@@ -6,6 +6,7 @@ class Business < ActiveRecord::Base
 
   include BusinessValidations
   include BusinessStates
+  include BusinessNotifications
   
   attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer
 
@@ -45,15 +46,17 @@ class Business < ActiveRecord::Base
     return CREDIT_SCORE_RANGES[variable]
   end
 
+  # Gets a request code created by decision logic and adds it to the business. 
+  # A request code is needed to be passed to decision logic so it can grab the bank
+  # information. 
+
   def create_request_code
     service_key = Buynance::Application.config.service_key
     profile_guid = Buynance::Application.config.profile_guid
     site_user_guid = Buynance::Application.config.site_user_guid 
     customer_id = self.email
-    #DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=QBZKMWHRHND5&profileGuid=9538c1e4-2a44-4eca-9587-e5d5bd1fcf65&siteUserGuid=76246387-0c72-401a-b629-b5b102859bb3&customerId=&firstName=#{@business.owner_first_name}&lastName=#{@business.owner_last_name}&routingNumber=#{@business.bank_account.routing_number}&accountNumber=#{@business.bank_account.account_number}") 
     self.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{self.owner_first_name}&lastName=#{self.owner_last_name}&accountNumber=#{self.bank_account.account_number}&routingNumber=#{self.bank_account.routing_number}")
-    is_valid = false
-    is_valid = true if self.initial_request_code.length <= 10
+    is_valid = (self.initial_request_code.length <= 10)
     return is_valid
   end
 
@@ -80,6 +83,7 @@ class Business < ActiveRecord::Base
   # Business type string from id                      #
   # --------------------------------------------------#
 
+  
 
   def send_mobile_confirmation!
     TwilioLib.send_activation_code(self.mobile_number, self.mobile_opt_code)
@@ -91,19 +95,9 @@ class Business < ActiveRecord::Base
   end
   handle_asynchronously :send_mobile_information!
 
-  def deliver_qualified_signup!
-    AdminMailer.qualified_signup(self.id).deliver!
+  def deliver_qualified_lead_text
+    TwilioLib.send_text("")
   end
-  handle_asynchronously :deliver_qualified_signup!
-
-  def deliver_qualified_signup2!
-    BusinessMailer.qualified_signup(self).deliver!
-  end
-  
-  def deliver_offer_email!
-    AdminMailer.delay.offer_notification(self)
-  end
-  handle_asynchronously :deliver_offer_email!
 
   def deliver_activation_instructions!
     reset_perishable_token!
@@ -116,11 +110,6 @@ class Business < ActiveRecord::Base
     BusinessMailer.welcome(self).deliver!
   end
   handle_asynchronously :deliver_welcome!
-
-  def deliver_average_email!
-    BusinessMailer.average_less_than(self).deliver!
-  end
-  handle_asynchronously :deliver_average_email!
   
   def setup_mobile_routing
     self.mobile_confirmation_provided_phone
