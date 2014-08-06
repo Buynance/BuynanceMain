@@ -1,6 +1,7 @@
 class Transaction < ActiveRecord::Base
 	belongs_to :bank_account
 
+	scope :nsf, where("running_balance < ? and amount < ?", 0, 0).not.where("type_code = ?", "dp")
 	
 	
 	def self.get_transactions_by_type_from_array(transaction_array, type_code_char)

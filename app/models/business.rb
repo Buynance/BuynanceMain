@@ -351,6 +351,10 @@ class Business < ActiveRecord::Base
       return true
     end
 
+    def total_nsfs
+      return self.transactions.where("running_balance < ? and amount > ?", 0, 0).size
+    end
+
     def self.generate_activation_code
       return SecureRandom.hex
     end

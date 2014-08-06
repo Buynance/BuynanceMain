@@ -13,12 +13,12 @@ ActiveAdmin.register Business do
   scope :accepted_market
 
   index do 
+    column("Signup Time", :sortable => :created_at) {|business| business.created_at.strftime("%m/%d/%Y %I:%M%p")}
     column("Business", :sortable => :id) {|business| link_to "#{business.name}", grubraise_business_path(business)}
     column("Email")                      {|business| business.email}
     column("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
     column("Current Step")               {|business| status_tag(business.step) }
-    column("Owner's First Name")         {|business| business.owner_first_name}
-    column("Owner's Last Name")          {|business| business.owner_last_name}
+    column("Owner's Name")               {|business| "#{business.owner_first_name} #{business.owner_last_name}"}
     column("State")                      {|business| business.location_state}
     column("Business Phone")             {|business| business.phone_number}
     column("Mobile Phone")               {|business| business.mobile_number}
@@ -76,7 +76,7 @@ ActiveAdmin.register Business do
             row("Deposit One Months Ago") {|business| number_to_currency business.bank_account.deposits_one_month_ago unless business.bank_account.nil?}
             row("Deposit Two Months Ago") {|business| number_to_currency business.bank_account.deposits_two_months_ago unless business.bank_account.nil?}
             row("Deposit Three Months Ago") {|business| number_to_currency business.bank_account.deposits_three_months_ago unless business.bank_account.nil?}
-            #row("Average Monthly Deposits")   {|business| number_to_currency (business.earned_one_month_ago + business.earned_two_months_ago + business.earned_three_months_ago)/3}
+            row("Average Monthly Deposits")   {|business| number_to_currency (business.bank_account.deposits_one_month_ago + business.bank_account.deposits_two_months_ago + business.bank_account.deposits_three_months_ago)/3 unless business.bank_account.nil?}
             #row("Average Daily Balance")      {|business| number_to_currency business.average_daily_balance_bank_account}
             #row("Negative Days Last Month")   {|business| business.amount_negative_balance_past_month}
             row("Credit Score") do |business|
@@ -134,6 +134,19 @@ ActiveAdmin.register Business do
     def permitted_params
       params.permit business: [:email, :password, :password_confirmation, :name, :owner_first_name, :owner_last_name, :open_date, :is_authenticated, :is_accept_credit_cards, :is_accepting]
     end
+  end
+
+  csv do
+    column("Email")                       {|business| business.email}
+    column("Comapny Name")                {|business| business.name}
+    column("Owners First Name")           {|business| business.owner_first_name}
+    column("Owners Last Name")            {|business| business.owner_last_name}
+    column("Phone Number")                {|business| business.phone_number}
+    column("Mobile Number")               {|business| business.mobile_number}
+    column("Address")                     {|business| "#{business.street_address_one}, #{business.street_address_two} #{business.city} #{business.location_state} #{business.zip_code}"}
+    column("Avg Gross Monthly Deposits")  {|business| number_to_currency (business.bank_account.deposits_one_month_ago + business.bank_account.deposits_two_months_ago + business.bank_account.deposits_three_months_ago)/3 unless business.bank_account.nil?}
+    column("Avg Deposit Size")            {|business| (number_to_currency (business.bank_account.total_deposits_value/business.bank_account.total_number_of_deposits)) unless business.bank_account.nil?} 
+
   end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
