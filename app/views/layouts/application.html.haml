@@ -1,7 +1,9 @@
 !!!
 %html{xmlns: "http://www.w3.org/1999/xhtml"}
   %head
-    %title Faster, More Affordable, Small Business Funding.
+    = metamagic title: "Faster, More Affordable, Small Business Funding - Buynance", description: "Shop for small business funding or ReVise™ an existing funding arrangement.", keywords: %w(merchant cash advance business funding small loan finance financing)
+   
+    /%title Faster, More Affordable, Small Business Funding.
     %script{href: "http://jquery.thewikies.com/browser/jquery.browser.min.js"}
     /%script{type: "text/javascript"}
     /  var _sf_startpt=(new Date()).getTime()
@@ -14,6 +16,7 @@
     = javascript_include_tag "zopim.js"
     
     = csrf_meta_tags
+    = render "layouts/facebook_pixel"
     = favicon_link_tag "favicon.ico"
   %body
     = render "layouts/header"
