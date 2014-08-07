@@ -138,18 +138,21 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def days_of_transactions
-		return nil if transactions.size == 0
+		return 0 if self.transactions.size == 0
 		return (self.transactions[0].transaction_date.to_date - self.transactions.last.transaction_date.to_date).to_i
 	end
 
+	def average_monthly_deposit
+		current_deposit_average = 0
+		current_deposit_average = self.deposits_one_month_ago if self.days_of_transactions >= 24
+		current_deposit_average = (current_deposit_average + self.deposits_two_months_ago)/2 if self.days_of_transactions >= 54
+		current_deposit_average = (current_deposit_average + self.deposits_two_months_ago)/3 if self.days_of_transactions >= 86
+
+		return current_deposit_average
+	end
 
 	def is_average_deposit_atleast(amount)
-		current_deposit_average = 0
-		current_deposit_average = deposits_one_month_ago if days_of_transactions >= 30
-		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/2 if days_of_transactions >= 60
-		current_deposit_average = (current_deposit_average + deposits_two_months_ago)/3 if days_of_transactions >= 86
-
-		return (current_deposit_average >= amount)
+		return self.average_deposit >= amount
 	end
 
 	def average_amount_of_transactions_atleast(amount, transaction_type)
