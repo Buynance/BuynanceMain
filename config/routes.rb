@@ -90,7 +90,7 @@ Buynance::Application.routes.draw do
   get 'business-funding-calculator' => 'profitabilities#new'
   get 'blog'                  => 'static_pages#blog'
   get 'about'                 => 'static_pages#about'
-  get 'compare'                 => 'static_pages#compare'
+  get 'products'                 => 'static_pages#compare'
 
  # get 'offer'                 => 'static_pages#offer'
   match 'activate/:activation_code' => "businesses#activate", via: :get
