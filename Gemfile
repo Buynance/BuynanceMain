@@ -92,6 +92,7 @@ gem 'meta_events'
 
 gem "airbrake"
 
+gem "metamagic"
 
 
 group :doc do

@@ -32769,13 +32769,14 @@ $.format = $.validator.format;
     }
   };
 
-  window['businesses#qualified_for_market'] = function(data) {
+  window['businesses#qualified_market'] = function(data) {
     if (data.is_production) {
       mixpanel.identify(data.email);
       mixpanel.people.set_once({
         'Confirmed Mobile Number': true,
         'Phone Number Created': true,
-        'Qualified for Market': true
+        'Qualified for Market': true,
+        'Success - Signup': 'Success - Signup'
       });
       mixpanel.track("View - Qualified For Market Page");
       mixpanel.track("Success - Confirmed Mobile Number");
@@ -32797,8 +32798,8 @@ $.format = $.validator.format;
           'Disqualified': true
         });
       }
+      return mixpanel.track("View - Disqualified Page");
     }
-    return mixpanel.track("View - Disqualified Page");
   };
 
   window['businesses#qualified_for_funder'] = function(data) {
@@ -32817,12 +32818,10 @@ $.format = $.validator.format;
 
   window['businesses#confirm_account'] = function(data) {
     if (data.is_production) {
-      if (data.is_email_confirmed) {
-        mixpanel.identify(data.email);
-        mixpanel.people.set_once({
-          'Confirmed Email': true
-        });
-      }
+      mixpanel.identify(data.email);
+      mixpanel.people.set_once({
+        'Confirmed Email': true
+      });
       return mixpanel.track("View - Mobile Number Confirmation");
     }
   };
@@ -32918,6 +32917,9 @@ $.format = $.validator.format;
           'Mobile Disclaimer Accepted': data.mobile_disclaimer_accepted,
           'Viewed Financial Signup Page': true
         });
+        mixpanel.people.set({
+          $name: data.name
+        });
         $(".paper-section-bank-login-form-section-payment").css("display", "none");
         $(".is_tax_lien_input").on("change", function() {
           if ($(".is_tax_lien_input").val() === "true") {
@@ -32932,6 +32934,9 @@ $.format = $.validator.format;
         mixpanel.people.set_once({
           'Mobile Disclaimer Accepted': data.mobile_disclaimer_accepted,
           "Viewed Refinance Signup Page": true
+        });
+        mixpanel.people.set({
+          $name: data.name
         });
         mixpanel.track("View - Signup Refinance Page");
       }
@@ -32950,20 +32955,17 @@ $.format = $.validator.format;
         });
       }
       if (data.step === "personal") {
-        if (data.is_signup === true) {
-          mixpanel.alias(data.email);
-          mixpanel.people.set({
-            "$email": data.email,
-            "Business Name": data.business_name,
-            "Funding Type": data.funding_type,
-            "Registered User": true
-          });
-          mixpanel.track("Success - Signup");
-        }
-        mixpanel.track("View - Signup Personal Page");
-        return mixpanel.people.set_once({
+        mixpanel.alias(data.email);
+        mixpanel.people.set_once({
+          "$name": data.email,
+          "$email": data.email,
+          "Business Name": data.business_name,
+          "Funding Type": data.funding_type,
+          "Registered User": true,
           "Viewed Personal Information Signup Page": true
         });
+        mixpanel.track("Success - Signup");
+        return mixpanel.track("View - Signup Personal Page");
       }
     }
   };
@@ -33679,14 +33681,16 @@ $Jssor$=g.$Jssor$=g.$Jssor$||{};new(function(){this.$DebugMode=c;this.$Log=funct
       return mixpanel.track("Use - Funder Slider");
     });
     $('#refi-slider').find('.ui-slider-handle').click(function() {
-      return mixpanel.track("Use - ReNew Slider");
+      return mixpanel.track("Use - ReVise Slider");
     });
     $('#funder-slider').find('.homepage-slider-action-subheader').click(function() {
       return mixpanel.track("Click - Funder How It Works Link");
     });
     $('#refi-slider').find('.homepage-slider-action-subheader').click(function() {
-      return mixpanel.track("Click - ReNew How It Works Link");
+      return mixpanel.track("Click - ReVise How It Works Link");
     });
+    mixpanel.track_links('#banner-get-financed', 'Click - Homepage Banner Funder Button');
+    mixpanel.track_links('#banner-refinance', 'Click - Homepage Banner ReVise Button');
     mixpanel.track_links('#header-logout-button', 'Click - Header Logout Button');
     mixpanel.track_links('#header-login-button', 'Click - Header Login Button');
     mixpanel.track_links('#header-signup-button', 'Click - Header Signup Button');
