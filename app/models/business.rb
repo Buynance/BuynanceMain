@@ -236,10 +236,10 @@ class Business < ActiveRecord::Base
         csv << ["BANK DATA COLLECTED"]
         csv << ["Avg Deposit Size ",  (ActionController::Base.helpers.number_to_currency (self.bank_account.total_deposits_value / self.bank_account.total_number_of_deposits))] unless (self.bank_account.nil? or self.bank_account.total_number_of_deposits.nil? or self.bank_account.total_deposits_value.nil? or (self.bank_account.total_deposits_value == 0))
         csv << ["Avg Total Deposits Per Month ", (ActionController::Base.helpers.number_to_currency (self.bank_account.total_deposits_value / self.bank_account.total_number_of_deposits))] unless (self.bank_account.nil? or self.bank_account.total_number_of_deposits.nil? or self.bank_account.total_deposits_value.nil? or (self.bank_account.total_deposits_value == 0))
-        csv << ["Negative Days ",]
-        csv << ["Total NSFs ",]
-        csv << ["Avg NSFs Per Month ",]
-        csv << ["Monthly NSFs High (worst month of 3) ",]
+        csv << ["Negative Days ",self.bank_account.total_negative_days]
+        csv << ["Total NSFs ", self.bank_account.transactions.overdraft.size]
+        csv << ["Avg NSFs Per Month ", self.bank_account.average_nsf_per_month]
+        csv << ["Monthly NSFs High (worst month of 3) ", ]
         csv << ["Monthly NSFs Low (least number of NSFs for that month) ",]
         csv << ["",]
         csv << ["BASIC CUSTOMER INFO"]

@@ -120,6 +120,10 @@ class BankAccount < ActiveRecord::Base
 		return count
 	end
 
+	def average_nsf_per_month
+		return self.transactions.overdraft.size / self.months_of_transactions
+	end
+
 	def months_of_transactions
 		return ( days_of_transactions / 30.0).to_f
 	end
@@ -143,10 +147,9 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def average_monthly_deposit
-		current_deposit_average = 0
-		current_deposit_average = self.deposits_one_month_ago if self.days_of_transactions >= 24
-		current_deposit_average = (current_deposit_average + self.deposits_two_months_ago)/2 if self.days_of_transactions >= 54
-		current_deposit_average = (current_deposit_average + self.deposits_two_months_ago)/3 if self.days_of_transactions >= 86
+		current_deposit_average = self.deposits_one_month_ago  
+		current_deposit_average = (self.deposits_one_month_ago + self.deposits_two_months_ago)/2 if self.days_of_transactions >= 54 and self.days_of_transactions < 86
+		current_deposit_average = (self.deposits_one_month_ago + self.deposits_two_months_ago + self.deposits_three_months_ago)/3 if self.days_of_transactions >= 86
 
 		return current_deposit_average
 	end
@@ -259,29 +262,6 @@ class BankAccount < ActiveRecord::Base
 		return self.transactions.where("type_code like ?", "%#{type_code}%")
 	end
 
-	def get_transactions_by_type_code_x_months_ago(type_code, month)
-		first_transaction_date = self.transactions.first.transaction_date
-		start_transaction_date = first_transaction_date.ago( 86400 * 30 * month)
-		end_transaction_date = start_transaction_date.ago( 86400 * 30)
-		self.transactions.where("transaction_date between ? and ?", start_transaction_date, end_transaction_date).size
-	end
-	
-	def average_deposits_amount_last_x_days(days)
-		
-		return false if self.last_reset.to_date > (self.transactions.last.transaction_date.to_date + days - 7)
-
-		start_date = self.last_reset.to_date
-		end_date = start_date - days
-		sum = 0
-
-		transactions = self.transactions.where("transaction_date.to_date > ? AND transaction_date.to_date <= ?", end_date, start_date)
-		debit_transactions = Transaction.get_transactions_by_type_from_array(transactions, "dp")
-		debit_transactions.each do |t|
-			sum = sum + t.amount
-		end
-		return (sum / days)
-	end
-
 	def negative_balance_amount_past_month_from_last_transaction
 		return get_negative_days_from_transactions(self.transactions_past_month_from_last_transaction)
 	end
@@ -350,6 +330,10 @@ class BankAccount < ActiveRecord::Base
 		return [false, 101, "Not enough transactions available", self.amount_days_of_transactions] if self.amount_days_of_transactions < DAYS_ENOUGH_TRANSACTIONS
 	end
 
+	def average_amount_of_deposits
+		return (self.transactions.deposits.months_ago(3).size + self.transactions.deposits.months_ago(2).size + self.transactions.deposits.months_ago(1).size) / 3
+	end
+
 	private
 
 	def amount_days_of_transactions
@@ -412,6 +396,8 @@ class BankAccount < ActiveRecord::Base
 	def transactions_last_x_days(days)
 		return self.transactions.select{|deposit| self.last_reset.to_date < (deposit.transaction_date.to_date + days) } 
 	end
+
+
 
 
 
