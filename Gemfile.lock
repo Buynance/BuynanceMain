@@ -231,6 +231,8 @@ GEM
     meta_events (1.2.0)
       activesupport (>= 3.0, <= 4.99.99)
       json (~> 1.0)
+    metamagic (3.1.4)
+      rails (>= 3.0.0)
     mime-types (1.25.1)
     mini_portile (0.6.0)
     minitest (4.7.5)
@@ -443,6 +445,7 @@ DEPENDENCIES
   mandrill-api
   maxminddb
   meta_events
+  metamagic
   mixpanel-ruby
   obfuscate_id!
   pg

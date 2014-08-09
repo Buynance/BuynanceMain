@@ -1,10 +1,10 @@
-ActiveAdmin.register CashAdvanceCompany do
+#ActiveAdmin.register CashAdvanceCompany do
 
-  controller do
-    def permitted_params
-      params.permit cash_advance_company: [:name, :is_validated]
-    end
-  end
+#  controller do
+#    def permitted_params
+#     params.permit cash_advance_company: [:name, :is_validated]
+#    end
+#  end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -18,4 +18,4 @@ ActiveAdmin.register CashAdvanceCompany do
   #  permitted
   # end
   
-end
+#end

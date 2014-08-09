@@ -1,4 +1,4 @@
-ActiveAdmin.register BusinessType do
+#ActiveAdmin.register BusinessType do
 
   
   # See permitted parameters documentation:
@@ -14,10 +14,10 @@ ActiveAdmin.register BusinessType do
   #  permitted
   # end
 
-  controller do
-    def permitted_params
-      params.permit business_type: [:name, :is_rejecting]
-    end
-  end
+#  controller do
+#    def permitted_params
+#      params.permit business_type: [:name, :is_rejecting]
+#    end
+#  end
   
-end
+#end

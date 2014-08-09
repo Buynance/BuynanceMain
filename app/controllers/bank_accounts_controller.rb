@@ -19,9 +19,8 @@ class BankAccountsController < ApplicationController
 			request_code = params[:requestCode]
 			@report = DecisionLogic.get_report_detail_from_request_code_4(request_code)
 			if(request_code == @report[:request_code] )
-				@bank_account = BankAccount.create
+				@bank_account = @business.bank_account
 				@bank_account.proccess_bank_information(@report)
-				@business.bank_account = @bank_account
 				@business.accept_as_lead
 				@bank_account.save
 				redirect_to account_url
