@@ -158,67 +158,12 @@ class BankAccount < ActiveRecord::Base
 		return self.average_deposit >= amount
 	end
 
-	def average_amount_of_transactions_atleast(amount, transaction_type)
-		transaction_list = get_transactions_by_type_code(transaction_type)
-		current_transaction_date = transactions.first.transaction_date.to_date
-		date_count = 0
-		transaction_count = 0
-		month1 = -1
-		month2 = -1
-		month3 = -1
-
-		transaction_list.each do |transaction|
-			if date_count > 30
-				if month1 == -1
-					month1 = transaction_count - 1
-				elsif month2 == -1
-					month2 = transaction_count - 1
-				elsif month3 == -1
-					month3 = transaction_count - 1
-				end
-				date_count = 
-				transaction_count = 1
-			end
-
-			transaction_count  = transaction_count + 1
-			if transaction.transaction_date.to_date  < current_transaction_date
-				date_count = date_count + (current_transaction_date - transaction.transaction_date.to_date)
-
-				current_transaction_date = transaction.transaction_date.to_date
-			end
-		end
-
-		if date_count > 26
-			if month3 == -1 and month1 > -1 and month2 > -1
-				month3 = transaction_count
-			elsif month2  == -1 and month1 > -1
-				month3 = transaction_count
-			elsif month1 == -1
-				month3 = transaction_count
-			end
-		end
-
-		return ((month1+month2+month3)/3) if month1 > -1 and month2 > -1 and month3 > -1
-		return ((month1+month2)/2) if month1 > -1 and month2 > -1 and month3 == -1
-		return -1
-	end
-
 
 	def calculate_last_three_months_deposits
-		monthly_deposit_array = [0,0,0,0,0,0]
-		start_date = transactions[0].transaction_date.to_date
-		total_month_deposit = 0
-		deposit_transactions = get_transactions_by_type_code("dp")
-		deposit_transactions.each do |transaction|
-			days_away = start_date - transaction.transaction_date.to_date
-			month = days_away / 30
-			monthly_deposit_array[month] = transaction.amount + monthly_deposit_array[month]
-		end
-
-		self.deposits_one_month_ago = monthly_deposit_array[0]
-		self.deposits_two_months_ago = monthly_deposit_array[1]
-		self.deposits_three_months_ago = monthly_deposit_array[2]
-		return monthly_deposit_array
+		self.deposits_one_month_ago = self.transactions.months_ago(1).deposits.sum(:amount)
+		self.deposits_two_months_ago = self.transactions.months_ago(2).deposits.sum(:amount)
+		self.deposits_three_months_ago = self.transactions.months_ago(3).deposits.sum(:amount)
+		return [self.deposits_one_month_ago, self.deposits_two_months_ago, self.deposits_three_months_ago]
 	end
 
 	def deposit_average_atleast(amount, is_last_three = false)	
