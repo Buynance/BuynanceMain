@@ -76,8 +76,8 @@ ActiveAdmin.register Business do
             row("Name")                       {|business| business.name}
             row("Owners First Name")          {|business| business.owner_first_name}
             row("Owners Last Name")           {|business| business.owner_last_name}
-            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format}
-            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format}
+            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
+            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
             row("Street Adress Line One")     {|business| business.street_address_one}
             row("Street Adress Line Two")     {|business| business.street_address_two}
             row("City")                       {|business| business.city}
@@ -213,21 +213,44 @@ ActiveAdmin.register Business do
   end
 
   csv do
-    column("Credit Score")                {|business| business.credit_score_range}
-    column("Tax Liens")                   {|business| business.is_tax_lien ? "Yes" : "No"}
-    column("Bankruptcy")                  {|business| business.is_ever_bankruptcy ? "Yes" : "No"}
-    column("Judgements")                  {|business| business.is_judgement ? "Yes" : "No"}
-    column("Days of Transaction")         {|business| (business.bank_account.days_of_transactions) unless business.bank_account.nil? }
-    column("Available Balance")           {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.available_balance) unless business.bank_account.nil? }
-    column("Average Balance")             {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.average_balance) unless business.bank_account.nil? }
-    column("Average Monthly Deposits")    {|business| ActionController::Base.helpers.number_to_currency business.bank_account.average_monthly_deposit unless (business.bank_account.nil? or business.bank_account.average_monthly_deposit.nil?)}
-    column("Avg Deposit Size")            {|business| ActionController::Base.helpers.number_to_currency (business.bank_account.total_deposits_value / business.bank_account.total_number_of_deposits) unless (business.bank_account.nil? or business.bank_account.total_number_of_deposits.nil? or business.bank_account.total_deposits_value.nil? or (business.bank_account.total_deposits_value == 0))} 
-    column("Total Number of Deposits")    {|business| (business.bank_account.total_number_of_deposits) unless business.bank_account.nil? }
-    column("Total Deposits Value")        {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.total_deposits_value) unless business.bank_account.nil?} 
-    column("Total Negative Days")         {|business| (business.bank_account.total_negative_days) unless business.bank_account.nil? }
-    column("Deposit One Months Ago")      {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_one_month_ago unless business.bank_account.nil?}
-    column("Deposit Two Months Ago")      {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_two_months_ago unless business.bank_account.nil?}
-    column("Deposit Three Months Ago")    {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_three_months_ago unless business.bank_account.nil?}
+    column("Business User ID")           {|business| business.business_user.id}
+    column("Business Name")              {|business| business.name}
+    column("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
+    column("Funnel")                     {|business| business.is_refinance ? "Revise" : "Funder"}
+    column("Current Step")               {|business| business.step }
+    column("Email")                      {|business| business.email}
+    column("Name")                       {|business| business.name}
+    column("Owners First Name")          {|business| business.owner_first_name}
+    column("Owners Last Name")           {|business| business.owner_last_name}
+    column("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
+    column("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
+    column("Street Adress Line One")     {|business| business.street_address_one}
+    column("Street Adress Line Two")     {|business| business.street_address_two}
+    column("City")                       {|business| business.city}
+    column("State")                      {|business| business.location_state}
+    column("Zip Code")                   {|business| business.zip_code}
+    column("New Phone Number")           {|business| GlobalPhone.parse(business.routing_number.phone_number).national_format unless business.routing_number.nil?}
+    column("Credit Score")               {|business| business.credit_score_range}
+    column("Bank Account State")         {|business| business.bank_account.state if !business.bank_account.nil?}
+    column("Bank Name")                  {|business| (business.bank_account.institution_name) unless business.bank_account.nil? }
+    column("Account Number")             {|business| (business.bank_account.account_number) unless business.bank_account.nil? }
+    column("Routing Number")             {|business| (business.bank_account.routing_number) unless business.bank_account.nil? }
+    column("Oldest Transaction Date")    {|business| (business.bank_account.transactions_from_date) unless business.bank_account.nil? }
+    column("Newest Transaction Date")    {|business| (business.bank_account.transactions_to_date) unless business.bank_account.nil? }
+    column("Days of Transaction")        {|business| (business.bank_account.days_of_transactions) unless business.bank_account.nil? }
+    column("Available Balance")          {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.current_balance) unless business.bank_account.nil? }
+    column("Average Balance")            {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.average_balance) unless business.bank_account.nil? }
+    column("Total Number of Deposits")   {|business| (business.bank_account.total_number_of_deposits) unless business.bank_account.nil? }
+    column("Total Deposits Value")       {|business| (ActionController::Base.helpers.number_to_currency business.bank_account.total_deposits_value) unless business.bank_account.nil?} 
+    column("Total Negative Days")        {|business| (business.bank_account.total_negative_days) unless business.bank_account.nil? }
+    column("Deposit One Months Ago")     {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_one_month_ago unless business.bank_account.nil?}
+    column("Deposit Two Months Ago")     {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_two_months_ago unless business.bank_account.nil?}
+    column("Deposit Three Months Ago")   {|business| ActionController::Base.helpers.number_to_currency business.bank_account.deposits_three_months_ago unless business.bank_account.nil?}
+    column("Average Monthly Deposits")   {|business| ActionController::Base.helpers.number_to_currency business.bank_account.average_monthly_deposit unless (business.bank_account.nil? or business.bank_account.average_monthly_deposit.nil?)}
+    column("Tax Lien?")                  {|business| (business.is_tax_lien ?  "yes" : "no" )}
+    column("Payment Plan?")              {|business| (business.is_payment_plan ? "yes" : "no" )}
+    column("Bankruptcy?")                {|business| (business.is_ever_bankruptcy ? "yes" :  "no" )}
+
   end
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
