@@ -209,71 +209,6 @@ class Business < ActiveRecord::Base
     return false
   end
 
-  def create_offers(amount)
-    average = Offer.get_three_months_average(self.earned_one_month_ago,
-        earned_two_months_ago, earned_three_months_ago)
-    days = Offer.get_days(self.approximate_credit_score_range) 
-    counter = 0 
-    offers_added = 0
-    for n in 0...amount 
-      if counter < 100 
-        if offers_added != 2
-          factor_rate = Offer.get_random_rate(1.35, 1.48)
-          factor_rate = Offer.get_random_rate(1.30, 1.38) if self.approximate_credit_score_range >= 4  
-          daily_rate = Offer.get_random_rate(0.13, 0.15)
-          daily_payback = Offer.get_daily_payback(self.average_daily_balance_bank_account, daily_rate)
-          total_payback = daily_payback * days
-          offer = (total_payback / factor_rate).round(-2)
-
-          total_payback = offer * factor_rate
-          daily_payback = total_payback / days
-
-          if(offer > (average * 0.35))
-            percent_monthly = Offer.get_random_rate(0.33, 0.35)
-            offer = (average * percent_monthly).round(-2)
-            total_payback = offer * factor_rate
-            daily_payback = total_payback / days
-          end
-
-          if offer < 5000
-            n = n-1
-          else
-            offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_best_offer: false, is_active: true)
-            offers_added = offers_added + 1
-          end
-            counter = counter + 1;
-        else
-          offer = self.best_possible_offer
-          factor_rate =  Offer.get_random_rate(1.30, 1.31)
-          total_payback = offer * factor_rate
-          daily_payback = total_payback / days
-          if(offer > (average * 0.40))
-            percent_monthly = Offer.get_random_rate(0.39, 0.40)
-            offer = (average * percent_monthly).round(-2)
-            total_payback = offer * factor_rate
-            daily_payback = total_payback / days
-          end
-          offers << Offer.create(cash_advance_amount: offer, daily_merchant_cash_advance: daily_payback,
-            days_to_collect: days, total_payback_amount: total_payback, factor_rate: factor_rate, is_timed: true, is_best_offer: true, is_active: true)
-          offers_added = offers_added + 1
-          counter = counter + 1
-        end
-      end
-    end
-  end
-
-  def main_offer
-    return Offer.find(self.main_offer_id)
-  end
-  
-  def best_possible_offer
-      days = Offer.get_days(self.approximate_credit_score_range)
-      rate = 1.35
-      rate = 1.30 if days >= 120
-      best =  Offer.get_best_possible_offer(self.average_daily_balance_bank_account, days, rate)
-      return best
-  end
 
   def accept_as_lead
     self.deliver_activation_instructions!
@@ -288,6 +223,52 @@ class Business < ActiveRecord::Base
   def get_deal_type_label(number)
     return DEAL_TYPE_ARRAY[number]
   end
+
+  def credit_score_range
+    return CREDIT_SCORE_RANGES[self.approximate_credit_score_range] unless self.approximate_credit_score_range.nil?
+    return "Not Available"
+  end
+
+  def to_csv
+      CSV.generate do |csv|
+        csv << ["Lead ID Number ", self.id]
+        csv << [""]
+        csv << ["BANK DATA COLLECTED"]
+        csv << ["Avg Deposit Size ",  (ActionController::Base.helpers.number_to_currency (self.bank_account.total_deposits_value / self.bank_account.total_number_of_deposits))] unless (self.bank_account.nil? or self.bank_account.total_number_of_deposits.nil? or self.bank_account.total_deposits_value.nil? or (self.bank_account.total_deposits_value == 0))
+        csv << ["Avg Total Deposits Per Month ", (ActionController::Base.helpers.number_to_currency (self.bank_account.total_deposits_value / self.bank_account.total_number_of_deposits))] unless (self.bank_account.nil? or self.bank_account.total_number_of_deposits.nil? or self.bank_account.total_deposits_value.nil? or (self.bank_account.total_deposits_value == 0))
+        csv << ["Negative Days ",self.bank_account.total_negative_days]
+        csv << ["Total NSFs ", self.bank_account.transactions.overdraft.size]
+        csv << ["Avg NSFs Per Month ", self.bank_account.average_nsf_per_month]
+        csv << ["Monthly NSFs High (worst month of 3) ", ]
+        csv << ["Monthly NSFs Low (least number of NSFs for that month) ",]
+        csv << ["",]
+        csv << ["BASIC CUSTOMER INFO"]
+        csv << ["Credit Score", self.credit_score_range]
+        csv << ["Tax Liens:", self.is_tax_lien ? "Yes" : "No"]
+        csv << ["Bankruptcies:", self.is_ever_bankruptcy ? "Yes" : "No"]
+        csv << ["Judgments:", self.is_judgement ? "Yes" : "No"]
+        csv << ["City:", self.city]
+        csv << ["State:", self.location_state]
+        csv << ["Zip:", self.zip_code]
+        csv << ["",]
+        csv << ["DEAL INFO (IF APPLICABLE)",]
+        csv << ["Deal Type:",]
+        csv << ["Current Funder: Provided after purchase",]
+        csv << ["Date Issued:",]
+        csv << ["Net Wired:",]
+        csv << ["Total Payback:",]
+        csv << ["Current Balance:",]
+        csv << ["Requested Amount:",]
+        csv << ["",]
+        csv << ["BELOW ARE THE ITEMS THAT WILL BE PROVIDED IN THE CSV FILE",]
+        csv << ["Owner First Name", self.owner_first_name]
+        csv << ["Owner Last Name",self.owner_last_name]
+        csv << ["Company Name", self.name]
+        csv << ["Address", "#{self.street_address_one}, #{self.street_address_two} #{self.city} #{self.location_state} #{self.zip_code}"]
+        csv << ["Business Phone Number", GlobalPhone.parse(self.phone_number).national_format]
+        csv << ["Mobile Phone Number", GlobalPhone.parse(self.mobile_number).national_format]
+      end
+    end
 
   private
 
@@ -360,4 +341,18 @@ class Business < ActiveRecord::Base
       regular_code = virgin_code.downcase.gsub(/[-_]/,'')[0,8]
       return regular_code
     end
+
+    
 end
+
+
+
+
+
+
+
+
+
+
+
+
