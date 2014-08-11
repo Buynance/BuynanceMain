@@ -1,6 +1,6 @@
 window['businesses#new'] = (data) ->
   if data.is_production
-    mixpanel.track("View - Signup Page") ;
+    mixpanel.track("View - Signup Page");
 
 window['businesses#qualified_market'] = (data) ->
   if data.is_production

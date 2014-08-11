@@ -117,6 +117,10 @@ Buynance::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   # You can have the root of your site routed with "root"
+
+  get 'repdash' => 'representatives#add_business', as: :repdash_path
+  post 'add_business_action' => 'representatives#add_business_action', as: :add_business_action
+
   root 'static_pages#index'
 
   
