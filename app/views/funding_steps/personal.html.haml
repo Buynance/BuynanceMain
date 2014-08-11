@@ -75,10 +75,10 @@
                             = f.input :mobile_disclaimer, as: :boolean, label: false, :boolean_style => :inline, :wrapper_html => { :style => 'display: inline; margin-right: 5px;' }, error: false
                             - if @business.errors.include?(:mobile_disclaimer)
                               %span#sms-disclaimer.disclaimer-label{style: "font-size: 12px; color: #a94442;"} 
-                                By checking this box I give Buynance the express written permission to contact me via email, phone, text (SMS/MMS), and/or cell phone. This consent is not conditional of receiving services from Buynance.
+                                By checking this box I give Buynance the express written permission to contact me via e-mail, phone, text (SMS/MMS), and/or cell phone.  This consent is not conditional of receiving services from Buynance.
                             - else
                               %span.disclaimer-label{style: "font-size: 13px; color: #878787;font-family: 'latoregular', Arial, sans-serif;"} 
-                                By checking this box I give Buynance the express written permission to contact me via email, phone, text (SMS/MMS), and/or cell phone. This consent is not conditional of receiving services from Buynance.
+                                By checking this box I give Buynance the express written permission to contact me via e-mail, phone, text (SMS/MMS), and/or cell phone.  This consent is not conditional of receiving services from Buynance.
                           .paper-section-bank-login-form-action
                             = f.submit "Continue", class: "form-button flat-button button-submit"
                     .paper-section-bank-login-right.col-xs-5.fix-overflow
