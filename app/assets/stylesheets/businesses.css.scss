@@ -96,6 +96,14 @@ $lato-light: 'latolight', Arial, sans-serif;
                 color: $buynance-green;
             }
         }
+        .account-body-video{  
+            margin-top: 40px;
+            iframe{
+                margin: 0 auto;
+                display: block;
+            }
+
+        }
         .account-body-list{
             .account-body-list-item{
                 margin-top: 40px;
