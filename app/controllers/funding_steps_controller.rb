@@ -44,10 +44,14 @@ class FundingStepsController < ApplicationController
 					if @bank_account.routing_number == "skip"
 						@business.accept_as_lead
 						@business.qualify_for_market
+						@business.passed_bank_prelogin
+						@business.passed_bank_login
 						redirect_to account_url
 					elsif @bank_account.routing_number == "market"
 						@business.accept_as_lead
 						@business.qualify_for_market
+						@business.passed_bank_prelogin
+						@business.passed_bank_login
 						redirect_to account_url	
 					else
 						@bank_account.current_step = step
@@ -59,10 +63,14 @@ class FundingStepsController < ApplicationController
 					if @bank_account.routing_number == "market"
 						@business.accept_as_lead
 						@business.qualify_for_market
+						@business.passed_bank_prelogin
+						@business.passed_bank_login
 						redirect_to account_url
 					elsif @bank_account.routing_number == "funder"
 						@business.accept_as_lead
 						@business.qualify_for_funder
+						@business.passed_bank_prelogin
+						@business.passed_bank_login
 						redirect_to account_url
 					else
 						@bank_account.current_step = step
