@@ -128,7 +128,8 @@ class BusinessesController < ApplicationController
         #end
         business.mobile_confirmation_provided
         business.passed_mobile_confirmation
-        business.setup_mobile_routing if Rails.env.production?
+        business.deliver_jared_email!
+        #business.setup_mobile_routing if Rails.env.production?
       else
         business.mobile_confirmation_provided
         business.passed_mobile_confirmation

@@ -88,7 +88,7 @@ class Business < ActiveRecord::Base
   def send_mobile_confirmation!
     TwilioLib.send_activation_code(self.mobile_number, self.mobile_opt_code)
   end
-  handle_asynchronously :send_mobile_confirmation!
+  #handle_asynchronously :send_mobile_confirmation!
   
   def send_mobile_information!
     TwilioLib.send_text(self.mobile_number, "Your 100% FREE Buynance Number Is: #{GlobalPhone.parse(self.routing_number.phone_number).national_format}.  It keeps solicitors from spamming your cell phone!  See e-mail for usage info. Have a successful day!")
@@ -103,7 +103,7 @@ class Business < ActiveRecord::Base
     reset_perishable_token!
     BusinessMailer.email_registration(self).deliver!
   end
-  handle_asynchronously :deliver_activation_instructions!
+  #handle_asynchronously :deliver_activation_instructions!
 
   def deliver_welcome!
     reset_perishable_token!

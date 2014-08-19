@@ -33,6 +33,10 @@ module BusinessNotifications
     end
     handle_asynchronously :deliver_qualified_user!, :priority => 5
 
+    def deliver_jared_email!
+      BusinessMailer.jared_success_signup(self).deliver!
+    end
+
     # SMS Notifications
 
     def deliver_qualified_user_sms!
