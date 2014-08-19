@@ -127,8 +127,6 @@ class BusinessesController < ApplicationController
         #  business.deliver_qualified_signup!
         #end
         business.mobile_confirmation_provided
-        business.passed_mobile_confirmation
-        
         #business.setup_mobile_routing if Rails.env.production?
       else
         business.mobile_confirmation_provided
