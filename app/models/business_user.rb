@@ -1,6 +1,6 @@
 class BusinessUser < ActiveRecord::Base
 	include BusinessUserValidations
-	attr_accessor :current_step
+	attr_accessor :current_step, :email_confirmation
 
   	obfuscate_id :spin => 89238723
   	belongs_to :business

@@ -169,7 +169,7 @@ class BusinessesController < ApplicationController
 
     def business_user_params
       return params.require(:business_user).permit(:email, 
-        :password, :password_confirmation) 
+        :password, :password_confirmation, :email_confirmation) 
     end
 
     def business_params
