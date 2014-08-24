@@ -127,8 +127,7 @@ class BusinessesController < ApplicationController
         #  business.deliver_qualified_signup!
         #end
         business.mobile_confirmation_provided
-        business.passed_mobile_confirmation
-        business.setup_mobile_routing if Rails.env.production?
+        #business.setup_mobile_routing if Rails.env.production?
       else
         business.mobile_confirmation_provided
         business.passed_mobile_confirmation
@@ -170,7 +169,7 @@ class BusinessesController < ApplicationController
 
     def business_user_params
       return params.require(:business_user).permit(:email, 
-        :password, :password_confirmation) 
+        :password, :password_confirmation, :email_confirmation) 
     end
 
     def business_params

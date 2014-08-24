@@ -36,6 +36,10 @@ module BusinessStates
         business.send_qulaified_lead_notifications!
       end
 
+      after_transition :on => :passed_mobile_confirmation do |business, t|
+        business.deliver_jared_email!
+      end
+
       event :passed_personal do
         transition [:personal] => :revise
       end

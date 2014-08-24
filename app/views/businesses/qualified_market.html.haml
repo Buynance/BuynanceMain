@@ -15,25 +15,28 @@
                     %span 
                       = "Hi #{@business.owner_first_name},"
                   .account-top-info-message
-                    %span I'm excited because it looks like we will be able to start a competition to get your daily collection reduced! When funders compete you win.
+                    %span I'm excited because we have have match you up with one of our preferred funding partners. Jared Weitz will be contacting you soon.
+              .account-funder
+                .account-funder-header
+                  %span Our Specifically Selected Funding Partner
+                .account-funder-body.clearfix
+                  .account-funder-body-image
+                    = image_tag("united_capital.png")
+                  .account-funder-body-information
+                    .account-funder-spec
+                      %span Name: 
+                      %span Jared Weitz
+                    .account-funder-spec
+                      %span Phone Number: 
+                      %span 646-448-1701
+                    .account-funder-spec
+                      %span Email: 
+                      %span Jared@unitedcapitalsource.com
+
               .account-body
                 .account-body-header
-                  %span Here Is How We Protect You During The Process
-                .account-body-list
-                  .account-body-list-item.clearfix
-                    .account-body-list-item-icon
-                      = image_tag("check.png")
-                    .account-body-list-item-text
-                      %span We preserve your FICO score. You'll be able to get great offers without getting your credit dinged.
-                  .account-body-list-item.clearfix
-                    .account-body-list-item-icon
-                      = image_tag("check.png")
-                    .account-body-list-item-text
-                      %span We protect your mobile number. We've given you a Buynance Number. This number masks your cell phone numbers. It was all my idea - a simple way of keeping people from abusing your number. 
-                  .account-body-list-item.clearfix
-                    .account-body-list-item-icon
-                      = image_tag("check.png")
-                    .account-body-list-item-text
-                      %span We've pre-screened our partners. If there is any issue with any partner, let us know and they will get the boot.
+                  %span Check out the video below to learn a bit more about United Capital Source.
+                .account-body-video
+                  %iframe{:allowfullscreen => "", :frameborder => "0", :height => "360", :src => "//www.youtube.com/embed/BfhunFe62kc?rel=0", :width => "640"}
               .account-footer
-                %span If you have any questions do not hesitate to call us.
+                %span If you have any questions do not hesitate to me directly.

@@ -40,7 +40,12 @@ class BusinessMailer < ActionMailer::Base
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
-
+  def jared_success_signup(business)
+    @business = business
+    mail :subject => "We have matched you with a funder!",
+         :to      => business.email,
+         :from    => "Yuliya Glazman <yuliya@buynance.com>"
+  end
   
   
 end
