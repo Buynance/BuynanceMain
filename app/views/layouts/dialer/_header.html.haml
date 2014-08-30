@@ -20,12 +20,12 @@
             = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
               %span Log Out
           - else
-            %a#header-login-button.flat-button.homepage-button-left{href: "#{url_for new_rep_dialer_registration_path}"}
+            = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post, class: "flat-button homepage-button-left", id: "header-login-button" do
               %span Log In
           .homepage-header-actions-button
           - if rep_dialer_signed_in? 
             %a#header-account-button.flat-button.homepage-button-right{href: "/dialer_dashboards/account"}
               %span Account
           - else
-            %a#header-login-button.flat-button.homepage-button-left{href: "#{url_for new_rep_dialer_registration_path}"}
+            = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post, class: "flat-button homepage-button-left", id: "header-login-button" do
               %span Sign Up

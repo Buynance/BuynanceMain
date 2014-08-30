@@ -1,3 +1,21 @@
-= simple_form_for @representative, url: setup_action_dialer_dashboards_path do |f|
-  = f.input :paypal_email
-  = f.button :submit
+.web_body
+  .paper-section
+    .paper-section-header
+      Set Up
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .paper-section-bank-login-left.col-xs-7
+              .paper-section-bank-login-left-header
+                %span Link Your Paypal Account
+              .paper-section-bank-login-form
+                = simple_form_for @representative, url: setup_action_dialer_dashboards_path do |f|
+                  .paper-section-bank-login-form-label
+                    %span Paypal Email
+                  .paper-section-bank-login-form-input
+                    = f.input :paypal_email, input_html: {class: 'textbox'}, label: false, error: false
+                  .paper-section-bank-login-form-action
+                    = f.submit "Continue", class: "form-button flat-button button-submit"
+            .paper-section-bank-login-right.col-xs-5
+              = render "shared/funding_sidebar"

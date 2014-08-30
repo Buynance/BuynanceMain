@@ -5,9 +5,9 @@ class PaypalPayment
 	PayPal::SDK.configure(
 	  :mode      => "sandbox",  # Set "live" for production
 	  :app_id    => "APP-80W284485P519543T",
-	  :username  => "edwin-facilitator_api1.buynance.com",
-	  :password  => "H99274MPAKYFLCJH",
-	  :signature => "A1CjyoTrxc.2mU98z6PPfjn6yG6WApjK-eT8TSaANdtzokcy1PLKQC-4" )
+	  :username  => "buynancefunder-facilitator_api1.gmail.com",
+	  :password  => "TKKQBX9RE4XJ7U6J",
+	  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A.BptIXiDoBsratHXvbekedvpOqS" )
 
 	@api = PayPal::SDK::AdaptivePayments.new
 
@@ -17,7 +17,7 @@ class PaypalPayment
 		  :cancelUrl => "http://localhost:3000/samples/adaptive_payments/pay",
 		  :currencyCode => "USD",
 		  :feesPayer => "SENDER",
-		  :senderEmail => "edwin-facilitator@buynance.com",
+		  :senderEmail => "buynancefunder-facilitator@gmail.com",
 		  :receiverList => {
 		    :receiver => [{
 		      :amount => 100.0,

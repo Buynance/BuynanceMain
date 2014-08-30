@@ -1,1 +1,11 @@
-%h1 This is the account page.
+.web_body
+  .paper-section
+    .paper-section-header
+      %span Account
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .account
+              %h1 Referral Code #{@representative.referral_code}
+              %hq Paypal Email #{@representative.paypal_email}

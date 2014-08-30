@@ -38,7 +38,7 @@ module BusinessStates
 
       after_transition :on => :passed_mobile_confirmation do |business, t|
         business.deliver_jared_email!
-        ReferralPayment.add(self.id, rep_dialer_id) unless self.rep_dialer_id.nil?
+        ReferralPayment.add(business.id, business.rep_dialer_id) unless business.rep_dialer_id.nil?
       end
 
       event :passed_personal do
