@@ -25,6 +25,6 @@ class ReferralPayment < ActiveRecord::Base
 	def make_payment!
 		PaypalPayment.pay(RepDialer.find(self.rep_dialer_id).paypal_email)
 	end
-	handle_asynchronously :make_payment!
+	#handle_asynchronously :make_payment!
 
 end
