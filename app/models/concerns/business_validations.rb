@@ -19,6 +19,9 @@ module BusinessValidations
 	inclusion: {:in => [true, false], message: "Please select your business financing type."},
 	on: :create
 
+	validate :parse_referral_code,
+	on: :create
+
 	
 
     #########################################################################

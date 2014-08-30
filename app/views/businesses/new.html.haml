@@ -56,14 +56,23 @@
                                   %span Confirm your Buynance password
                                 .paper-section-bank-login-form-input
                                   = business_fields.password_field :password, placeholder: 'Password', class: 'textbox required', label: false
-                                .paper-section-bank-login-form-disclaimer
-                                  %span 
-                                    By continuing you are accepting our 
-                                    %a{href:"/tos", target: "_blank"} Terms of Service
-                                    and
-                                    %a{href:"/privacy", target: "_blank"} Privacy Policy
-                                .paper-section-bank-login-form-action
-                                  = f.submit "Continue", class: "form-button flat-button button-submit"
+                            .paper-section-bank-login-form-label
+                              %span How did you hear about us?
+                            .paper-section-bank-login-form-input
+                              = f.input :discovery_type_id, include_blank: '', as: :select, collection: DiscoveryType.all, label_method: :name, value_method: :id, input_html: {class: 'textbox', id: 'discovery_type_input'}, label: false,  error: false
+                            #referral_code_input
+                              .paper-section-bank-login-form-label
+                                %span What is the Referral Code?
+                              .paper-section-bank-login-form-input
+                                = f.input :referral_code, placeholder: 'Referral Code', input_html: {class: 'textbox required'}, label: false, error: false   
+                            .paper-section-bank-login-form-disclaimer
+                              %span 
+                                By continuing you are accepting our 
+                                %a{href:"/tos", target: "_blank"} Terms of Service
+                                and
+                                %a{href:"/privacy", target: "_blank"} Privacy Policy
+                            .paper-section-bank-login-form-action
+                              = f.submit "Continue", class: "form-button flat-button button-submit"
                       .paper-section-bank-login-right.col-xs-5.fix-overflow
                         - if @business.is_refinance?
                           = render "shared/refinance_sidebar"

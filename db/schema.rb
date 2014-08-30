@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140804043312) do
+ActiveRecord::Schema.define(version: 20140829223247) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -246,6 +246,8 @@ ActiveRecord::Schema.define(version: 20140804043312) do
     t.integer  "funding_type",                                   default: 0
     t.boolean  "mobile_disclaimer"
     t.string   "step"
+    t.integer  "discovery_type_id"
+    t.integer  "rep_dialer_id"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
@@ -304,6 +306,13 @@ ActiveRecord::Schema.define(version: 20140804043312) do
   end
 
   add_index "delayed_jobs", ["priority", "run_at"], name: "delayed_jobs_priority"
+
+  create_table "discovery_types", force: true do |t|
+    t.string   "name"
+    t.string   "description"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "documents", force: true do |t|
     t.string   "name"
@@ -408,6 +417,46 @@ ActiveRecord::Schema.define(version: 20140804043312) do
     t.float    "daily_merchant_cash_advance"
     t.integer  "total_month_fully_profitable_again"
     t.integer  "other_monthly_loan_collection"
+  end
+
+  create_table "referral_payments", force: true do |t|
+    t.integer  "business_id"
+    t.integer  "rep_dialer_id"
+    t.string   "state"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "rep_dialers", force: true do |t|
+    t.string   "email",                  default: "", null: false
+    t.string   "encrypted_password",     default: "", null: false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "name"
+    t.string   "referral_code"
+    t.string   "state"
+    t.string   "paypal_email"
+  end
+
+  add_index "rep_dialers", ["email"], name: "index_rep_dialers_on_email", unique: true
+  add_index "rep_dialers", ["reset_password_token"], name: "index_rep_dialers_on_reset_password_token", unique: true
+
+  create_table "representatives", force: true do |t|
+    t.string   "email"
+    t.string   "first_name"
+    t.string   "last_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "routing_numbers", force: true do |t|

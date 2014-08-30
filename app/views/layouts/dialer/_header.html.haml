@@ -1,0 +1,31 @@
+.homepage-fluid-container{style: "padding-top: 0; padding-bottom: 0;"}
+  .homepage-nav
+    .homepage-header.homepage-header-container.clearfix
+      .hompage-header-logo
+        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/")
+      .homepage-header-links.clearfix
+        .homepage-header-links-section.homepage-header-links-why
+          %a{href: '/about'} Why Buynance
+        .homepage-header-links-section.homepage-header-links-blog 
+          %a{href: "/blog"} Blog
+        .homepage-header-links-section.homepage-header-links-phone
+          = image_tag("phone_icon.jpg")
+          %a{href: "tel:+1800229933"} 1-888-504-6302
+        .homepage-header-links-section.homepage-header-links-email
+          = image_tag("mail_icon.jpg")
+          %a{href: "mailto:team@buynance.com"} Email Us
+      .homepage-header-actions
+        .homepage-header-actions-button
+          - if rep_dialer_signed_in? 
+            = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
+              %span Log Out
+          - else
+            %a#header-login-button.flat-button.homepage-button-left{href: "#{url_for new_rep_dialer_registration_path}"}
+              %span Log In
+          .homepage-header-actions-button
+          - if rep_dialer_signed_in? 
+            %a#header-account-button.flat-button.homepage-button-right{href: "/dialer_dashboards/account"}
+              %span Account
+          - else
+            %a#header-login-button.flat-button.homepage-button-left{href: "#{url_for new_rep_dialer_registration_path}"}
+              %span Sign Up

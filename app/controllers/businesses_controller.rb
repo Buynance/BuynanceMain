@@ -173,7 +173,7 @@ class BusinessesController < ApplicationController
     end
 
     def business_params
-      return params.require(:business).permit(:terms_of_service, :recovery_code, :name, :is_refinance) 
+      return params.require(:business).permit(:terms_of_service, :recovery_code, :name, :is_refinance, :referral_code, :discovery_type_id) 
     end
 end
 

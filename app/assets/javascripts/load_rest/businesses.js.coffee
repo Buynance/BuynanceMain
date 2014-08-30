@@ -51,3 +51,11 @@ window['businesses#confirm_account'] = (data) ->
     mixpanel.people.set_once({'Confirmed Email': true} ) ;
     mixpanel.track("View - Mobile Number Confirmation") ;
 
+$( document ).ready ->
+  if $("#discovery_type_input option:selected").text() != "Representative"
+    $("#referral_code_input").css("display", "none")
+  $("#discovery_type_input").on "change", ->
+      if $("#discovery_type_input option:selected").text() == "Representative"
+        $("#referral_code_input").css("display", "block")
+      else
+        $("#referral_code_input").css("display", "none")

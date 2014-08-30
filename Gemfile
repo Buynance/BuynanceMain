@@ -38,6 +38,8 @@ gem 'jbuilder', '~> 1.2'
 
 
 gem 'devise'
+gem 'omniauth'
+gem 'omniauth-linkedin' 
 
 gem 'activeadmin', github: 'gregbell/active_admin'
 
@@ -93,6 +95,8 @@ gem 'meta_events'
 gem "airbrake"
 
 gem "metamagic"
+
+gem 'paypal-sdk-adaptivepayments'
 
 
 group :doc do

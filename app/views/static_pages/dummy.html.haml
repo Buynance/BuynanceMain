@@ -1,0 +1,7 @@
+- if rep_dialer_signed_in?
+  Signed in as #{current_rep_dialer.name}. Not you?
+  \#{link_to "Sign out", destroy_rep_dialer_session_path,:method => :delete}
+- else
+  = link_to "Sign up", new_rep_dialer_registration_path
+  or
+  \#{link_to "Sign in", new_rep_dialer_session_path}#{link_to "Sign in with Linkedin",rep_dialer_omniauth_authorize_path(:linkedin)}

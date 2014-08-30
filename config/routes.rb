@@ -1,5 +1,6 @@
 Buynance::Application.routes.draw do
 
+  devise_for :rep_dialers, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope(:path_names => { :new => "merchant-cash-advance" }) do
@@ -68,6 +69,15 @@ Buynance::Application.routes.draw do
       post "accept_offer", as: :accept_offer
     end
   end
+
+  resources :dialer_dashboards, only: [:home, :setup, :setup_action, :account] do
+    collection do
+      get 'home', as: :dialer_home
+      get 'account', as: :dialer_account
+      patch 'setup_action', as: :setup_action
+      get 'setup', as: :setup
+    end
+  end
   
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 
@@ -119,6 +129,9 @@ Buynance::Application.routes.draw do
   # See how all your routes lay out with "rake routes".
   match "/delayed_job" => DelayedJobWeb, :anchor => false, via: [:get, :post]
   # You can have the root of your site routed with "root"
+  
+  #OmniAuth linkedin
+
   root 'static_pages#index'
 
   
