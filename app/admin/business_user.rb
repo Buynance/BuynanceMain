@@ -12,6 +12,7 @@ ActiveAdmin.register BusinessUser do
   #  permitted << :other if resource.something?
   #  permitted
   # end
+  menu false
 
   show do  |business_user|
     panel 'Basic Information' do

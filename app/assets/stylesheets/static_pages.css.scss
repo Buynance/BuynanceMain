@@ -138,3 +138,37 @@ $lato-light: "latolight", Arial, sans-serif;
     	}
     }        
 }
+
+.paper-section-regular{
+	min-height: 500px;
+	padding-left: 20px;
+	padding-right: 50px;
+	.paper-section-regular-header{
+		color: rgb(141, 198, 63);
+        margin-bottom: 50px;
+		span{
+			font-size: 24px;
+            font-family: $lato-bold;
+		}
+	}
+    .paper-section-regular-body{
+        font-family: $lato-regular;
+    	span, p, a{
+    		color: #6f6f6f;
+    		font-size: 16px;
+    		line-height: 28px;
+    	}
+
+    	a {
+    		color: $buynance-blue;
+    	}
+
+    	ul {
+    		list-style-type: none;
+    	}
+    	.paper-section-regular-body-info{
+    		margin-bottom: 2.0em;
+
+    	}
+    }        
+}

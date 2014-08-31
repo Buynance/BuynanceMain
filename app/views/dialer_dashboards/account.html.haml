@@ -6,6 +6,9 @@
       .paper-section-main-sheet.first-paper-section.clearfix
         .paper-section-main-sheet.last-paper-section
           .paper-section-bank-login.row
-            .account
-              %h1 Referral Code #{@representative.referral_code}
-              %hq Paypal Email #{@representative.paypal_email}
+            - if @representative.awaiting_acceptance?
+              = render "dialer_dashboards/account/pending"
+            - elsif @representative.accepted?
+              = render "dialer_dashboards/account/accepted"
+            - elsif @representative.rejected?
+              = render "dialer_dashboards/account/rejected"
