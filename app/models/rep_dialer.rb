@@ -6,6 +6,15 @@ class RepDialer < ActiveRecord::Base
 
   before_create :setup_referral_code
 
+  validates :paypal_email, 
+  format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
+  allow_nil: true
+
+  scope :awaiting_paypal,      where(state: "awaiting_paypal")
+  scope :awaiting_acceptance,      where(state: "awaiting_acceptance")
+  scope :accepted,      where(state: "accepted")
+  scope :rejected,      where(state: "rejected")
+
   state_machine :state, :initial => :awaiting_paypal do
 
     event :add_paypal do
@@ -14,6 +23,10 @@ class RepDialer < ActiveRecord::Base
 
     event :accept do
       transition [:awaiting_acceptance] => :accepted
+    end
+
+    event :reject do
+      transition [:awaiting_acceptance] => :rejected
     end
 
   end
@@ -27,7 +40,8 @@ class RepDialer < ActiveRecord::Base
       if registered_rep_dialer
         return registered_rep_dialer
       else
-        rep_dialer = RepDialer.create(name:auth.info.first_name,
+        rep_dialer = RepDialer.create(name: "#{auth.info.first_name} #{auth.info.last_name}",
+          profile_url: auth.info.urls.public_profile,
           provider:auth.provider,
           uid:auth.uid,
           email:auth.info.email,

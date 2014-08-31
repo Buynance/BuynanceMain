@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140829223247) do
+ActiveRecord::Schema.define(version: 20140831052939) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -446,6 +446,7 @@ ActiveRecord::Schema.define(version: 20140829223247) do
     t.string   "referral_code"
     t.string   "state"
     t.string   "paypal_email"
+    t.string   "profile_url"
   end
 
   add_index "rep_dialers", ["email"], name: "index_rep_dialers_on_email", unique: true

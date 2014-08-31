@@ -5,9 +5,9 @@ ActiveAdmin.register ReferralPayment do
 
   member_action :pay_index, :method => :put do
       referral_payment = ReferralPayment.find(params[:id])
-      #representative = RepDialer.find(referral_payment.rep_dialer_id)
       referral_payment.pay
-      redirect_to :action => :index, :notice => "Representative Paid"
+      flash[:notice] = "Representative Paid"
+      redirect_to :action => :index
   end
 
   index do 

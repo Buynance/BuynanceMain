@@ -78,7 +78,8 @@ Buynance::Application.routes.draw do
       get 'setup', as: :setup
     end
   end
-  
+  get 'dialer' => 'dialer_dashboards#home'
+
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 
   

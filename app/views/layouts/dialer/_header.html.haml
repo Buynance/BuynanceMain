@@ -1,31 +1,29 @@
 .homepage-fluid-container{style: "padding-top: 0; padding-bottom: 0;"}
   .homepage-nav
     .homepage-header.homepage-header-container.clearfix
-      .hompage-header-logo
-        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/")
-      .homepage-header-links.clearfix
-        .homepage-header-links-section.homepage-header-links-why
+      .hompage-header-logo{style: "width: 30.5%;"}
+        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/dialer")
+      .homepage-header-dialer-links.clearfix
+        .homepage-header-dialer-links-section
           %a{href: '/about'} Why Buynance
-        .homepage-header-links-section.homepage-header-links-blog 
-          %a{href: "/blog"} Blog
-        .homepage-header-links-section.homepage-header-links-phone
-          = image_tag("phone_icon.jpg")
-          %a{href: "tel:+1800229933"} 1-888-504-6302
-        .homepage-header-links-section.homepage-header-links-email
-          = image_tag("mail_icon.jpg")
-          %a{href: "mailto:team@buynance.com"} Email Us
-      .homepage-header-actions
+        .homepage-header-dialer-links-section
+          %a{href: '/about'} How You Help
+        .homepage-header-dialer-links-section
+          %a{href: '/about'} How This Works
+        .homepage-header-dialer-links-section.small-section
+          %a{href: '/about'} Benefits
+        .homepage-header-dialer-links-section.small-section
+          %a{href: '/about'} FAQ
+      .homepage-header-dialer-actions
         .homepage-header-actions-button
-          - if rep_dialer_signed_in? 
-            = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
-              %span Log Out
-          - else
-            = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post, class: "flat-button homepage-button-left", id: "header-login-button" do
-              %span Log In
           .homepage-header-actions-button
-          - if rep_dialer_signed_in? 
-            %a#header-account-button.flat-button.homepage-button-right{href: "/dialer_dashboards/account"}
-              %span Account
-          - else
-            = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post, class: "flat-button homepage-button-left", id: "header-login-button" do
-              %span Sign Up
+            - if rep_dialer_signed_in? 
+              = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
+                %span Log Out
+            - else
+              = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post do
+                = image_tag("connect_with_linkedin.gif")
+          .homepage-header-actions-button
+            - if rep_dialer_signed_in? 
+              %a#header-account-button.flat-button.homepage-button-right{href: "/dialer_dashboards/account"}
+                %span Account
