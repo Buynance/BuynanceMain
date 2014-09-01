@@ -21,7 +21,7 @@ $lato-light: "latolight", Arial, sans-serif;
         float: left;
         width: 23%;
         color: #20acd7;
-
+        cursor: pointer;
         span, a{
           	font-size: 1.5em;
         	text-decoration: none;
@@ -81,6 +81,17 @@ $lato-light: "latolight", Arial, sans-serif;
     position: relative;
     width: 100%;
     height: 55.5em;
+    
+
+    img{
+      width: 26.8em;
+      height: 6.5em;
+    }
+
+    .dialer-banner-linkedin{
+      margin-left: 40%;
+      margin-top: 33%;
+    }
 }
 
 .dialer-fluid, .dialer-fluid-gray{
@@ -90,6 +101,10 @@ $lato-light: "latolight", Arial, sans-serif;
 
 .dialer-fluid-gray{
 	background-color: $background-gray;
+}
+
+.dialer-section.dialer-benefits{
+  margin-top: 0;
 }
 
 
@@ -117,13 +132,98 @@ $lato-light: "latolight", Arial, sans-serif;
 
 	}
 
-	.dialer-section-how-sequence{
-		img{
-			width: 100%;
-		}
-	}
+  .dialer-benefit-linkedin{
+    width: 100%;
+    padding-left: 50%;
+    padding-top: 5.5em;
+    img{
+      margin-left: -13.4em;
+
+    }
+  }
+
+
+
+	.dialer-section-sequence{
+		table{
+      border-collapse:collapse;border-spacing:0;border:none;
+      th, td{
+        border-style:solid;border-width:0px;overflow:hidden;word-break:normal;
+        text-align: center;
+        padding-bottom: 2.0em;
+
+      }
+
+      th{
+        img{
+          width: 4.4em;
+          height: 4.5em;
+        }
+      }
+
+      .dialer-section-sequence-images-offset{
+        padding-right: 3.5em;
+      }
+
+      .dialer-section-sequence-text{
+        font-family: $lato-bold;
+        span{
+          font-size: 2.0em;
+        }
+      }
+    }	
+  }
 
 }
+.dialer-section-faq{
+  border-top-style: solid;
+  border-top-width: 0.2em;
+  border-top-color: rgb(85, 87, 82);
 
-// Account Page
 
+
+  .dialer-section-faq-item{
+    padding-top: 1.2em;
+    padding-bottom: 1.2em;
+    border-bottom-style: solid;
+    border-bottom-width: 0.1em;
+    border-bottom-color: #D8D8D8;
+    .dialer-section-faq-item-header{
+      cursor: pointer;
+      .dialer-section-faq-item-header-number{
+        float: left;
+        margin-right: 1.2em;
+        img{
+          width: 3.4em;
+          height: 3.5em;
+        }
+      }
+      .dialer-section-faq-item-header-text{
+        float: left;
+        font-family: $lato-bold;
+        color: rgb(85, 87, 82);
+        padding-top: 0.5em;
+        span{
+          font-size: 2.0em;
+        }
+      }
+    }
+
+    .dialer-section-faq-item-text{
+      padding-top: 1.2em;
+      margin-left: 4.6em;
+      padding-right: 1.5em;
+      span{
+        color: rgb(139, 139, 139);
+        font-family: $lato-regular;
+        font-size: 2.0em;
+      }
+    }
+  }
+}
+
+.footer-section-links{
+  span{
+    cursor: pointer;
+  }
+}
