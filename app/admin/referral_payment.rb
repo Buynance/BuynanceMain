@@ -11,8 +11,22 @@ ActiveAdmin.register ReferralPayment do
   end
 
   index do 
-    column("Business")            {|referral_payment| link_to "#{Business.find(referral_payment.business_id, no_obfuscated_id: true).name}", grubraise_business_path(Business.find(referral_payment.business_id, no_obfuscated_id: true))}
-    column("Representative")      {|referral_payment| RepDialer.find(referral_payment.rep_dialer_id).name}
+    column("Business")            do |referral_payment|
+      business = Business.find_by_id(referral_payment.business_id)
+      unless business.nil? 
+        link_to "#{business.name}", grubraise_business_path(business)
+      else
+        "Deleted"
+      end
+    end
+    column("Representative")      do |referral_payment| 
+      rep_dialer = RepDialer.find_by_id(referral_payment.rep_dialer_id)
+      unless rep_dialer.nil?
+        rep_dialer.name
+      else
+        "Deleted"
+      end
+    end
     column("Status")              {|referral_payment| status_tag(referral_payment.state) }     
     
     actions do |referral_payment|

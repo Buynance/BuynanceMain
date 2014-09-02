@@ -15,7 +15,11 @@ class RepDialer < ActiveRecord::Base
   scope :accepted,      where(state: "accepted")
   scope :rejected,      where(state: "rejected")
 
-  state_machine :state, :initial => :awaiting_paypal do
+  state_machine :state, :initial => :awaiting_acceptance do
+
+    after_transition :on => :accept do |rep_dialer, t|
+      rep_dialer.send_representative_acceptance!
+    end
 
     event :add_paypal do
       transition [:awaiting_paypal] => :awaiting_acceptance 
@@ -29,6 +33,10 @@ class RepDialer < ActiveRecord::Base
       transition [:awaiting_acceptance] => :rejected
     end
 
+  end
+
+  def send_representative_acceptance!
+    RepDialerMailer.representative_acceptance(self).deliver!
   end
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
@@ -54,9 +62,9 @@ class RepDialer < ActiveRecord::Base
   private
 
   def setup_referral_code
-    code = SecureRandom.hex(3)
+    code = SecureRandom.random_number(99999)
     while RepDialer.find_by(referral_code: code).nil? == false
-      code = SecureRandom.hex(3)
+      code = SecureRandom.random_number(99999)
     end
     self.referral_code = code
   end 

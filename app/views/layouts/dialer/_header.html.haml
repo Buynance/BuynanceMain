@@ -2,7 +2,7 @@
   .homepage-nav
     .homepage-header.homepage-header-container.clearfix
       .hompage-header-logo{style: "width: 30.5%;"}
-        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/dialer")
+        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/friends")
       .homepage-header-dialer-links.clearfix
         .homepage-header-dialer-links-section
           %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
@@ -25,5 +25,5 @@
                 = image_tag("connect_with_linkedin.gif")
           .homepage-header-actions-button
             - if rep_dialer_signed_in? 
-              %a#header-account-button.flat-button.homepage-button-right{href: "/dialer_dashboards/account"}
+              %a#header-account-button.flat-button.homepage-button-right{href: "/friends/account"}
                 %span Account

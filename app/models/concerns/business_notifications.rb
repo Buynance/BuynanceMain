@@ -6,19 +6,21 @@ module BusinessNotifications
     # Bulk Notifications
 
     def send_qulaified_lead_notifications!
-      self.deliver_qualified_user_sms!
-      self.deliver_qualified_user!
+      if Rails.env.production? 
+        self.deliver_qualified_user_sms!
+        self.deliver_qualified_user!
+      end
     end
 
     def send_bank_prelogin_notification!
-      if self.bank_prelogin?
+      if self.bank_prelogin? and Rails.env.production? 
         self.deliver_bank_login_interuption!
       end
     end
     #handle_asynchronously :send_bank_prelogin_notification!, :run_at => Proc.new { 5.minutes.from_now }, :priority => 5
 
     def send_bank_login_notification!
-      if self.bank_login?
+      if self.bank_login? and Rails.env.production? 
         self.deliver_bank_login_interuption!
       end
     end
@@ -29,7 +31,7 @@ module BusinessNotifications
     # Email Notifications
 
     def deliver_qualified_user!
-      BusinessMailer.qualified_user(self).deliver!
+      BusinessMailer.qualified_user(self).deliver! if Rails.env.production?
     end
     #handle_asynchronously :deliver_qualified_user!, :priority => 5
 

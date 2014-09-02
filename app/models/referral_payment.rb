@@ -19,7 +19,7 @@ class ReferralPayment < ActiveRecord::Base
 	end
 
 	def self.add(business_id, representative_id)
-		ReferralPayment.create(business_id: business_id, rep_dialer_id: representative_id)
+		return ReferralPayment.create(business_id: business_id, rep_dialer_id: representative_id)
 	end
 
 	def make_payment!

@@ -70,7 +70,7 @@ Buynance::Application.routes.draw do
     end
   end
 
-  resources :dialer_dashboards, only: [:home, :setup, :setup_action, :account], path: "dialer" do
+  resources :dialer_dashboards, only: [:home, :setup, :setup_action, :account], path: "friends" do
     collection do
       get 'home', as: :dialer_home
       get 'account', as: :dialer_account
@@ -78,7 +78,7 @@ Buynance::Application.routes.draw do
       get 'setup', as: :setup
     end
   end
-  get 'dialer' => 'dialer_dashboards#home'
+  get 'friends' => 'dialer_dashboards#home'
 
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 

@@ -86,11 +86,17 @@ class BusinessesController < ApplicationController
 
   def activate
     @business = Business.where("activation_code = ? AND state = ?", params[:activation_code], "awaiting_email_confirmation").last
+    
     unless @business.nil?
-      @business.email_confirmation_provided
-      @business.send_mobile_confirmation!
-      flash[:is_email_confirmed] = true
-      flash[:success_activation_message] = "Your account has been activated. Please login to continue with your application."
+      if @business.rep_dialer_id.nil?
+        @business.email_confirmation_provided
+        @business.send_mobile_confirmation!
+        flash[:is_email_confirmed] = true
+        flash[:success_activation_message] = "Your account has been activated. Please login to continue with your application."
+      else
+        @business.passed_email_confirmation_referral
+        @business.email_confirmation_provided_referral
+      end
     else
       flash[:faliure_activation_message] = "Your account is already activated or the activation link is invalid."
     end

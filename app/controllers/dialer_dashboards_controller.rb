@@ -9,11 +9,6 @@ class DialerDashboardsController < ApplicationController
 
 	def account
 		@representative = current_rep_dialer
-		if @representative.awaiting_paypal?
-			redirect_to action: :setup
-		else
-
-		end
 	end
 
 	def setup
