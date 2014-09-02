@@ -1,13 +1,12 @@
 .paper-section-regular
   .paper-section-regular-header
-    %span Welcome
+    %span Welcome!
   .paper-section-regular-body
     .paper-section-regular-body-info
-      %span Welcome to your Buynance dashboard. Below you will find your referral code and the Paypal email associated with your account. The referral code is used to connect your account with any lead you guide through the funnel. During the sign-up process make sure your lead inputs this code so the payment for this lead can be connected to you.
+      %span Welcome! Below you will find your referral code. Be sure to give this code to each business owner you speak with. Doing so ensures you will receive credit for each time you help a business through the application process on 
+      = link_to  "/",  :target => "_blank" do
+        %span.highlight-blue Buynance.com.
     .paper-section-regular-body-info
       .dialer-dashboard-accepted-item
         %span Referral Code : 
         %span #{@representative.referral_code}
-      .dialer-dashboard-accepted-item
-        %span Paypal Email : 
-        %span #{@representative.paypal_email}
