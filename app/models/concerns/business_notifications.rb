@@ -6,21 +6,21 @@ module BusinessNotifications
     # Bulk Notifications
 
     def send_qulaified_lead_notifications!
-      if Rails.env.production? 
+      if Rails.env.production? and false
         self.deliver_qualified_user_sms!
         self.deliver_qualified_user!
       end
     end
 
     def send_bank_prelogin_notification!
-      if self.bank_prelogin? and Rails.env.production? 
+      if self.bank_prelogin? and Rails.env.production? and false
         self.deliver_bank_login_interuption!
       end
     end
     #handle_asynchronously :send_bank_prelogin_notification!, :run_at => Proc.new { 5.minutes.from_now }, :priority => 5
 
     def send_bank_login_notification!
-      if self.bank_login? and Rails.env.production? 
+      if self.bank_login? and Rails.env.production? and false
         self.deliver_bank_login_interuption!
       end
     end

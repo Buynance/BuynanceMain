@@ -23,7 +23,8 @@ class ReferralPayment < ActiveRecord::Base
 	end
 
 	def make_payment!
-		PaypalPayment.pay(RepDialer.find(self.rep_dialer_id).paypal_email)
+		#PaypalPayment.pay(RepDialer.find(self.rep_dialer_id).email)
+		PaypalPayment.pay("jay.ballentine@buynance.com")
 	end
 	#handle_asynchronously :make_payment!
 
