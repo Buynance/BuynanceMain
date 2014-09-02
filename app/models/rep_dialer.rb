@@ -62,7 +62,7 @@ class RepDialer < ActiveRecord::Base
   private
 
   def setup_referral_code
-    code = SecureRandom.random_number(99999)
+    code = "#{SecureRandom.random_number(99999)}"
     while RepDialer.find_by(referral_code: code).nil? == false
       code = SecureRandom.random_number(99999)
     end
