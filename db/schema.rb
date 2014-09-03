@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140831052939) do
+ActiveRecord::Schema.define(version: 20140903000831) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -59,6 +59,14 @@ ActiveRecord::Schema.define(version: 20140831052939) do
     t.datetime "updated_at"
     t.string   "email"
     t.string   "business_name"
+  end
+
+  create_table "answers", force: true do |t|
+    t.text     "answer_text"
+    t.integer  "question_id"
+    t.integer  "rep_dialer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "bank_accounts", force: true do |t|
@@ -419,6 +427,27 @@ ActiveRecord::Schema.define(version: 20140831052939) do
     t.integer  "other_monthly_loan_collection"
   end
 
+  create_table "questionnaire_completeds", force: true do |t|
+    t.integer  "questionnaire_id"
+    t.integer  "rep_dialer_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questionnaires", force: true do |t|
+    t.text     "description"
+    t.string   "name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "questions", force: true do |t|
+    t.text     "question_text"
+    t.integer  "questionnaire_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "referral_payments", force: true do |t|
     t.integer  "business_id"
     t.integer  "rep_dialer_id"
@@ -447,6 +476,7 @@ ActiveRecord::Schema.define(version: 20140831052939) do
     t.string   "state"
     t.string   "paypal_email"
     t.string   "profile_url"
+    t.string   "mobile_number"
   end
 
   add_index "rep_dialers", ["email"], name: "index_rep_dialers_on_email", unique: true

@@ -43,8 +43,7 @@ module BusinessStates
 
       after_transition :on => :passed_email_confirmation_referral do |business, t|
         referral_payment = ReferralPayment.add(business.id, business.rep_dialer_id) unless business.rep_dialer_id.nil?
-        referral_payment.pay
-        
+        #referral_payment.pay 
       end
 
       event :passed_personal do
@@ -81,6 +80,10 @@ module BusinessStates
 
       event :passed_mobile_confirmation do
         transition [:mobile_confirmation] => :accepted_market
+      end
+
+      event :sell_from_market do
+        transition [:accepted_market] => :sold_from_market
       end
 
     end

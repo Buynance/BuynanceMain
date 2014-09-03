@@ -1,0 +1,26 @@
+.web_body
+  .paper-section
+    .paper-section-header
+      %span Questionnaire
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .paper-section-regular
+              .paper-section-regular-header
+                %span To get to know you better. 
+              .paper-section-regular-body
+                .paper-section-regular-body-info
+                  = simple_form_for @questionnaire, url: setup_action_dialer_dashboards_path do |f|
+                    = fields_for @rep_dialer do |rep_dialer_fields|
+                      .form-label.dialer-setup-form-label
+                        %span Mobile Number
+                      .form-input.dialer-setup-form-input
+                        = rep_dialer_fields.text_field :mobile_number, placeholder: 'Mobile Number', class: 'textbox form-control required email', label: false
+                    - (0...@questionnaire.questions.size).each do |i|
+                      .form-label.dialer-setup-form-label
+                        %span #{@questionnaire.questions[i].question_text}
+                      .form-input.dialer-setup-form-input
+                        = f.input "answer#{i}",  as: :text, input_html: {class: 'textbox'}, label: false, error: false
+                    .form-action.dialer-setup-form-action
+                      = f.submit "Continue", class: "form-button flat-button button-submit"

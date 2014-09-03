@@ -40,6 +40,11 @@ class StaticPagesController < ApplicationController
 	def compare
 	end
 
+	def dummy
+		@questionnaire = Questionnaire.last
+		@rep_dialer = RepDialer.last
+	end
+
 	private
 
 		
