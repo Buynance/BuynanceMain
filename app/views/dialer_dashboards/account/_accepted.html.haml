@@ -1,0 +1,12 @@
+.paper-section-regular
+  .paper-section-regular-header
+    %span Welcome!
+  .paper-section-regular-body
+    .paper-section-regular-body-info
+      %span Welcome! Below you will find your referral code. Be sure to give this code to each business owner you speak with. Doing so ensures you will receive credit for each time you help a business through the application process on 
+      = link_to  "/",  :target => "_blank" do
+        %span.highlight-blue Buynance.com.
+    .paper-section-regular-body-info
+      .dialer-dashboard-accepted-item
+        %span Referral Code : 
+        %span #{@representative.referral_code}

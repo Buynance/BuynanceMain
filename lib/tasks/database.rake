@@ -318,4 +318,14 @@ namespace :db do
             CashAdvanceCompany.create(name: name)
         end
     end 
+
+    desc "Create Discovery Types"
+    task :create_discovery_types => :environment do
+      discovery_types = ["Facebook", "Linkedin", "Search Engine", "Representative", "Other"]
+      discovery_types.each do |type|
+        if DiscoveryType.find_by(name: type).nil?
+          DiscoveryType.create(name: type)
+        end
+      end
+    end
 end

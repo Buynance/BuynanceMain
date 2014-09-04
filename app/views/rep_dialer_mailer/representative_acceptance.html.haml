@@ -1,0 +1,43 @@
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %table{:cellpadding => "10", :cellspacing => "0", :style => "font-family:\r\n   arial, verdana, sans-serif; background: rgb(248, 248, 248);", :width => "100%"}
+      %tbody
+        %tr
+          %td{:valign => "top"}
+            %table{:cellpadding => "0", :cellspacing => "0", :style => "color: rgb(0, 0, 0); font-size: 12px; width: 550px; border: 1px solid rgb(211, 211, 211); margin: 0 auto;"}
+              %tbody
+                %tr
+                  %td{:style => "height: 60px; vertical-align:middle; background-color: white;"}
+                    %table{:style => "width: 100%;"}
+                      %tbody
+                        %tr
+                          %td{:style => "text-align: left;width: 50%;"}
+                            %a{:href => "\#{root_url}/friends", :style => "text-decoration: none; border: 0px; float:left; margin-left: 15px;", :target => "_blank"}
+                              %img{:alt => "Buynance Logo", :src => "http://res.cloudinary.com/buynance/image/upload/c_scale,q_100,w_200/logo_ypvhm4.jpg", :style => "border: none;", :width => "200"}/
+                          %td{:style => "text-align: right; width: 50%; display: none;"}
+                             
+                %tr
+                  %td{:style => "padding: 20px; background-color: white;", :valign => "top"}
+                    %h2{:style => "font-size: 24px; font-weight: bold; color: black; margin-bottom: 20px; color: #606060; text-align: center;"} Welcome to the family.
+                    %p{:style => "color:rgb(102, 102, 102);"} We have reviewed your application and we are excited to inform you that you are officially a Friend of Buynance!
+                    %p{:style => "color:rgb(102, 102, 102);"} Your referral code is : #{@representative.referral_code}
+                    %div{:style => "border: 1px solid rgb(221, 230, 239); margin: 15px 0px; padding: 0px 15px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background: rgb(228,234, 242);"}
+                      %p
+                        = link_to("Visit us Online", "#{root_url}/friends", html_options = {style: "color: #20acd7;"})
+                %tr
+                  %td{:style => "vertical-align: middle; border-top-style: solid; border-width: 3px; border-color: rgb(238, 238, 238); padding: 10px;"}
+                    %span{:style => "font-size: 10px; color: rgb(56, 56, 56); line-height: 100%;"}
+                      Funder Pair Inc.
+                      %br/
+                      44 Wall Street, 21st Floor
+                      %br>/
+                      New York, NY 10005
+                      %br>/
+                      (877) 289 6262
+                      %br/
+                      %br/
+                      Copyright © 2014 Funder Pair Inc. All rights reserved.
+                      %br/

@@ -1,0 +1,22 @@
+.web_body
+  .paper-section
+    .paper-section-header
+      %span Setup
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            .paper-section-regular
+              .paper-section-regular-header
+                %span Please include your Paypal account email. 
+              .paper-section-regular-body
+                .paper-section-regular-body-info
+                  %span To guarantee the quickest disbursement of your payment once your produce a lead, please include below your Paypal email. If you do not have a Paypal add a valid email you wish to associate with a future Paypal account.
+                .paper-section-regular-body-info
+                  = simple_form_for @representative, url: setup_action_dialer_dashboards_path do |f|
+                    .form-label.dialer-setup-form-label
+                      %span Paypal Email
+                    .form-input.dialer-setup-form-input
+                      = f.input :paypal_email, input_html: {class: 'textbox'}, label: false, error: false
+                    .form-action.dialer-setup-form-action
+                      = f.submit "Continue", class: "form-button flat-button button-submit"

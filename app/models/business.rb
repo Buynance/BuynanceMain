@@ -8,18 +8,22 @@ class Business < ActiveRecord::Base
   include BusinessStates
   include BusinessNotifications
   
-  attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer
+  attr_accessor :current_step, :is_closing_fee, :terms_of_service, :previous_loan_date_visible, :disclaimer, :referral_code
 
   before_save :parse_phone_number
+  
 
   obfuscate_id :spin => 89238723
 
-  has_one :business_user, :dependent => :destroy
-  has_one :bank_account, :dependent => :destroy
+  has_one :business_user,  :dependent => :destroy
+  has_one :bank_account,   :dependent => :destroy
   has_one :routing_number, :dependent => :destroy
-  has_many :leads, :dependent => :destroy
+  has_many :leads,         :dependent => :destroy
+
 
   belongs_to :business_type, inverse_of: :businesses
+  belongs_to :discover_type, inverse_of: :businesses
+  belongs_to :rep_dialer,    inverse_of: :businesses
 
   FUNDING_TYPES = {refinance: 1, funding: 0}
   
@@ -340,6 +344,17 @@ class Business < ActiveRecord::Base
       virgin_code = SecureRandom.urlsafe_base64(24, false)
       regular_code = virgin_code.downcase.gsub(/[-_]/,'')[0,8]
       return regular_code
+    end
+
+    def parse_referral_code
+      unless self.referral_code.blank?
+        rep = RepDialer.find_by(referral_code: self.referral_code)
+        if rep.nil?
+          errors.add(:referral_code, "Please enter a valid referral code.")
+        else
+          self.rep_dialer_id = rep.id
+        end
+      end
     end
 
     

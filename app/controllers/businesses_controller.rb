@@ -2,7 +2,7 @@ require 'decision_logic.rb'
 require 'twilio_lib'
 
 class BusinessesController < ApplicationController
-  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :confirm_account, :confirm_mobile]
+  before_filter :require_business_user, :only => [:show, :accept_offer, :activate_account, :confirm_account, :confirm_mobile, :qualified_funder, :qualified_market, :disqualified]
   before_filter :require_no_business_user, :only => [:new, :create]
   before_filter :grab_business_and_business_user, :only => [:show]
   before_filter :send_production_js, only: [:new, :qualified_funder, :qualified_market, :disqualified]
@@ -86,11 +86,17 @@ class BusinessesController < ApplicationController
 
   def activate
     @business = Business.where("activation_code = ? AND state = ?", params[:activation_code], "awaiting_email_confirmation").last
+    
     unless @business.nil?
-      @business.email_confirmation_provided
-      @business.send_mobile_confirmation!
-      flash[:is_email_confirmed] = true
-      flash[:success_activation_message] = "Your account has been activated. Please login to continue with your application."
+      if @business.rep_dialer_id.nil?
+        @business.email_confirmation_provided
+        @business.send_mobile_confirmation!
+        flash[:is_email_confirmed] = true
+        flash[:success_activation_message] = "Your account has been activated. Please login to continue with your application."
+      else
+        @business.passed_email_confirmation_referral
+        @business.email_confirmation_provided_referral
+      end
     else
       flash[:faliure_activation_message] = "Your account is already activated or the activation link is invalid."
     end
@@ -173,7 +179,7 @@ class BusinessesController < ApplicationController
     end
 
     def business_params
-      return params.require(:business).permit(:terms_of_service, :recovery_code, :name, :is_refinance) 
+      return params.require(:business).permit(:terms_of_service, :recovery_code, :name, :is_refinance, :referral_code, :discovery_type_id) 
     end
 end
 

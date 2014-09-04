@@ -1,0 +1,27 @@
+.homepage-fluid-container{style: "padding-top: 0; padding-bottom: 0;"}
+  .homepage-nav
+    .homepage-header.homepage-header-container.clearfix
+      .hompage-header-logo{style: "width: 30.5%;"}
+        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/friends")
+      .homepage-header-dialer-links.clearfix
+        .homepage-header-dialer-links-section
+          %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
+        .homepage-header-dialer-links-section
+          %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Help
+        .homepage-header-dialer-links-section
+          %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
+        .homepage-header-dialer-links-section.small-section
+          %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
+        .homepage-header-dialer-links-section.small-section
+          %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+      .homepage-header-dialer-actions
+        .homepage-header-actions-button
+          .homepage-header-actions-button
+            - if rep_dialer_signed_in? 
+              = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
+                %span Log Out
+            - else
+          .homepage-header-actions-button
+            - if rep_dialer_signed_in? 
+              %a#header-account-button.flat-button.homepage-button-right{href: "/friends/account"}
+                %span Account
