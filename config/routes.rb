@@ -76,6 +76,8 @@ Buynance::Application.routes.draw do
       get 'account', as: :dialer_account
       patch 'setup_action', as: :setup_action
       get 'setup', as: :setup
+      get 'questionnaire', as: :questionnaire
+      patch 'questionnaire_action', as: :questionnaire_action
     end
   end
   get 'friends' => 'dialer_dashboards#home'

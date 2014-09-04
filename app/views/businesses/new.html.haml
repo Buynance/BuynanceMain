@@ -55,7 +55,7 @@
                             .paper-section-bank-login-form-label
                               %span How did you hear about us?
                             .paper-section-bank-login-form-input
-                              = f.input :discovery_type_id, include_blank: '', as: :select, collection: DiscoveryType.all, label_method: :name, value_method: :id, input_html: {class: 'textbox', id: 'discovery_type_input'}, label: false,  error: false
+                              = f.input :discovery_type_id, include_blank: '', as: :select, collection: DiscoveryType.get_all_ordered, label_method: :name, value_method: :id, input_html: {class: 'textbox', id: 'discovery_type_input'}, label: false,  error: false
                             #referral_code_input
                               .paper-section-bank-login-form-label
                                 %span What is the Referral Code?

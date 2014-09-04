@@ -2,7 +2,7 @@ ActiveAdmin.register RepDialer do
 
   menu :label => "Cold Caller"
 
-  scope :awaiting_paypal
+  scope :awaiting_questionnaire
   scope :awaiting_acceptance
   scope :accepted
   scope :rejected

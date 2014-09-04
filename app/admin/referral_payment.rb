@@ -1,7 +1,7 @@
 ActiveAdmin.register ReferralPayment do
 
   scope :awaiting_payment
-  scope :payed
+  scope :paid
 
   member_action :pay_index, :method => :put do
       referral_payment = ReferralPayment.find(params[:id])

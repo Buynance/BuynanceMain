@@ -1,6 +1,6 @@
 class QuestionnaireCompleted < ActiveRecord::Base
-	has_one :questionnaire
-	has_one :rep_dialer
+	belongs_to :questionnaire
+	belongs_to :rep_dialer
 
 	
 end

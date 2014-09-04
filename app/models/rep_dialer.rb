@@ -4,25 +4,35 @@ class RepDialer < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
+  has_one :questionnaire_completed, :dependent => :destroy
+
   before_create :setup_referral_code
+  before_save :parse_phone_number
 
   validates :paypal_email, 
   format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
   allow_nil: true
+  validates :mobile_number,
+  presence: {message: "Please input a valid US mobile phone number."},
+  if: -> {self.state == :awaiting_questionnaire}
 
-  scope :awaiting_paypal,      where(state: "awaiting_paypal")
+  scope :awaiting_questionnaire,      where(state: "awaiting_questionnaire")
   scope :awaiting_acceptance,      where(state: "awaiting_acceptance")
   scope :accepted,      where(state: "accepted")
   scope :rejected,      where(state: "rejected")
 
-  state_machine :state, :initial => :awaiting_acceptance do
+  state_machine :state, :initial => :awaiting_creation do
 
     after_transition :on => :accept do |rep_dialer, t|
       rep_dialer.send_representative_acceptance!
     end
 
-    event :add_paypal do
-      transition [:awaiting_paypal] => :awaiting_acceptance 
+    event :created do
+      transition [:awaiting_creation] => :awaiting_acceptance
+    end
+
+    event :complete_questionnaire do
+      transition [:awaiting_questionnaire] => :awaiting_acceptance
     end
 
     event :accept do
@@ -53,10 +63,13 @@ class RepDialer < ActiveRecord::Base
           provider:auth.provider,
           uid:auth.uid,
           email:auth.info.email,
-          password:Devise.friendly_token[0,20]
+          password:Devise.friendly_token[0,20],
+          paypal_email: auth.info.email
         )
+        rep_dialer.created
       end
     end
+    return rep_dialer
   end  
 
   private
@@ -68,5 +81,17 @@ class RepDialer < ActiveRecord::Base
     end
     self.referral_code = code
   end 
+
+  def parse_phone_number
+    if self.state == :awaiting_questionnaire
+      mobile_number_object = GlobalPhone.parse(self.mobile_number)
+      mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
+      if mobile_number_object.nil?
+        self.mobile_number = nil
+      else
+        self.mobile_number = mobile_number_object.international_string      
+      end
+    end
+  end
 
 end

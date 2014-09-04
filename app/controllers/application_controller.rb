@@ -34,7 +34,11 @@ class ApplicationController < ActionController::Base
     end
 
     def after_sign_out_path_for(resource_or_scope)
-      root_path
+      if resource_or_scope == "rep_dialer".to_sym
+        dialer_home_dialer_dashboards_path
+      else 
+        root_path
+      end
     end
 
     def after_sign_in_path_for(resource_or_scope)
@@ -118,6 +122,12 @@ class ApplicationController < ActionController::Base
         flash[:notice] = "You can not login twice, please logout if you want to login"
         redirect_to funder_url(current_funder)
         return false
+      end
+    end
+
+    def require_rep_dialer
+      unless current_rep_dialer
+        redirect_to dialer_home_dialer_dashboards_path
       end
     end
 

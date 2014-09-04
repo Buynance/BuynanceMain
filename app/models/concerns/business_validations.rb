@@ -58,7 +58,7 @@ module BusinessValidations
 	if: -> {self.current_step == :personal}
 
 	validates :mobile_number,
-	presence: {message: "Plase input a valid US mobile phone number."},
+	presence: {message: "Please input a valid US mobile phone number."},
 	if: -> {self.current_step == :personal}
 
 	validates :business_type_id,
