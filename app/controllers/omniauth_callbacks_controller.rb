@@ -8,7 +8,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to dialer_account_dialer_dashboards_path
     else
       session["devise.linkedin_uid"] = request.env["omniauth.auth"]
-      redirect_to new_rep_dialer_registration_url
+      redirect_to  dialer_account_dialer_dashboards_path
     end
   end
 end
