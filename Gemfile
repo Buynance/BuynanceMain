@@ -138,3 +138,5 @@ gem 'groupdate', :github => "mieko/groupdate"
 gem 'simple_form'
 
 gem 'stripe', :git => 'https://github.com/stripe/stripe-ruby'
+
+gem 'activerecord-session_store', github: 'rails/activerecord-session_store'

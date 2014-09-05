@@ -1,17 +1,17 @@
 .web_body
   .paper-section.dialer-section-questionnaire
     .paper-section-header
-      %span Questionnaire
+      %span Additional Information
     .paper-section-main.clearfix   
       .paper-section-main-sheet.first-paper-section.clearfix
         .paper-section-main-sheet.last-paper-section
           .paper-section-bank-login.row
             .paper-section-regular
               .paper-section-regular-header
-                %span To get to know you better. 
+                %span To get to know you better.
               .paper-section-regular-body
                 .paper-section-regular-body-info
-                  %span To get to know you better please complete the follwoing questionnaire. 
+                  %span To get to know you better please take some time to complete the following questionnaire. 
                 .paper-section-regular-body-info
                   = simple_form_for @questionnaire, url: questionnaire_action_dialer_dashboards_path do |f|
                     - if @questionnaire.errors.any? || @rep_dialer.errors.any?
@@ -21,15 +21,27 @@
                             %li{style: "font-size: 15px; line-height: 1.5"}= msg
                           - @questionnaire.errors.full_messages.each do |msg|
                             %li{style: "font-size: 16px; line-height: 1.5"}= msg
-                    = fields_for @rep_dialer do |rep_dialer_fields|
-                      .form-label.dialer-setup-form-label
-                        %span Mobile Number
-                      .form-input.dialer-setup-form-input
-                        = rep_dialer_fields.text_field :mobile_number, placeholder: 'Mobile Number', class: 'textbox form-control required email', label: false
                     - (0...@questionnaire.questions.size).each do |i|
                       .form-label.dialer-setup-form-label
                         %span #{i+1}. #{@questionnaire.questions[i].question_text}
                       .form-input.dialer-setup-form-input
                         = f.input "answer#{i+1}",  as: :text, input_html: {class: 'textbox'}, label: false, error: false
+                    = fields_for @rep_dialer do |rep_dialer_fields|
+                      .form-label.dialer-setup-form-label
+                        %span Mobile Number
+                      .form-input.dialer-setup-form-input
+                        = rep_dialer_fields.text_field :mobile_number, placeholder: 'Mobile Number', class: 'textbox form-control required email', label: false
+                      .form-label.dialer-setup-form-label
+                        %span By typing "I AGREE" below you accept the 
+                        = link_to  "/tos",  :target => "_blank" do
+                          %span.highlight-blue{style:"text-decoration: underline"} Terms of Services, 
+                        = link_to  "/privacy",  :target => "_blank" do
+                          %span.highlight-blue{style:"text-decoration: underline"} Privacy Policy, 
+                        %span and 
+                        = link_to  "https://www.paypal.com/webapps/mpp/ua/acceptableuse-full?country.x=US&locale.x=en_US",  :target => "_blank" do
+                          %span.highlight-blue{style:"text-decoration: underline"} PayPal Acceptable Use Policy
+                      .form-input.dialer-setup-form-input
+                        = rep_dialer_fields.text_field :agree_confirmation, placeholder: 'I AGREE', class: 'textbox form-control required email', label: false
+
                     .form-action.dialer-setup-form-action
                       = f.submit "Continue", class: "form-button flat-button button-submit"

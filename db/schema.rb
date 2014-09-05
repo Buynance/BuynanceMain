@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140903000831) do
+ActiveRecord::Schema.define(version: 20140905161029) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -454,6 +454,7 @@ ActiveRecord::Schema.define(version: 20140903000831) do
     t.string   "state"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.float    "amount"
   end
 
   create_table "rep_dialers", force: true do |t|
@@ -477,6 +478,7 @@ ActiveRecord::Schema.define(version: 20140903000831) do
     t.string   "paypal_email"
     t.string   "profile_url"
     t.string   "mobile_number"
+    t.float    "total_earning"
   end
 
   add_index "rep_dialers", ["email"], name: "index_rep_dialers_on_email", unique: true
@@ -499,6 +501,16 @@ ActiveRecord::Schema.define(version: 20140903000831) do
     t.datetime "updated_at"
     t.integer  "call_count"
   end
+
+  create_table "sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "sessions", ["session_id"], name: "index_sessions_on_session_id", unique: true
+  add_index "sessions", ["updated_at"], name: "index_sessions_on_updated_at"
 
   create_table "settings", force: true do |t|
     t.string   "var",         null: false

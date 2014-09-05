@@ -27,7 +27,9 @@ ActiveAdmin.register ReferralPayment do
         "Deleted"
       end
     end
-    column("Status")              {|referral_payment| status_tag(referral_payment.state) }     
+
+    column("Amount") {|referral_payment| ActionController::Base.helpers.number_to_currency referral_payment.amount }
+    column("Status") {|referral_payment| status_tag(referral_payment.state) }     
     
     actions do |referral_payment|
       if referral_payment.state == "awaiting_payment"
@@ -36,6 +38,19 @@ ActiveAdmin.register ReferralPayment do
     end
   end
 
+
+  controller do
+    def permitted_params
+      params.permit referral_payment: [:amount]
+    end
+  end
+
+  form do |f|
+    f.inputs "Details" do
+      f.input :amount
+    end
+    f.actions
+  end
 
 
 

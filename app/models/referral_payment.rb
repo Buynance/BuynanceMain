@@ -2,9 +2,12 @@ require 'paypal_payment'
 
 class ReferralPayment < ActiveRecord::Base
 
-	scope :awaiting_payment, -> {where(state: "awaiting_payment")}
-	scope :payed,            -> {where(state: "payed")}
+	DEFAULT_AMOUNT = 100.0
 
+	scope :awaiting_payment, -> {where(state: "awaiting_payment")}
+	scope :paid,            -> {where(state: "paid")}
+
+	before_save :set_defaults
 
 	state_machine :state, :initial => :awaiting_payment do
 	    
@@ -18,14 +21,24 @@ class ReferralPayment < ActiveRecord::Base
 
 	end
 
+	def inititalize
+		self.amount = DEFAULT_AMOUNT
+	end
+
 	def self.add(business_id, representative_id)
 		return ReferralPayment.create(business_id: business_id, rep_dialer_id: representative_id)
 	end
 
 	def make_payment!
-		#PaypalPayment.pay(RepDialer.find(self.rep_dialer_id).paypal_email)
-		PaypalPayment.pay("jay.ballentine@buynance.com")
+		PaypalPayment.pay(RepDialer.find(self.rep_dialer_id).paypal_email, self.amount)
+		#PaypalPayment.pay("jay.ballentine@buynance.com")
 	end
 	#handle_asynchronously :make_payment!
+
+    private
+
+    def set_defaults
+    	self.amount ||= DEFAULT_AMOUNT
+    end
 
 end

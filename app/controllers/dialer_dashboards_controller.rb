@@ -40,7 +40,7 @@ class DialerDashboardsController < ApplicationController
 	def questionnaire_action
 		@rep_dialer = current_rep_dialer
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
-		if @rep_dialer.update_attributes(representative_params) and @questionnaire.update_attributes(questionnaire_params)
+		if  @questionnaire.update_attributes(questionnaire_params) and @rep_dialer.update_attributes(representative_params) 
 			(0...@questionnaire.questions.size).each do |i|
 				question = @questionnaire.questions[i]
 				Answer.create(answer_text: @questionnaire.send("answer#{i+1}".to_sym),
@@ -58,7 +58,7 @@ class DialerDashboardsController < ApplicationController
 	private
 
 	def representative_params
-      return params.require(:rep_dialer).permit(:mobile_number) 
+      return params.require(:rep_dialer).permit(:mobile_number, :agree_confirmation) 
     end
 
     def questionnaire_params
