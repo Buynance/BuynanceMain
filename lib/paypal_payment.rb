@@ -3,11 +3,11 @@ require 'paypal-sdk-adaptivepayments'
 class PaypalPayment
 
 	PayPal::SDK.configure(
-	  :mode      => "sandbox",  # Set "live" for production
-	  :app_id    => "APP-80W284485P519543T",
-	  :username  => "buynancefunder-facilitator_api1.gmail.com",
-	  :password  => "TKKQBX9RE4XJ7U6J",
-	  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31A.BptIXiDoBsratHXvbekedvpOqS" )
+	  :mode      => "live",  # Set "live" for production
+	  :app_id    => "APP-6047782737873800A",
+	  :username  => "buynancefunder_api1.gmail.com",
+	  :password  => "RA6XJT4S4F749QWF",
+	  :signature => "AFcWxV21C7fd0v3bYYYRCpSSRl31Aj7EYAljIS.6NNUy-upkTW5BtCl7" )
 
 	@api = PayPal::SDK::AdaptivePayments.new
 
@@ -17,7 +17,7 @@ class PaypalPayment
 		  :cancelUrl => "http://localhost:3000/samples/adaptive_payments/pay",
 		  :currencyCode => "USD",
 		  :feesPayer => "SENDER",
-		  :senderEmail => "buynancefunder-facilitator@gmail.com",
+		  :senderEmail => "buynancefunder@gmail.com",
 		  :receiverList => {
 		    :receiver => [{
 		      :amount => amount,
