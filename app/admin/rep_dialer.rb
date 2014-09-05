@@ -44,6 +44,22 @@ ActiveAdmin.register RepDialer do
     end
   end
 
+  controller do
+    def permitted_params
+      params.permit rep_dialer: [:name, :email, :paypal_email, :referral_code]
+    end
+  end
+
+  form do |f|
+    f.inputs "Details" do
+      f.input :name
+      f.input :email
+      f.input :paypal_email
+      f.input :referral_code
+    end
+    f.actions
+  end
+
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters

@@ -7,14 +7,20 @@ class RepDialer < ActiveRecord::Base
   has_one :questionnaire_completed, :dependent => :destroy
 
   before_create :setup_referral_code
+  before_create :set_defualts
   before_save :parse_phone_number
+
+  attr_accessor :agree_confirmation
 
   validates :paypal_email, 
   format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
   allow_nil: true
-  validates :mobile_number,
-  presence: {message: "Please input a valid US mobile phone number."},
+
+  validates_presence_of :mobile_number, message: "Please input a valid US mobile phone number.",
   if: -> {self.state == :awaiting_questionnaire}
+
+  validate :agreement_check, if: -> {self.state == :awaiting_questionnaire}
+
 
   scope :awaiting_questionnaire,      where(state: "awaiting_questionnaire")
   scope :awaiting_acceptance,      where(state: "awaiting_acceptance")
@@ -28,7 +34,7 @@ class RepDialer < ActiveRecord::Base
     end
 
     event :created do
-      transition [:awaiting_creation] => :awaiting_acceptance
+      transition [:awaiting_creation] => :awaiting_questionnaire
     end
 
     event :complete_questionnaire do
@@ -44,6 +50,7 @@ class RepDialer < ActiveRecord::Base
     end
 
   end
+
 
   def send_representative_acceptance!
     RepDialerMailer.representative_acceptance(self).deliver!
@@ -75,9 +82,9 @@ class RepDialer < ActiveRecord::Base
   private
 
   def setup_referral_code
-    code = "#{SecureRandom.random_number(99999)}"
+    code = "#{SecureRandom.random_number(99999)}".rjust(5, '0')
     while RepDialer.find_by(referral_code: code).nil? == false
-      code = SecureRandom.random_number(99999)
+      code = "#{SecureRandom.random_number(99999)}".rjust(5, '0')
     end
     self.referral_code = code
   end 
@@ -92,6 +99,18 @@ class RepDialer < ActiveRecord::Base
         self.mobile_number = mobile_number_object.international_string      
       end
     end
+  end
+
+  def agreement_check
+    if self.state == :awaiting_questionnaire
+      unless self.agree_confirmation == "I AGREE"
+        errors.add(:agree_confirmation, "Please type 'I AGREE' in all capital letters to acknowledge you agree with the terms below.")
+      end
+    end
+  end
+
+  def set_defualts
+    self.total_earning ||= 0.0; 
   end
 
 end

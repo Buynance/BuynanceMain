@@ -10,3 +10,6 @@
       .dialer-dashboard-accepted-item
         %span Referral Code : 
         %span #{@representative.referral_code}
+      .dialer-dashboard-accepted-item
+        %span Total Earning : 
+        %span #{number_to_currency(@representative.total_earning)}

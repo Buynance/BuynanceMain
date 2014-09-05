@@ -11,7 +11,7 @@ class PaypalPayment
 
 	@api = PayPal::SDK::AdaptivePayments.new
 
-	def self.pay(email)
+	def self.pay(email, amount)
 		@pay = @api.build_pay({
 		  :actionType => "PAY",
 		  :cancelUrl => "http://localhost:3000/samples/adaptive_payments/pay",
@@ -20,7 +20,7 @@ class PaypalPayment
 		  :senderEmail => "buynancefunder-facilitator@gmail.com",
 		  :receiverList => {
 		    :receiver => [{
-		      :amount => 100.0,
+		      :amount => amount,
 		      :email => email }] },
 		  :returnUrl => "http://localhost:3000/samples/adaptive_payments/pay",
 		  :ipnNotificationUrl => "http://localhost:3000/samples/adaptive_payments/ipn_notify"
