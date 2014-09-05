@@ -28,7 +28,7 @@ class RepDialer < ActiveRecord::Base
     end
 
     event :created do
-      transition [:awaiting_creation] => :awaiting_acceptance
+      transition [:awaiting_creation] => :awaiting_questionnaire
     end
 
     event :complete_questionnaire do

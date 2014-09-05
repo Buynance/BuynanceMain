@@ -33,7 +33,7 @@ class DialerDashboardsController < ApplicationController
 	end
 
 	def questionnaire
-		@representative = current_rep_dialer
+		@rep_dialer = current_rep_dialer
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 	end
 
