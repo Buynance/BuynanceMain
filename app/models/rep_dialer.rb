@@ -34,6 +34,10 @@ class RepDialer < ActiveRecord::Base
       rep_dialer.send_representative_acceptance!
     end
 
+    after_transition :on => :complete_questionnaire do |rep_dialer, t|
+      rep_dialer.send_representative_signup_to_admin!
+    end
+
     event :created do
       transition [:awaiting_creation] => :awaiting_questionnaire
     end
@@ -52,10 +56,24 @@ class RepDialer < ActiveRecord::Base
 
   end
 
+# Mailer Funtions
 
   def send_representative_acceptance!
     RepDialerMailer.representative_acceptance(self).deliver!
   end
+  #handle_asynchronously :send_representative_acceptance!
+
+  def send_representative_signup_to_admin!
+    AdminMailer.new_representative_signup(self).deliver!
+  end
+  #handle_asynchronously :representative_signup_to_admin!
+
+  def send_representative_paid_notification!
+    business = Business.find_by(id: self.referral_payments.paid.last.business_id)
+    RepDialerMailer.representative_payed(representative, business)
+  end
+
+#############################################
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
     rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid).first
