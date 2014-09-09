@@ -9,6 +9,9 @@ class ReferralPayment < ActiveRecord::Base
 
 	before_save :set_defaults
 
+	belongs_to :rep_dialer
+	belongs_to :business
+
 	state_machine :state, :initial => :awaiting_payment do
 	    
 	    after_transition :on => :pay do |referral_payment, t|
