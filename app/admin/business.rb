@@ -51,7 +51,16 @@ ActiveAdmin.register Business do
     column("State")                                 {|business| business.location_state}
     column("Business Phone")                        {|business| business.phone_number}
     column("Mobile Phone")                          {|business| business.mobile_number}
-          
+    column("Referral Code")                       do |business|
+      unless business.rep_dialer_id.nil?
+        rep_dialer = RepDialer.find_by(id: business.rep_dialer_id)
+        unless rep_dialer.nil?
+          rep_dialer.referral_code
+        else
+          "Deleted"
+        end
+      end
+    end
     actions
   end
 
@@ -67,6 +76,16 @@ ActiveAdmin.register Business do
             row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
             row("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
             row("Current Step")               {|business| status_tag(business.step) }
+            row("Referral Code")            do |business|
+              unless business.rep_dialer_id.nil?
+                rep_dialer = RepDialer.find_by(id: business.rep_dialer_id)
+                unless rep_dialer.nil?
+                  rep_dialer.referral_code
+                else
+                  "Deleted"
+                end
+              end
+            end
           end
         end
 
