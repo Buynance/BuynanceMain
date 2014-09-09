@@ -60,6 +60,48 @@ ActiveAdmin.register RepDialer do
     f.actions
   end
 
+  show do |rep_dialer|
+  
+    columns do
+      column do
+        panel 'Basic Information' do
+          attributes_table_for rep_dialer do
+            row :id
+            row("Signup Time")    {|rep_dialer| rep_dialer.created_at.strftime("%m/%d/%Y %I:%M%p")}
+            row("Name")           {|rep_dialer| link_to "#{rep_dialer.name}", "#{rep_dialer.profile_url}"}
+            row("Email")          {|rep_dialer| rep_dialer.email}
+            row("Paypal Email")   {|rep_dialer| rep_dialer.paypal_email}
+            row("State")          {|rep_dialer| status_tag rep_dialer.state}
+            row("Referal Code")   {|rep_dialer| rep_dialer.referral_code}
+            row("Mobile Number")  {|rep_dialer| rep_dialer.mobile_number}
+          end
+        end
+      end     
+    end
+
+    columns do
+      column do
+        panel "Questionnaire" do
+          table_for Answer.where(rep_dialer_id: rep_dialer.id).each do |answer|
+            column("Question") {|answer| Question.find_by(id: answer.question_id).question_text}
+            column("Answer")   {|answer| answer.answer_text}
+          end 
+        end
+      end
+    end
+
+    columns do
+      column do
+        panel "Leads Proccessed" do
+          table_for ReferralPayment.where(rep_dialer_id: rep_dialer.id).each do |rep_transaction|
+           
+          end 
+        end
+      end
+    end
+    
+  end
+
   
   # See permitted parameters documentation:
   # https://github.com/gregbell/active_admin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
