@@ -7,16 +7,11 @@ class RepDialerMailer < ActionMailer::Base
        		 :from    => "Team Buynance <noreply@buynance.com>"
 	end
 
-	def new_representative_alert(representative)
-		@rep = rep
-		mail :subject => "A new representaitve has signed up!",
-	    	 :to => "edwin@buynance.com",
-	   	     :from => "Team Buynance <noreply@buynance.com>"
-	end
 
-	def representative_payed(representative)
+	def representative_payed(representative, business)
 		@representative = representative
-		mail :subject => "Congratulation, you have recieved a Payment!",
+		@business = business
+		mail :subject => "Congratulation, you just got paid!",
       	     :to      => representative.email,
       		 :from    => "Team Buynance <noreply@buynance.com>"
 	end
