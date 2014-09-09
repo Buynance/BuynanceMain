@@ -328,4 +328,10 @@ namespace :db do
         end
       end
     end
+
+    desc "Create Questionnaire"
+    task :create_questionnaire => :environment do
+      Questionnaire.make(["Brief Customer Service Experience", "How do you respond when you dont know the answer to a question?", "The customer is saying youre taking too long to complete the process, what do you do?", "Give an example of a customer that you turned around from a position of unhappiness to sheer joy.", "Sell me a pencil"], "rep_questionnaire")
+    end
+    
 end
