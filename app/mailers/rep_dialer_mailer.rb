@@ -18,7 +18,7 @@ class RepDialerMailer < ActionMailer::Base
 
 	def representative_funnel_completion(representative)
 		mail :subject => "Representative ##{representative.referral_code} has completed the funnel.",
-        	 :to      => "edwin@buynance.com, yuliya@buynance.com, buynancefunder@gmail.com",
+        	 :to      => "jay@buynance.com, edwin@buynance.com, yuliya@buynance.com, buynancefunder@gmail.com",
        		 :from    => "Team Buynance <noreply@buynance.com>"
 	end
 
