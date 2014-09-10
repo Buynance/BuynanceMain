@@ -56,22 +56,17 @@ class RepDialer < ActiveRecord::Base
 
   end
 
-# Mailer Funtions
+# Mailer Funtions 
 
   def send_representative_acceptance!
     RepDialerMailer.representative_acceptance(self).deliver!
   end
-  #handle_asynchronously :send_representative_acceptance!
+  # handle_asynchronously :send_representative_acceptance!
 
   def send_representative_signup_to_admin!
     AdminMailer.new_representative_signup(self).deliver!
   end
-  #handle_asynchronously :representative_signup_to_admin!
-
-  def send_representative_paid_notification!
-    business = Business.find_by(id: self.referral_payments.paid.last.business_id)
-    RepDialerMailer.representative_payed(representative, business)
-  end
+  # handle_asynchronously :representative_signup_to_admin!
 
 #############################################
 

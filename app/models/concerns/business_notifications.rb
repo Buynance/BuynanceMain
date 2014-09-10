@@ -5,7 +5,7 @@ module BusinessNotifications
 
     # Bulk Notifications
 
-    def send_qulaified_lead_notifications!
+    def send_qualified_lead_notifications!
       if Rails.env.production? and false
         self.deliver_qualified_user_sms!
         self.deliver_qualified_user!
@@ -52,6 +52,11 @@ module BusinessNotifications
       TwilioLib.send_text("7169085466", "Warning! A user has dropped from bank login. Name: #{self.owner_first_name} #{self.owner_last_name}. Phone number is #{self.mobile_number}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
       TwilioLib.send_text("3473567903", "Warning! A user has dropped from bank login. Name: #{self.owner_first_name} #{self.owner_last_name}. Phone number is #{self.mobile_number}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
       TwilioLib.send_text("7169087957", "Warning! A user has dropped from bank login. Name: #{self.owner_first_name} #{self.owner_last_name}. Phone number is #{self.mobile_number}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
+    end
+
+    
+    def deliver_business_representative_notification!
+      AdminMailer.new_representative_lead(self.rep_dialer_id, self.id).deliver!
     end
  
   end

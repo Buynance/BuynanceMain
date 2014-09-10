@@ -33,7 +33,7 @@ module BusinessStates
       end
 
       after_transition :on => :passed_bank_login do |business, t|
-        business.send_qulaified_lead_notifications!
+        business.send_qualified_lead_notifications!
       end
 
       after_transition :on => :passed_mobile_confirmation do |business, t|
@@ -42,8 +42,10 @@ module BusinessStates
       end
 
       after_transition :on => :passed_email_confirmation_referral do |business, t|
-        referral_payment = ReferralPayment.add(business.id, business.rep_dialer_id) unless business.rep_dialer_id.nil?
-        #referral_payment.pay 
+        unless business.rep_dialer_id.nil?
+          ReferralPayment.add(business.id, business.rep_dialer_id) 
+          business.deliver_business_representative_notification!
+        end
       end
 
       event :passed_personal do
