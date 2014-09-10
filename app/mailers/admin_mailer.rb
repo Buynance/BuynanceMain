@@ -10,7 +10,7 @@ class AdminMailer < ActionMailer::Base
   def new_representative_signup(representative)
     @rep_dialer = representative
     mail :subject => "You have a new Friends of Buynance Sign up",
-         :to      => "edwin@buynance.com",
+         :to      => "edwin@buynance.com, yuliya@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
@@ -18,7 +18,7 @@ class AdminMailer < ActionMailer::Base
     @business = Business.find_by(id: business_id)
     @rep_dialer = RepDialer.find_by(id: representative_id)
     mail :subject => "A representative is awaiting payment!",
-         :to      => "edwin@buynance.com",
+         :to      => "edwin@buynance.com, yuliya@buynance.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
 
