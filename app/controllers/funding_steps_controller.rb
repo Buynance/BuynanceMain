@@ -16,6 +16,7 @@ class FundingStepsController < ApplicationController
 		when :personal
 			render_wizard
 		when :financial
+			skip_step unless @business.rep_dialer_id.nil?
 			render_wizard
 		when :refinance
 			skip_step unless @business.is_refinance

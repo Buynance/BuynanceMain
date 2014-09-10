@@ -1,4 +1,4 @@
-class DialerDashboardsController < ApplicationController
+ class DialerDashboardsController < ApplicationController
 
 	layout "dialer_layout"
 
@@ -40,7 +40,12 @@ class DialerDashboardsController < ApplicationController
 	def questionnaire_action
 		@rep_dialer = current_rep_dialer
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
-		if  @questionnaire.update_attributes(questionnaire_params) and @rep_dialer.update_attributes(representative_params) 
+		@rep_dialer.assign_attributes(representative_params)
+		@rep_dialer.current_step = "questionnaire"
+		@questionnaire.assign_attributes(questionnaire_params)
+		if @questionnaire.valid? and @rep_dialer.valid?
+			@questionnaire.save
+			@rep_dialer.save
 			(0...@questionnaire.questions.size).each do |i|
 				question = @questionnaire.questions[i]
 				Answer.create(answer_text: @questionnaire.send("answer#{i+1}".to_sym),

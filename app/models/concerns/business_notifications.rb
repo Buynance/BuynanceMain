@@ -53,6 +53,11 @@ module BusinessNotifications
       TwilioLib.send_text("3473567903", "Warning! A user has dropped from bank login. Name: #{self.owner_first_name} #{self.owner_last_name}. Phone number is #{self.mobile_number}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
       TwilioLib.send_text("7169087957", "Warning! A user has dropped from bank login. Name: #{self.owner_first_name} #{self.owner_last_name}. Phone number is #{self.mobile_number}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
     end
+
+    
+    def deliver_business_representative_notification!
+      AdminMailer.new_representative_lead(self.rep_dialer_id, self.id).deliver!
+    end
  
   end
 end  

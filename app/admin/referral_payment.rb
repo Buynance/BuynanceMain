@@ -27,6 +27,14 @@ ActiveAdmin.register ReferralPayment do
         "Deleted"
       end
     end
+    column("Referral Code")      do |referral_payment| 
+      rep_dialer = RepDialer.find_by_id(referral_payment.rep_dialer_id)
+      unless rep_dialer.nil?
+        rep_dialer.referral_code
+      else
+        "Deleted"
+      end
+    end
 
     column("Amount") {|referral_payment| ActionController::Base.helpers.number_to_currency referral_payment.amount }
     column("Status") {|referral_payment| status_tag(referral_payment.state) }     

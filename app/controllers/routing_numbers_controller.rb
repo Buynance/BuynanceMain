@@ -16,4 +16,15 @@ class RoutingNumbersController < ApplicationController
     render_twiml response
 	end
 
+  def accept_lead_from_concussion
+    our_phone_number = ""
+    customer_phone_number = params[:PrimaryPhone]
+    twimlet_url = "http://twimlets.com/menu?Message=You%20have%20a%20new%20lead!%20Please%20press%201%20to%20accept%20it.&Options%5B1%5D=http%3A%2F%2Ftwimlets.com%2Fforward%3FPhoneNumber%3D#{customer_phone_number}%26&"
+    response = Twilio::TwiML::Response.new do |r|
+      r.Dial "#{our_phone_number}", url: twimlet_url, fail_url: "", timeout: '20', caller_id: '7166083596', record:'true'
+    end
+  end
+
+
+
 end

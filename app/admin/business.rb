@@ -51,7 +51,16 @@ ActiveAdmin.register Business do
     column("State")                                 {|business| business.location_state}
     column("Business Phone")                        {|business| business.phone_number}
     column("Mobile Phone")                          {|business| business.mobile_number}
-          
+    column("Referral Code")                       do |business|
+      unless business.rep_dialer_id.nil?
+        rep_dialer = RepDialer.find_by(id: business.rep_dialer_id)
+        unless rep_dialer.nil?
+          rep_dialer.referral_code
+        else
+          "Deleted"
+        end
+      end
+    end
     actions
   end
 
@@ -67,6 +76,16 @@ ActiveAdmin.register Business do
             row("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
             row("Funnel")                     {|business| status_tag(business.is_refinance ? "Revise" : "Funder")}
             row("Current Step")               {|business| status_tag(business.step) }
+            row("Referral Code")            do |business|
+              unless business.rep_dialer_id.nil?
+                rep_dialer = RepDialer.find_by(id: business.rep_dialer_id)
+                unless rep_dialer.nil?
+                  rep_dialer.referral_code
+                else
+                  "Deleted"
+                end
+              end
+            end
           end
         end
 
@@ -76,8 +95,8 @@ ActiveAdmin.register Business do
             row("Name")                       {|business| business.name}
             row("Owners First Name")          {|business| business.owner_first_name}
             row("Owners Last Name")           {|business| business.owner_last_name}
-            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
-            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
+            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.phone_number.nil?}
+            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.mobile_number.nil?}
             row("Street Adress Line One")     {|business| business.street_address_one}
             row("Street Adress Line Two")     {|business| business.street_address_two}
             row("City")                       {|business| business.city}

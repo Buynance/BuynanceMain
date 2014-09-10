@@ -1,25 +1,26 @@
 class RepDialer < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
+  attr_accessor :agree_confirmation, :current_step
+
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable
 
   has_one :questionnaire_completed, :dependent => :destroy
+  has_many :referral_payments
 
   before_create :setup_referral_code
   before_create :set_defualts
-  before_save :parse_phone_number
 
-  attr_accessor :agree_confirmation
+  
 
   validates :paypal_email, 
   format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
   allow_nil: true
 
-  validates_presence_of :mobile_number, message: "Please input a valid US mobile phone number.",
-  if: -> {self.state == :awaiting_questionnaire}
+  validate :parse_phone_number
 
-  validate :agreement_check, if: -> {self.state == :awaiting_questionnaire}
+  validate :agreement_check
 
 
   scope :awaiting_questionnaire,      where(state: "awaiting_questionnaire")
@@ -31,6 +32,10 @@ class RepDialer < ActiveRecord::Base
 
     after_transition :on => :accept do |rep_dialer, t|
       rep_dialer.send_representative_acceptance!
+    end
+
+    after_transition :on => :complete_questionnaire do |rep_dialer, t|
+      rep_dialer.send_representative_signup_to_admin!
     end
 
     event :created do
@@ -51,10 +56,19 @@ class RepDialer < ActiveRecord::Base
 
   end
 
+# Mailer Funtions 
 
   def send_representative_acceptance!
     RepDialerMailer.representative_acceptance(self).deliver!
   end
+  # handle_asynchronously :send_representative_acceptance!
+
+  def send_representative_signup_to_admin!
+    AdminMailer.new_representative_signup(self).deliver!
+  end
+  # handle_asynchronously :representative_signup_to_admin!
+
+#############################################
 
   def self.connect_to_linkedin(auth, signed_in_resource=nil)
     rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid).first
@@ -73,7 +87,7 @@ class RepDialer < ActiveRecord::Base
           password:Devise.friendly_token[0,20],
           paypal_email: auth.info.email
         )
-        rep_dialer.created
+        rep_dialer.created!
       end
     end
     return rep_dialer
@@ -90,11 +104,13 @@ class RepDialer < ActiveRecord::Base
   end 
 
   def parse_phone_number
-    if self.state == :awaiting_questionnaire
+    if self.current_step == "questionnaire"
+      puts '======================================== phone enter'
       mobile_number_object = GlobalPhone.parse(self.mobile_number)
       mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
       if mobile_number_object.nil?
-        self.mobile_number = nil
+        puts '======================================== phone added'
+        errors.add(:mobile_number, "Please enter a valid US phone number.")
       else
         self.mobile_number = mobile_number_object.international_string      
       end
@@ -102,9 +118,13 @@ class RepDialer < ActiveRecord::Base
   end
 
   def agreement_check
-    if self.state == :awaiting_questionnaire
-      unless self.agree_confirmation == "I AGREE"
-        errors.add(:agree_confirmation, "Please type 'I AGREE' in all capital letters to acknowledge you agree with the terms below.")
+    if self.current_step == "questionnaire"
+      puts '======================================== agree enter'
+
+      unless self.agree_confirmation.downcase == "i agree"
+        puts '======================================== agree added'
+
+        errors.add(:agree_confirmation, "Please type 'I AGREE' to acknowledge you agree with the terms below.")
       end
     end
   end

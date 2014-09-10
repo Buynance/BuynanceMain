@@ -5,7 +5,6 @@ module BusinessUserValidations
     	format: {with: /\A(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}\z/, message: "Your password must contain at least one upper case letter, one lower case letter, one digit, one special character and be minimum of 8 characters in length."},
 		on: :create
 
-
 		validates :password,
     	format: {with: /\A(?=.*?[A-Z])(?=(.*[a-z]){1,})(?=(.*[\d]){1,})(?=(.*[\W]){1,})(?!.*\s).{8,}\z/, message: "Your password must contain at least one upper case letter, one lower case letter, one digit, one special character and be minimum of 8 characters in length."},
 		if: -> {self.current_step == :recover_password}

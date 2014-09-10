@@ -11446,6 +11446,7 @@ legend {
   float: left;
   width: 23%;
   color: #20acd7;
+  cursor: pointer;
 }
 /* line 25, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .homepage-header-dialer-links .homepage-header-dialer-links-section span, .homepage-header-dialer-links .homepage-header-dialer-links-section a {
@@ -11507,47 +11508,165 @@ legend {
   width: 100%;
   height: 55.5em;
 }
-
 /* line 86, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-banner img {
+  width: 26.8em;
+  height: 6.5em;
+}
+/* line 91, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-banner .dialer-banner-linkedin {
+  margin-left: 40%;
+  margin-top: 33%;
+}
+
+/* line 97, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-fluid, .dialer-fluid-gray {
   width: 100%;
   padding: 0.1em;
 }
 
-/* line 91, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 102, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-fluid-gray {
   background-color: #f2f2f2;
 }
 
-/* line 96, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 106, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section.dialer-benefits {
+  margin-top: 0;
+}
+
+/* line 111, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section {
   width: 90.0em;
   margin: 0 auto;
   margin-top: 7.0em;
   margin-bottom: 8.5em;
 }
-/* line 102, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 117, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-header {
   margin-bottom: 5.0em;
 }
-/* line 104, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 119, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-header span {
   font-size: 2.6em;
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 110, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 125, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-text {
   color: #8b8b8b;
 }
-/* line 112, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 127, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-text span {
   font-size: 2.1em;
   line-height: 1.5;
   font-family: "latoregular", Arial, sans-serif;
 }
-/* line 121, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
-.dialer-section .dialer-section-how-sequence img {
+/* line 135, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-benefit-linkedin {
   width: 100%;
+  padding-left: 50%;
+  padding-top: 5.5em;
+}
+/* line 139, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-benefit-linkedin img {
+  margin-left: -13.4em;
+}
+/* line 148, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table {
+  border-collapse: collapse;
+  border-spacing: 0;
+  border: none;
+}
+/* line 150, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table th, .dialer-section .dialer-section-sequence table td {
+  border-style: solid;
+  border-width: 0px;
+  overflow: hidden;
+  word-break: normal;
+  text-align: center;
+  padding-bottom: 2.0em;
+}
+/* line 158, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table th img {
+  width: 4.4em;
+  height: 4.5em;
+}
+/* line 164, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table .dialer-section-sequence-images-offset {
+  padding-right: 3.5em;
+}
+/* line 168, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table .dialer-section-sequence-text {
+  font-family: "latobold", Arial, sans-serif;
+}
+/* line 170, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section .dialer-section-sequence table .dialer-section-sequence-text span {
+  font-size: 2.0em;
+}
+
+/* line 178, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq {
+  border-top-style: solid;
+  border-top-width: 0.2em;
+  border-top-color: #555752;
+}
+/* line 185, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item {
+  padding-top: 1.2em;
+  padding-bottom: 1.2em;
+  border-bottom-style: solid;
+  border-bottom-width: 0.1em;
+  border-bottom-color: #D8D8D8;
+}
+/* line 191, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header {
+  cursor: pointer;
+}
+/* line 193, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-number {
+  float: left;
+  margin-right: 1.2em;
+}
+/* line 196, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-number img {
+  width: 3.4em;
+  height: 3.5em;
+}
+/* line 201, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-text {
+  float: left;
+  font-family: "latobold", Arial, sans-serif;
+  color: #555752;
+  padding-top: 0.5em;
+}
+/* line 206, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-text span {
+  font-size: 2.0em;
+}
+/* line 212, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-text {
+  padding-top: 1.2em;
+  margin-left: 4.6em;
+  padding-right: 1.5em;
+}
+/* line 216, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-text span {
+  color: #8b8b8b;
+  font-family: "latoregular", Arial, sans-serif;
+  font-size: 2.0em;
+}
+
+/* line 226, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.footer-section-links span {
+  cursor: pointer;
+}
+
+/* line 233, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-section-questionnaire textarea {
+  height: 170px;
+  width: 80%;
+  font-size: 16px;
+  border-width: 1px;
 }
 /* line 1, C:/Sites/example/buynance-testing/app/assets/stylesheets/fonts.css.scss */
 span {
@@ -14244,36 +14363,37 @@ button .icon {
   min-height: 500px;
   padding-left: 20px;
   padding-right: 50px;
+  padding-bottom: 50px;
 }
-/* line 146, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 147, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-header {
   color: #8dc63f;
   margin-bottom: 50px;
 }
-/* line 149, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 150, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-header span {
   font-size: 24px;
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 154, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 155, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-body {
   font-family: "latoregular", Arial, sans-serif;
 }
-/* line 156, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 157, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-body span, .paper-section-regular .paper-section-regular-body p, .paper-section-regular .paper-section-regular-body a {
   color: #6f6f6f;
   font-size: 16px;
   line-height: 28px;
 }
-/* line 162, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 163, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-body a {
   color: #25aae1;
 }
-/* line 166, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 167, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-body ul {
   list-style-type: none;
 }
-/* line 169, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
+/* line 170, C:/Sites/example/buynance-testing/app/assets/stylesheets/static_pages.css.scss */
 .paper-section-regular .paper-section-regular-body .paper-section-regular-body-info {
   margin-bottom: 2.0em;
 }

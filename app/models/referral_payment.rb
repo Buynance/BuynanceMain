@@ -9,10 +9,14 @@ class ReferralPayment < ActiveRecord::Base
 
 	before_save :set_defaults
 
+	belongs_to :rep_dialer
+	belongs_to :business
+
 	state_machine :state, :initial => :awaiting_payment do
 	    
 	    after_transition :on => :pay do |referral_payment, t|
         	referral_payment.make_payment!
+        	self.deliver_representative_paid_notification
         end
 
 		event :pay do
@@ -20,6 +24,11 @@ class ReferralPayment < ActiveRecord::Base
 		end
 
 	end
+
+	def deliver_representative_paid_notification!
+    	RepDialerMailer.representative_paid(rep_dialer_id, business_id).deliver!
+    end
+    # handle_asynchronously :deliver_representative_paid_notification!
 
 	def inititalize
 		self.amount = DEFAULT_AMOUNT
