@@ -95,8 +95,8 @@ ActiveAdmin.register Business do
             row("Name")                       {|business| business.name}
             row("Owners First Name")          {|business| business.owner_first_name}
             row("Owners Last Name")           {|business| business.owner_last_name}
-            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
-            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
+            row("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.phone_number.nil?}
+            row("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.mobile_number.nil?}
             row("Street Adress Line One")     {|business| business.street_address_one}
             row("Street Adress Line Two")     {|business| business.street_address_two}
             row("City")                       {|business| business.city}
