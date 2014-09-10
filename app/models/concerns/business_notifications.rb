@@ -5,7 +5,7 @@ module BusinessNotifications
 
     # Bulk Notifications
 
-    def send_qulaified_lead_notifications!
+    def send_qualified_lead_notifications!
       if Rails.env.production?
         self.deliver_qualified_user_sms!
         self.deliver_qualified_user!
