@@ -16,7 +16,9 @@ class FundingStepsController < ApplicationController
 		when :personal
 			render_wizard
 		when :financial
-			skip_step unless @business.rep_dialer_id.nil?
+			if ((@business.approximate_credit_score_range < 4) or (@business.rep_dialer_id.nil? == false))
+			  skip_step 
+			end
 			render_wizard
 		when :refinance
 			skip_step unless @business.is_refinance
