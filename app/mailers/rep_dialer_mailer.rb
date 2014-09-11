@@ -8,9 +8,10 @@ class RepDialerMailer < ActionMailer::Base
 	end
 
 
-	def representative_paid(representative_id, business_id)
+	def representative_paid(representative_id, business_id, amount)
 		@representative = RepDialer.find_by(id: representative_id)
 		@business = Business.find_by(id: business_id)
+		@amount = ActionController::Base.helpers.number_to_currency(amount)
 		mail :subject => "Congratulation, you just got paid!",
       	     :to      => @representative.email,
       		 :from    => "Team Buynance <noreply@buynance.com>"

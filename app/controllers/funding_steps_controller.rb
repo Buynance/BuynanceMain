@@ -16,10 +16,10 @@ class FundingStepsController < ApplicationController
 		when :personal
 			render_wizard
 		when :financial
-			#if ((@business.approximate_credit_score_range < 4) or (@business.rep_dialer_id.nil? == false))
-			#  skip_step 
-			#end
-			skip_step unless @business.rep_dialer_id.nil?
+			if ((@business.approximate_credit_score_range >= 4) or (@business.rep_dialer_id.nil? == false))
+			  skip_step 
+			end
+			#skip_step unless @business.rep_dialer_id.nil?
 			render_wizard
 		when :refinance
 			skip_step unless @business.is_refinance
@@ -118,12 +118,12 @@ class FundingStepsController < ApplicationController
 	private
 
 	def business_params
-		return params.require(:business).permit( :years_in_business, :owner_first_name, :owner_last_name, 
+		return params.require(:business).permit(:approximate_credit_score_range, :years_in_business, :owner_first_name, :owner_last_name, 
 			:street_address_one, :street_address_two, :city, :location_state, :mobile_number, :zip_code, :phone_number, 
 			:business_type_id, :mobile_disclaimer) if step == :personal
 		return params.require(:business).permit(:deal_type, :previous_merchant_id, :previous_loan_date, :total_previous_loan_amount,
 	    		:total_previous_payback_amount, :is_closing_fee, :closing_fee, :total_previous_payback_balance)  if step == :refinance
-		return params.require(:business).permit(:approximate_credit_score_range, :is_tax_lien, :is_payment_plan,
+		return params.require(:business).permit(:is_tax_lien, :is_payment_plan,
 	    		:is_ever_bankruptcy, :is_judgement)  if step == :financial
 		return params.require(:business).permit(:bank_accounts_attributes => [:account_number, :routing_number]) if step == :bank_prelogin
 	end
@@ -146,7 +146,7 @@ class FundingStepsController < ApplicationController
 		when :personal
 		when :refinance
 			current_business.passed_personal
-			current_business.passed_revise if current_business.is_refinance	
+			current_business.passed_revise unless current_business.is_refinance	
 		when :financial
 			current_business.passed_revise
 		when :bank_prelogin
