@@ -28,7 +28,7 @@ class ReferralPayment < ActiveRecord::Base
 	def deliver_representative_paid_notification!
     	RepDialerMailer.representative_paid(rep_dialer_id, business_id).deliver!
     end
-    # handle_asynchronously :deliver_representative_paid_notification!
+    handle_asynchronously :deliver_representative_paid_notification!
 
 	def inititalize
 		self.amount = DEFAULT_AMOUNT

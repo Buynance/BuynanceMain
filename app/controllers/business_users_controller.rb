@@ -32,7 +32,6 @@ class BusinessUsersController < ApplicationController
     @business_user = BusinessUser.find_by recovery_code: business_user_params[:recovery_code]
     @business_user.current_step = :recover_password
     @business_user.password = business_user_params[:password]
-    @business_user.password_confirmation = business_user_params[:password_confirmation]
     if @business_user.save
       redirect_to :root
     else
