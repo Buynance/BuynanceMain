@@ -30,7 +30,7 @@ class BusinessUser < ActiveRecord::Base
 
 
   def deliver_recovery_email!
-    BusinessMailer.delay.recovery_email(self)
+    BusinessMailer.recovery_email(self).deliver!
   end
 
   
