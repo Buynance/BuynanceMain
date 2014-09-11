@@ -16,7 +16,7 @@ class ReferralPayment < ActiveRecord::Base
 	    
 	    after_transition :on => :pay do |referral_payment, t|
         	referral_payment.make_payment!
-        	self.deliver_representative_paid_notification
+        	self.deliver_representative_paid_notification!
         end
 
 		event :pay do
