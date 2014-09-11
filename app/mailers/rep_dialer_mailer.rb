@@ -12,7 +12,7 @@ class RepDialerMailer < ActionMailer::Base
 		@representative = RepDialer.find_by(id: representative_id)
 		@business = Business.find_by(id: business_id)
 		mail :subject => "Congratulation, you just got paid!",
-      	     :to      => representative.email,
+      	     :to      => @representative.email,
       		 :from    => "Team Buynance <noreply@buynance.com>"
 	end
 
