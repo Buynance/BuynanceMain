@@ -84,6 +84,10 @@ module BusinessStates
         transition [:mobile_confirmation] => :accepted_market
       end
 
+      event :reject_from_market do
+        transition [:bank_login] => :reject_market
+      end
+
       event :sell_from_market do
         transition [:accepted_market] => :sold_from_market
       end
