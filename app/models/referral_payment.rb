@@ -15,10 +15,10 @@ class ReferralPayment < ActiveRecord::Base
 	state_machine :state, :initial => :awaiting_payment do
 	    
 	    after_transition :on => :pay do |referral_payment, t|
+	    	rep_dialer = RepDialer.find_by(id: referral_payment.rep_dialer_id)
+        	rep_dialer.total_earning = rep_dialer.total_earning + referral_payment.amount
         	referral_payment.make_payment!
         	referral_payment.deliver_representative_paid_notification!
-        	rep_dialer = RepDialer.find_by(id: referral_payment.rep_dialer_id)
-        	rep_dialer.total_earning = rep_dialer.total_earning + referral_payment.amount
         	rep_dialer.save
         end
 
@@ -29,7 +29,7 @@ class ReferralPayment < ActiveRecord::Base
 	end
 
 	def deliver_representative_paid_notification!
-    	RepDialerMailer.representative_paid(rep_dialer_id, business_id).deliver!
+    	RepDialerMailer.representative_paid(rep_dialer_id, business_id, self.amount).deliver!
     end
     # handle_asynchronously :deliver_representative_paid_notification!
 
