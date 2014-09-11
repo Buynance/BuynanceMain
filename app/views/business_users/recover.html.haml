@@ -5,32 +5,35 @@
     .paper-section-main.clearfix   
       .paper-section-main-sheet.first-paper-section.clearfix
         .paper-section-main-sheet.clearfix
-          .paper-section-main-sheet.last-paper-section
-            .paper-section-body.paper-section-bank-login.row
-              .paper-section-bank-login-left.col-xs-7
-                .paper-section-bank-login-left-header
-                  %span Reset your Buynance password
-                .paper-section-bank-login-left-information
-                  .paper-section-bank-login-left-information-important
-                    %span Please enter your email address to reset your Buynance password.
-                .paper-section-bank-login-form
-                  = simple_form_for @business_user, url: {controller: :business_users, action: :recover_account}, defaults: { input_html: { novalidate: "novalidate" } } do |f|
-                    - if @business_user.errors.any?
-                      %div{class: "alert alert-danger validation-errors"}
-                        %ul
-                          - @business_user.errors.full_messages.each do |msg|
-                            - if /[[:upper:]]/.match(msg[0])
-                              %li= msg
-                    - unless flash[:alert].nil?
-                      %div{class: "alert alert-danger validation-errors"}
-                        = flash[:alert]
-                    .row
-                      .paper-section-bank-login-form-label
-                        %span What is your email address?
-                      .paper-section-bank-login-form-input
-                        = f.input :email, placeholder: 'Email', input_html: {class: 'textbox required'}, label: false
-                    .row
-                      .paper-section-bank-login-form-action
-                        = f.submit "Continue", class: "form-button flat-button button-submit"
-              .paper-section-bank-login-right.col-xs-5
-                = render "shared/funding_sidebar"
+          .paper-section-main-sheet.clearfix
+            .paper-section-main-sheet.clearfix
+              .paper-section-main-sheet.clearfix
+                .paper-section-main-sheet.clearfix
+                  .paper-section-main-sheet.last-paper-section
+                    .paper-section-bank-login.row
+                      .paper-section-bank-login-left.col-xs-7
+                        .paper-section-bank-login-left-header
+                          %span Reset Your Buynance password
+                        .paper-section-bank-login-left-information
+                          %span Please enter your email address to reset your Buynance password.
+                        .paper-section-bank-login-form
+                          = simple_form_for @business_user, url: {controller: :business_users, action: :recover_account}, defaults: { input_html: { novalidate: "novalidate" } } do |f|
+                            - if @business_user.errors.any?
+                              %div{class: "alert alert-danger validation-errors"}
+                                %ul
+                                  - @business_user.errors.full_messages.each do |msg|
+                                    - if /[[:upper:]]/.match(msg[0])
+                                      %li= msg
+                            - unless flash[:alert].nil?
+                              %div{class: "alert alert-danger validation-errors"}
+                                = flash[:alert]
+                            .row
+                              .paper-section-bank-login-form-label
+                                %span What is your email address?
+                              .paper-section-bank-login-form-input
+                                = f.input :email, placeholder: 'Email', input_html: {class: 'textbox required'}, label: false
+                            .row
+                              .paper-section-bank-login-form-action
+                                = f.submit "Continue", class: "form-button flat-button button-submit"
+                      .paper-section-bank-login-right.col-xs-5
+                        = render "shared/funding_sidebar"
