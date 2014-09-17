@@ -83,6 +83,7 @@ Buynance::Application.routes.draw do
 
 
   get 'friends' => 'dialer_dashboards#home'
+  get 'friends/index' => 'dialer_dashboards#home'
 
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 
