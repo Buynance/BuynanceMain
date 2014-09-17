@@ -81,11 +81,6 @@ Buynance::Application.routes.draw do
     end
   end
 
-  resources :referral_payments do
-    collection do
-      get 'ipn', as: :ipn
-    end
-  end
 
   get 'friends' => 'dialer_dashboards#home'
 

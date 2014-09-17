@@ -39,13 +39,9 @@ class FunderDashboardsController < ApplicationController
 
 	private
 
-	private
 
 	def offer_params
       return params.require(:offer).permit(:stipulations, :offer_type, :daily_merchant_cash_advance, :total_payback_amount, :cash_advance_amount, :days_to_collect, :lead_id, :daily_merchant_cash_advance) 
     end
 
-    def payment_notification
-    	
-    end
 end
