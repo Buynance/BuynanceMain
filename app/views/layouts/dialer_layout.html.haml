@@ -1,10 +1,8 @@
 !!!
-%html
+%html{prefix: "og: http://ogp.me/ns#"}
   %head
-    = metamagic title: "Become a Friend of Buynance", og: { image: "https://www.buynance.com/images/twitter.jpg", title: "Friends of Buynance", url: "https://www.buynance.com/friends", description: "Buynance pairs people with technology to extend economic opportunity to folks in need while helping small business owners get faster, more affordable, small business funding. Join our family."}
+    = metamagic title: "Become a Friend of Buynance", og: { image: "https://www.buynance.com/images/twitter.jpg", title: "Become a Friend of Buynance", url: "https://www.buynance.com/friends", description: "Buynance pairs people with technology to extend economic opportunity to folks in need while helping small business owners get faster, more affordable, small business funding. Join our family."}
    
-    %script{href: "http://jquery.thewikies.com/browser/jquery.browser.min.js"}
-
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = javascript_pluggable_tag 
