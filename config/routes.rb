@@ -80,6 +80,13 @@ Buynance::Application.routes.draw do
       patch 'questionnaire_action', as: :questionnaire_action
     end
   end
+
+  resources :referral_payments do
+    collection do
+      get 'ipn', as: :ipn
+    end
+  end
+
   get 'friends' => 'dialer_dashboards#home'
 
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
