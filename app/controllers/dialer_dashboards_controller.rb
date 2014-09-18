@@ -1,9 +1,8 @@
- class DialerDashboardsController < ApplicationController
+ class DialerDashboardsController < DialerApplicationController
 
 	layout "dialer_layout"
 
 	before_filter :require_rep_dialer, except: [:home]
-
 
 	def home
 		
