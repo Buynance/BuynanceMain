@@ -4,6 +4,8 @@
 
 	before_filter :require_rep_dialer, except: [:home]
 
+	force_ssl if: :not_linkedin?
+
 	def home
 		
 
@@ -67,6 +69,10 @@
 
     def questionnaire_params
     	return params.require(:questionnaire).permit(:answer1, :answer2, :answer3, :answer4, :answer5)
+    end
+
+    def not_linkedin?
+    	params[:linkedin] != "true"
     end
 
 end
