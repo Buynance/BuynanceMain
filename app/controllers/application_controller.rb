@@ -156,8 +156,8 @@ class ApplicationController < ActionController::Base
       ActionMailer::Base.default_url_options[:host] = request.host_with_port
     end
 
-    def ssl_configured?
-      !Rails.env.development?
+    def ssl_configured?(ssl_required = true)
+      !Rails.env.development? and ssl_required
     end
 
     def return_error_class(model, attribute)
