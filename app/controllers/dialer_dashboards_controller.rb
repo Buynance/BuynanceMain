@@ -72,7 +72,7 @@
     end
 
     def not_linkedin?
-    	(params[:a] != "true") and (params[:b] != "true")
+    	(params[:c] != "true") and (params[:d] != "true")
     end
 
 end
