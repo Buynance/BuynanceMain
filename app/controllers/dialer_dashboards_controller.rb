@@ -72,7 +72,7 @@
     end
 
     def not_linkedin?
-    	params[:social] != "true"
+    	(params[:social] != "true") and (params[:media] != "true")
     end
 
 end
