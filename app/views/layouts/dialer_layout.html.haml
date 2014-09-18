@@ -1,27 +1,15 @@
 !!!
-%html{xmlns: "http://www.w3.org/1999/xhtml"}
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xmlns:og" => "http://ogp.me/ns#"}
   %head
-    = metamagic title: "Become a Friend of Buynance"
-    %meta{name: "robots", content: "noindex"}
-    %meta{property: "og:title", content: "Friends of Buynance"}
-    %meta{property: "og:url", content: "https://www.buynance.com/friends"}
-    %meta{property: "og:image", content: "https://res.cloudinary.com/buynance/image/upload/q_95/social/facebookads_3.jpg"}
-    %meta{property: "og:description", content: "Buynance pairs people with technology to extend economic opportunity to folks in need while helping small business owners get faster, more affordable, small business funding. Join our family."}
-    
+    = metamagic title: "Become a Friend of Buynance", og: { image: "https://www.buynance.com/images/twitter.jpg", title: "Become a Friend of Buynance", url: "https://www.buynance.com/friends", type: "website",description: "Buynance pairs people with technology to extend economic opportunity to folks in need while helping small business owners get faster, more affordable, small business funding. Join our family."}
    
-    /%title Faster, More Affordable, Small Business Funding.
-    %script{href: "http://jquery.thewikies.com/browser/jquery.browser.min.js"}
-    /%script{type: "text/javascript"}
-    /  var _sf_startpt=(new Date()).getTime()
     = stylesheet_link_tag    "application", media: "all"
     = javascript_include_tag "application"
     = javascript_pluggable_tag 
-    %script{href: "http://www.decisionlogic.com/javascript/jquery-1.6.2.min.js"}
     = javascript_include_tag "ga.js"
     = javascript_include_tag "mixpanel.js"
     
     = csrf_meta_tags
-    = render "layouts/facebook_pixel"
     = favicon_link_tag "favicon.ico"
   %body
     = render "layouts/dialer/header"
