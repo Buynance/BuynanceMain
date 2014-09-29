@@ -12,19 +12,12 @@ class BusinessesController < ApplicationController
   def new 
       @business_user = BusinessUser.new 
       @business = Business.new   
-      @show_funding_source = false
-      if params[:is_refinance].nil? and params[:is_funding].nil?
-        @show_funding_source = true 
-      else
-        @business.is_refinance = true unless params[:is_refinance].nil?
-        @business.is_refinance = false unless params[:is_funding].nil?
-      end
-      session[:show_funding_type] = @show_funding_source
   end
 
   def create
     @business = Business.new(business_params)
     @business_user = BusinessUser.new(business_user_params)
+    @business.is_refinance = false
     
     if @business_user.valid? && @business.valid?
       @business_user.save
@@ -35,9 +28,6 @@ class BusinessesController < ApplicationController
       flash[:signup] = true
       redirect_to funding_steps_path
     else
-      @show_funding_source = session[:show_funding_type]
-      #log_input_error(@business, "Signup Main") 
-      #log_input_error(@business_user, "Signup Main") 
       render :action => :new
     end
   end

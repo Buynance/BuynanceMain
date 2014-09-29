@@ -4,7 +4,7 @@ class RepDialerMailer < ActionMailer::Base
 		@representative = representative
 		mail :subject => "Welcome to the family.",
         	 :to      => representative.email,
-       		 :from    => "Team Buynance <noreply@buynance.com>"
+       		 :from    => "Jay Ballentine <noreply@buynance.com>"
 	end
 
 
