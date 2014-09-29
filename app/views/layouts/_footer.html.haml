@@ -16,11 +16,6 @@
                 - else
                   %a{href: '/'} Home
               %li 
-                - if current_page?('/') 
-                  %span{onclick: "$('body').scrollTo('#slider', 800)"} Slider
-                - else
-                  %a{href: '/#slider'} Slider
-              %li 
                 - if current_page?('/')
                   %span{onclick: "$('body').scrollTo('#benefits', 800)"} Benefits
                 - else

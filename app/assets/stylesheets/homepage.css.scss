@@ -834,7 +834,7 @@ margin-right:0
             }
         }
         .benefits-body-row-blue {
-        	margin-top: -2.0em;
+        	//margin-top: -2.0em;
             .benefits-body-row-blue-number {
                 float: right;
                 display: inline-block;
@@ -849,7 +849,7 @@ margin-right:0
             .benefits-body-row-blue-image {
                 float: right;
                 display: inline-block;
-                margin-left: 2.0em;
+                margin-left: 4.0em;
                 img {
                 	display: block;
                     width: 20.3em;
@@ -866,6 +866,7 @@ margin-right:0
 					position: absolute;                	
 					bottom: 0;
 					display: block;
+          right: 0;
                 	.benefits-body-row-blue-information-block-text {
                 		font-size: 2.4em;
                 		text-align: center;
@@ -885,7 +886,7 @@ margin-right:0
             }
         }
         .benefits-body-row-orange {
-        	margin-top: -4.0em;
+        	//margin-top: -4.0em;
             .benefits-body-row-orange-number {
                 float: left;
                 display: inline-block;
