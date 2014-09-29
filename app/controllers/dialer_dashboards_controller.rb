@@ -72,7 +72,7 @@
     end
 
     def not_linkedin?
-    	((params[:share] != "true") and (params[:c] != "true") and (params[:d] != "true")) and !Rails.env.development?
+    	((params[:linkedin] != "true") and !Rails.env.development?)
     end
 
 end

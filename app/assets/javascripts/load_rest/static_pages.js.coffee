@@ -5,6 +5,14 @@
 
 window['static_pages#index'] = (data) ->
 
+  $(".dialer-section-faq-item-text").hide();
+  $(".dialer-section-faq-item-header").on("click", (event) ->
+    if $(this).next().is(":visible")
+      $(this).next().slideUp();
+    else 
+      $(this).next().slideDown();
+    );
+
   jQuery(document).ready ->
     setup_carousel()
     setup_slider()   

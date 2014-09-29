@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140905161029) do
+ActiveRecord::Schema.define(version: 20140929014211) do
 
   create_table "active_admin_comments", force: true do |t|
     t.string   "namespace"
@@ -256,6 +256,8 @@ ActiveRecord::Schema.define(version: 20140905161029) do
     t.string   "step"
     t.integer  "discovery_type_id"
     t.integer  "rep_dialer_id"
+    t.integer  "requested_amount"
+    t.datetime "money_by"
   end
 
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true

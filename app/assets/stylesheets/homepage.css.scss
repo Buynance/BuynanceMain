@@ -206,7 +206,7 @@ margin-right:0
           display: block;
             .banner-content-information-action-get-financed {
                 display: inline-block;
-                margin-right: 1em;
+                margin-left: 14.5em;
                 .flat-button.button-get-financed{
                   font-family: $lato-bold;
                   
@@ -214,39 +214,17 @@ margin-right:0
                   color: white;
                   width: 24.0em;
                   border-size: 0px;
-                  padding-top: 1.4em;
-                  padding-bottom: 1.4em;
+                  padding-top: 1.7em;
+                  padding-bottom: 1.7em;
                   margin: 0 auto;
-                  padding-left: 1.6em;
-                  padding-right: 1.6em;
+                  padding-left: 1.9em;
+                  padding-right: 1.9em;
                   span {
-                      font-size: 2.0em;
+                      font-size: 2.2em;
                       text-decoration: none;
                       line-height: 1em;
                   }
                 } 
-            }
-            .banner-content-information-action-refinance {
-                display: inline-block;
-                .flat-button.button-get-refinance {
-                  font-family: $lato-bold;
-                  
-                  background-color: $buynance-green;
-                  color: white;
-                  width: 24.0em;
-                  border-size: 0px;
-                  padding-top: 1.4em;
-                  padding-bottom: 1.4em;
-                  margin: 0 auto;
-                  padding-left: 1.6em;
-                  padding-right: 1.6em;
-                  
-                  span {
-                      font-size: 2.0em;
-                      text-decoration: none;
-                      line-height: 1em;
-                  }
-                }
             }
         }
         .banner-content-information-bages {
@@ -648,7 +626,7 @@ margin-right:0
                 width: 16.3em;
                 span {
                     text-align: center;
-                    font-size: 1.6em;
+                    font-size: 2.0em;
                 }
             }
             .how-works-information-step2 {
@@ -656,7 +634,7 @@ margin-right:0
                 width: 16.3em;
                 span {
                     text-align: center;
-                    font-size: 1.6em;
+                    font-size: 2.0em;
                 }
             }
             .how-works-information-step3 {
@@ -665,7 +643,7 @@ margin-right:0
                 width: 16.3em;
                 span {
                     text-align: center;
-                    font-size: 1.6em;
+                    font-size: 2.0em;
                 }
             }
         }
@@ -856,7 +834,7 @@ margin-right:0
             }
         }
         .benefits-body-row-blue {
-        	margin-top: -2.0em;
+        	//margin-top: -2.0em;
             .benefits-body-row-blue-number {
                 float: right;
                 display: inline-block;
@@ -871,7 +849,7 @@ margin-right:0
             .benefits-body-row-blue-image {
                 float: right;
                 display: inline-block;
-                margin-left: 2.0em;
+                margin-left: 4.0em;
                 img {
                 	display: block;
                     width: 20.3em;
@@ -888,6 +866,7 @@ margin-right:0
 					position: absolute;                	
 					bottom: 0;
 					display: block;
+          right: 0;
                 	.benefits-body-row-blue-information-block-text {
                 		font-size: 2.4em;
                 		text-align: center;
@@ -907,7 +886,7 @@ margin-right:0
             }
         }
         .benefits-body-row-orange {
-        	margin-top: -4.0em;
+        	//margin-top: -4.0em;
             .benefits-body-row-orange-number {
                 float: left;
                 display: inline-block;
