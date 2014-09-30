@@ -64,7 +64,7 @@ $table-odd-blue: rgb(222, 243, 251);
   padding-top: 5.0em;
   padding-bottom: 17.5em;
   .compare-table{
-    width: 116.0em;
+    width: 93.7em;
     margin: 0 auto;
     .compare-table-column{
       display:table-cell;
@@ -183,7 +183,6 @@ $table-odd-blue: rgb(222, 243, 251);
         border-color: $table-odd-gray;
       }
       .compare-table-column:last-child{
-        background-color: $table-odd-gray;
         border-width: 0em;
       }
       .compare-table-column.revenue-background{
@@ -213,7 +212,6 @@ $table-odd-blue: rgb(222, 243, 251);
         border-color: $table-even-gray;
       }
       .compare-table-column:last-child{
-        background-color: $table-even-gray;
         border-width: 0em;
       }
       .compare-table-column.revenue-background{
@@ -286,7 +284,7 @@ $table-odd-blue: rgb(222, 243, 251);
       }
       .compare-table-column:last-child{
         border-width: 0;
-        width: 22.7em;
+        width: 24.5em;
       }
     }
   }
