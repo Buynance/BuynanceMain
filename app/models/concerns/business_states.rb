@@ -21,6 +21,9 @@ module BusinessStates
     scope :email_confirmation,  where(step: "email_confirmation")
     scope :mobile_confirmation, where(step: "mobile_confirmation")
     scope :accepted_market,     where(step: "accepted_market")
+    scope :accepted_buynance_fast_advance, where(step: "accepted_buynance_fast_advance")
+    scope :accepted_buynance_fast_advance_plus, where(step: "accepted_buynance_fast_advance_plus")
+    scope :accepted_affiliate_advance, where(step: "accepted_affiliate_advance")
 
     state_machine :step, :initial => :personal do
 
@@ -82,6 +85,18 @@ module BusinessStates
 
       event :passed_mobile_confirmation do
         transition [:mobile_confirmation] => :accepted_market
+      end
+
+      event :accept_buynance_fast_advance do
+        transition [:accepted_market] => :accepted_buynance_fast_advance
+      end
+
+      event :accept_buynance_fast_advance_plus do
+        transition [:accepted_market] => :accepted_buynance_fast_advance_plus
+      end
+
+      event :accept_affiliate_advance do
+        transition [:accepted_market] => :accepted_affiliate_advance
       end
 
       event :reject_from_market do

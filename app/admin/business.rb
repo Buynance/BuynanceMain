@@ -13,6 +13,10 @@ ActiveAdmin.register Business do
   scope :email_confirmation
   scope :mobile_confirmation
   scope :accepted_market
+  scope :accepted_buynance_fast_advance
+  scope :accepted_buynance_fast_advance_plus
+  scope :accepted_affiliate_advance
+
 
   filter :name
   filter :email

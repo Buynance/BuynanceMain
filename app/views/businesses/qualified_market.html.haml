@@ -1,20 +1,137 @@
+:javascript
+  $(window).load(function(){
+      $('#myModal').modal('show');
+  });
+
 .web_body
-  .paper-section
-    .paper-section-header
-      %span Account
-    .paper-section-main.clearfix   
-      .paper-section-main-sheet.first-paper-section.clearfix
-        .paper-section-main-sheet.last-paper-section
-          .paper-section-bank-login.row
-            .account
-              .account-top.clearfix
-                .account-top-image
-                  = image_tag("yuliya_account.png")
-                .account-top-info
-                  .account-top-info-greeting
-                    %span 
-                      = "Hi #{@business.owner_first_name},"
-                  .account-top-info-message
-                    %span I'm excited because you qualify to get funded by one of our specially selected funding partners. You will receive a phone call soon to get started in your process.
-              .account-footer
-                %span If you have any questions do not hesitate to contact me directly.
+  .paper-section.acceptance-main
+    .paper-section-header.acceptance-header
+      %span Congrats!
+    .acceptance
+      .acceptance-top.clearfix
+        .acceptance-top-image
+          = image_tag("yuliya_account.png")
+          .name{:style => "text-align: center;margin-top: 20px;font-family: latobold;font-size: 20px;color: #25aae1;"}
+            %span Yuliya Glazman
+        .acceptance-top-info
+          .acceptance-top-info-greeting
+            %span 
+              = "Hi #{@business.owner_first_name},"
+          .acceptance-top-info-message
+            %span Congrats!  It looks like you’ve been approved to receive small business funding through Buynance.  Please evaluate your next steps and all options below.
+      .acceptance-body.clearfix
+        .acceptance-item-gray
+          .acceptance-item-gray-title
+            %span Buynance Fast Advance™
+          .acceptance-item-gray-subtitle
+            %span Get 
+            %span.highlight-green $2,000 
+            %span in as little as one hour.
+          .acceptance-item-gray-list.acceptance-list-one
+            %span No credit check
+          .acceptance-item-gray-list.acceptance-list-two
+            %span Simple application.
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Overview
+            .acceptance-item-gray-terms-item
+              %span You sell us 
+              %span.highlight-green{style: "font-family: latobold"} $2,800 
+              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+            .acceptance-item-gray-terms-item
+              %span We collect the 
+              %span.highlight $2,800 
+              %span over 45 days.
+            - if @business.accepted_market?
+              .acceptance-item-gray-terms-item
+                %span No early payment penalty.
+            - else
+              .acceptance-item-gray-terms-item{style: "border-bottom-width: 0px;"}
+                %span No early payment penalty.
+          .acceptance-item-gray-terms-submit
+            - if @business.accepted_market?
+              = link_to accept_offer_businesses_path(offer: "1"), class: "flat-button button-plan" do
+                %span CHOOSE PLAN
+              
+
+        .acceptance-item-green
+          .acceptance-item-green-title
+            %span Buynance Fast Advance Plus™
+          .acceptance-item-green-subtitle
+            %span Get $25,000. $3,500 today and $21,500 in 7 Days
+          .acceptance-item-green-subtitle-two
+            %span Get 
+            %span.highlight-green{style: "font-family: latobold"} $3,500 
+            %span in your account in one hour and 
+            %span.highlight-green{style: "font-family: latobold"} $21,500 
+            %span in 7 days from one of our preferred partners.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
+            %span Guaranteed approval.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-even
+            %span Simple application.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
+            %span No broker fees.
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Overview
+            .acceptance-item-gray-terms-item
+              %span You sell us 
+              %span.highlight-green{style: "font-family: latobold"} $2,800 
+              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+            .acceptance-item-gray-terms-item
+              %span We collect the $2,800 over 30 daily installments. OR,
+            - if @business.accepted_market?
+              .acceptance-item-gray-terms-item
+                %span You complete the sale when you get more cash in a week. 
+            - else
+              .acceptance-item-gray-terms-item{style: "border-bottom-width: 0px;"}
+                %span You complete the sale when you get more cash in a week.
+          .acceptance-item-green-terms-submit
+            - if @business.accepted_market?
+              = link_to accept_offer_businesses_path(offer: "2"), class: "flat-button button-plan" do
+                %span CHOOSE PLAN
+
+        .acceptance-item-gray
+          .acceptance-item-gray-title
+            %span Affiliate Advance
+          .acceptance-item-gray-subtitle
+            %span Get 
+            %span.highlight-green $25,000 
+            %span in your account in 7 days.
+          .acceptance-item-gray-list.acceptance-list-one
+            %span Credit check Required.
+          .acceptance-item-gray-list.acceptance-list-two
+            %span Minimal Paperworks.
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Overview
+            .acceptance-item-gray-terms-item
+              %span Guaranteed approval.
+            .acceptance-item-gray-terms-item
+              %span Simple application process.
+            - if @business.accepted_market?
+              .acceptance-item-gray-terms-item
+                %span Closing costs may apply.
+            - else
+              .acceptance-item-gray-terms-item{style: "border-bottom-width: 0px"}
+                %span Closing costs may apply.
+          .acceptance-item-gray-terms-submit
+            - if @business.accepted_market?
+              = link_to accept_offer_businesses_path(offer: "3"), class: "flat-button button-plan" do
+                %span CHOOSE PLAN
+
+- unless @business.accepted_market?
+  #myModal.modal.fade{"aria-hidden" => "true", "aria-labelledby" => "myModalLabel", :role => "dialog", :tabindex => "-1"}
+    .modal-dialog
+      .modal-content
+        .modal-header
+          %button.close{"data-dismiss" => "modal", :type => "button"}
+            %span{"aria-hidden" => "true"} ×
+            %span.sr-only Close
+          %h4.modal-title{style: "font-family: latobold; font-size: 20px; color: #8dc63f;"} Plan Selected
+        .modal-body{style: "font-family: lato; font-size: 15px;"}
+          %p Great!  Your submission is being processed and we will be in contact faster than you can blink!
+      / /.modal-content
+    / /.modal-dialog
+  / /.modal
+
