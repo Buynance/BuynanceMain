@@ -43,6 +43,7 @@ Buynance::Application.routes.draw do
       post 'confirm_mobile'
       get 'disqualified'
       get 'qualified_market'
+      get 'accept_offer'
     end
   end
 

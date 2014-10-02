@@ -1,26 +1,98 @@
 .web_body
-  .paper-section
-    .paper-section-header
-      %span Questionnaire
-    .paper-section-main.clearfix   
-      .paper-section-main-sheet.first-paper-section.clearfix
-        .paper-section-main-sheet.last-paper-section
-          .paper-section-bank-login.row
-            .paper-section-regular
-              .paper-section-regular-header
-                %span To get to know you better. 
-              .paper-section-regular-body
-                .paper-section-regular-body-info
-                  = simple_form_for @questionnaire, url: setup_action_dialer_dashboards_path do |f|
-                    = fields_for @rep_dialer do |rep_dialer_fields|
-                      .form-label.dialer-setup-form-label
-                        %span Mobile Number
-                      .form-input.dialer-setup-form-input
-                        = rep_dialer_fields.text_field :mobile_number, placeholder: 'Mobile Number', class: 'textbox form-control required email', label: false
-                    - (0...@questionnaire.questions.size).each do |i|
-                      .form-label.dialer-setup-form-label
-                        %span #{@questionnaire.questions[i].question_text}
-                      .form-input.dialer-setup-form-input
-                        = f.input "answer#{i}",  as: :text, input_html: {class: 'textbox'}, label: false, error: false
-                    .form-action.dialer-setup-form-action
-                      = f.submit "Continue", class: "form-button flat-button button-submit"
+  .paper-section.acceptance-main
+    .paper-section-header.acceptance-header
+      %span Congrats!
+    .acceptance
+      .acceptance-top.clearfix
+        .acceptance-top-image
+          = image_tag("yuliya_account.png")
+        .acceptance-top-info
+          .acceptance-top-info-greeting
+            %span 
+              = "Hi Edwin Velasquez,"
+          .acceptance-top-info-message
+            %span Congrats!  It looks like you’ve been approved to receive small business funding through Buynance.  Please evaluate your next steps and all options below.
+      .acceptance-body.clearfix
+        .acceptance-item-gray
+          .acceptance-item-gray-title
+            %span Buynance Fast Advance™
+          .acceptance-item-gray-subtitle
+            %span Get 
+            %span.highlight-green $2,000 
+            %span in as little as one hour.
+          .acceptance-item-gray-list.acceptance-list-one
+            %span No Credit Check
+          .acceptance-item-gray-list.acceptance-list-two
+            %span Minimal Paperwork
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Terms
+            .acceptance-item-gray-terms-item
+              %span You sell us 
+              %span.highlight-green{style: "font-family: latobold"} $2,800 
+              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+            .acceptance-item-gray-terms-item
+              %span We’ll collect the 
+              %span.highlight $2,800 
+              %span over 30 daily installments.
+            .acceptance-item-gray-terms-item
+              %span No early payment penalty.
+          .acceptance-item-gray-terms-submit
+            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
+              %span CHOOSE PLAN
+
+        .acceptance-item-green
+          .acceptance-item-green-title
+            %span Buynance Fast Advance Plus™
+          .acceptance-item-green-subtitle
+            %span Get $25,000. $3,500 today and $21,500 in 7 Days
+          .acceptance-item-green-subtitle-two
+            %span Get 
+            %span.highlight-green{style: "font-family: latobold"} $3,500 
+            %span in your account in one hour and 
+            %span.highlight-green{style: "font-family: latobold"} $21,500 
+            %span in 7 days from one of our preferred partners.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
+            %span Highest available Buynance amount.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-even
+            %span Credit Check Required.
+          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
+            %span Minimal Paperwork.
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Terms
+            .acceptance-item-gray-terms-item
+              %span You sell us 
+              %span.highlight-green{style: "font-family: latobold"} $2,800 
+              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+            .acceptance-item-gray-terms-item
+              %span We collect the $2,800 over 30 daily installments. OR
+            .acceptance-item-gray-terms-item
+              %span Complete the sale when we help you Buynance 
+              %span.highlight-green{style: "font-family: latobold"} $25,000 
+              %span on or around October 1, 2014 from preferred partners. 
+          .acceptance-item-green-terms-submit
+            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
+              %span CHOOSE PLAN
+
+        .acceptance-item-gray
+          .acceptance-item-gray-title
+            %span Affiliate Advance
+          .acceptance-item-gray-subtitle
+            %span Get 
+            %span.highlight-green $25,000 
+            %span in your account in 7 days.
+          .acceptance-item-gray-list.acceptance-list-one
+            %span Credit check Required.
+          .acceptance-item-gray-list.acceptance-list-two
+            %span Minimal Paperworks.
+          .acceptance-item-gray-terms
+            .acceptance-item-gray-terms-title
+              %span Terms
+            .acceptance-item-gray-terms-item
+              %span Minimal paperwork.
+            .acceptance-item-gray-terms-item
+              %span Vary depending on lender.
+          .acceptance-item-gray-terms-submit
+            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
+              %span CHOOSE PLAN

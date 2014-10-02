@@ -47,7 +47,7 @@ class BusinessesController < ApplicationController
       render 'qualified_funder'
     elsif @business.qualified_for_refi?
       render 'qualified_refi'
-    elsif @business.qualified_for_market?
+    elsif @business.qualified_for_market? || @business.accepted_buynance_fast_advance? || @business.accepted_buynance_fast_advance_plus || @business.accepted_affiliate_advance
       redirect_to action: 'qualified_market'
     elsif @business.disqualified_for_refi? || @business.disqualified_for_funder?
       redirect_to action: 'disqualified'
@@ -159,6 +159,19 @@ class BusinessesController < ApplicationController
   def disqualified
   end
 
+  def accept_offer
+    @business = current_business 
+    offer_type = params[:offer]
+    if offer_type == "1"
+      @business.accept_buynance_fast_advance
+    elsif offer_type == "2"
+      @business.accept_buynance_fast_advance_plus
+    elsif offer_type == "3"
+      @business.accept_affiliate_advance
+    end
+    redirect_to :action => :show
+  end
+
 
   private
 
@@ -171,5 +184,10 @@ class BusinessesController < ApplicationController
     def business_params
       return params.require(:business).permit(:terms_of_service, :recovery_code, :name, :is_refinance, :referral_code, :discovery_type_id) 
     end
+
+    def accept_offer_params
+      return params.require(:accept_offer).permit(:offer) 
+    end
+
 end
 

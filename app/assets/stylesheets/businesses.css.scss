@@ -138,3 +138,220 @@ $lato-light: 'latolight', Arial, sans-serif;
     }
 }
     
+.paper-section .paper-section-header.acceptance-header{
+    color: $buynance-green;
+    margin-left: 0px;
+}
+
+.web_body .paper-section.acceptance-main{
+    width: 860px;
+}
+
+.acceptance{
+    min-height: 500px;
+    margin-bottom: 190px;
+    
+
+    .acceptance-top{
+        padding-bottom: 70px;
+        padding-left: 70px;
+        
+        .acceptance-top-image{
+            float: left;
+            margin-right: 24px;
+        }
+
+        .acceptance-top-info{
+            float: left;
+            font-family: $lato-bold;
+            width: 72%;
+            color: $dark-gray;
+            padding-top: 10px;
+            span{font-size: 20px;}
+
+            .acceptance-top-info-greeting{
+                margin-bottom: 16px;
+                color: $buynance-blue;
+            }   
+
+            .acceptance-top-info-message{
+
+            }
+        }
+    }
+    .acceptance-body{
+        width: 100%;
+        color: rgb(78, 77, 76);
+        .acceptance-item-gray{
+            width: 273px;
+            float: left;
+            margin-top: 18px;
+            min-height: 450px; 
+            background: asset-url(image-path("offer_section_bottom_gray.jpg")) bottom left no-repeat, asset-url(image-path("offer_section_top_gray.jpg")) top left no-repeat, asset-url(image-path("offer_section_middle_gray.jpg")) repeat-y ; 
+            margin-right: 12px;
+            padding-top: 33px;
+            padding-bottom: 28px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        .acceptance-item-green{
+            width: 276px;
+            float: left;
+            min-height: 650px;
+            background: asset-url(image-path("offer_section_bottom_green.jpg")) bottom left no-repeat, asset-url(image-path("offer_section_top_green.jpg")) top left no-repeat, asset-url(image-path("offer_section_middle_green.jpg")) repeat-y ; 
+            margin-right: 12px;
+            padding-top: 33px;
+            padding-bottom: 28px;
+            padding-left: 3px;
+            padding-right: 3px;
+        }
+    }
+}
+
+.acceptance-item-gray-title{
+    padding-left: 26px;
+    font-family: $lato-bold;
+    font-size: 22px;
+    padding-right: 80px;
+    padding-bottom: 22px;
+}
+
+.acceptance-item-gray-subtitle{
+    background: rgb(235, 235, 235);
+
+    span{
+        font-size: 20px;
+        font-family: $lato-bold;
+    }
+}
+
+.acceptance-item-gray-subtitle, .acceptance-item-gray-list{
+    width: 100%;
+    padding-left: 26px;
+    padding-right: 66px;
+    padding-top: 20px;
+    padding-bottom: 15px;
+}
+
+.acceptance-item-gray-terms-title {
+    padding-top: 24px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: $border-color;
+    font-family: latobold;
+    font-size: 20px;
+    padding-bottom: 12px;
+
+
+}
+
+.acceptance-item-gray-terms-item {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    border-bottom-width: 1px;
+    border-bottom-style: solid;
+    border-color: $border-color;
+    font-family: lato;
+    font-size: 16px;
+}
+
+.acceptance-item-gray-list{
+    padding-left: 22px;
+    font-family: latoregular;
+    font-size: 18px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+.acceptance-list-two{
+    background: rgb(235, 235, 235);
+}
+
+.acceptance-item-gray-terms{
+    padding-left: 26px;
+    padding-right: 26px;
+
+}
+
+.acceptance-item-green{
+    .acceptance-item-green-title{
+        padding-left: 26px;
+        font-family: $lato-bold;
+        font-size: 24px;
+        padding-right: 80px;
+        padding-bottom: 22px;
+        color: $buynance-green;
+    }
+
+    .acceptance-item-green-subtitle{
+        background: $buynance-green;
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 12px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+        color: white;
+
+        span{
+            font-size: 20px;
+            font-family: $lato-bold;
+        }
+    }
+
+    .acceptance-item-green-subtitle-two{
+        width: 100%;
+        padding-left: 20px;
+        padding-right: 12px;
+        padding-top: 20px;
+        padding-bottom: 15px;
+
+        span{
+            font-family: latoregular;
+            font-size: 18px;
+        }
+    }
+
+    .acceptance-item-green-terms-item{
+        padding-left: 20px;
+        font-family: latoregular;
+        font-size: 18px;
+        padding-top: 8px;
+        padding-bottom: 6px;
+    }
+
+    .acceptance-item-green-terms-item-odd{
+        background-color: rgb(224, 247, 192);
+    }
+
+    .acceptance-item-green-terms-item-even{
+        background-color: rgb(206, 245, 152);
+    }
+
+}
+
+
+.flat-button.button-plan{
+  font-family: $lato-bold;
+  
+  display: block;
+  margin: 0 auto;
+  
+  background-color: $buynance-green;
+  color: white;
+  width: 225px;
+  border-size: 0px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  padding-left: 19px;
+  padding-right: 19px;
+  span{
+      font-size: 18px;
+      text-decoration: none;
+      line-height: 10px;
+  }
+}
+
+.acceptance-item-gray-terms-submit, .acceptance-item-green-terms-submit{
+    padding-top: 20px;
+}
