@@ -225,7 +225,14 @@ $lato-light: 'latolight', Arial, sans-serif;
     }
 }
 
-.acceptance-item-gray-subtitle, .acceptance-item-gray-list{
+.acceptance-item-gray-subtitle-two{
+    span{
+        font-size: 20px;
+        font-family: $lato-bold;
+    }
+}
+
+.acceptance-item-gray-subtitle, .acceptance-item-gray-list, .acceptance-item-gray-subtitle-two{
     width: 100%;
     padding-left: 26px;
     padding-right: 66px;

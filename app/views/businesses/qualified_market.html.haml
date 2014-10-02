@@ -11,6 +11,8 @@
       .acceptance-top.clearfix
         .acceptance-top-image
           = image_tag("yuliya_account.png")
+          .name{:style => "text-align: center;margin-top: 20px;font-family: latobold;font-size: 20px;color: #25aae1;"}
+            %span Yuliya Glazman
         .acceptance-top-info
           .acceptance-top-info-greeting
             %span 
@@ -26,20 +28,20 @@
             %span.highlight-green $2,000 
             %span in as little as one hour.
           .acceptance-item-gray-list.acceptance-list-one
-            %span No Credit Check
+            %span No credit check
           .acceptance-item-gray-list.acceptance-list-two
-            %span Minimal Paperwork
+            %span Simple application.
           .acceptance-item-gray-terms
             .acceptance-item-gray-terms-title
-              %span Terms
+              %span Overview
             .acceptance-item-gray-terms-item
               %span You sell us 
               %span.highlight-green{style: "font-family: latobold"} $2,800 
               %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
             .acceptance-item-gray-terms-item
-              %span We’ll collect the 
+              %span We collect the 
               %span.highlight $2,800 
-              %span over 30 daily installments.
+              %span over 45 days.
             - if @business.accepted_market?
               .acceptance-item-gray-terms-item
                 %span No early payment penalty.
@@ -64,30 +66,26 @@
             %span.highlight-green{style: "font-family: latobold"} $21,500 
             %span in 7 days from one of our preferred partners.
           .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
-            %span Highest available Buynance amount.
+            %span Guaranteed approval.
           .acceptance-item-green-terms-item.acceptance-item-green-terms-item-even
-            %span Credit Check Required.
+            %span Simple application.
           .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
-            %span Minimal Paperwork.
+            %span No broker fees.
           .acceptance-item-gray-terms
             .acceptance-item-gray-terms-title
-              %span Terms
+              %span Overview
             .acceptance-item-gray-terms-item
               %span You sell us 
               %span.highlight-green{style: "font-family: latobold"} $2,800 
               %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
             .acceptance-item-gray-terms-item
-              %span We collect the $2,800 over 30 daily installments. OR
+              %span We collect the $2,800 over 30 daily installments. OR,
             - if @business.accepted_market?
               .acceptance-item-gray-terms-item
-                %span Complete the sale when we help you Buynance 
-                %span.highlight-green{style: "font-family: latobold"} $25,000 
-                %span on or around October 1, 2014 from preferred partners. 
+                %span You complete the sale when you get more cash in a week. 
             - else
               .acceptance-item-gray-terms-item{style: "border-bottom-width: 0px;"}
-                %span Complete the sale when we help you Buynance 
-                %span.highlight-green{style: "font-family: latobold"} $25,000 
-                %span on or around October 1, 2014 from preferred partners. 
+                %span You complete the sale when you get more cash in a week.
           .acceptance-item-green-terms-submit
             - if @business.accepted_market?
               = link_to accept_offer_businesses_path(offer: "2"), class: "flat-button button-plan" do
@@ -106,15 +104,17 @@
             %span Minimal Paperworks.
           .acceptance-item-gray-terms
             .acceptance-item-gray-terms-title
-              %span Terms
+              %span Overview
             .acceptance-item-gray-terms-item
-              %span Minimal paperwork.
+              %span Guaranteed approval.
+            .acceptance-item-gray-terms-item
+              %span Simple application process.
             - if @business.accepted_market?
               .acceptance-item-gray-terms-item
-                %span Vary depending on lender.
+                %span Closing costs may apply.
             - else
               .acceptance-item-gray-terms-item{style: "border-bottom-width: 0px"}
-                %span Vary depending on lender.
+                %span Closing costs may apply.
           .acceptance-item-gray-terms-submit
             - if @business.accepted_market?
               = link_to accept_offer_businesses_path(offer: "3"), class: "flat-button button-plan" do
