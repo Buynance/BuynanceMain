@@ -32,6 +32,7 @@ module BusinessNotifications
 
     def send_offer_notification!
       TwilioLib.send_text("3473567903", "A user has accepted an offer. Name: #{self.owner_first_name} #{self.owner_last_name}. Offer Type: #{self.step.humanize}")
+      TwilioLib.send_text("3473567903", "A user has accepted an offer. Name: #{self.owner_first_name} #{self.owner_last_name}. Offer Type: #{self.step.humanize}")
     end
 
 
