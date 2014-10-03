@@ -1,98 +1,65 @@
-.web_body
-  .paper-section.acceptance-main
-    .paper-section-header.acceptance-header
-      %span Congrats!
-    .acceptance
-      .acceptance-top.clearfix
-        .acceptance-top-image
-          = image_tag("yuliya_account.png")
-        .acceptance-top-info
-          .acceptance-top-info-greeting
-            %span 
-              = "Hi Edwin Velasquez,"
-          .acceptance-top-info-message
-            %span Congrats!  It looks like you’ve been approved to receive small business funding through Buynance.  Please evaluate your next steps and all options below.
-      .acceptance-body.clearfix
-        .acceptance-item-gray
-          .acceptance-item-gray-title
-            %span Buynance Fast Advance™
-          .acceptance-item-gray-subtitle
-            %span Get 
-            %span.highlight-green $2,000 
-            %span in as little as one hour.
-          .acceptance-item-gray-list.acceptance-list-one
-            %span No Credit Check
-          .acceptance-item-gray-list.acceptance-list-two
-            %span Minimal Paperwork
-          .acceptance-item-gray-terms
-            .acceptance-item-gray-terms-title
-              %span Terms
-            .acceptance-item-gray-terms-item
-              %span You sell us 
-              %span.highlight-green{style: "font-family: latobold"} $2,800 
-              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
-            .acceptance-item-gray-terms-item
-              %span We’ll collect the 
-              %span.highlight $2,800 
-              %span over 30 daily installments.
-            .acceptance-item-gray-terms-item
-              %span No early payment penalty.
-          .acceptance-item-gray-terms-submit
-            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
-              %span CHOOSE PLAN
-
-        .acceptance-item-green
-          .acceptance-item-green-title
-            %span Buynance Fast Advance Plus™
-          .acceptance-item-green-subtitle
-            %span Get $25,000. $3,500 today and $21,500 in 7 Days
-          .acceptance-item-green-subtitle-two
-            %span Get 
-            %span.highlight-green{style: "font-family: latobold"} $3,500 
-            %span in your account in one hour and 
-            %span.highlight-green{style: "font-family: latobold"} $21,500 
-            %span in 7 days from one of our preferred partners.
-          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
-            %span Highest available Buynance amount.
-          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-even
-            %span Credit Check Required.
-          .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
-            %span Minimal Paperwork.
-          .acceptance-item-gray-terms
-            .acceptance-item-gray-terms-title
-              %span Terms
-            .acceptance-item-gray-terms-item
-              %span You sell us 
-              %span.highlight-green{style: "font-family: latobold"} $2,800 
-              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
-            .acceptance-item-gray-terms-item
-              %span We collect the $2,800 over 30 daily installments. OR
-            .acceptance-item-gray-terms-item
-              %span Complete the sale when we help you Buynance 
-              %span.highlight-green{style: "font-family: latobold"} $25,000 
-              %span on or around October 1, 2014 from preferred partners. 
-          .acceptance-item-green-terms-submit
-            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
-              %span CHOOSE PLAN
-
-        .acceptance-item-gray
-          .acceptance-item-gray-title
-            %span Affiliate Advance
-          .acceptance-item-gray-subtitle
-            %span Get 
-            %span.highlight-green $25,000 
-            %span in your account in 7 days.
-          .acceptance-item-gray-list.acceptance-list-one
-            %span Credit check Required.
-          .acceptance-item-gray-list.acceptance-list-two
-            %span Minimal Paperworks.
-          .acceptance-item-gray-terms
-            .acceptance-item-gray-terms-title
-              %span Terms
-            .acceptance-item-gray-terms-item
-              %span Minimal paperwork.
-            .acceptance-item-gray-terms-item
-              %span Vary depending on lender.
-          .acceptance-item-gray-terms-submit
-            %a.flat-button.button-plan{href: "/signup?is_funding=true"}
-              %span CHOOSE PLAN
+!!!
+%html
+  %head
+    %meta{:content => "text/html; charset=UTF-8", "http-equiv" => "Content-Type"}/
+  %body
+    %table{:cellpadding => "10", :cellspacing => "0", :style => "font-family:\r\n   arial, verdana, sans-serif; background: rgb(248, 248, 248);", :width => "100%"}
+      %tbody
+        %tr
+          %td{:valign => "top"}
+            %table{:cellpadding => "0", :cellspacing => "0", :style => "color: rgb(0, 0, 0); font-size: 12px; width: 550px; border: 1px solid rgb(211, 211, 211); margin: 0 auto;"}
+              %tbody
+                %tr
+                  %td{:style => "height: 60px; vertical-align:middle; background-color: white;"}
+                    %table{:style => "width: 100%;"}
+                      %tbody
+                        %tr
+                          %td{:style => "text-align: left;width: 50%;"}
+                            %a{:href => "\#{root_url}", :style => "text-decoration: none; border: 0px; float:left; margin-left: 15px;", :target => "_blank"}
+                              %img{:alt => "Buynance Logo", :src => "http://res.cloudinary.com/buynance/image/upload/c_scale,q_100,w_200/logo_ypvhm4.jpg", :style => "border: none;", :width => "200"}/
+                          %td{:style => "text-align: right; width: 50%; display: none;"}
+                             
+                %tr
+                  %td{:style => "background-color: white;", :valign => "top"}
+                    %img{:alt => "Buynance Logo", :src => "http://res.cloudinary.com/buynance/image/upload/email/buynance-banner-email2.jpg", :style => "border: none;"}/
+                %tr
+                  %td{:style => "padding: 20px; background-color: white;", :valign => "top"}
+                    %h2{:style => "font-size: 24px; font-weight: bold; color: black; margin-bottom: 20px; color: #606060;"} Thank you for signing up with Buynance!
+                    %span{:style => "font-size: 12px; font-weight: normal; color: rgb(136, 136, 136);font-style: italic;"} Buynance provides access to faster , more affordable business funding. We pride ourselves in providing our customers with best experience as they shop for their business funding needs.
+                    %div{:style => "border: 1px solid rgb(221,230, 239); margin: 15px 0px; padding: 0px 15px; border-top-left-radius: 5px;border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; color: rgb(102, 102, 102); background: rgb(228, 234, 242);"}
+                      %p
+                        Login Email:
+                        %span{:style => "color: rgb(0, 0, 0); font-weight: bold;"} hghgj@jhk.com
+                        %br/
+                    %p{:style => "color:rgb(102, 102, 102);"} To check the status of your business funding, login to Buynance using the email above and the password you provided during the signup proccess.
+                    %div{:style => "font-size: 18px; font-weight: bold; color: black; margin-top: 20px; margin-bottom: 20px; color: #606060;"}
+                      Click the link below to confirm your account
+                    %div{:style => "border: 1px solid rgb(221, 230, 239); margin: 15px 0px; padding: 0px 15px; border-top-left-radius: 5px; border-top-right-radius: 5px; border-bottom-right-radius: 5px; border-bottom-left-radius: 5px; background: rgb(228,234, 242);"}
+                      %p
+                        = link_to("#{root_url}activate/                                                                                                 |
+                          78696786876", "#{root_url}activate/7687687686", html_options = {style: "color: #20acd7;"}) |
+                    %p{:style => "color: rgb(102, 102, 102);"} If you are clicking the link from a device that is not currently logged in you will be asked to input your email and Buynance password.
+                    %h3{:style => "font-size: 18px; font-weight: bold; color: black; margin-top: 20px; margin-bottom: 20px; color: #606060;"} More Information
+                    %p{:style => "color: rgb(102, 102, 102);"}
+                      For more information about funding your business through Buynance, check out the resources below:
+                    %ul
+                      %li
+                        = link_to("Frequently Asked Questions","#{root_url}faq", html_options = {style: "color: #20acd7;"})
+                      %li
+                        = link_to("Blog","#{root_url}blog", html_options = {style: "color: #20acd7;"})
+                      %li
+                        = link_to("About","#{root_url}about", html_options = {style: "color: #20acd7;"})
+                %tr
+                  %td{:style => "vertical-align: middle; border-top-style: solid; border-width: 3px; border-color: rgb(238, 238, 238); padding: 10px;"}
+                    %span{:style => "font-size: 10px; color: rgb(56, 56, 56); line-height: 100%;"}
+                      Funder Pair Inc.
+                      %br/
+                      44 Wall Street, 21st Floor
+                      %br>/
+                      New York, NY 10005
+                      %br>/
+                      (877) 289 6262
+                      %br/
+                      %br/
+                      Copyright © 2014 Funder Pair Inc. All rights reserved.
+                      %br/
