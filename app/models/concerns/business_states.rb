@@ -52,15 +52,15 @@ module BusinessStates
       end
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|
-        business.send_offer_notification!
+        business.send_offer_sms
       end
 
       after_transition :on => :accept_buynance_fast_advance_plus do |business, t|
-        business.send_offer_notification!
+        business.send_offer_sms
       end
 
       after_transition :on => :accept_affiliate_advance do |business, t|
-        business.send_offer_notification!
+        business.send_offer_sms
       end
 
       event :passed_personal do

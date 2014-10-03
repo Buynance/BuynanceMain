@@ -26,6 +26,10 @@ module BusinessNotifications
     end
     #handle_asynchronously :send_bank_login_notification!, :run_at => Proc.new { 5.minutes.from_now }, :priority => 5
 
+    def send_offer_sms
+      self.send_offer_notification!
+    end
+
     def send_offer_notification!
       TwilioLib.send_text("3473567903", "A user has accepted an offer. Name: #{self.owner_first_name} #{self.owner_last_name}. Offer Type: #{self.step.humanize}")
     end
