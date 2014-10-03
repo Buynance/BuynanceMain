@@ -33,7 +33,6 @@ module BusinessNotifications
     def send_offer_notification!
       TwilioLib.send_text("3473567903", "A user has accepted an offer. Name: #{self.owner_first_name} #{self.owner_last_name}. Offer Type: #{self.step.humanize}")
     end
-    handle_asynchronously :send_offer_notification!, :priority => 5
 
 
     #def send_offer_notification!
