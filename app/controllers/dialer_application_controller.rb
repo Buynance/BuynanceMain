@@ -56,7 +56,7 @@ class DialerApplicationController < ActionController::Base
 
     def current_business
       if current_business_user
-        return Business.find(current_business_user.business_id, no_obfuscated_id: true)
+        return Business.find(current_business_user.business_id)
       else
         return false
       end

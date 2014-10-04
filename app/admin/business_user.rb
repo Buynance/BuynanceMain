@@ -18,7 +18,7 @@ ActiveAdmin.register BusinessUser do
     panel 'Basic Information' do
       attributes_table_for business_user do
         row("Id") {|business_user| business_user.id}
-        row("Business") {|business_user| link_to business_user.business_id, grubraise_business_path(Business.find(business_user.business_id, no_obfuscated_id: true))}
+        row("Business") {|business_user| link_to business_user.business_id, grubraise_business_path(Business.find(business_user.business_id))}
         row  :email
         row("Encrypted Password") {|business_user| business_user.crypted_password}
         row   :reset_password_token

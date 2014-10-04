@@ -2,7 +2,6 @@ class BusinessUser < ActiveRecord::Base
 	include BusinessUserValidations
 	attr_accessor :current_step, :email_confirmation
 
-  	obfuscate_id :spin => 89238723
   	belongs_to :business
 
 	before_create :init
@@ -24,7 +23,7 @@ class BusinessUser < ActiveRecord::Base
 
 
   def business
-  	Business.find(self.business_id, no_obfuscated_id: true)
+  	Business.find(self.business_id)
   end
 
 

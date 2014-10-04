@@ -11,7 +11,7 @@ include Wicked::Wizard
 
 	def update
 		@business_user = current_business_user
-		@business = Business.find(@business_user.business_id, no_obfuscated_id: true)
+		@business = Business.find(@business_user.business_id)
 		@business_user.current_step = step
 		@business.current_step = step
 

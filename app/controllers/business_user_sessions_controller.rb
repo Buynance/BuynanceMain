@@ -9,8 +9,8 @@ class BusinessUserSessionsController < ApplicationController
   def create
     @business_user_session = BusinessUserSession.new(params[:business_user_session])
     if @business_user_session.save
-      current_business_user = BusinessUser.find(@business_user_session.record.id, no_obfuscated_id: true)
-      current_business = Business.find(current_business_user.business_id, no_obfuscated_id: true)
+      current_business_user = BusinessUser.find(@business_user_session.record.id)
+      current_business = Business.find(current_business_user.business_id)
       if (current_business.is_finished_application)
         if(!current_business.is_email_confirmed)
         end

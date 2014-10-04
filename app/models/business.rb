@@ -13,8 +13,6 @@ class Business < ActiveRecord::Base
   before_save :parse_phone_number
   
 
-  obfuscate_id :spin => 89238723
-
   has_one :business_user,  :dependent => :destroy
   has_one :bank_account,   :dependent => :destroy
   has_one :routing_number, :dependent => :destroy
