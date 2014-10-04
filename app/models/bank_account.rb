@@ -225,7 +225,7 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def create_request_code
-		business = Business.find(self.business_id, no_obfuscated_id: true)
+		business = Business.find(self.business_id)
 		service_key = Buynance::Application.config.service_key
 		profile_guid = Buynance::Application.config.profile_guid
 		site_user_guid = Buynance::Application.config.site_user_guid 

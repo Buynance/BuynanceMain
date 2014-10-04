@@ -52,6 +52,7 @@ module BusinessStates
       end
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|
+
         business.send_offer_notification!
       end
 
@@ -62,8 +63,6 @@ module BusinessStates
       after_transition :on => :accept_affiliate_advance do |business, t|
         business.send_offer_notification!
       end
-
-      
 
       event :passed_personal do
         transition [:personal] => :revise

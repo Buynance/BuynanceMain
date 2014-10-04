@@ -138,7 +138,7 @@ class BusinessesController < ApplicationController
   end
 
   def twiml
-    business = Business.find(params[:id], no_obfuscated_id: true)
+    business = Business.find(params[:id])
     twiml = ""
     twiml = TwilioLib.generate_voice_xml(business.mobile_number) unless business.nil?
     
