@@ -127,7 +127,7 @@ Buynance::Application.routes.draw do
   post 'user/reset_password'     => "business_users#reset_password"
   get 'recover'                  => 'business_users#recover', :as => :recovery_path
   get 'activation'               => 'business_users#recovery_instructions', :as => :recovery_instructions_path
-  match 'recover/:recovery_code' => "business_users#password", via: :get
+  get 'recover/:recovery_code' => "business_users#password", as: :recovery_password
 
   get 'dummy' => "static_pages#dummy"
   

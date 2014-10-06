@@ -35,7 +35,7 @@ class BusinessUsersController < ApplicationController
     if @business_user.save
       redirect_to :root
     else
-      redirect_to :password
+      redirect_to :recovery_password
     end 
   end
 
