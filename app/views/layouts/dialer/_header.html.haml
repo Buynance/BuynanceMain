@@ -5,15 +5,30 @@
         = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/")
       .homepage-header-dialer-links.clearfix
         .homepage-header-dialer-links-section
-          %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
-        .homepage-header-dialer-links-section
-          %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Help
-        .homepage-header-dialer-links-section
-          %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
-        .homepage-header-dialer-links-section.small-section
-          %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
-        .homepage-header-dialer-links-section.small-section
-          %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+          - if current_page?('/friends') 
+            %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
+          - else
+            %a{href: '/friends#dialer_why'} Why Buynance
+        .homepage-header-dialer-links-section{style: "width: 30%;"}
+          - if current_page?('/friends') 
+            %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Can Prosper
+          - else
+            %a{href: '/friends#dialer_help'} How You Can Prosper
+        .homepage-header-dialer-links-section{style: "width: 23%;"}
+          - if current_page?('/friends') 
+            %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
+          - else
+            %a{href: '/friends#dialer_work'} How This Works
+        .homepage-header-dialer-links-section.small-section{style: "width: 13%;"}
+          - if current_page?('/friends')
+            %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
+          - else
+            %a{href: '/friends#dialer_benefits'} Benefits
+        .homepage-header-dialer-links-section.small-section{style: "width: 10%;"}
+          - if current_page?('/friends') 
+            %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+          - else
+            %a{href: '/friends#dialer_faq'} FAQ
       .homepage-header-dialer-actions
         .homepage-header-actions-button
           .homepage-header-actions-button

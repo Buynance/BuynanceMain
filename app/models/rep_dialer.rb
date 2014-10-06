@@ -34,6 +34,10 @@ class RepDialer < ActiveRecord::Base
       rep_dialer.send_representative_acceptance!
     end
 
+    after_transition :on => :reject do |rep_dialer, t|
+      rep_dialer.send_representative_rejection!
+    end
+
     after_transition :on => :complete_questionnaire do |rep_dialer, t|
       rep_dialer.send_representative_signup_to_admin!
     end
@@ -62,6 +66,11 @@ class RepDialer < ActiveRecord::Base
     RepDialerMailer.representative_acceptance(self).deliver!
   end
   # handle_asynchronously :send_representative_acceptance!
+
+  def send_representative_rejection!
+    RepDialerMailer.representative_rejection(self).deliver!
+  end
+  # handle_asynchronously :send_representative_rejection!
 
   def send_representative_signup_to_admin!
     AdminMailer.new_representative_signup(self).deliver!
@@ -108,7 +117,7 @@ class RepDialer < ActiveRecord::Base
       puts '======================================== phone enter'
       mobile_number_object = GlobalPhone.parse(self.mobile_number)
       mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
-      if mobile_number_object.nil?
+      if mobile_number_object.nil? || self.mobile_number.length < 10
         puts '======================================== phone added'
         errors.add(:mobile_number, "Please enter a valid US phone number.")
       else
