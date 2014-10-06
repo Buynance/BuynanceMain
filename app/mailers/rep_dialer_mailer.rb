@@ -30,6 +30,14 @@ class RepDialerMailer < ActionMailer::Base
        		 :from    => "Team Buynance <noreply@buynance.com>"
 	end
 
+	def offer_accepted_notification(representative, business)
+		@representative = representative
+		@business = business
+		mail :subject => "Your most recent lead.",
+        	 :to      => @representative.email,
+       		 :from    => "Team Buynance <noreply@buynance.com>"
+	end
+
 	
 
 end

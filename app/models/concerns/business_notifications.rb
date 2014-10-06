@@ -44,7 +44,18 @@ module BusinessNotifications
       BusinessMailer.jared_success_signup(self).deliver!
     end
 
-    #SMS Notifications
+    def deliver_offer_accepted_email!
+      BusinessMailer.offer_accepted(self).deliver!
+    end
+    handle_asynchronously :deliver_offer_accepted_email!, :priority => 5
+
+    def deliver_representative_offer_notification!
+      
+      RepDialerMailer.offer_accepted_notification(self.rep_dialer, self).deliver!
+    end
+    handle_asynchronously :deliver_representative_offer_notification!, :priority => 5
+
+    # SMS Notifications
 
     def deliver_qualified_user_sms!
       TwilioLib.send_text("7169085466", "We have a new qualified user. Name: #{self.owner_first_name} #{self.owner_last_name}. Funnel: #{(self.is_refinance ? "Revise" : "Funder")}")
@@ -63,6 +74,7 @@ module BusinessNotifications
     def deliver_business_representative_notification!
       AdminMailer.new_representative_lead(self.rep_dialer_id, self.id).deliver!
     end
+
  
   end
 end  
