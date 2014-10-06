@@ -280,7 +280,7 @@ class Business < ActiveRecord::Base
         mobile_number_object = GlobalPhone.parse(self.mobile_number)
         phone_number_object = nil if (phone_number_object != nil and phone_number_object.territory.name != "US")
         mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
-        if phone_number_object.nil? 
+        if phone_number_object.nil? or self.phone_number.length < 10
           self.phone_number = nil
         else
           self.phone_number = phone_number_object.international_string
