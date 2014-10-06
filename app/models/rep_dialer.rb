@@ -8,6 +8,7 @@ class RepDialer < ActiveRecord::Base
 
   has_one :questionnaire_completed, :dependent => :destroy
   has_many :referral_payments
+  has_many :businesses
 
   before_create :setup_referral_code
   before_create :set_defualts
