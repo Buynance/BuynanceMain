@@ -7,6 +7,13 @@ class RepDialerMailer < ActionMailer::Base
        		 :from    => "Jay Ballentine <noreply@buynance.com>"
 	end
 
+	def representative_rejection(representative)
+		@representative = representative
+		mail :subject => "We were unable to process your application at this time.",
+        	 :to      => representative.email,
+       		 :from    => "Buynance Team <noreply@buynance.com>"
+	end
+
 
 	def representative_paid(representative_id, business_id, amount)
 		@representative = RepDialer.find_by(id: representative_id)

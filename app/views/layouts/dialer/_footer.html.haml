@@ -11,30 +11,30 @@
           .footer-section-body.footer-section-links
             %ul
               %li
-                - if current_page?('/') 
+                - if current_page?('/friends') 
                   %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
                 - else
-                  %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
+                  %a{href: '/friends#dialer_why'} Why Buynance
               %li 
-                - if current_page?('/') 
-                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Help
+                - if current_page?('/friends') 
+                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Can Prosper
                 - else
-                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Help
+                  %a{href: '/friends#dialer_help'} How You Can Prosper
               %li 
-                - if current_page?('/') 
+                - if current_page?('/friends') 
                   %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
                 - else
-                  %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
+                  %a{href: '/friends#dialer_work'} How This Works
               %li 
-                - if current_page?('/')
+                - if current_page?('/friends')
                   %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
                 - else
-                  %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
+                  %a{href: '/friends#dialer_benefits'} Benefits
               %li 
-                - if current_page?('/') 
+                - if current_page?('/friends') 
                   %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
                 - else
-                  %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+                  %a{href: '/friends#dialer_faq'} FAQ
         .col-xs-6.footer-section
           .footer-section-header
             %span WE ARE SOCIAL

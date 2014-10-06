@@ -2,7 +2,7 @@ require 'paypal_payment'
 
 class ReferralPayment < ActiveRecord::Base
 
-	DEFAULT_AMOUNT = 100.0
+	DEFAULT_AMOUNT = 200.0
 
 	scope :awaiting_payment, -> {where(state: "awaiting_payment")}
 	scope :paid,            -> {where(state: "paid")}
