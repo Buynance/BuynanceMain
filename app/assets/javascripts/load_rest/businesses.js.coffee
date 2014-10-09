@@ -52,10 +52,10 @@ window['businesses#confirm_account'] = (data) ->
     mixpanel.track("View - Mobile Number Confirmation") ;
 
 $( document ).ready ->
-  if $("#discovery_type_input option:selected").text() != "Representative"
+  if ($("#discovery_type_input option:selected").text() != "Representative") and ($("#discovery_type_input option:selected").text() != "Friend of Buynance")
     $("#referral_code_input").css("display", "none")
   $("#discovery_type_input").on "change", ->
-      if $("#discovery_type_input option:selected").text() == "Representative"
+      if ($("#discovery_type_input option:selected").text() == "Representative") or ($("#discovery_type_input option:selected").text() == "Friend of Buynance")
         $("#referral_code_input").css("display", "block")
       else
         $("#referral_code_input").css("display", "none")
