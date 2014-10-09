@@ -44,46 +44,18 @@ class FundingStepsController < ApplicationController
 		if step == :bank_prelogin
 			if @business.bank_account.nil?
 				@bank_account = BankAccount.new(bank_account_params)
-				if @business.is_refinance
-					if @bank_account.routing_number == "skip"
-						@business.accept_as_lead
-						@business.qualify_for_market
-						@business.passed_bank_prelogin
-						@business.passed_bank_login
-						redirect_to account_url
-					elsif @bank_account.routing_number == "market"
-						@business.accept_as_lead
-						@business.qualify_for_market
-						@business.passed_bank_prelogin
-						@business.passed_bank_login
-						redirect_to account_url	
-					else
-						@bank_account.current_step = step
-						@bank_account.business_id = @business.id
-						@bank_account.save
-						render_wizard @bank_account
-					end
+				if @bank_account.routing_number.downcase == "market"
+					@business.accept_as_lead
+					@business.qualify_for_market
+					@business.passed_bank_prelogin
+					@business.passed_bank_login
+					redirect_to account_url
 				else
-					if @bank_account.routing_number == "market"
-						@business.accept_as_lead
-						@business.qualify_for_market
-						@business.passed_bank_prelogin
-						@business.passed_bank_login
-						redirect_to account_url
-					elsif @bank_account.routing_number == "funder"
-						@business.accept_as_lead
-						@business.qualify_for_funder
-						@business.passed_bank_prelogin
-						@business.passed_bank_login
-						redirect_to account_url
-					else
-						@bank_account.current_step = step
-						@bank_account.business_id = @business.id
-						@bank_account.save
-						render_wizard @bank_account
-					end
+					@bank_account.current_step = step
+					@bank_account.business_id = @business.id
+					@bank_account.save
+					render_wizard @bank_account
 				end
-				
 			else
 				@bank_account = @business.bank_account
 				@bank_account.assign_attributes(bank_account_params)
