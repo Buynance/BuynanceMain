@@ -1,4 +1,4 @@
- class DialerDashboardsController < DialerApplicationController
+ class DialerDashboardsController < ApplicationController
 
 	layout "dialer_layout"
 
