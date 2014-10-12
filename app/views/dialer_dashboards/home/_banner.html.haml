@@ -1,5 +1,5 @@
 .dialer-banner.container-fluid
   .dialer-banner-linkedin
-    - unless rep_dialer_signed_in?
+    - unless friend_signed_in? 
       = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin"), method: :post do
         = image_tag("dialer_linkedin_signin.png", style: "width:26.8em;height:6.5em;")
