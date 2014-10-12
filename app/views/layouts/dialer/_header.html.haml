@@ -32,7 +32,7 @@
       .homepage-header-dialer-actions
         .homepage-header-actions-button
           .homepage-header-actions-button
-            - if rep_dialer_signed_in? 
+            - if friend_signed_in? 
               = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
                 %span Sign Out
             - else
@@ -40,6 +40,6 @@
                 = image_tag "connect_with_linkedin.gif", style: "margin-top: -1.0em;"
 
           .homepage-header-actions-button
-            - if rep_dialer_signed_in? 
+            - if friend_signed_in? 
               %a#header-account-button.flat-button.homepage-button-right{href: "/friends/account"}
                 %span Account
