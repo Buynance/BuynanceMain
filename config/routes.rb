@@ -1,6 +1,8 @@
 Buynance::Application.routes.draw do
 
   devise_for :rep_dialers, :controllers => { :omniauth_callbacks => "omniauth_callbacks" }
+  #devise_for :family_members, :controllers => { :omniauth_callbacks => "family_omniauth_callbacks" }
+  
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
   scope(:path_names => { :new => "merchant-cash-advance" }) do
@@ -81,7 +83,21 @@ Buynance::Application.routes.draw do
       patch 'questionnaire_action', as: :questionnaire_action
     end
   end
+
+  resources :family_dashboards, only: [:home, :setup, :setup_action, :account], path: "family" do
+    collection do
+      get 'home', as: :dialer_home
+      get 'account', as: :dialer_account
+      patch 'setup_action', as: :setup_action
+      get 'setup', as: :setup
+      get 'questionnaire', as: :questionnaire
+      patch 'questionnaire_action', as: :questionnaire_action
+      get 'sign_in', as: :sign_in
+    end
+  end
+
   get 'friends' => 'dialer_dashboards#home'
+  get 'family' => 'family_dashboards#home'
 
   get 'offers' => 'business_dashboards#display_offers', as: :display_offers
 

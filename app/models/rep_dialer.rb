@@ -13,8 +13,6 @@ class RepDialer < ActiveRecord::Base
   before_create :setup_referral_code
   before_create :set_defualts
 
-  
-
   validates :paypal_email, 
   format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
   allow_nil: true
@@ -80,12 +78,12 @@ class RepDialer < ActiveRecord::Base
 
 #############################################
 
-  def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid).first
+  def self.connect_to_linkedin(auth, signed_in_resource=nil, role = "Friend")
+    rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid, role: role).first
     if rep_dialer
       return rep_dialer
     else
-      registered_rep_dialer = RepDialer.where(:email => auth.info.email).first
+      registered_rep_dialer = RepDialer.where(:email => auth.info.email, role: role).first
       if registered_rep_dialer
         return registered_rep_dialer
       else
@@ -95,9 +93,10 @@ class RepDialer < ActiveRecord::Base
           uid:auth.uid,
           email:auth.info.email,
           password:Devise.friendly_token[0,20],
-          paypal_email: auth.info.email
+          paypal_email: auth.info.email,
+          role: role.titleize
         )
-        rep_dialer.created!
+        rep_dialer.created
       end
     end
     return rep_dialer

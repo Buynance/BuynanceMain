@@ -10,8 +10,13 @@ class ApplicationController < ActionController::Base
   helper_method :current_business_user_session, :current_business_user, 
     :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
      :current_business, :current_funder, :require_funder, :to_boolean, :send_production_js, :is_production,
-     :log_input_error
+     :log_input_error, :current_rep_dialer_friends, :current_rep_dialer_family, :require_rep_dialer_friends, :require_rep_dialer_family 
+  helper_method :family_signed_in?
   force_ssl if: :ssl_configured?
+
+  def family_signed_in
+    return !current_rep_dialer.nil?
+  end
 
   private
 
@@ -125,9 +130,51 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def require_rep_dialer
-      unless current_rep_dialer
+    def require_rep_dialer_friends
+      unless current_rep_dialer_friends
         redirect_to dialer_home_dialer_dashboards_path
+      end
+    end
+
+    def require_rep_dialer_family
+      unless current_rep_dialer_family
+        redirect_to dialer_home_dialer_dashboards_path
+      end
+    end
+
+    def current_rep_dialer_family
+      if current_rep_dialer
+        if current_rep_dialer.role == "family"
+          return current_rep_dialer
+        else
+          return nil
+        end
+      else
+        return nil
+      end
+    end
+
+    def current_rep_dialer_friends
+      if current_rep_dialer
+        if current_rep_dialer.role == "friend"
+          return current_rep_dialer
+        else
+          return nil
+        end
+      else
+        return nil
+      end
+    end
+
+    def family_signed_in?
+      if current_rep_dialer
+        if current_rep_dialer.role == "family"
+          return true
+        else
+          return false
+        end
+      else
+        return false
       end
     end
 

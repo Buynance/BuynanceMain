@@ -29,6 +29,7 @@ ActiveAdmin.register RepDialer do
     column("Paypal Email")                          {|rep| rep.paypal_email}
     column("State")                                 {|rep| status_tag rep.state}
     column("Referal Code")                          {|rep| rep.referral_code}
+    column("Role")                                  {|rep| rep.role}
     actions
     actions defaults: false do |rep|
       if rep.state == "awaiting_acceptance"
