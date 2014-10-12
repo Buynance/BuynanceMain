@@ -1,4 +1,4 @@
-class FunderDashboardsController < DialerApplicationController
+class FunderDashboardsController < ApplicationController
 	before_filter :require_funder, :only => [:main, :make_offer]
 
 	layout "funder_layout"
