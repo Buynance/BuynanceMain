@@ -31,7 +31,7 @@
               = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
                 %span Sign Out
             - else
-              = link_to rep_dialer_omniauth_authorize_path(provider: "linkedin", type: "family"), method: :post do
+              = link_to action: :sign_in do
                 = image_tag "connect_with_linkedin.gif", style: "margin-top: -1.0em;"
 
           .homepage-header-actions-button
