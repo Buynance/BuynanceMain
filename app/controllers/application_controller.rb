@@ -168,7 +168,7 @@ class ApplicationController < ActionController::Base
 
     def family_signed_in?
       if current_rep_dialer
-        if current_rep_dialer.role == "family"
+        if current_rep_dialer.role == "Family"
           return true
         else
           return false
