@@ -66,7 +66,7 @@
 
 	def sign_in
 		session[:family_signup] = "true"
-		session[:signed_in_resource] = "Family"
+		session[:dialer_signed_in_resource] = "Family"
 		redirect_to rep_dialer_omniauth_authorize_path(provider: "linkedin", type: "Family"), method: :post
 	end
 
