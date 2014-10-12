@@ -4,7 +4,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     @rep_dialer = nil
 
     if session[:family_signup] == "true"
-      @rep_dialer = RepDialer.connect_to_linkedin(request.env["omniauth.auth"],current_rep_dialer_friends, "family")
+      @rep_dialer = RepDialer.connect_to_linkedin(request.env["omniauth.auth"],current_rep_dialer_friends, "Family")
       session[:family_signup] = nil
     else
       @rep_dialer = RepDialer.connect_to_linkedin(request.env["omniauth.auth"],current_rep_dialer_friends)
@@ -13,7 +13,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @rep_dialer.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
       sign_in @rep_dialer, :event => :authentication
-      if @rep_dialer.role = "family"
+      if @rep_dialer.role = "Family"
         redirect_to dialer_account_family_dashboards_path
       else
         redirect_to dialer_account_dialer_dashboards_path
