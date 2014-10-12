@@ -30,15 +30,28 @@ class RepDialer < ActiveRecord::Base
   state_machine :state, :initial => :awaiting_creation do
 
     after_transition :on => :accept do |rep_dialer, t|
-      rep_dialer.send_representative_acceptance!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_acceptance!
+      else
+        rep_dialer.send_representative_acceptance!
+      end
+
     end
 
     after_transition :on => :reject do |rep_dialer, t|
-      rep_dialer.send_representative_rejection!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_rejection!
+      else
+        rep_dialer.send_representative_rejection!
+      end
     end
 
     after_transition :on => :complete_questionnaire do |rep_dialer, t|
-      rep_dialer.send_representative_signup_to_admin!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_signup_to_admin!
+      else
+        rep_dialer.send_representative_signup_to_admin!
+      end
     end
 
     event :created do
@@ -73,6 +86,21 @@ class RepDialer < ActiveRecord::Base
 
   def send_representative_signup_to_admin!
     AdminMailer.new_representative_signup(self).deliver!
+  end
+  # handle_asynchronously :representative_signup_to_admin!
+
+  def send_family_acceptance!
+    RepDialerMailer.family_acceptance(self).deliver!
+  end
+  # handle_asynchronously :send_representative_acceptance!
+
+  def send_family_rejection!
+    RepDialerMailer.family_rejection(self).deliver!
+  end
+  # handle_asynchronously :send_representative_rejection!
+
+  def send_family_signup_to_admin!
+    AdminMailer.new_family_signup(self).deliver!
   end
   # handle_asynchronously :representative_signup_to_admin!
 

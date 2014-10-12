@@ -6,24 +6,19 @@
       .homepage-header-dialer-links.clearfix
         .homepage-header-dialer-links-section
           - if current_page?('/family') 
-            %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
+            %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} What We Do
           - else
-            %a{href: '/family#dialer_why'} Why Buynance
+            %a{href: '/family#dialer_why'} What We Do
         .homepage-header-dialer-links-section{style: "width: 30%;"}
           - if current_page?('/family') 
-            %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Can Prosper
+            %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} Buynance Difference
           - else
-            %a{href: '/family#dialer_help'} How You Can Prosper
+            %a{href: '/family#dialer_help'} Buynance Difference
         .homepage-header-dialer-links-section{style: "width: 23%;"}
           - if current_page?('/family') 
             %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
           - else
             %a{href: '/family#dialer_work'} How This Works
-        .homepage-header-dialer-links-section.small-section{style: "width: 13%;"}
-          - if current_page?('/family')
-            %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
-          - else
-            %a{href: '/family#dialer_benefits'} Benefits
         .homepage-header-dialer-links-section.small-section{style: "width: 10%;"}
           - if current_page?('/family') 
             %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ

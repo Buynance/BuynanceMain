@@ -11,7 +11,7 @@ window['dialer_dashboards#home'] = (data) ->
 			$(this).next().slideDown();
 		);
 
-window['dialer_dashboards#iso_home'] = (data) ->
+window['family_dashboards#home'] = (data) ->
 	$(".dialer-section-faq-item-text").hide();
 	$(".dialer-section-faq-item-header").on("click", (event) ->
 		if $(this).next().is(":visible")
