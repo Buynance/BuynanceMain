@@ -16,7 +16,7 @@ include Wicked::Wizard
 		@business.current_step = step
 
 		if @business.update_attributes(business_params)
-			if step = :personal
+			if step == :personal
 				@business_user.update_attributes(first_name: business_params[:owner_first_name], last_name: business_params[:owner_last_name], mobile_number: business_params[:mobile_number])
 				@business.deliver_offer_email!
 				@business.submit_offer
