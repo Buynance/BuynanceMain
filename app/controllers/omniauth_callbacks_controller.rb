@@ -13,7 +13,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if @rep_dialer.persisted?
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
       sign_in @rep_dialer, :event => :authentication
-      if @rep_dialer.role = "Family"
+      if @rep_dialer.role == "Family"
         redirect_to dialer_account_family_dashboards_path
       else
         redirect_to dialer_account_dialer_dashboards_path

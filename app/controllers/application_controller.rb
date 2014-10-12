@@ -144,7 +144,7 @@ class ApplicationController < ActionController::Base
 
     def current_rep_dialer_family
       if current_rep_dialer
-        if current_rep_dialer.role == "family"
+        if current_rep_dialer.role == "Family"
           return current_rep_dialer
         else
           return nil
@@ -156,7 +156,7 @@ class ApplicationController < ActionController::Base
 
     def current_rep_dialer_friends
       if current_rep_dialer
-        if current_rep_dialer.role == "friend"
+        if current_rep_dialer.role == "Friend"
           return current_rep_dialer
         else
           return nil

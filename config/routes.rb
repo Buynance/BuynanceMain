@@ -84,7 +84,7 @@ Buynance::Application.routes.draw do
     end
   end
 
-  resources :family_dashboards, only: [:home, :setup, :setup_action, :account], path: "family" do
+  resources :family_dashboards, only: [:home, :setup, :setup_action, :account, :sign_in], path: "family" do
     collection do
       get 'home', as: :dialer_home
       get 'account', as: :dialer_account
