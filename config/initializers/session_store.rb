@@ -2,4 +2,4 @@
 
 #Buynance::Application.config.session_store :cookie_store, key: '_buynance_session'
 
-Buynance::Application.config.session_store :active_record_store, :domain=>:all
+Buynance::Application.config.session_store :active_record_store
