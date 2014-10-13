@@ -40,7 +40,7 @@ class RepDialerMailer < ActionMailer::Base
 
 	def family_acceptance(representative)
 		@representative = representative
-		mail :subject => "Welcome to the family.",
+		mail :subject => "Welcome to the Family....",
         	 :to      => representative.email,
        		 :from    => "Jay Ballentine <noreply@buynance.com>"
 	end

@@ -12,24 +12,19 @@
             %ul
               %li
                 - if current_page?('/family') 
-                  %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} Why Buynance
+                  %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} What We Do
                 - else
-                  %a{href: '/family#dialer_why'} Why Buynance
+                  %a{href: '/family#dialer_why'} What We Do
               %li 
                 - if current_page?('/family') 
-                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} How You Can Prosper
+                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} Buynance Difference
                 - else
-                  %a{href: '/family#dialer_help'} How You Can Prosper
+                  %a{href: '/family#dialer_help'} Buynance Difference
               %li 
                 - if current_page?('/family') 
                   %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
                 - else
                   %a{href: '/family#dialer_work'} How This Works
-              %li 
-                - if current_page?('/family')
-                  %span{onclick: "$('body').scrollTo('#dialer_benefits', 800)"} Benefits
-                - else
-                  %a{href: '/family#dialer_benefits'} Benefits
               %li 
                 - if current_page?('/family') 
                   %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ

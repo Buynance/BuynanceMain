@@ -40,7 +40,7 @@ class ApplicationController < ActionController::Base
           session[:dialer_resource] = nil
           return dialer_home_family_dashboards_path
         else
-          return dialer_home_dialer_dashboards_path
+          return dialer_home_family_dashboards_path
         end
       else 
         return root_path

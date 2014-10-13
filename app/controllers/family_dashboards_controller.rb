@@ -38,7 +38,7 @@
 
 	def questionnaire
 		@rep_dialer = current_rep_dialer_family
-		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
+		@questionnaire = Questionnaire.find_by(name: "family_questionnaire")
 	end
 
 	def questionnaire_action
