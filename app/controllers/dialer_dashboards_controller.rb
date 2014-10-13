@@ -1,8 +1,8 @@
- class DialerDashboardsController < DialerApplicationController
+ class DialerDashboardsController < ApplicationController
 
 	layout "dialer_layout"
 
-	before_filter :require_rep_dialer, except: [:home]
+	before_filter :require_rep_dialer_friends, except: [:home, :iso_home]
 
 	force_ssl if: :not_linkedin?
 
@@ -11,20 +11,24 @@
 
 	end
 
+	def iso_home
+
+	end
+
 	def account
-		@representative = current_rep_dialer
+		@representative = current_rep_dialer_friends
 		if @representative.awaiting_questionnaire?
 			redirect_to action: :questionnaire
 		end
 	end
 
 	def setup
-		@representative = current_rep_dialer
+		@representative = current_rep_dialer_friends
 
 	end
 
 	def setup_action
-		@representative = current_rep_dialer
+		@representative = current_rep_dialer_friends
 		if @representative.update_attributes(representative_params)
 			@representative.add_paypal
 			redirect_to action: :account
@@ -34,12 +38,12 @@
 	end
 
 	def questionnaire
-		@rep_dialer = current_rep_dialer
+		@rep_dialer = current_rep_dialer_friends
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 	end
 
 	def questionnaire_action
-		@rep_dialer = current_rep_dialer
+		@rep_dialer = current_rep_dialer_friends
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 		@rep_dialer.assign_attributes(representative_params)
 		@rep_dialer.current_step = "questionnaire"

@@ -333,5 +333,10 @@ namespace :db do
     task :create_questionnaire => :environment do
       Questionnaire.make(["Brief Customer Service Experience", "How do you respond when you dont know the answer to a question?", "The customer is saying youre taking too long to complete the process, what do you do?", "Give an example of a customer that you turned around from a position of unhappiness to sheer joy.", "Sell me a pencil"], "rep_questionnaire")
     end
+
+    desc "Create Family Questionnaire"
+    task :create_family_questionnaire => :environment do
+      Questionnaire.make(["Take me through the sale you are most proud of?  If there is no sale, what is your proudest accomplishment?", "How do you respond when you dont know the answer to a question?", "Why are you interested in working in the small business funding industry?", "How long are you willing to fail at this job before you succeed?", "What's more important to focus on, the process or the result?  Why?", "What do you do to improve as a sales person?  How do you practice?"], "family_questionnaire")
+    end
     
 end

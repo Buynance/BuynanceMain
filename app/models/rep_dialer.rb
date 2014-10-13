@@ -13,8 +13,6 @@ class RepDialer < ActiveRecord::Base
   before_create :setup_referral_code
   before_create :set_defualts
 
-  
-
   validates :paypal_email, 
   format: {with: /\A[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]+\z/, message: "Please include a valid Paypal email."},
   allow_nil: true
@@ -32,15 +30,28 @@ class RepDialer < ActiveRecord::Base
   state_machine :state, :initial => :awaiting_creation do
 
     after_transition :on => :accept do |rep_dialer, t|
-      rep_dialer.send_representative_acceptance!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_acceptance!
+      else
+        rep_dialer.send_representative_acceptance!
+      end
+
     end
 
     after_transition :on => :reject do |rep_dialer, t|
-      rep_dialer.send_representative_rejection!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_rejection!
+      else
+        rep_dialer.send_representative_rejection!
+      end
     end
 
     after_transition :on => :complete_questionnaire do |rep_dialer, t|
-      rep_dialer.send_representative_signup_to_admin!
+      if rep_dialer.role == "Family"
+        rep_dialer.send_family_signup_to_admin!
+      else
+        rep_dialer.send_representative_signup_to_admin!
+      end
     end
 
     event :created do
@@ -78,14 +89,29 @@ class RepDialer < ActiveRecord::Base
   end
   # handle_asynchronously :representative_signup_to_admin!
 
+  def send_family_acceptance!
+    RepDialerMailer.family_acceptance(self).deliver!
+  end
+  # handle_asynchronously :send_representative_acceptance!
+
+  def send_family_rejection!
+    RepDialerMailer.family_rejection(self).deliver!
+  end
+  # handle_asynchronously :send_representative_rejection!
+
+  def send_family_signup_to_admin!
+    AdminMailer.new_family_signup(self).deliver!
+  end
+  # handle_asynchronously :representative_signup_to_admin!
+
 #############################################
 
-  def self.connect_to_linkedin(auth, signed_in_resource=nil)
-    rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid).first
+  def self.connect_to_linkedin(auth, signed_in_resource=nil, role = "Friend")
+    rep_dialer = RepDialer.where(:provider => auth.provider, :uid => auth.uid, role: role).first
     if rep_dialer
       return rep_dialer
     else
-      registered_rep_dialer = RepDialer.where(:email => auth.info.email).first
+      registered_rep_dialer = RepDialer.where(:email => auth.info.email, role: role).first
       if registered_rep_dialer
         return registered_rep_dialer
       else
@@ -95,9 +121,10 @@ class RepDialer < ActiveRecord::Base
           uid:auth.uid,
           email:auth.info.email,
           password:Devise.friendly_token[0,20],
-          paypal_email: auth.info.email
+          paypal_email: auth.info.email,
+          role: role
         )
-        rep_dialer.created!
+        rep_dialer.created
       end
     end
     return rep_dialer

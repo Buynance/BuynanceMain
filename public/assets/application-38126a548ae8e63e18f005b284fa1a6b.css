@@ -10339,15 +10339,14 @@ button.close {
   margin: 0 auto;
   padding-left: 1.6em;
   padding-right: 1.6em;
-  margin-right: 2.0em;
 }
-/* line 207, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 206, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-we-vs-retail_brokers .why-buynance-we-vs-retail-brokers-body-action .flat-button.button-about-get-funded a {
   font-size: 2.0em;
   text-decoration: none;
   line-height: 1em;
 }
-/* line 214, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 213, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-we-vs-retail_brokers .why-buynance-we-vs-retail-brokers-body-action .flat-button.button-about-renew {
   font-family: "latobold", Arial, sans-serif;
   display: inline-block;
@@ -10361,92 +10360,92 @@ button.close {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 228, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 227, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-we-vs-retail_brokers .why-buynance-we-vs-retail-brokers-body-action .flat-button.button-about-renew a {
   font-size: 2.0em;
   text-decoration: none;
   line-height: 1em;
 }
 
-/* line 237, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 236, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team {
   padding-top: 2.5em;
   padding-bottom: 2.5em;
 }
-/* line 240, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 239, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team .why-buynance-team-header {
   font-family: "latobold", Arial, sans-serif;
   margin-bottom: 2.0em;
   color: #606060;
 }
-/* line 244, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 243, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team .why-buynance-team-header span {
   font-size: 2.8em;
 }
-/* line 248, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 247, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team .why-buynance-team-body {
   font-family: "latoregular", Arial, sans-serif;
   color: #25aae1;
 }
-/* line 251, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 250, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team .why-buynance-team-body span {
   font-size: 1.6em;
   line-height: 1.4em;
 }
 
-/* line 259, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 258, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section {
   margin-bottom: 7.5em;
 }
-/* line 261, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 260, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-image {
   display: block;
   margin-bottom: 1.0em;
   text-align: center;
 }
-/* line 265, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 264, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-image img {
   width: 16em;
   height: 16em;
 }
-/* line 270, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 269, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-name {
   text-align: center;
 }
-/* line 272, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 271, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-name span {
   color: #606060;
   font-family: "latobold", Arial, sans-serif;
   font-size: 1.8em;
 }
-/* line 279, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 278, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-title {
   margin-bottom: 2.0em;
   text-align: center;
 }
-/* line 282, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 281, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-title span {
   font-size: 1.8em;
   color: #25aae1;
   font-family: "latoregular", Arial, sans-serif;
 }
-/* line 289, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 288, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-info {
   color: #606060;
   text-align: center;
 }
-/* line 292, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 291, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-section .why-buynance-team-members-section-info span {
   font-family: "latolight", Arial, sans-serif;
   font-size: 1.6em;
   line-height: 1.4;
 }
-/* line 299, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 298, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-left {
   float: left;
   width: 34em;
 }
-/* line 306, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
+/* line 305, C:/Sites/example/buynance-testing/app/assets/stylesheets/about.css.scss */
 .why-buynance-team-memebers .why-buynance-team-members-right {
   float: right;
   width: 34em;
@@ -10806,6 +10805,237 @@ button.close {
   font-family: "latobold", Arial, sans-serif;
   font-size: 20px;
 }
+
+/* line 141, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.paper-section .paper-section-header.acceptance-header {
+  color: #8dc63f;
+  margin-left: 0px;
+}
+
+/* line 146, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.web_body .paper-section.acceptance-main {
+  width: 860px;
+}
+
+/* line 150, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance {
+  min-height: 500px;
+  margin-bottom: 190px;
+}
+/* line 155, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-top {
+  padding-bottom: 70px;
+  padding-left: 70px;
+}
+/* line 159, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-top .acceptance-top-image {
+  float: left;
+  margin-right: 24px;
+}
+/* line 164, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-top .acceptance-top-info {
+  float: left;
+  font-family: "latobold", Arial, sans-serif;
+  width: 72%;
+  color: #606060;
+  padding-top: 10px;
+}
+/* line 170, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-top .acceptance-top-info span {
+  font-size: 20px;
+}
+/* line 172, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-top .acceptance-top-info .acceptance-top-info-greeting {
+  margin-bottom: 16px;
+  color: #25aae1;
+}
+/* line 182, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-body {
+  width: 100%;
+  color: #4e4d4c;
+}
+/* line 185, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-body .acceptance-item-gray {
+  width: 273px;
+  float: left;
+  margin-top: 18px;
+  min-height: 450px;
+  background: url(/assets/offer_section_bottom_gray.jpg) bottom left no-repeat, url(/assets/offer_section_top_gray.jpg) top left no-repeat, url(/assets/offer_section_middle_gray.jpg) repeat-y;
+  margin-right: 12px;
+  padding-top: 33px;
+  padding-bottom: 28px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+/* line 197, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance .acceptance-body .acceptance-item-green {
+  width: 276px;
+  float: left;
+  min-height: 650px;
+  background: url(/assets/offer_section_bottom_green.jpg) bottom left no-repeat, url(/assets/offer_section_top_green.jpg) top left no-repeat, url(/assets/offer_section_middle_green.jpg) repeat-y;
+  margin-right: 12px;
+  padding-top: 33px;
+  padding-bottom: 28px;
+  padding-left: 3px;
+  padding-right: 3px;
+}
+
+/* line 211, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-title {
+  padding-left: 26px;
+  font-family: "latobold", Arial, sans-serif;
+  font-size: 22px;
+  padding-right: 80px;
+  padding-bottom: 22px;
+}
+
+/* line 219, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-subtitle {
+  background: #ebebeb;
+}
+/* line 222, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-subtitle span {
+  font-size: 20px;
+  font-family: "latobold", Arial, sans-serif;
+}
+
+/* line 229, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-subtitle-two span {
+  font-size: 20px;
+  font-family: "latobold", Arial, sans-serif;
+}
+
+/* line 235, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-subtitle, .acceptance-item-gray-list, .acceptance-item-gray-subtitle-two {
+  width: 100%;
+  padding-left: 26px;
+  padding-right: 66px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+
+/* line 243, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-terms-title {
+  padding-top: 24px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #c4c4c4;
+  font-family: latobold;
+  font-size: 20px;
+  padding-bottom: 12px;
+}
+
+/* line 255, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-terms-item {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  border-bottom-width: 1px;
+  border-bottom-style: solid;
+  border-color: #c4c4c4;
+  font-family: lato;
+  font-size: 16px;
+}
+
+/* line 265, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-list {
+  padding-left: 22px;
+  font-family: latoregular;
+  font-size: 18px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+
+/* line 273, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-list-two {
+  background: #ebebeb;
+}
+
+/* line 277, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-terms {
+  padding-left: 26px;
+  padding-right: 26px;
+}
+
+/* line 284, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-title {
+  padding-left: 26px;
+  font-family: "latobold", Arial, sans-serif;
+  font-size: 24px;
+  padding-right: 80px;
+  padding-bottom: 22px;
+  color: #8dc63f;
+}
+/* line 293, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-subtitle {
+  background: #8dc63f;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 12px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+  color: white;
+}
+/* line 302, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-subtitle span {
+  font-size: 20px;
+  font-family: "latobold", Arial, sans-serif;
+}
+/* line 308, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-subtitle-two {
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 12px;
+  padding-top: 20px;
+  padding-bottom: 15px;
+}
+/* line 315, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-subtitle-two span {
+  font-family: latoregular;
+  font-size: 18px;
+}
+/* line 321, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-terms-item {
+  padding-left: 20px;
+  font-family: latoregular;
+  font-size: 18px;
+  padding-top: 8px;
+  padding-bottom: 6px;
+}
+/* line 329, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-terms-item-odd {
+  background-color: #e0f7c0;
+}
+/* line 333, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-green .acceptance-item-green-terms-item-even {
+  background-color: #cef598;
+}
+
+/* line 340, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.flat-button.button-plan {
+  font-family: "latobold", Arial, sans-serif;
+  display: block;
+  margin: 0 auto;
+  background-color: #8dc63f;
+  color: white;
+  width: 225px;
+  border-size: 0px;
+  padding-top: 15px;
+  padding-bottom: 10px;
+  margin: 0 auto;
+  padding-left: 19px;
+  padding-right: 19px;
+}
+/* line 355, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.flat-button.button-plan span {
+  font-size: 18px;
+  text-decoration: none;
+  line-height: 10px;
+}
+
+/* line 362, C:/Sites/example/buynance-testing/app/assets/stylesheets/businesses.css.scss */
+.acceptance-item-gray-terms-submit, .acceptance-item-green-terms-submit {
+  padding-top: 20px;
+}
 /* line 16, C:/Sites/example/buynance-testing/app/assets/stylesheets/calculator.css.scss */
 .mca-information {
   font-family: "latoregular", Arial, sans-serif;
@@ -11095,7 +11325,7 @@ button.close {
 }
 /* line 66, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table {
-  width: 116.0em;
+  width: 93.7em;
   margin: 0 auto;
 }
 /* line 69, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
@@ -11223,50 +11453,48 @@ button.close {
 }
 /* line 185, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-odd .compare-table-column:last-child {
-  background-color: #ebebeb;
   border-width: 0em;
 }
-/* line 189, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 188, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-odd .compare-table-column.revenue-background {
   background-color: #d0f79a;
 }
-/* line 193, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 192, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-odd .compare-table-column.merchant-background {
   background-color: #f4e990;
 }
-/* line 198, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 197, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even {
   color: #606060;
 }
-/* line 200, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 199, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column:first-child {
   background-color: #f2f2f2;
   width: 18.2em;
   border-width: 0;
 }
-/* line 204, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 203, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column:first-child span {
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 211, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 210, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column {
   background-color: white;
   border-color: #f2f2f2;
 }
-/* line 215, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 214, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column:last-child {
-  background-color: #f2f2f2;
   border-width: 0em;
 }
-/* line 219, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 217, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column.revenue-background {
   background-color: #d0f79a;
 }
-/* line 223, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 221, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-even .compare-table-column.merchant-background {
   background-color: #f4e990;
 }
-/* line 228, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 226, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column {
   border-color: white;
   background-color: #ebebeb;
@@ -11277,7 +11505,7 @@ button.close {
   border-bottom-right-radius: 0.9em;
   border-bottom-left-radius: 0.9em;
 }
-/* line 237, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 235, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column .flat-button {
   margin-top: 0em;
   margin-right: 0em;
@@ -11302,37 +11530,37 @@ button.close {
   font-family: 'Lato', sans-serif;
   margin: 0 auto;
 }
-/* line 260, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 258, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column .flat-button span {
   font-size: 1.8em;
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 266, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 264, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column .flat-button.button-compare.button-business-term-loans {
   background-color: #25aae1;
   color: white;
 }
-/* line 271, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 269, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column .flat-button.button-compare.button-revenue-based-financing {
   background-color: #8dc63f;
   color: white;
 }
-/* line 276, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 274, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column .flat-button.button-compare.button-merchant-cash-advance {
   background-color: #edbd18;
   color: white;
 }
-/* line 281, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 279, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column:first-child {
   width: 18.2em;
   border-width: 0;
   margin-right: 1.0em;
   background-color: transparent;
 }
-/* line 287, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
+/* line 285, C:/Sites/example/buynance-testing/app/assets/stylesheets/compare.css.scss */
 .compare-table-fluid-container .compare-table .compare-table-row-footer .compare-table-column:last-child {
   border-width: 0;
-  width: 22.7em;
+  width: 24.5em;
 }
 /*
 YUI 3.5.0 (build 5089)
@@ -11520,64 +11748,85 @@ legend {
 }
 
 /* line 97, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-banner-family {
+  background-image: url(/assets/family_banner.jpg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  display: inline-block;
+  position: relative;
+  width: 100%;
+  height: 55.5em;
+}
+/* line 107, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-banner-family img {
+  width: 26.8em;
+  height: 6.5em;
+}
+/* line 112, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+.dialer-banner-family .dialer-banner-linkedin {
+  margin-left: 40%;
+  margin-top: 33%;
+}
+
+/* line 118, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-fluid, .dialer-fluid-gray {
   width: 100%;
   padding: 0.1em;
 }
 
-/* line 102, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 123, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-fluid-gray {
   background-color: #f2f2f2;
 }
 
-/* line 106, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 127, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section.dialer-benefits {
   margin-top: 0;
 }
 
-/* line 111, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 132, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section {
   width: 90.0em;
   margin: 0 auto;
   margin-top: 7.0em;
   margin-bottom: 8.5em;
 }
-/* line 117, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 138, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-header {
   margin-bottom: 5.0em;
 }
-/* line 119, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 140, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-header span {
   font-size: 2.6em;
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 125, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 146, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-text {
   color: #8b8b8b;
 }
-/* line 127, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 148, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-text span {
   font-size: 2.1em;
   line-height: 1.5;
   font-family: "latoregular", Arial, sans-serif;
 }
-/* line 135, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 156, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-benefit-linkedin {
   width: 100%;
   padding-left: 50%;
   padding-top: 5.5em;
 }
-/* line 139, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 160, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-benefit-linkedin img {
   margin-left: -13.4em;
 }
-/* line 148, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 169, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table {
   border-collapse: collapse;
   border-spacing: 0;
   border: none;
 }
-/* line 150, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 171, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table th, .dialer-section .dialer-section-sequence table td {
   border-style: solid;
   border-width: 0px;
@@ -11586,39 +11835,39 @@ legend {
   text-align: center;
   padding-bottom: 2.0em;
 }
-/* line 158, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 179, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table th img {
   width: 4.4em;
   height: 4.5em;
 }
-/* line 164, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 185, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table .dialer-section-sequence-images-offset {
   padding-right: 3.5em;
 }
-/* line 169, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 190, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table .dialer-section-sequence-images td.squence-images-main {
   vertical-align: bottom;
 }
-/* line 175, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 196, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table .dialer-section-sequence-text {
   font-family: "latobold", Arial, sans-serif;
 }
-/* line 177, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 198, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table .dialer-section-sequence-text span {
   font-size: 2.0em;
 }
-/* line 180, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 201, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section .dialer-section-sequence table .dialer-section-sequence-text td {
   vertical-align: top;
 }
 
-/* line 188, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 209, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq {
   border-top-style: solid;
   border-top-width: 0.2em;
   border-top-color: #555752;
 }
-/* line 195, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 216, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item {
   padding-top: 1.2em;
   padding-bottom: 1.2em;
@@ -11626,50 +11875,50 @@ legend {
   border-bottom-width: 0.1em;
   border-bottom-color: #D8D8D8;
 }
-/* line 201, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 222, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header {
   cursor: pointer;
 }
-/* line 203, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 224, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-number {
   float: left;
   margin-right: 1.2em;
 }
-/* line 206, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 227, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-number img {
   width: 3.4em;
   height: 3.5em;
 }
-/* line 211, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 232, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-text {
   float: left;
   font-family: "latobold", Arial, sans-serif;
   color: #555752;
   padding-top: 0.5em;
 }
-/* line 216, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 237, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-header .dialer-section-faq-item-header-text span {
   font-size: 2.0em;
 }
-/* line 222, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 243, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-text {
   padding-top: 1.2em;
   margin-left: 4.6em;
   padding-right: 1.5em;
 }
-/* line 226, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 247, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-faq .dialer-section-faq-item .dialer-section-faq-item-text span {
   color: #8b8b8b;
   font-family: "latoregular", Arial, sans-serif;
   font-size: 2.0em;
 }
 
-/* line 236, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 257, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .footer-section-links span {
   cursor: pointer;
 }
 
-/* line 243, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
+/* line 264, C:/Sites/example/buynance-testing/app/assets/stylesheets/dialer_dashboard.css.scss */
 .dialer-section-questionnaire textarea {
   height: 170px;
   width: 80%;
@@ -12576,7 +12825,7 @@ body {
 /* line 207, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .banner .banner-content .banner-content-information-action .banner-content-information-action-get-financed {
   display: inline-block;
-  margin-right: 1em;
+  margin-left: 14.5em;
 }
 /* line 210, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .banner .banner-content .banner-content-information-action .banner-content-information-action-get-financed .flat-button.button-get-financed {
@@ -12585,38 +12834,15 @@ body {
   color: white;
   width: 24.0em;
   border-size: 0px;
-  padding-top: 1.4em;
-  padding-bottom: 1.4em;
+  padding-top: 1.7em;
+  padding-bottom: 1.7em;
   margin: 0 auto;
-  padding-left: 1.6em;
-  padding-right: 1.6em;
+  padding-left: 1.9em;
+  padding-right: 1.9em;
 }
 /* line 222, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .banner .banner-content .banner-content-information-action .banner-content-information-action-get-financed .flat-button.button-get-financed span {
-  font-size: 2.0em;
-  text-decoration: none;
-  line-height: 1em;
-}
-/* line 229, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
-.banner .banner-content .banner-content-information-action .banner-content-information-action-refinance {
-  display: inline-block;
-}
-/* line 231, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
-.banner .banner-content .banner-content-information-action .banner-content-information-action-refinance .flat-button.button-get-refinance {
-  font-family: "latobold", Arial, sans-serif;
-  background-color: #8dc63f;
-  color: white;
-  width: 24.0em;
-  border-size: 0px;
-  padding-top: 1.4em;
-  padding-bottom: 1.4em;
-  margin: 0 auto;
-  padding-left: 1.6em;
-  padding-right: 1.6em;
-}
-/* line 244, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
-.banner .banner-content .banner-content-information-action .banner-content-information-action-refinance .flat-button.button-get-refinance span {
-  font-size: 2.0em;
+  font-size: 2.2em;
   text-decoration: none;
   line-height: 1em;
 }
@@ -12624,7 +12850,7 @@ body {
 /**************************************************/
 /*                     Slider                     */
 /**************************************************/
-/* line 266, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 244, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-left {
   padding-left: 6.0em;
   padding-right: 6.0em;
@@ -12634,28 +12860,28 @@ body {
   float: right;
   position: relative;
 }
-/* line 274, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 252, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-left .homepage-slider-left-fold {
   position: absolute;
   right: 0;
   top: 0;
 }
-/* line 279, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 257, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-left .homepage-slider-left-fold img {
   margin-right: -.1em;
   margin-top: -.1em;
   width: 4.5em;
   height: 4.5em;
 }
-/* line 288, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 266, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-left .homepage-slider-main-result-text-right span {
   color: #8dc63f;
 }
-/* line 292, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 270, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-left .homepage-slider-action-subheader span {
   color: #8dc63f;
 }
-/* line 297, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 275, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper {
   padding-left: 6.0em;
   padding-right: 6.0em;
@@ -12665,90 +12891,90 @@ body {
   float: left;
   position: relative;
 }
-/* line 307, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 285, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper .homepage-slider-right-fold {
   position: absolute;
   right: 0;
   top: 0;
 }
-/* line 312, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 290, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper .homepage-slider-right-fold img {
   margin-right: -.1em;
   margin-top: -.1em;
   width: 4.5em;
   height: 4.5em;
 }
-/* line 320, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 298, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper .homepage-slider-header.paper-header {
   color: #20acd7;
   margin-bottom: .4em !important;
 }
-/* line 326, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 304, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper .homepage-slider-main-result-text .homepage-slider-main-result-text-right {
   color: #20acd7;
 }
-/* line 331, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 309, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-right.paper .homepage-slider-action-subheader {
   color: #20acd7;
 }
-/* line 336, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 314, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-header {
   font-family: 'latobold', Arial, sans-serif;
   text-align: center;
 }
-/* line 339, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 317, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-header span {
   font-size: 2.4em;
 }
-/* line 344, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 322, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-subheader {
   text-align: center;
   font-family: 'latoregular', Arial, sans-serif;
   margin-bottom: 1.0em;
 }
-/* line 348, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 326, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-subheader span {
   font-size: 1.8em;
   font-weight: 400;
 }
-/* line 356, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 334, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section {
   min-height: 10.0em;
   padding-top: 4.0em;
   margin-bottom: 2.0em;
   /* For IE8 - See #6727 */
 }
-/* line 360, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 338, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-main-section-label {
   padding-top: 1.0em;
 }
-/* line 362, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 340, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-main-section-label .homepage-slider-main-section-label-left {
   float: left;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 365, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 343, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-main-section-label .homepage-slider-main-section-label-left span {
   color: #b1b1b1;
   font-size: 1.4em;
 }
-/* line 370, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 348, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-main-section-label .homepage-slider-main-section-label-right {
   float: right;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 373, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 351, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-main-section-label .homepage-slider-main-section-label-right span {
   font-size: 1.4em;
   color: #b1b1b1;
 }
-/* line 380, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 358, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider {
   position: relative;
   text-align: left;
   border-radius: 2.0em;
 }
-/* line 385, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 363, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider .ui-slider-handle {
   position: absolute;
   z-index: 2;
@@ -12762,7 +12988,7 @@ body {
   touch-action: none;
   outline: none;
 }
-/* line 398, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 376, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider .ui-slider-range {
   position: absolute;
   z-index: 1;
@@ -12771,12 +12997,12 @@ body {
   border: none;
   background-position: 0 0;
 }
-/* line 410, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 388, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider.ui-state-disabled .ui-slider-handle,
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider.ui-state-disabled .ui-slider-range {
   filter: inherit;
 }
-/* line 414, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 392, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-horizontal {
   height: 1.6em;
   background: white;
@@ -12796,13 +13022,13 @@ body {
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffffff', endColorstr='#aafc7b',GradientType=1 );
   /* IE6-9 */
 }
-/* line 425, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 403, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-horizontal .ui-slider-handle {
   top: -.4em;
   margin-left: -.6em;
   border: none;
 }
-/* line 430, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 408, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-horizontal .ui-slider-range {
   top: 0;
   height: 90%;
@@ -12810,39 +13036,39 @@ body {
   border-radius: 6.0em;
   background: #edbd18;
 }
-/* line 437, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 415, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-horizontal .ui-slider-range-min {
   left: 0;
 }
-/* line 440, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 418, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-horizontal .ui-slider-range-max {
   right: 0;
 }
-/* line 444, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 422, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-vertical {
   width: .8em;
   height: 10.0em;
 }
-/* line 448, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 426, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-vertical .ui-slider-handle {
   left: -.3em;
   margin-left: 0;
   margin-bottom: -.6em;
 }
-/* line 453, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 431, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-vertical .ui-slider-range {
   left: 0;
   width: 100%;
 }
-/* line 457, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 435, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-vertical .ui-slider-range-min {
   bottom: 0;
 }
-/* line 460, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 438, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .ui-slider-vertical .ui-slider-range-max {
   top: 0;
 }
-/* line 464, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 442, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-bubble {
   width: 8.3em;
   height: 3.1em;
@@ -12853,44 +13079,44 @@ body {
   text-align: center;
   padding-top: .3em;
 }
-/* line 473, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 451, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-section .homepage-slider-bubble span {
   color: white;
   font-size: 1.6em;
   line-height: 1.5em;
 }
-/* line 481, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 459, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result {
   font-family: 'latoregular', Arial, sans-serif;
 }
-/* line 483, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 461, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result hr {
   margin-top: 1.0em;
   margin-bottom: 1.0em;
 }
-/* line 488, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 466, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result .homepage-slider-main-result-text .homepage-slider-main-result-text-left {
   float: left;
 }
-/* line 490, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 468, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result .homepage-slider-main-result-text .homepage-slider-main-result-text-left span {
   font-size: 2.0em;
   font-weight: 600em;
   line-height: 2.1em;
 }
-/* line 496, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 474, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result .homepage-slider-main-result-text .homepage-slider-main-result-text-right {
   float: right;
 }
-/* line 498, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 476, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-result .homepage-slider-main-result-text .homepage-slider-main-result-text-right span {
   font-size: 3.0em;
 }
-/* line 505, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 483, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-main-action-button {
   text-align: center;
 }
-/* line 507, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 485, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-main-action-button .flat-button.button-get-financed {
   font-family: "latobold", Arial, sans-serif;
   display: inline-block;
@@ -12905,13 +13131,13 @@ body {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 520, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 498, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-main-action-button .flat-button.button-get-financed span {
   font-size: 2.0em;
   text-decoration: none;
   line-height: 1em;
 }
-/* line 527, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 505, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-main-action-button .flat-button.button-get-refinance {
   font-family: "latobold", Arial, sans-serif;
   display: inline-block;
@@ -12926,18 +13152,18 @@ body {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 540, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 518, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-main-action-button .flat-button.button-get-refinance span {
   font-size: 2.0em;
   text-decoration: none;
   line-height: 1em;
 }
-/* line 547, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 525, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-action-subheader {
   text-align: center;
   padding-top: 1.5em;
 }
-/* line 550, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 528, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-sliders .homepage-slider-main .homepage-slider-main-action .homepage-slider-action-subheader span {
   font-size: 1.6em;
   text-decoration: underline;
@@ -12945,7 +13171,7 @@ body {
   cursor: hand;
 }
 
-/* line 561, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 539, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .blue-highlight {
   color: #20acd7;
 }
@@ -12953,46 +13179,46 @@ body {
 /**************************************************/
 /*                How it Works                    */
 /**************************************************/
-/* line 570, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 548, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper {
   width: 108em;
   margin: 0 auto;
   padding-bottom: 8.0em;
 }
-/* line 574, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 552, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works {
   width: 108em;
   padding-top: 2.0em;
   padding-left: 15em;
   padding-right: 15em;
 }
-/* line 579, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 557, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-header {
   text-align: center;
   margin-bottom: 5.0em;
   line-height: 1.2;
 }
-/* line 583, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 561, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-header .how-works-header-top {
   text-align: center;
   font-family: 'latolight', Arial, sans-serif;
 }
-/* line 586, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 564, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-header .how-works-header-top span {
   font-size: 2.4em;
   color: #606060;
 }
-/* line 591, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 569, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-header .how-works-header-bottom {
   font-family: 'latobold', Arial, sans-serif;
   text-align: center;
 }
-/* line 594, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 572, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-header .how-works-header-bottom span {
   font-size: 2.4em;
   color: #20acd7;
 }
-/* line 600, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 578, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps {
   width: 100%;
   background-image: url(/assets/dot_divider.jpg);
@@ -13000,105 +13226,105 @@ body {
   background-repeat: repeat-x;
   text-align: center;
 }
-/* line 606, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 584, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps img {
   width: 11.3em;
   height: 11.3em;
 }
-/* line 610, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 588, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step1 {
   display: inline-block;
   float: left;
   text-align: center;
 }
-/* line 614, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 592, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step1 .how-works-steps-step1-image {
   background-color: white;
   padding-left: 2.0em;
   padding-right: 2.0em;
 }
-/* line 620, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 598, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step2 {
   display: inline-block;
   text-align: center;
 }
-/* line 623, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 601, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step2 .how-works-steps-step2-image {
   background-color: white;
   padding-left: 2.0em;
   padding-right: 2.0em;
 }
-/* line 629, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 607, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step3 {
   display: inline-block;
   float: right;
   text-align: center;
 }
-/* line 633, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 611, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-steps .how-works-steps-step3 .how-works-steps-step3-image {
   background-color: white;
   padding-left: 2.0em;
   padding-right: 2.0em;
 }
-/* line 640, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 618, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information {
   padding-top: 2.0em;
   text-align: center;
   color: #ababab;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 645, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 623, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step1 {
   float: left;
   display: inline-block;
   width: 16.3em;
 }
-/* line 649, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 627, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step1 span {
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2.0em;
 }
-/* line 654, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 632, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step2 {
   display: inline-block;
   width: 16.3em;
 }
-/* line 657, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 635, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step2 span {
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2.0em;
 }
-/* line 662, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 640, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step3 {
   float: right;
   display: inline-block;
   width: 16.3em;
 }
-/* line 666, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 644, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-wrapper .how-works .how-works-information .how-works-information-step3 span {
   text-align: center;
-  font-size: 1.6em;
+  font-size: 2.0em;
 }
 
-/* line 675, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 653, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-fluid-container {
   width: 100%;
   padding-top: 5.0em;
   padding-bottom: 10.0em;
 }
-/* line 679, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 657, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .homepage-fluid-container .homepage-container {
   width: 108.0em;
   margin: 0 auto;
 }
 
-/* line 686, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 664, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel {
   position: relative;
   overflow: hidden;
 }
 
-/* line 691, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 669, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel ul {
   width: 216.0em;
   position: relative;
@@ -13108,7 +13334,7 @@ body {
   padding: 0;
 }
 
-/* line 701, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 679, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel li {
   /* Required only for block elements like <li>'s */
   float: left;
@@ -13117,58 +13343,58 @@ body {
 /**************************************************/
 /*                In The News                     */
 /**************************************************/
-/* line 710, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 688, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news {
   width: 100%;
 }
-/* line 712, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 690, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-header {
   font-family: 'latobold', Arial, sans-serif;
   margin-bottom: 8.0em;
   color: #606060;
 }
-/* line 716, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 694, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-header span {
   font-size: 2.4em;
   color: #606060;
 }
-/* line 721, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 699, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body {
   margin: 0 auto;
   display: inline-block;
   font-family: 'latolight_italic', Arial, sans-serif;
 }
-/* line 725, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 703, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section {
   width: 54.0em;
   float: left;
   display: inline-block;
 }
-/* line 729, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 707, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-image-bloomberg {
   width: 100%;
   margin-bottom: 3.0em;
 }
-/* line 732, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 710, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-image-bloomberg img {
   display: block;
   width: 21.93em;
   height: 5.0em;
   margin: 0 auto;
 }
-/* line 739, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 717, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-image-alleywatch {
   width: 100%;
   margin-bottom: 3.0em;
 }
-/* line 742, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 720, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-image-alleywatch img {
   display: block;
   width: 19.5em;
   height: 5.0em;
   margin: 0 auto;
 }
-/* line 749, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 727, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-information {
   width: 100%;
   text-align: center;
@@ -13177,19 +13403,19 @@ body {
   padding-right: 5.0em;
   color: #5f6364;
 }
-/* line 756, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 734, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-information span {
   display: inline-block;
   font-size: 1.8em;
   line-height: 2.0em;
 }
-/* line 762, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 740, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-action {
   width: 100%;
   font-family: 'latobold', Arial, sans-serif;
   text-align: center;
 }
-/* line 766, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 744, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-action .flat-button.button-get-refinance {
   font-family: "latobold", Arial, sans-serif;
   display: inline-block;
@@ -13204,7 +13430,7 @@ body {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 779, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 757, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .in-the-news .in-the-news-body .in-the-news-body-section .in-the-news-body-section-action .flat-button.button-get-refinance span {
   font-size: 2.0em;
   text-decoration: none;
@@ -13214,52 +13440,52 @@ body {
 /**************************************************/
 /*                Benefits                        */
 /**************************************************/
-/* line 794, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 772, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits {
   width: 100%;
 }
-/* line 796, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 774, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-header {
   margin-bottom: 5.0em;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 799, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 777, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-header span {
   font-size: 2.4em;
   color: #606060;
 }
-/* line 804, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 782, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body {
   margin-bottom: 5.0em;
   color: 96, 96, 96;
   font-family: "latoregular", Arial, sans-serif;
 }
-/* line 809, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 787, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-number {
   float: left;
   display: inline-block;
   padding-top: 7.2em;
   margin-right: 2.0em;
 }
-/* line 814, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 792, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-number img {
   display: block;
   width: 5.9em;
   height: 5.9em;
 }
-/* line 820, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 798, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-image {
   float: left;
   display: inline-block;
   margin-right: 2.0em;
 }
-/* line 824, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 802, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-image img {
   display: block;
   width: 20.3em;
   height: 20.3em;
 }
-/* line 830, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 808, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-information {
   float: left;
   display: inline-block;
@@ -13267,56 +13493,52 @@ body {
   height: 20.3em;
   position: relative;
 }
-/* line 836, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 814, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-information .benefits-body-row-green-information-block {
   position: absolute;
   bottom: 0;
   display: block;
 }
-/* line 840, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 818, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-information .benefits-body-row-green-information-block .benefits-body-row-green-information-block-text {
   font-size: 2.4em;
   text-align: center;
   margin-bottom: 2.0em;
   display: block;
 }
-/* line 847, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 825, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-green .benefits-body-row-green-information .benefits-body-row-green-information-block .benefits-body-row-green-information-block-arrow img {
   width: 2.64em;
   height: 1.6em;
   margin: 0 auto;
   display: block;
 }
-/* line 858, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
-.benefits .benefits-body .benefits-body-row-blue {
-  margin-top: -2.0em;
-}
-/* line 860, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 838, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-number {
   float: right;
   display: inline-block;
   padding-top: 7.2em;
   margin-left: 2.0em;
 }
-/* line 865, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 843, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-number img {
   display: block;
   width: 5.9em;
   height: 5.9em;
 }
-/* line 871, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 849, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-image {
   float: right;
   display: inline-block;
-  margin-left: 2.0em;
+  margin-left: 4.0em;
 }
-/* line 875, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 853, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-image img {
   display: block;
   width: 20.3em;
   height: 20.3em;
 }
-/* line 881, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 859, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-information {
   float: right;
   display: inline-block;
@@ -13324,56 +13546,53 @@ body {
   height: 20.3em;
   position: relative;
 }
-/* line 887, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 865, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-information .benefits-body-row-blue-information-block {
   position: absolute;
   bottom: 0;
   display: block;
+  right: 0;
 }
-/* line 891, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 870, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-information .benefits-body-row-blue-information-block .benefits-body-row-blue-information-block-text {
   font-size: 2.4em;
   text-align: center;
   margin-bottom: 2.5em;
   display: block;
 }
-/* line 898, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 877, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-blue .benefits-body-row-blue-information .benefits-body-row-blue-information-block .benefits-body-row-blue-information-block-arrow img {
   width: 2.64em;
   height: 1.6em;
   margin: 0 auto;
   display: block;
 }
-/* line 909, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
-.benefits .benefits-body .benefits-body-row-orange {
-  margin-top: -4.0em;
-}
-/* line 911, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 890, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-number {
   float: left;
   display: inline-block;
   padding-top: 7.2em;
   margin-right: 2.0em;
 }
-/* line 916, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 895, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-number img {
   display: block;
   width: 5.9em;
   height: 5.9em;
 }
-/* line 922, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 901, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-image {
   float: left;
   display: inline-block;
   margin-right: 2.0em;
 }
-/* line 926, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 905, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-image img {
   display: block;
   width: 20.3em;
   height: 20.3em;
 }
-/* line 932, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 911, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-information {
   float: left;
   display: inline-block;
@@ -13381,43 +13600,43 @@ body {
   height: 20.3em;
   position: relative;
 }
-/* line 938, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 917, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-information .benefits-body-row-orange-information-block {
   position: absolute;
   bottom: 0;
   display: block;
 }
-/* line 942, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 921, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-information .benefits-body-row-orange-information-block .benefits-body-row-orange-information-block-text {
   font-size: 2.4em;
   text-align: center;
   margin-bottom: 3.5em;
   display: block;
 }
-/* line 949, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 928, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-body .benefits-body-row-orange .benefits-body-row-orange-information .benefits-body-row-orange-information-block .benefits-body-row-orange-information-block-arrow img {
   width: 2.64em;
   height: 1.6em;
   margin: 0 auto;
   display: block;
 }
-/* line 961, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 940, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar {
   width: 100%;
   text-align: center;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 965, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 944, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group {
   display: block;
   text-align: center;
 }
-/* line 969, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 948, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-financed {
   display: inline-block;
   margin-right: 1em;
 }
-/* line 972, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 951, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-financed .flat-button.button-get-financed {
   font-family: "latobold", Arial, sans-serif;
   background-color: #25aae1;
@@ -13430,17 +13649,17 @@ body {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 983, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 962, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-financed .flat-button.button-get-financed span {
   font-size: 2.0em;
   text-decoration: none;
   line-height: 1em;
 }
-/* line 990, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 969, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-refinance {
   display: inline-block;
 }
-/* line 992, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 971, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-refinance .flat-button.button-get-refinance {
   font-family: "latobold", Arial, sans-serif;
   background-color: #8dc63f;
@@ -13453,7 +13672,7 @@ body {
   padding-left: 1.6em;
   padding-right: 1.6em;
 }
-/* line 1005, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 984, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .benefits .benefits-action-bar .benefits-action-bar-group .benefits-action-bar-group-refinance .flat-button.button-get-refinance span {
   font-size: 2.0em;
   text-decoration: none;
@@ -13463,64 +13682,64 @@ body {
 /**************************************************/
 /*                Testimonials                    */
 /**************************************************/
-/* line 1021, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1000, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-header {
   margin-bottom: 5.0em;
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 1024, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1003, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-header span {
   font-size: 2.4em;
   color: #606060;
 }
-/* line 1029, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1008, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body {
   margin-left: 2.0em;
 }
-/* line 1031, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1010, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left {
   float: left;
   margin-right: 4.0em;
 }
-/* line 1034, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1013, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-video {
   margin-bottom: 2.0em;
 }
-/* line 1036, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1015, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-video img {
   width: 27.6em;
   height: 18.7em;
 }
-/* line 1042, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1021, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-subheader .testimonials-body-left-subheader-name {
   font-family: 'latobold', Arial, sans-serif;
   text-align: center;
   margin-bottom: .3em;
 }
-/* line 1046, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1025, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-subheader .testimonials-body-left-subheader-name span {
   color: #606060;
   font-size: 1.8em;
 }
-/* line 1052, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1031, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-subheader .testimonials-body-left-subheader-title {
   font-family: 'latoregular', Arial, sans-serif;
   margin: 0 auto;
   text-align: center;
 }
-/* line 1056, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1035, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-left .testimonials-body-left-subheader .testimonials-body-left-subheader-title span {
   font-size: 1.8em;
   color: #20acd7;
 }
-/* line 1064, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1043, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-right {
   float: left;
   width: 47em;
   font-family: 'latolight_italic', Arial, sans-serif;
   color: #5f6364;
 }
-/* line 1071, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1050, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .testimonials .testimonials-body .testimonials-body-right .testimonials-body-right-text span {
   line-height: 1.5;
   font-size: 1.8em;
@@ -13529,32 +13748,32 @@ body {
 /**************************************************/
 /*                    Footer                      */
 /**************************************************/
-/* line 1084, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1063, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer {
   margin-bottom: 6.2em;
 }
-/* line 1086, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1065, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-image-section {
   margin-top: 4.2em;
 }
-/* line 1090, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1069, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section {
   margin-top: 6.4em;
 }
-/* line 1092, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1071, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section span {
   font-size: 1.35em;
 }
-/* line 1093, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1072, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-section-header {
   font-family: 'latobold', Arial, sans-serif;
   color: #1B759A;
 }
-/* line 1096, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1075, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-section-header span {
   font-size: 1.45em;
 }
-/* line 1099, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1078, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section ul {
   font-family: 'latoregular', Arial, sans-serif;
   list-style-type: none;
@@ -13564,64 +13783,64 @@ body {
   margin-left: 0;
   margin-right: 0;
 }
-/* line 1108, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1087, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section ul li {
   margin-top: .6em;
 }
-/* line 1110, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1089, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section ul li a {
   font-size: 1.35em;
   text-decoration: none;
   cursor: pointer;
 }
-/* line 1115, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1094, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section ul li img {
   margin-right: .4em;
 }
-/* line 1120, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1099, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-need-help {
   color: #636363;
   margin-top: 3.2em;
 }
-/* line 1123, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1102, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-need-help .footer-need-help-header {
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 1125, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1104, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-need-help .footer-need-help-header span {
   font-size: 1.4em;
 }
-/* line 1130, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1109, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-need-help .footer-need-help-body img {
   margin-left: -2.7em;
 }
-/* line 1133, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1112, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section .footer-need-help .footer-need-help-body img {
   margin-right: 0px !important;
   width: 2.7em;
   height: 2.6em;
 }
-/* line 1142, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1121, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section-body {
   margin-top: 2.8em;
   color: white;
 }
-/* line 1147, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1126, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section-body .footer-address-header {
   font-family: 'latobold', Arial, sans-serif;
 }
-/* line 1149, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1128, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .footer .footer-section-body .footer-address-header span {
   font-size: 1.4em;
 }
 
-/* line 1159, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1138, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel-pagination {
   text-align: center;
   margin-top: 2.0em;
 }
 
-/* line 1164, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1143, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel-pagination a.active {
   background: none repeat scroll 0 0 #8dc63f;
   box-shadow: 0 0 0.2em #f0efe7;
@@ -13629,7 +13848,7 @@ body {
   opacity: 1;
 }
 
-/* line 1170, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1149, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel-pagination a {
   background: none repeat scroll 0 0 #25aae1;
   border-radius: 1.0em;
@@ -13645,18 +13864,18 @@ body {
   width: 1.0em;
 }
 
-/* line 1185, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1164, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel-control-prev {
   left: 1.5em;
 }
 
-/* line 1189, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1168, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 .jcarousel-control-next {
   right: 1.5em;
   padding-left: 0.3em;
 }
 
-/* line 1194, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1173, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 a.jcarousel-control-prev, a.jcarousel-control-next {
   background: none repeat scroll 0 0 #8dc63f;
   border-radius: 3.0em;
@@ -13669,13 +13888,13 @@ a.jcarousel-control-prev, a.jcarousel-control-next {
   top: 50%;
   width: 3.0em;
 }
-/* line 1206, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1185, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 a.jcarousel-control-prev span, a.jcarousel-control-next span {
   font: 2.4em/1.1em Arial,sans-serif;
   color: white;
 }
 
-/* line 1212, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+/* line 1191, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
 #how-works {
   position: relative;
 }
@@ -13684,85 +13903,85 @@ a.jcarousel-control-prev span, a.jcarousel-control-next span {
 /*                 Media Queries                  */
 /**************************************************/
 @media all and (max-width: 1188px) {
-  /* line 1222, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1201, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.5625em;
   }
 }
 @media all and (max-width: 1080px) {
-  /* line 1228, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1207, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.5172em;
   }
 }
 @media all and (max-width: 1044px) {
-  /* line 1234, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1213, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.5em;
   }
 }
 @media all and (max-width: 965px) {
-  /* line 1240, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1219, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.4621em;
   }
 }
 @media all and (max-width: 914px) {
-  /* line 1246, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1225, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.4375em;
   }
 }
 @media all and (max-width: 850px) {
-  /* line 1252, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1231, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.4070em;
   }
 }
 @media all and (max-width: 808px) {
-  /* line 1258, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1237, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.3870em;
   }
 }
 @media all and (max-width: 783px) {
-  /* line 1265, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1244, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.375em;
   }
 }
 @media all and (max-width: 742px) {
-  /* line 1271, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1250, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.3558em;
   }
 }
 @media all and (max-width: 713px) {
-  /* line 1277, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1256, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.3375em;
   }
 }
 @media all and (max-width: 652px) {
-  /* line 1284, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1263, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.3125em;
   }
 }
 @media all and (max-width: 630px) {
-  /* line 1290, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1269, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.3017em;
   }
 }
 @media all and (max-width: 522px) {
-  /* line 1296, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1275, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.25em;
   }
 }
 @media all and (max-width: 513px) {
-  /* line 1302, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
+  /* line 1281, C:/Sites/example/buynance-testing/app/assets/stylesheets/homepage.css.scss */
   body {
     font-size: 0.2457em;
   }

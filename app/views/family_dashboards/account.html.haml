@@ -1,0 +1,14 @@
+.web_body
+  .paper-section
+    .paper-section-header
+      %span Account
+    .paper-section-main.clearfix   
+      .paper-section-main-sheet.first-paper-section.clearfix
+        .paper-section-main-sheet.last-paper-section
+          .paper-section-bank-login.row
+            - if @representative.awaiting_acceptance?
+              = render "family_dashboards/account/pending"
+            - elsif @representative.accepted?
+              = render "family_dashboards/account/accepted"
+            - elsif @representative.rejected?
+              = render "family_dashboards/account/rejected"

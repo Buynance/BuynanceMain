@@ -10,7 +10,8 @@ class ApplicationController < ActionController::Base
   helper_method :current_business_user_session, :current_business_user, 
     :require_business_user, :x_months_ago_string, :zero?, :return_error_class,
      :current_business, :current_funder, :require_funder, :to_boolean, :send_production_js, :is_production,
-     :log_input_error
+     :log_input_error, :current_rep_dialer_friends, :current_rep_dialer_family, :require_rep_dialer_friends, :require_rep_dialer_family 
+  helper_method :family_signed_in?, :friend_signed_in?
   force_ssl if: :ssl_configured?
 
   private
@@ -35,9 +36,14 @@ class ApplicationController < ActionController::Base
 
     def after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == "rep_dialer".to_sym
-        dialer_home_dialer_dashboards_path
+        unless session[:dialer_resource].nil?
+          session[:dialer_resource] = nil
+          return dialer_home_family_dashboards_path
+        else
+          return dialer_home_family_dashboards_path
+        end
       else 
-        root_path
+        return root_path
       end
     end
 
@@ -125,9 +131,63 @@ class ApplicationController < ActionController::Base
       end
     end
 
-    def require_rep_dialer
-      unless current_rep_dialer
+    def require_rep_dialer_friends
+      unless current_rep_dialer_friends
         redirect_to dialer_home_dialer_dashboards_path
+      end
+    end
+
+    def require_rep_dialer_family
+      unless current_rep_dialer_family
+        redirect_to dialer_home_dialer_dashboards_path
+      end
+    end
+
+    def current_rep_dialer_family
+      if current_rep_dialer
+        if current_rep_dialer.role == "Family"
+          return current_rep_dialer
+        else
+          return nil
+        end
+      else
+        return nil
+      end
+    end
+
+    def current_rep_dialer_friends
+      if current_rep_dialer
+        if current_rep_dialer.role == "Friend"
+          return current_rep_dialer
+        else
+          return nil
+        end
+      else
+        return nil
+      end
+    end
+
+    def family_signed_in?
+      if current_rep_dialer
+        if current_rep_dialer.role == "Family"
+          return true
+        else
+          return false
+        end
+      else
+        return false
+      end
+    end
+
+    def friend_signed_in?
+      if current_rep_dialer
+        if current_rep_dialer.role == "Friend"
+          return true
+        else
+          return false
+        end
+      else
+        return false
       end
     end
 

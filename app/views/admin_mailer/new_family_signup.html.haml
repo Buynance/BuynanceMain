@@ -1,0 +1,11 @@
+%h2 You have a new representative signup
+%p ----------------------------------------
+%p Signup Time - #{@rep_dialer.created_at.strftime("%m/%d/%Y %I:%M%p")}
+%p Name - #{@rep_dialer.name} 
+%p 
+  Profile URL -
+  %a{href: "#{@rep_dialer.profile_url}"} 
+    Profile
+%p Email - #{@rep_dialer.email}
+%p Referral Code -  #{@rep_dialer.referral_code}
+%p Mobile Number - #{@rep_dialer.mobile_number}

@@ -1,0 +1,40 @@
+.homepage-fluid-container{style: "padding-top: 0; padding-bottom: 0;"}
+  .homepage-nav
+    .homepage-header.homepage-header-container.clearfix
+      .hompage-header-logo{style: "width: 30.5%;"}
+        = link_to(image_tag("https://res.cloudinary.com/buynance/image/upload/c_scale,h_67,w_303/logo_b9ieyp.jpg"), "/")
+      .homepage-header-dialer-links.clearfix
+        .homepage-header-dialer-links-section
+          - if current_page?('/family') 
+            %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} What We Do
+          - else
+            %a{href: '/family#dialer_why'} What We Do
+        .homepage-header-dialer-links-section{style: "width: 32%;"}
+          - if current_page?('/family') 
+            %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} Buynance Difference
+          - else
+            %a{href: '/family#dialer_help'} Buynance Difference
+        .homepage-header-dialer-links-section{style: "width: 27%;"}
+          - if current_page?('/family') 
+            %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
+          - else
+            %a{href: '/family#dialer_work'} How This Works
+        .homepage-header-dialer-links-section.small-section{style: "width: 10%;"}
+          - if current_page?('/family') 
+            %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+          - else
+            %a{href: '/family#dialer_faq'} FAQ
+      .homepage-header-dialer-actions
+        .homepage-header-actions-button
+          .homepage-header-actions-button
+            - if family_signed_in? 
+              = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
+                %span Sign Out
+            - else
+              = link_to action: :sign_in do
+                = image_tag "connect_with_linkedin.gif", style: "margin-top: -1.0em;"
+
+          .homepage-header-actions-button
+            - if family_signed_in?
+              %a#header-account-button.flat-button.homepage-button-right{href: "/family/account"}
+                %span Account

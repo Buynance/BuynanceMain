@@ -1,0 +1,20 @@
+!!!
+%html{:xmlns => "http://www.w3.org/1999/xhtml", "xmlns:og" => "http://ogp.me/ns#"}
+  %head
+    = metamagic title: "Join the Buynance Family", og: { image: "http://www.buynance.com/images/twitter.jpg", title: "Join the Buynance Family", url: "https://www.buynance.com/family", type: "website", description: "Beging your journey to economic freedom."}
+   
+    = stylesheet_link_tag    "application", media: "all"
+    = javascript_include_tag "application"
+    = javascript_pluggable_tag 
+    = javascript_include_tag "ga.js"
+    = javascript_include_tag "mixpanel.js"
+    
+    = csrf_meta_tags
+    = render "layouts/dialer/facebook_pixel"
+    = favicon_link_tag "favicon.ico"
+  %body
+    = render "layouts/family/header"
+    = yield
+
+    = render :partial => 'layouts/family/footer'
+    /= render :partial => 'layouts/chart'

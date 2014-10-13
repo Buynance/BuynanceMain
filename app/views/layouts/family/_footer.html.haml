@@ -1,0 +1,78 @@
+.bottom{style: "padding-top: 20px;"}
+  .container
+    .footer.row
+      .footer-image-section.col-xs-4
+        =image_tag("buynance-footer.jpg")
+      .col-xs-5
+        .col-xs-6.footer-section
+          .footer-section-header
+            %span 
+              USEFUL LINKS
+          .footer-section-body.footer-section-links
+            %ul
+              %li
+                - if current_page?('/family') 
+                  %span{onclick: "$('body').scrollTo('#dialer_why', 800)"} What We Do
+                - else
+                  %a{href: '/family#dialer_why'} What We Do
+              %li 
+                - if current_page?('/family') 
+                  %span{onclick: "$('body').scrollTo('#dialer_help', 800)"} Buynance Difference
+                - else
+                  %a{href: '/family#dialer_help'} Buynance Difference
+              %li 
+                - if current_page?('/family') 
+                  %span{onclick: "$('body').scrollTo('#dialer_work', 800)"} How This Works
+                - else
+                  %a{href: '/family#dialer_work'} How This Works
+              %li 
+                - if current_page?('/family') 
+                  %span{onclick: "$('body').scrollTo('#dialer_faq', 800)"} FAQ
+                - else
+                  %a{href: '/family#dialer_faq'} FAQ
+        .col-xs-6.footer-section
+          .footer-section-header
+            %span WE ARE SOCIAL
+          .footer-section-body.footer-section-links
+            %ul
+              %li 
+                = image_tag("facebook_footer_icon.png")
+                %a{href: "http://www.facebook.com/Buynance", target: "_blank"} Facebook
+              %li 
+                = image_tag("twitter_footer_icon.png")
+                %a{href: "http://www.twitter.com/buynance", target: "_blank"} Twitter
+              %li 
+                = image_tag("google_footer_icon.png")
+                %span Google Plus
+              %li 
+                = image_tag("linkedin_footer_icon.png")
+                %span Linkedin
+              %li 
+                = image_tag("youtube_footer_icon.png")
+                %span Youtube
+      .col-xs-3
+        .footer-section
+          .footer-section-header
+            %span LOCATE US
+          .footer-section-body
+            .footer-address
+              .footer-address-header
+                %span Address
+              .footer-address-body
+                %ul
+                  %li 
+                    %span Funder Pair Inc.
+                  %li 
+                    %span 44 Wall Street, 21st Floor
+                  %li 
+                    %span New York, NY 10005
+          .footer-need-help
+            .footer-need-help-header
+              %span Need Help?
+            .footer-need-help-body
+              %ul
+                %li
+                  = image_tag("mail_footer_icon.png")
+                  %span
+                    = "team@buynance.com"
+

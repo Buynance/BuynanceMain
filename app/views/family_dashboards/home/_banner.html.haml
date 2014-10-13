@@ -1,0 +1,5 @@
+.dialer-banner-family.container-fluid
+  .dialer-banner-linkedin
+    - unless rep_dialer_signed_in?
+      = link_to action: :sign_in  do
+        = image_tag("dialer_linkedin_signin.png", style: "width:32.16em;height:7.8em;")
