@@ -16,7 +16,7 @@ class AdminMailer < ActionMailer::Base
 
   def new_family_signup(representative)
     @rep_dialer = representative
-    mail :subject => "You have a new Buynance Family Sign up",
+    mail :subject => "New Family Recruit",
          :to      => "edwin@buynance.com, yuliya@buynance.com, buynancefunder@gmail.com",
          :from    => "Team Buynance <noreply@buynance.com>"
   end
