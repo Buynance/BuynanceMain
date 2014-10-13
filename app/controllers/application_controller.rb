@@ -37,8 +37,8 @@ class ApplicationController < ActionController::Base
     def after_sign_out_path_for(resource_or_scope)
       if resource_or_scope == "rep_dialer".to_sym
         unless session[:dialer_signed_in_resource].nil?
-          dialer_home_family_dashboards_path
           session[:dialer_signed_in_resource] = nil
+          dialer_home_family_dashboards_path
         else
           dialer_home_dialer_dashboards_path
         end
