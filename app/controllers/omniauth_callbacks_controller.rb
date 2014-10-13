@@ -14,7 +14,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       flash[:notice] = I18n.t "devise.omniauth_callbacks.success"
       sign_in @rep_dialer, :event => :authentication
       if @rep_dialer.role == "Family"
-        session[:dialer_signed_in_resource] = "Family"
         redirect_to dialer_account_family_dashboards_path
       else
         redirect_to dialer_account_dialer_dashboards_path
