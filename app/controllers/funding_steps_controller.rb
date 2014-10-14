@@ -44,7 +44,7 @@ class FundingStepsController < ApplicationController
 		if step == :bank_prelogin
 			if @business.bank_account.nil?
 				@bank_account = BankAccount.new(bank_account_params)
-				if @bank_account.routing_number.downcase == "market"
+				if @bank_account.routing_number == "buynanceblue"
 					@business.accept_as_lead
 					@business.qualify_for_market
 					@business.passed_bank_prelogin
