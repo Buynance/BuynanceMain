@@ -129,10 +129,6 @@ class Business < ActiveRecord::Base
     return ((self.years_in_business >= 1) and (self.approximate_credit_score_range >= 3) and self.bank_account.is_average_deposit_atleast(amount) and (self.bank_account.days_of_transactions >= days))
   end
   
-  def disqualify!
-    self.state = "awaiting_offer_acceptance"
-    self.qualification_state = "disqualified_for_funder"
-  end
 
   def qualify
     is_qualified = false

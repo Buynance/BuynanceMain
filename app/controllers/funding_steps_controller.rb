@@ -65,9 +65,8 @@ class FundingStepsController < ApplicationController
 		else
 			if @business.update_attributes(business_params)
 				if step == :personal
-					if @business.years_in_business == 0
-						@business.disqualify!
-						@business.save
+					if ((@business.years_in_business == 0) or (@business.approximate_credit_score_range == 1))
+						@business.disqualify
 						redirect_to account_url
 					else
 						flash[:personal_passed] = true

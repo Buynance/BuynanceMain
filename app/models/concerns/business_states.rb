@@ -208,7 +208,7 @@ module BusinessStates
       end
       
       event :disqualify do
-        transition [:awaiting_qualification_information] => :disqualified_for_funder
+        transition [:awaiting_qualification_information] => :disqualified
       end
 
     end

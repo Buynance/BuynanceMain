@@ -33,9 +33,9 @@ class BusinessesController < ApplicationController
   end
 
   def show 
-    #if @business.declined?
-    #  render :action => :not_qualified
-    if @business.bank_error?
+    if @business.disqualified?
+      render :action => :disqualified
+    elsif @business.bank_error?
       redirect_to bank_failure_path
     elsif @business.awaiting_personal_information? or @business.awaiting_bank_information?
       redirect_to funding_steps_path
