@@ -155,7 +155,7 @@ class RepDialer < ActiveRecord::Base
   end
 
   def agreement_check
-    if self.current_step == "questionnaire"
+    if self.current_step == "questionnaire" and self.role != "Family"
       puts '======================================== agree enter'
 
       unless self.agree_confirmation.downcase == "i agree"
