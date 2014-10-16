@@ -46,8 +46,8 @@
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 		@rep_dialer.assign_attributes(representative_params)
 		@rep_dialer.current_step = "questionnaire"
-		@questionnaire.assign_attributes(questionnaire_params)
-		if @questionnaire.valid? and @rep_dialer.valid?
+		#@questionnaire.assign_attributes(questionnaire_params)
+		if ((@questionnaire.valid? and @rep_dialer.valid?) and @rep_dialer.role == "Friend") or (@rep_dialer.valid? and @rep_dialer.role == "Family")
 			@questionnaire.save
 			@rep_dialer.save
 			(0...@questionnaire.questions.size).each do |i|
