@@ -25,6 +25,20 @@ class BankAccount < ActiveRecord::Base
 
 	end
 
+	################################################
+
+	def passed_minimum_deposits?
+		if (months_of_transactions >= 2.75) and total_number_of_deposits >= 12
+			return true
+		elsif (months_of_transactions >= 1.75) and total_number_of_deposits >= 12
+			return true
+		else
+			return false
+		end
+	end
+
+	################################################
+
 	def proccess_bank_information(report)
 		self.populate_from_report4(report) # Working
 		self.add_transactions_from_report4(report) # Working
@@ -133,12 +147,11 @@ class BankAccount < ActiveRecord::Base
 	end
 
 	def total_deposits_value
-
 		return ((self.deposits_one_month_ago.nil? ? 0 : self.deposits_one_month_ago) + (self.deposits_two_months_ago.nil? ? 0 : self.deposits_two_months_ago) + (self.deposits_three_months_ago.nil? ? 0 : self.deposits_three_months_ago))
 	end
 
 	def total_number_of_deposits
-		return get_transactions_by_type_code("dp").size
+		return self.transactions.deposits.size
 	end
 
 	def days_of_transactions
