@@ -28,13 +28,13 @@
         .homepage-header-actions-button
           .homepage-header-actions-button
             - if family_signed_in? 
-              = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "header-logout-button" do
+              = link_to destroy_rep_dialer_session_path, method: :delete, class: "flat-button homepage-button-left", id: "#family-header-logout" do
                 %span Sign Out
             - else
-              = link_to action: :sign_in do
+              = link_to action: :sign_in, id: "#family-header-login" do
                 = image_tag "connect_with_linkedin.gif", style: "margin-top: -1.0em;"
 
           .homepage-header-actions-button
             - if family_signed_in?
-              %a#header-account-button.flat-button.homepage-button-right{href: "/family/account"}
+              %a#family-header-account.flat-button.homepage-button-right{href: "/family/account"}
                 %span Account
