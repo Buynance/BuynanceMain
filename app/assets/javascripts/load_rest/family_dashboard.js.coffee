@@ -19,21 +19,21 @@ setup_family_homepage_analytics = () ->
   mixpanel.track_links('#family-header-account', 'Click - Family Header Account Button')
 
   $('.family-faq-1').click ->
-    mixpanel.track("Click - FAQ Question 1")
+    mixpanel.track("Click - Family FAQ Question 1")
   $('.family-faq-2').click ->
-    mixpanel.track("Click - FAQ Question 2")
+    mixpanel.track("Click - Family FAQ Question 2")
   $('.family-faq-3').click ->
-    mixpanel.track("Click - FAQ Question 3")
+    mixpanel.track("Click - Family FAQ Question 3")
   $('.family-faq-4').click ->
-    mixpanel.track("Click - FAQ Question 4")
+    mixpanel.track("Click - Family FAQ Question 4")
   $('.family-faq-5').click ->
-    mixpanel.track("Click - FAQ Question 5")
+    mixpanel.track("Click - Family FAQ Question 5")
   $('.family-faq-6').click ->
-    mixpanel.track("Click - FAQ Question 6")
+    mixpanel.track("Click - Family FAQ Question 6")
   $('.family-faq-7').click ->
-    mixpanel.track("Click - FAQ Question 7")
+    mixpanel.track("Click - Family FAQ Question 7")
   $('.family-faq-8').click ->
-    mixpanel.track("Click - FAQ Question 8")
+    mixpanel.track("Click - Family FAQ Question 8")
 
 window['family_dashboards#questionnaire'] = (data) ->
   if data.is_production
