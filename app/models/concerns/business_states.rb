@@ -50,24 +50,34 @@ module BusinessStates
           ReferralPayment.add(business.id, business.rep_dialer_id) 
           business.deliver_business_representative_notification!
         end
+        Offer.create_offers(business)
       end
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|
         business.send_offer_sms
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        business.offers[0].accept
+        business.offers[1].reject
+        business.offers[2].reject
       end
 
       after_transition :on => :accept_buynance_fast_advance_plus do |business, t|
         business.send_offer_sms
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        business.offers[0].reject
+        business.offers[1].accept
+        business.offers[2].reject
       end
 
       after_transition :on => :accept_affiliate_advance do |business, t|
         business.send_offer_sms
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        business.offers[0].reject
+        business.offers[1].reject
+        business.offers[2].accept
       end
 
       event :passed_personal do

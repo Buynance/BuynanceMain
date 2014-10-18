@@ -162,6 +162,7 @@ ActiveAdmin.register Business do
         end
       end     
     end
+
     columns do
       column do
         panel "Transactions" do
@@ -190,6 +191,19 @@ ActiveAdmin.register Business do
             column("Type")                                 {|transaction| transaction.type_code}
             column(:description)                           {|transaction| transaction.description}
             column(:running_balance)                       {|transaction| ActionController::Base.helpers.number_to_currency transaction.running_balance}
+          end unless business.bank_account.nil?
+        end
+      end
+    end
+
+    columns do
+      column do
+        panel "Offers" do
+          table_for business.offers.each do |offer|
+            column("Type")              {|offer| offer.name}
+            column("Amount Recieved")   {|transaction| ActionController::Base.helpers.number_to_currency transaction.amount}
+            column("Amount Payed")                                 {|transaction| transaction.type_code}
+            column(:state)                           {|transaction| transaction.description}
           end unless business.bank_account.nil?
         end
       end

@@ -25,7 +25,11 @@
             %span Buynance Fast Advance™
           .acceptance-item-gray-subtitle
             %span Get 
-            %span.highlight-green $2,000 
+            - if business.offers.size > 0
+              %span.highlight-green 
+                = number_to_currency(business.offers[0].cash_advance_amount) 
+            - else
+              %span.highlight-green $2,000
             %span in as little as one hour.
           .acceptance-item-gray-list.acceptance-list-one
             %span No credit check.
@@ -36,11 +40,23 @@
               %span Overview
             .acceptance-item-gray-terms-item
               %span You sell us 
-              %span.highlight-green{style: "font-family: latobold"} $2,800 
-              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+              - if @has_offers
+                %span.highlight-green{style: "font-family: latobold"} 
+                  = number_to_currency(@business.offers[0].total_payback_amount)
+                %span worth of you future sales, we will give you 
+                %span 
+                  = number_to_currency(@business.offers[0].cash_advance_amount) 
+                %span cash for them in as little as an hour. 
+              - else
+                %span.highlight-green{style: "font-family: latobold"} $2,800 
+                %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
             .acceptance-item-gray-terms-item
               %span We collect the 
-              %span.highlight $2,800 
+              - if @has_offers
+                %span.highlight 
+                  = number_to_currency(@business.offers[0].total_payback_amount)
+              - else
+                %span.highlight $2,800
               %span over 45 days.
             - if @business.accepted_market?
               .acceptance-item-gray-terms-item
@@ -58,12 +74,21 @@
           .acceptance-item-green-title
             %span Buynance Fast Advance Plus™
           .acceptance-item-green-subtitle
-            %span Get $25,000. $3,500 today and $21,500 in 7 Days
+            - if @has_offers
+              %span Get $25,000. $3,500 today and $21,500 in 7 Days
+            - else
+              %span Get $25,000. $3,500 today and $21,500 in 7 Days
           .acceptance-item-green-subtitle-two
             %span Get 
-            %span.highlight-green{style: "font-family: latobold"} $3,500 
+            - if @has_offers
+              %span.highlight-green{style: "font-family: latobold"} $3,500 
+            - else 
+              %span.highlight-green{style: "font-family: latobold"} $3,500 
             %span in your account in one hour and 
-            %span.highlight-green{style: "font-family: latobold"} $21,500 
+            - if @has_offers
+              %span.highlight-green{style: "font-family: latobold"} $21,500
+            - else
+               %span.highlight-green{style: "font-family: latobold"} $21,500
             %span in 7 days from one of our preferred partners.
           .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
             %span Guaranteed approval.
@@ -96,7 +121,11 @@
             %span Affiliate Advance
           .acceptance-item-gray-subtitle
             %span Get 
-            %span.highlight-green $25,000 
+            - if @has_offers
+              %span.highlight-green
+                 = @business.offers[2].cash_advance_amount
+            - else
+              %span.highlight-green $25,000
             %span in your account in 7 days.
           .acceptance-item-gray-list.acceptance-list-one
             %span Credit check Required.
