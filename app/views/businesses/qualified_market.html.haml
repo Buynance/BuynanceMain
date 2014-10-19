@@ -25,7 +25,7 @@
             %span Buynance Fast Advance™
           .acceptance-item-gray-subtitle
             %span Get 
-            - if business.offers.size > 0
+            - if @business.offers.size > 0
               %span.highlight-green 
                 = number_to_currency(business.offers[0].cash_advance_amount) 
             - else
@@ -88,7 +88,7 @@
             - if @has_offers
               %span.highlight-green{style: "font-family: latobold"} $21,500
             - else
-               %span.highlight-green{style: "font-family: latobold"} $21,500
+              %span.highlight-green{style: "font-family: latobold"} $21,500
             %span in 7 days from one of our preferred partners.
           .acceptance-item-green-terms-item.acceptance-item-green-terms-item-odd
             %span Guaranteed approval.
@@ -123,7 +123,7 @@
             %span Get 
             - if @has_offers
               %span.highlight-green
-                 = @business.offers[2].cash_advance_amount
+                = @business.offers[2].cash_advance_amount
             - else
               %span.highlight-green $25,000
             %span in your account in 7 days.

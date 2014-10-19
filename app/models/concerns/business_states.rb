@@ -37,6 +37,7 @@ module BusinessStates
 
       after_transition :on => :passed_bank_login do |business, t|
         business.send_qualified_lead_notifications!
+        Offer.create_offers(business)
       end
 
       after_transition :on => :passed_mobile_confirmation do |business, t|
@@ -50,7 +51,7 @@ module BusinessStates
           ReferralPayment.add(business.id, business.rep_dialer_id) 
           business.deliver_business_representative_notification!
         end
-        Offer.create_offers(business)
+        
       end
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|

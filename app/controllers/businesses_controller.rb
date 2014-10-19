@@ -47,7 +47,7 @@ class BusinessesController < ApplicationController
       render 'qualified_funder'
     elsif @business.qualified_for_refi?
       render 'qualified_refi'
-    elsif @business.qualified_for_market? || @business.accepted_buynance_fast_advance? || @business.accepted_buynance_fast_advance_plus || @business.accepted_affiliate_advance
+    elsif @business.accepted_market? || @business.accepted_buynance_fast_advance? || @business.accepted_buynance_fast_advance_plus? || @business.accepted_affiliate_advance?
       redirect_to action: 'qualified_market'
     elsif @business.disqualified_for_refi? || @business.disqualified_for_funder?
       redirect_to action: 'disqualified'
