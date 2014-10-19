@@ -43,6 +43,7 @@ module BusinessStates
         #business.deliver_jared_email!
         ReferralPayment.add(business.id, business.rep_dialer_id) unless business.rep_dialer_id.nil?
         business.deliver_business_representative_notification!   unless business.rep_dialer_id.nil?
+        Offer.create_offers(business)
       end
 
       after_transition :on => :passed_email_confirmation_referral do |business, t|
@@ -50,24 +51,40 @@ module BusinessStates
           ReferralPayment.add(business.id, business.rep_dialer_id) 
           business.deliver_business_representative_notification!
         end
+        
       end
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|
         business.send_offer_notification!
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        if business.offers.size > 2
+          business.offers[0].accept
+          business.offers[1].reject
+          business.offers[2].reject
+        end
       end
 
       after_transition :on => :accept_buynance_fast_advance_plus do |business, t|
         business.send_offer_notification!
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        if business.offers.size > 2
+          business.offers[0].reject
+          business.offers[1].accept
+          business.offers[2].reject
+        end
       end
 
       after_transition :on => :accept_affiliate_advance do |business, t|
         business.send_offer_notification!
         business.deliver_offer_accepted_email!
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
+        if business.offers.size > 2
+          business.offers[0].reject
+          business.offers[1].reject
+          business.offers[2].accept
+        end
       end
 
       event :passed_personal do

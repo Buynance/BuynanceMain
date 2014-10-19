@@ -7,7 +7,7 @@
 	force_ssl if: :not_linkedin?
 
 	def home
-		
+		 pluggable_js(is_production: is_production)
 
 	end
 
@@ -16,7 +16,9 @@
 	end
 
 	def account
+
 		@representative = current_rep_dialer_family
+		pluggable_js(is_production: is_production, email: @representative.email, is_pending: @representative.awaiting_acceptance?, is_accepted: @representative.accepted?, is_rejected: @representative.rejected?)
 		if @representative.awaiting_questionnaire?
 			redirect_to action: :questionnaire
 		end
@@ -38,6 +40,7 @@
 
 	def questionnaire
 		@rep_dialer = current_rep_dialer_family
+		pluggable_js(is_production: is_production, email: @rep_dialer.email)
 		@questionnaire = Questionnaire.find_by(name: "family_questionnaire")
 	end
 
@@ -46,8 +49,8 @@
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 		@rep_dialer.assign_attributes(representative_params)
 		@rep_dialer.current_step = "questionnaire"
-		@questionnaire.assign_attributes(questionnaire_params)
-		if @questionnaire.valid? and @rep_dialer.valid?
+		#@questionnaire.assign_attributes(questionnaire_params)
+		if ((@questionnaire.valid? and @rep_dialer.valid?) and @rep_dialer.role == "Friend") or (@rep_dialer.valid? and @rep_dialer.role == "Family")
 			@questionnaire.save
 			@rep_dialer.save
 			(0...@questionnaire.questions.size).each do |i|

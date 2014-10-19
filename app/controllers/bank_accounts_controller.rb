@@ -23,9 +23,6 @@ class BankAccountsController < ApplicationController
 				@bank_account.proccess_bank_information(@report)
 				@business.accept_as_lead
 				@bank_account.save
-				unless @bank_account.passed_minimum_deposits?
-					@business.disqualify
-				end
 				redirect_to account_url
 			else
 			end

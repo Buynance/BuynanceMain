@@ -48,6 +48,7 @@ class BankAccount < ActiveRecord::Base
 		self.calculate_last_three_months_daily_balance
 		self.total_negative_days = self.get_negative_days
 		self.retrieve_bank_information
+		#self.business.disqualify unless self.passed_minimum_deposits?			
 		self.save
 	end
 	handle_asynchronously :proccess_bank_information

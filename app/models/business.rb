@@ -17,6 +17,7 @@ class Business < ActiveRecord::Base
   has_one :bank_account,   :dependent => :destroy
   has_one :routing_number, :dependent => :destroy
   has_many :leads,         :dependent => :destroy
+  has_many :offers, :dependent => :destroy
 
 
   belongs_to :business_type, inverse_of: :businesses

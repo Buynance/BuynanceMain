@@ -7,7 +7,7 @@
 	force_ssl if: :not_linkedin?
 
 	def home
-		
+		pluggable_js(is_production: is_production)
 
 	end
 
@@ -17,6 +17,7 @@
 
 	def account
 		@representative = current_rep_dialer_friends
+		pluggable_js(is_production: is_production, email: @representative.email, is_pending: @representative.awaiting_acceptance?, is_accepted: @representative.accepted?, is_rejected: @representative.rejected?)
 		if @representative.awaiting_questionnaire?
 			redirect_to action: :questionnaire
 		end
@@ -39,6 +40,7 @@
 
 	def questionnaire
 		@rep_dialer = current_rep_dialer_friends
+		pluggable_js(is_production: is_production, email: @rep_dialer.email)
 		@questionnaire = Questionnaire.find_by(name: "rep_questionnaire")
 	end
 

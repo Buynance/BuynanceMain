@@ -43,11 +43,7 @@ class BusinessesController < ApplicationController
       redirect_to controller: 'static_pages', action: 'confirm_email'
     elsif @business.awaiting_mobile_confirmation?
       redirect_to action: 'confirm_account'
-    elsif @business.qualified_for_funder?
-      render 'qualified_funder'
-    elsif @business.qualified_for_refi?
-      render 'qualified_refi'
-    elsif @business.qualified_for_market? || @business.accepted_buynance_fast_advance? || @business.accepted_buynance_fast_advance_plus || @business.accepted_affiliate_advance
+    elsif @business.qualified_for_market? || @business.accepted_buynance_fast_advance? || @business.accepted_buynance_fast_advance_plus? || @business.accepted_affiliate_advance?
       redirect_to action: 'qualified_market'
     elsif @business.disqualified_for_refi? || @business.disqualified_for_funder?
       redirect_to action: 'disqualified'
@@ -107,18 +103,9 @@ class BusinessesController < ApplicationController
     business = current_business
     if business.mobile_opt_code == params[:mobile][:mobile_opt_code]
       if business.qualify
-        #if business.qualified_for_funder?
-        #  business.mobile_confirmation_provided
-        #elsif business.qualified_for_refi?
-        #  business.mobile_confirmation_provided_phone
-        #elsif business.qualified_for_market?
-        #  business.mobile_confirmation_provided_phone
-        #end
-        #unless business.bank_account.nil? or business.bank_account.institution_name.nil?
-        #  business.deliver_qualified_signup!
-        #end
+        business.passed_mobile_confirmation 
         business.mobile_confirmation_provided
-        #business.setup_mobile_routing if Rails.env.production?
+        business.qualify_for_market
       else
         business.mobile_confirmation_provided
         business.passed_mobile_confirmation
@@ -149,6 +136,7 @@ class BusinessesController < ApplicationController
   def qualified_market
     @business = current_business 
     @business.passed_mobile_confirmation
+    @has_offers = @business.offers.size > 2
   end
 
   def disqualified
