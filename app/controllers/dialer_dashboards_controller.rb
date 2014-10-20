@@ -7,7 +7,8 @@
 	force_ssl if: :not_linkedin?
 
 	def home
-		pluggable_js(is_production: is_production)
+		#pluggable_js(is_production: is_production)
+		redirect_to "/family"
 
 	end
 
