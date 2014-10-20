@@ -1,0 +1,16 @@
+<!-- Any link with a class="cs_import" will start the import process -->
+<a class="cs_import">Add from Address Book</a>
+
+<!-- This textarea will be populated with the contacts returned by CloudSponge -->
+<textarea id="contact_list" style="width:450px;height:82px"></textarea>
+
+<!-- Set your options, most importantly the domain_key -->
+<script type="text/javascript">
+var csPageOptions = {
+  domain_key:'S6W7RTTLPPBU2QAUSCFG',
+  textarea_id:"contact_list"
+};
+</script>
+
+<!-- Include the script at the end of the body section -->
+<script type="text/javascript" src="//api.cloudsponge.com/address_books.js"></script>

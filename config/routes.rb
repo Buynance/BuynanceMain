@@ -152,6 +152,9 @@ Buynance::Application.routes.draw do
   
   #OmniAuth linkedin
 
+  match '/', to: 'static_pages#dev', constraints: { subdomain: 'dev' }, via: [:get, :post, :put, :patch, :delete]
+  match '/invite', to: 'contest#invite', constraints: { subdomain: 'dev' }, via: [:get, :post, :put, :patch, :delete]
+
   root 'static_pages#index'
 
   
