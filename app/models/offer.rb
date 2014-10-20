@@ -18,13 +18,13 @@ class Offer < ActiveRecord::Base
   	end
 
   	def self.create_offers(business)
-  		unless business.bank_account.nil?
+  		unless business.bank_account.nil? or business.bank_account.average_monthly_deposit.nil?
   			amount = (business.bank_account.average_monthly_deposit * 12) * 0.01
   			offer1 = Offer.create(name: "Buynance Fast Advance",business_id: business.id, cash_advance_amount: amount, total_payback_amount: (amount * 1.4))
   			amount = ((business.bank_account.average_monthly_deposit * 12) * 0.01) + (business.bank_account.average_monthly_deposit * 12 * 0.15)
-  			offer2 = Offer.create(name: "Buynance Fast Advance Plus", business_id: business.id, cash_advance_amount: amount)
+  			offer2 = Offer.create(name: "Buynance Fast Advance Plus", business_id: business.id, cash_advance_amount: amount, total_payback_amount: (amount * 1.4))
   			amount = (business.bank_account.average_monthly_deposit * 12) * 0.12
-  			offer3 = Offer.create(name: "Affiliate Advance", business_id: business.id, cash_advance_amount: amount)
+  			offer3 = Offer.create(name: "Affiliate Advance", business_id: business.id, cash_advance_amount: amount, total_payback_amount: (amount * 1.4))
   		end
   	end
 

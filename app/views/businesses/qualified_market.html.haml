@@ -18,7 +18,7 @@
             %span 
               = "Hi #{@business.owner_first_name},"
           .acceptance-top-info-message
-            %span Congrats!  It looks like you’ve been approved to receive small business funding through Buynance.  Please evaluate your next steps and all options below.
+            %span Congrats!  It looks like you’ve been pre-approved to receive small business funding through Buynance.  Please evaluate your next steps and all options below.
       .acceptance-body.clearfix
         .acceptance-item-gray
           .acceptance-item-gray-title
@@ -27,7 +27,7 @@
             %span Get 
             - if @business.offers.size > 0
               %span.highlight-green 
-                = number_to_currency(@business.offers[0].cash_advance_amount.round(-1)) 
+                = number_to_currency(@business.offers[0].cash_advance_amount.round(0)) 
             - else
               %span.highlight-green $2,000
             %span in as little as one hour.
@@ -42,10 +42,10 @@
               %span You sell us 
               - if @has_offers
                 %span.highlight-green{style: "font-family: latobold"} 
-                  = number_to_currency(@business.offers[0].total_payback_amount.round(-1))
+                  = number_to_currency(@business.offers[0].total_payback_amount.round(0))
                 %span worth of you future sales, we will give you 
                 %span 
-                  = number_to_currency(@business.offers[0].cash_advance_amount.round(-1)) 
+                  = number_to_currency(@business.offers[0].cash_advance_amount.round(0)) 
                 %span cash for them in as little as an hour. 
               - else
                 %span.highlight-green{style: "font-family: latobold"} $2,800 
@@ -54,7 +54,7 @@
               %span We collect the 
               - if @has_offers
                 %span.highlight 
-                  = number_to_currency(@business.offers[0].total_payback_amount.round(-1))
+                  = number_to_currency(@business.offers[0].total_payback_amount.round(0))
               - else
                 %span.highlight $2,800
               %span over 45 days.
@@ -77,13 +77,13 @@
             - if @has_offers
               %span Get 
               %span 
-                = number_to_currency (@business.offers[1].cash_advance_amount).round(-1)
+                = number_to_currency (@business.offers[1].cash_advance_amount).round(0)
               %span .
               %span 
-                = number_to_currency (@business.offers[1].cash_advance_amount * 0.0625).round(-1)
+                = number_to_currency (@business.offers[1].cash_advance_amount * 0.0625).round(0)
               %span today and 
               %span 
-                = number_to_currency (@business.offers[1].cash_advance_amount * 0.9375).round(-1)
+                = number_to_currency (@business.offers[1].cash_advance_amount * 0.9375).round(0)
               %span in 7 Days.
             - else
               %span Get $25,000. $3,500 today and $21,500 in 7 Days.
@@ -91,13 +91,13 @@
             %span Get 
             - if @has_offers
               %span.highlight-green{style: "font-family: latobold"} 
-                = number_to_currency (@business.offers[1].cash_advance_amount * 0.0625).round(-1)
+                = number_to_currency (@business.offers[1].cash_advance_amount * 0.0625).round(0)
             - else 
               %span.highlight-green{style: "font-family: latobold"} $3,500 
             %span in your account in one hour and 
             - if @has_offers
               %span.highlight-green{style: "font-family: latobold"} 
-                = number_to_currency (@business.offers[1].cash_advance_amount * 0.9375).round(-1)
+                = number_to_currency (@business.offers[1].cash_advance_amount * 0.9375).round(0)
             - else
               %span.highlight-green{style: "font-family: latobold"} $21,500
             %span in 7 days from one of our preferred partners.
@@ -112,10 +112,24 @@
               %span Overview
             .acceptance-item-gray-terms-item
               %span You sell us 
-              %span.highlight-green{style: "font-family: latobold"} $2,800 
-              %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
+              - if @has_offers
+                %span.highlight-green{style: "font-family: latobold"} 
+                  = number_to_currency(@business.offers[1].total_payback_amount.round(0)) 
+                %span worth of you future sales, we will give you 
+                %span 
+                  = number_to_currency (@business.offers[1].cash_advance_amount * 0.0625).round(0) 
+                %span cash for them in as little as an hour. 
+              - else
+                %span.highlight-green{style: "font-family: latobold"} $2,800 
+                %span worth of you future sales, we will give you $2,000 cash for them in as little as an hour. 
             .acceptance-item-gray-terms-item
-              %span We collect the $2,800 over 30 daily installments. OR,
+              %span We collect the 
+              - if @has_offers
+                %span
+                  = number_to_currency(@business.offers[1].total_payback_amount.round(0) - (@business.offers[1].cash_advance_amount * 0.0625).round(0)) 
+              - else
+                %span $2,800 
+              %span over 30 daily installments. OR,
             - if @business.accepted_market?
               .acceptance-item-gray-terms-item
                 %span You complete the sale when you get more cash in a week. 
@@ -134,7 +148,7 @@
             %span Get 
             - if @has_offers
               %span.highlight-green
-                = number_to_currency @business.offers[2].cash_advance_amount.round(-1)
+                = number_to_currency @business.offers[2].cash_advance_amount.round(0)
             - else
               %span.highlight-green $25,000
             %span in your account in 7 days.
