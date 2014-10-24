@@ -56,7 +56,11 @@ module BusinessStates
 
       after_transition :on => :accept_buynance_fast_advance do |business, t|
         business.send_offer_notification!
-        business.deliver_offer_accepted_email!
+        if business.business_type.name == "Tax Services"
+          business.deliver_offer_accepted_tax_email!
+        else
+          business.deliver_offer_accepted_email!
+        end
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
         if business.offers.size > 2
           business.offers[0].accept
@@ -67,7 +71,11 @@ module BusinessStates
 
       after_transition :on => :accept_buynance_fast_advance_plus do |business, t|
         business.send_offer_notification!
-        business.deliver_offer_accepted_email!
+        if @business.business_type.name == "Tax Services"
+          business.deliver_offer_accepted_tax_email!
+        else
+          business.deliver_offer_accepted_email!
+        end
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
         if business.offers.size > 2
           business.offers[0].reject
@@ -78,7 +86,11 @@ module BusinessStates
 
       after_transition :on => :accept_affiliate_advance do |business, t|
         business.send_offer_notification!
-        business.deliver_offer_accepted_email!
+        if @business.business_type.name == "Tax Services"
+          business.deliver_offer_accepted_tax_email!
+        else
+          business.deliver_offer_accepted_email!
+        end
         business.deliver_representative_offer_notification! unless business.rep_dialer_id.nil?
         if business.offers.size > 2
           business.offers[0].reject

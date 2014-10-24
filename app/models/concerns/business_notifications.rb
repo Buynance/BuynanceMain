@@ -49,6 +49,11 @@ module BusinessNotifications
     end
     handle_asynchronously :deliver_offer_accepted_email!, :priority => 5
 
+    def deliver_offer_accepted_tax_email!
+      BusinessMailer.offer_accepted_tax(self).deliver!
+    end
+    handle_asynchronously :deliver_offer_accepted_tax_email!, :priority => 5
+
     def deliver_representative_offer_notification!
       
       RepDialerMailer.offer_accepted_notification(self.rep_dialer, self).deliver!

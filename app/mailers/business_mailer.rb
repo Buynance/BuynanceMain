@@ -53,6 +53,13 @@ class BusinessMailer < ActionMailer::Base
          :to      => business.email,
          :from    => "Yuliya Glazman <yuliya@buynance.com>"
   end
+
+  def offer_accepted_tax(business)
+    @business = business
+    mail :subject => "Just one more step.",
+         :to      => business.email,
+         :from    => "Yuliya Glazman <yuliya@buynance.com>"
+  end
   
   
 end

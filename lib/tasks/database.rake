@@ -193,6 +193,7 @@ namespace :db do
                     ["Rental and Leasing"],
                     ["Restaurants and Food Services"],
                     ["Retail Stores"],
+                    ["Tax Services"],
                     ["Transportation"],
                     ["Utilities"],
                     ["Veterinarians"],

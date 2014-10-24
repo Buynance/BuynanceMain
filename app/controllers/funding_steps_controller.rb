@@ -68,6 +68,9 @@ class FundingStepsController < ApplicationController
 					if ((@business.years_in_business == 0) or (@business.approximate_credit_score_range == 1))
 						@business.disqualify
 						redirect_to account_url
+					elsif @business.business_type.name == "Tax Services" and  @business.years_in_business <= 1
+						@business.disqualify
+						redirect_to account_url
 					else
 						flash[:personal_passed] = true
 						render_wizard @business
