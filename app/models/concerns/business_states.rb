@@ -71,7 +71,7 @@ module BusinessStates
 
       after_transition :on => :accept_buynance_fast_advance_plus do |business, t|
         business.send_offer_notification!
-        if @business.business_type.name == "Tax Services"
+        if business.business_type.name == "Tax Services"
           business.deliver_offer_accepted_tax_email!
         else
           business.deliver_offer_accepted_email!
@@ -86,7 +86,7 @@ module BusinessStates
 
       after_transition :on => :accept_affiliate_advance do |business, t|
         business.send_offer_notification!
-        if @business.business_type.name == "Tax Services"
+        if business.business_type.name == "Tax Services"
           business.deliver_offer_accepted_tax_email!
         else
           business.deliver_offer_accepted_email!
