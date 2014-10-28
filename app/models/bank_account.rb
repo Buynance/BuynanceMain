@@ -248,7 +248,7 @@ class BankAccount < ActiveRecord::Base
 		if self.awaiting_request_code?
 			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}"
 		else
-			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{business.owner_first_name}&lastName=#{business.owner_last_name}&accountNumber=#{self.account_number}&routingNumber=#{self.routing_number}&contentServiceId=#{self.institution_number}"
+			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{business.owner_first_name.strip}&lastName=#{business.owner_last_name.strip}&accountNumber=#{self.account_number}&routingNumber=#{self.routing_number}&contentServiceId=#{self.institution_number}"
 		end
 		
 		request_code = DecisionLogic.get(request_url)
