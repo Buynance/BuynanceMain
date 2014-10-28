@@ -73,11 +73,13 @@ module BusinessValidations
 	presence: {message: "Na", allow_blank: false},
 	if: -> {self.current_step == :personal}
 
-
-	# Step - Financial
 	validates :approximate_credit_score_range,
     presence: {message: "Please select your approximate credit score."},
-    if: -> {self.current_step == :financial}
+    if: -> {self.current_step == :personal}
+
+
+	# Step - Financial
+	
 	
 	validates :is_tax_lien,
     inclusion: {:in => [true, false], message: "Please select whether you have ever has a tax lien."},
