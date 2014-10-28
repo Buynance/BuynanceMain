@@ -254,7 +254,7 @@ class BankAccount < ActiveRecord::Base
 			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{owner_first_name.strip}&lastName=#{owner_last_name.strip}&accountNumber=#{self.account_number}&routingNumber=#{self.routing_number}&contentServiceId=#{self.institution_number}"
 		end
 		
-		request_code = DecisionLogic.get(request_url)
+		request_code = DecisionLogic.get(URI.encode(request_url))
 
 		if request_code.length == 6
 			self.all_request << request_code
