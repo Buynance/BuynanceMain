@@ -245,16 +245,13 @@ class BankAccount < ActiveRecord::Base
 		site_user_guid = Buynance::Application.config.site_user_guid 
 		customer_id = business.email
 
-		owner_first_name = business.owner_first_name.strip
-		owner_last_name = business.owner_last_name.strip
-
 		if self.awaiting_request_code?
 			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}"
 		else
-			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{owner_first_name.strip}&lastName=#{owner_last_name.strip}&accountNumber=#{self.account_number}&routingNumber=#{self.routing_number}&contentServiceId=#{self.institution_number}"
+			request_url = "https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{business.owner_first_name.strip}&lastName=#{business.owner_last_name.strip}&accountNumber=#{self.account_number}&routingNumber=#{self.routing_number}&contentServiceId=#{self.institution_number}"
 		end
 		
-		request_code = DecisionLogic.get(URI.encode(request_url))
+		request_code = DecisionLogic.get(request_url)
 
 		if request_code.length == 6
 			self.all_request << request_code
