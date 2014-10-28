@@ -58,7 +58,7 @@ class Business < ActiveRecord::Base
     profile_guid = Buynance::Application.config.profile_guid
     site_user_guid = Buynance::Application.config.site_user_guid 
     customer_id = self.email
-    self.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{self.owner_first_name}&lastName=#{self.owner_last_name}&accountNumber=#{self.bank_account.account_number}&routingNumber=#{self.bank_account.routing_number}")
+    self.initial_request_code = DecisionLogic.get("https://www.decisionlogic.com/CreateRequestCode.aspx?serviceKey=#{service_key}&profileGuid=#{profile_guid}&siteUserGuid=#{site_user_guid}&customerId=#{customer_id}&firstName=#{self.owner_first_name.strip}&lastName=#{self.owner_last_name.strip}&accountNumber=#{self.bank_account.account_number}&routingNumber=#{self.bank_account.routing_number}")
     is_valid = (self.initial_request_code.length <= 10)
     return is_valid
   end
