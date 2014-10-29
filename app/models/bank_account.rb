@@ -125,11 +125,13 @@ class BankAccount < ActiveRecord::Base
 	def get_negative_days
 		negative_transactions = transactions.where("running_balance < ?", 0)
 		count = 0
-		start_date = negative_transactions[0].transaction_date.to_date + 1
-		negative_transactions.each do |negative|
-			if negative.running_balance < 0 and negative.transaction_date.to_date != start_date
-				count = count + 1
-				start_date = negative.transaction_date.to_date
+		if negative_transactions.size > 0
+			start_date = negative_transactions[0].transaction_date.to_date + 1
+			negative_transactions.each do |negative|
+				if negative.running_balance < 0 and negative.transaction_date.to_date != start_date
+					count = count + 1
+					start_date = negative.transaction_date.to_date
+				end
 			end
 		end
 		return count
