@@ -107,6 +107,7 @@ ActiveAdmin.register Business do
             row("State")                      {|business| business.location_state}
             row("Zip Code")                   {|business| business.zip_code}
             row("New Phone Number")           {|business| GlobalPhone.parse(business.routing_number.phone_number).national_format unless business.routing_number.nil?}
+            row("Years in Business")          {|business| business.years_in_business}
           end
         end  
       end

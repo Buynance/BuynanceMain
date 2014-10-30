@@ -345,7 +345,7 @@ class Business < ActiveRecord::Base
       unless self.referral_code.blank?
         rep = RepDialer.find_by(referral_code: self.referral_code)
         if rep.nil?
-          errors.add(:referral_code, "Please enter a valid referral code.")
+          errors.add(:referral_code, "Please enter a valid code.")
         else
           self.rep_dialer_id = rep.id
         end
