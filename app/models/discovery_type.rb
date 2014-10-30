@@ -1,6 +1,6 @@
 class DiscoveryType < ActiveRecord::Base
 
-	ORDERED_NAME = ["Facebook", "Linkedin", "Search Engine", "Family of Buynance", "Other"]
+	ORDERED_NAME = ["Facebook", "Linkedin", "Search Engine", "Buynance Family", "I Have a Contest Code", "Other"]
 
 	def self.get_all_ordered
 		ordered = Array.new
