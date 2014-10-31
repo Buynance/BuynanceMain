@@ -336,8 +336,9 @@ class Business < ActiveRecord::Base
     end
 
     def self.generate_mobile_opt_code
-      virgin_code = SecureRandom.urlsafe_base64(24, false)
-      regular_code = virgin_code.downcase.gsub(/[-_]/,'')[0,8]
+      #virgin_code = SecureRandom.urlsafe_base64(24, false)
+      #regular_code = virgin_code.downcase.gsub(/[-_]/,'')[0,8]
+      regular_code = SecureRandom.random_number(999999).to_s
       return regular_code
     end
 
