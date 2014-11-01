@@ -151,13 +151,10 @@ ActiveAdmin.register Business do
 
         panel 'Misc' do
           attributes_table_for business do
-            row :login_count
-            row :current_login_at
-            row :last_login_at
-            row :current_login_ip
-            row :last_login_ip
-            row :created_at
-            row :updated_at
+            row("Current IP")   {|business| business.business_user.current_login_ip unless business.business_user.nil?}
+            row("Signup City")  {|business| business.signup_city}
+            row("Signup Country") {|business| business.signup_country}
+            row("Signup Postal Code") {|business| business.signup_postal}
             row :activation_code
           end
         end

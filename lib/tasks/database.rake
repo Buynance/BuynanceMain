@@ -339,5 +339,16 @@ namespace :db do
     task :create_family_questionnaire => :environment do
       Questionnaire.make(["Take me through the sale you are most proud of?  If there is no sale, what is your proudest accomplishment?", "How do you respond when you dont know the answer to a question?", "Why are you interested in working in the small business funding industry?", "How long are you willing to fail at this job before you succeed?", "What's more important to focus on, the process or the result?  Why?", "What do you do to improve as a sales person?  How do you practice?"], "family_questionnaire")
     end
+
+    desc "Add location to Business"
+    task :add_location_to_business => :environment do
+      Business.all.each do |business|
+        location = Business.get_location(business.business_user.current_login_ip)
+        business.signup_city = location[:city]
+        business.signup_country = location[:country]
+        business.signup_postal = location[:postal]
+        business.save
+      end
+    end
     
 end

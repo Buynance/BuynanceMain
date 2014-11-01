@@ -78,6 +78,21 @@ class Business < ActiveRecord::Base
       transactions_to_date: self.bank_account.transactions_to_date])
   end
 
+  def self.get_location(ip)
+      db = MaxMindDB.new(Rails.root.join('app', 'geolite', 'db', 'GeoLite2-City.mmdb').to_s)
+      record = db.lookup(ip)
+      return_val = {city: "Not Found", state: "Not Found", country: "Not Found"}
+      if record 
+        country_name = record.country.name
+        city_name = record.city.name
+        postal = record.postal.code
+
+        return_val = {city: city_name,  country: country_name, postal: postal}
+      else
+      end 
+      return_val
+  end
+
   # --------------------------------------------------#
   # Method Loan Reason string from id                 #
   # --------------------------------------------------#
@@ -277,6 +292,7 @@ class Business < ActiveRecord::Base
         mobile_number_object = GlobalPhone.parse(self.mobile_number)
         phone_number_object = nil if (phone_number_object != nil and phone_number_object.territory.name != "US")
         mobile_number_object = nil if (mobile_number_object != nil and mobile_number_object.territory.name != "US")
+        mobile_number_object = nil if (mobile_number_object != nil and ["1800", "1888", "1866", "1855", "1844"].include? mobile_number_object.international_string[1,4])
         if phone_number_object.nil? or self.phone_number.length < 10
           self.phone_number = nil
         else
