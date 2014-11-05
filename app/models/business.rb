@@ -338,7 +338,7 @@ class Business < ActiveRecord::Base
       self.recovery_code = Business.generate_activation_code
       self.confirmation_code = Business.generate_activation_code
       self.mobile_opt_code = Business.generate_mobile_opt_code
-      self.set_location
+      #self.set_location
     end
 
     def get_average_last_three_months_earnings
