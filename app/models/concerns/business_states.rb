@@ -49,7 +49,7 @@ module BusinessStates
       after_transition :on => :passed_email_confirmation_referral do |business, t|
         unless business.rep_dialer_id.nil?
           ReferralPayment.add(business.id, business.rep_dialer_id) 
-          business.deliver_business_representative_notification!
+          #business.deliver_business_representative_notification!
         end
         
       end

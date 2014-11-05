@@ -18,7 +18,7 @@ class ReferralPayment < ActiveRecord::Base
 	    	rep_dialer = RepDialer.find_by(id: referral_payment.rep_dialer_id)
         	rep_dialer.total_earning = rep_dialer.total_earning + referral_payment.amount
         	referral_payment.make_payment!
-        	referral_payment.deliver_representative_paid_notification!
+        	#referral_payment.deliver_representative_paid_notification!
         	rep_dialer.save
         end
 

@@ -40,7 +40,6 @@ class Business < ActiveRecord::Base
 
   before_create :init
 
-
   # --------------------------------------------------#
   # Method Approximate credit score string from range #
   # --------------------------------------------------#
@@ -284,7 +283,15 @@ class Business < ActiveRecord::Base
       end
     end
 
+    def set_location
+      location = Business.get_location(self.business_user.current_login_ip)
+      self.signup_city = location[:city]
+      self.signup_country = location[:country]
+      self.save
+    end
+
   private
+
 
     def parse_phone_number
       if self.current_step == :personal
@@ -331,6 +338,7 @@ class Business < ActiveRecord::Base
       self.recovery_code = Business.generate_activation_code
       self.confirmation_code = Business.generate_activation_code
       self.mobile_opt_code = Business.generate_mobile_opt_code
+      self.set_location
     end
 
     def get_average_last_three_months_earnings
