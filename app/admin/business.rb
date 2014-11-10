@@ -1,4 +1,4 @@
-require 'open-uri'
+require 'cgi'
 
 ActiveAdmin.register Business do
 
@@ -34,11 +34,27 @@ ActiveAdmin.register Business do
   filter :is_ever_bankruptcy
   filter :is_refinance
 
+
+  
+
   action_item :only => :show do
     link_to 'Download XLS (Funder)', "#{export_grubraise_business_path(business)}.xls"
   end
+
   action_item :only => :show do
-    link_to 'Download CSV', "/grubraise/businesses.csv?email_contains%5D=#{URI::encode(business.email)}&commit=Filter&order=id_desc"
+    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
+  end
+
+  action_item :only => :show do
+    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?anon=true&email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
+  end
+
+  action_item :only => :index do
+    link_to 'Download Anonymous CSV', "/grubraise/businesses.csv?anon=true&commit=Filter&order=id_desc"
+  end
+
+  action_item :only => :index do
+    link_to 'Download CSV', "/grubraise/businesses.csv?commit=Filter&order=id_desc"
   end
 
   action_item :only => :show do
@@ -248,28 +264,30 @@ ActiveAdmin.register Business do
   end
 
   csv do
-    column("Business User ID")           {|business| business.business_user.id}
-    column("Business Name")              {|business| business.name}
-    column("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
-    column("Funnel")                     {|business| business.is_refinance ? "Revise" : "Funder"}
-    column("Current Step")               {|business| business.step }
-    column("Email")                      {|business| business.email}
-    column("Name")                       {|business| business.name}
-    column("Owners First Name")          {|business| business.owner_first_name}
-    column("Owners Last Name")           {|business| business.owner_last_name}
-    column("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
-    column("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
-    column("Street Adress Line One")     {|business| business.street_address_one}
-    column("Street Adress Line Two")     {|business| business.street_address_two}
-    column("City")                       {|business| business.city}
-    column("State")                      {|business| business.location_state}
-    column("Zip Code")                   {|business| business.zip_code}
-    column("New Phone Number")           {|business| GlobalPhone.parse(business.routing_number.phone_number).national_format unless business.routing_number.nil?}
-    column("Credit Score")               {|business| business.credit_score_range}
-    column("Bank Account State")         {|business| business.bank_account.state if !business.bank_account.nil?}
-    column("Bank Name")                  {|business| (business.bank_account.institution_name) unless business.bank_account.nil? }
+    unless params[:anon] == "true"
+      column("Business User ID")           {|business| business.business_user.id}
+      column("Business Name")              {|business| business.name}
+      column("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
+      column("Funnel")                     {|business| business.is_refinance ? "Revise" : "Funder"}
+      column("Current Step")               {|business| business.step }
+      column("Email")                      {|business| business.email}
+      column("Name")                       {|business| business.name}
+      column("Owners First Name")          {|business| business.owner_first_name}
+      column("Owners Last Name")           {|business| business.owner_last_name}
+      column("Phone Number")               {|business| GlobalPhone.parse(business.phone_number).national_format unless business.routing_number.nil?}
+      column("Mobile Number")              {|business| GlobalPhone.parse(business.mobile_number).national_format unless business.routing_number.nil?}
+      column("Street Adress Line One")     {|business| business.street_address_one}
+      column("Street Adress Line Two")     {|business| business.street_address_two}
+      column("City")                       {|business| business.city}
+      column("State")                      {|business| business.location_state}
+      column("Zip Code")                   {|business| business.zip_code}
+      column("New Phone Number")           {|business| GlobalPhone.parse(business.routing_number.phone_number).national_format unless business.routing_number.nil?}
+      column("Credit Score")               {|business| business.credit_score_range}
+      column("Bank Account State")         {|business| business.bank_account.state if !business.bank_account.nil?}
+    end
     column("Account Number")             {|business| (business.bank_account.account_number) unless business.bank_account.nil? }
     column("Routing Number")             {|business| (business.bank_account.routing_number) unless business.bank_account.nil? }
+    column("Bank Name")                  {|business| (business.bank_account.institution_name) unless business.bank_account.nil? }
     column("Oldest Transaction Date")    {|business| (business.bank_account.transactions_from_date) unless business.bank_account.nil? }
     column("Newest Transaction Date")    {|business| (business.bank_account.transactions_to_date) unless business.bank_account.nil? }
     column("Days of Transaction")        {|business| (business.bank_account.days_of_transactions) unless business.bank_account.nil? }
