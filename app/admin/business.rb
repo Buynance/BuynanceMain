@@ -40,13 +40,13 @@ ActiveAdmin.register Business do
   action_item :only => :show do
     link_to 'Download XLS (Funder)', "#{export_grubraise_business_path(business)}.xls"
   end
-
+  
   action_item :only => :show do
-    link_to 'Download CSV', "/grubraise/businesses.csv?email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
+    link_to 'Download CSV', "/grubraise/businesses?utf8=✓&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc"
   end
 
   action_item :only => :show do
-    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?anon=true&email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
+    link_to 'Download CSV Anonymous', "/grubraise/businesses?utf8=✓&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc&anon=true"
   end
 
   action_item :only => :index do
