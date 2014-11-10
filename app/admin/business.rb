@@ -42,7 +42,7 @@ ActiveAdmin.register Business do
   end
 
   action_item :only => :show do
-    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
+    link_to 'Download CSV', "/grubraise/businesses.csv?email_contains%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_descs"
   end
 
   action_item :only => :show do
