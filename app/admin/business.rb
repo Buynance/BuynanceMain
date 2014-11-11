@@ -51,7 +51,8 @@ ActiveAdmin.register Business do
 
   action_item :only => :show do
     if business.bank_account
-      link_to 'Download CSV Transactions', "/grubraise/transactions.csv?bank_account_id_eq%5D=#{business.bank_account.id}&commit=Filter&order=id_desc"
+      
+      link_to 'Download CSV Transactions', "/grubraise/transactions.csv?order=id_desc&q%5Bbank_account_id_eq%5D=#{business.bank_account.id}&utf8=%E2%9C%93"
     end
   end
 
