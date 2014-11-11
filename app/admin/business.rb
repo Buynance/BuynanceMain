@@ -42,12 +42,19 @@ ActiveAdmin.register Business do
   end
   
   action_item :only => :show do
-    link_to 'Download CSV', "/grubraise/businesses.csv?utf8=✓&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc"
+    link_to 'Download CSV', "/grubraise/businesses.csv?email_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc"
   end
 
   action_item :only => :show do
-    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?utf8=✓&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc&anon=true"
+    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?email_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc&anon=true"
   end
+
+  action_item :only => :show do
+    if business.bank_account
+      link_to 'Download CSV Transactions', "/grubraise/transactions.csv?bank_account_id_equals%5D=#{business.bank_account.id}&commit=Filter&order=id_desc"
+    end
+  end
+
 
   action_item :only => :index do
     link_to 'Download Anonymous CSV', "/grubraise/businesses.csv?anon=true&commit=Filter&order=id_desc"
@@ -267,7 +274,9 @@ ActiveAdmin.register Business do
     unless params[:anon] == "true"
       column("Business User ID")           {|business| business.business_user.id}
       column("Business Name")              {|business| business.name}
-      column("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
+    end
+    column("Business Type")              {|business| business.business_type.name unless business.business_type.nil?} 
+    unless params[:anon] == "true"
       column("Funnel")                     {|business| business.is_refinance ? "Revise" : "Funder"}
       column("Current Step")               {|business| business.step }
       column("Email")                      {|business| business.email}
@@ -280,13 +289,14 @@ ActiveAdmin.register Business do
       column("Street Adress Line Two")     {|business| business.street_address_two}
       column("City")                       {|business| business.city}
       column("State")                      {|business| business.location_state}
-      column("Zip Code")                   {|business| business.zip_code}
-      column("New Phone Number")           {|business| GlobalPhone.parse(business.routing_number.phone_number).national_format unless business.routing_number.nil?}
-      column("Credit Score")               {|business| business.credit_score_range}
-      column("Bank Account State")         {|business| business.bank_account.state if !business.bank_account.nil?}
     end
-    column("Account Number")             {|business| (business.bank_account.account_number) unless business.bank_account.nil? }
-    column("Routing Number")             {|business| (business.bank_account.routing_number) unless business.bank_account.nil? }
+    column("Zip Code")                   {|business| business.zip_code}
+    column("Credit Score")               {|business| business.credit_score_range}
+    unless params[:anon] == "true"
+      column("Bank Account State")         {|business| business.bank_account.state if !business.bank_account.nil?}
+      column("Account Number")             {|business| (business.bank_account.account_number) unless business.bank_account.nil? }
+      column("Routing Number")             {|business| (business.bank_account.routing_number) unless business.bank_account.nil? }
+    end
     column("Bank Name")                  {|business| (business.bank_account.institution_name) unless business.bank_account.nil? }
     column("Oldest Transaction Date")    {|business| (business.bank_account.transactions_from_date) unless business.bank_account.nil? }
     column("Newest Transaction Date")    {|business| (business.bank_account.transactions_to_date) unless business.bank_account.nil? }
