@@ -42,16 +42,16 @@ ActiveAdmin.register Business do
   end
   
   action_item :only => :show do
-    link_to 'Download CSV', "/grubraise/businesses.csv?email_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc"
+    link_to 'Download CSV', "/grubraise/businesses.csv?order=id_desc&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&utf8=%E2%9C%93"
   end
 
   action_item :only => :show do
-    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?email_equals%5D=#{CGI::escape(business.email)}&commit=Filter&order=id_desc&anon=true"
+    link_to 'Download CSV Anonymous', "/grubraise/businesses.csv?order=id_desc&q%5Bemail_equals%5D=#{CGI::escape(business.email)}&utf8=%E2%9C%93&anon=true"
   end
 
   action_item :only => :show do
     if business.bank_account
-      
+
       link_to 'Download CSV Transactions', "/grubraise/transactions.csv?order=id_desc&q%5Bbank_account_id_eq%5D=#{business.bank_account.id}&utf8=%E2%9C%93"
     end
   end
