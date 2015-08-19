@@ -17,3 +17,7 @@ db/schema.rb*ngrok.exe
 /ngrok.exe
 /server.crt
 /server.key
+
+# RVM 
+.ruby-version
+.ruby-gemset
