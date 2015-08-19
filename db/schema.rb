@@ -103,6 +103,16 @@ ActiveRecord::Schema.define(version: 20141101093927) do
     t.integer  "total_negative_days"
   end
 
+  create_table "business_sessions", force: true do |t|
+    t.string   "session_id", null: false
+    t.text     "data"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "business_sessions", ["session_id"], name: "index_business_sessions_on_session_id"
+  add_index "business_sessions", ["updated_at"], name: "index_business_sessions_on_updated_at"
+
   create_table "business_type_divisions", force: true do |t|
     t.string   "name"
     t.string   "division_code"
@@ -165,6 +175,7 @@ ActiveRecord::Schema.define(version: 20141101093927) do
   end
 
   create_table "businesses", force: true do |t|
+    t.string   "email",                                          default: "",    null: false
     t.string   "crypted_password",                               default: "",    null: false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
@@ -226,14 +237,10 @@ ActiveRecord::Schema.define(version: 20141101093927) do
     t.integer  "years_in_business"
     t.boolean  "is_judgement"
     t.integer  "total_monthly_bills"
-    t.integer  "main_user_id"
     t.boolean  "is_accept_offer_disclaimer"
-    t.boolean  "is_completed_application",                       default: false
     t.integer  "main_offer_id"
-    t.string   "email",                                          default: "",    null: false
     t.string   "mobile_number"
     t.boolean  "is_first_contact",                               default: true
-    t.integer  "status"
     t.integer  "main_business_user_id"
     t.string   "state"
     t.string   "initial_request_code"
@@ -264,6 +271,7 @@ ActiveRecord::Schema.define(version: 20141101093927) do
     t.string   "signup_postal"
   end
 
+  add_index "businesses", ["email"], name: "index_businesses_on_email", unique: true
   add_index "businesses", ["reset_password_token"], name: "index_businesses_on_reset_password_token", unique: true
 
   create_table "cash_advance_companies", force: true do |t|
@@ -272,38 +280,6 @@ ActiveRecord::Schema.define(version: 20141101093927) do
     t.datetime "updated_at"
     t.boolean  "is_validated"
   end
-
-  create_table "comfy_blog_comments", force: true do |t|
-    t.integer  "post_id",                      null: false
-    t.string   "author",                       null: false
-    t.string   "email",                        null: false
-    t.text     "content"
-    t.boolean  "is_published", default: false, null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_blog_comments", ["post_id", "created_at"], name: "index_comfy_blog_comments_on_post_id_and_created_at"
-  add_index "comfy_blog_comments", ["post_id", "is_published", "created_at"], name: "index_blog_comments_on_post_published_created"
-
-  create_table "comfy_blog_posts", force: true do |t|
-    t.integer  "blog_id",                                  null: false
-    t.string   "title",                                    null: false
-    t.string   "slug",                                     null: false
-    t.text     "content"
-    t.string   "excerpt",      limit: 1024
-    t.string   "author"
-    t.integer  "year",         limit: 4,                   null: false
-    t.integer  "month",        limit: 2,                   null: false
-    t.boolean  "is_published",              default: true, null: false
-    t.datetime "published_at",                             null: false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "comfy_blog_posts", ["created_at"], name: "index_comfy_blog_posts_on_created_at"
-  add_index "comfy_blog_posts", ["is_published", "created_at"], name: "index_comfy_blog_posts_on_is_published_and_created_at"
-  add_index "comfy_blog_posts", ["is_published", "year", "month", "slug"], name: "index_blog_posts_on_published_year_month_slug"
 
   create_table "delayed_jobs", force: true do |t|
     t.integer  "priority",   default: 0, null: false
@@ -324,14 +300,6 @@ ActiveRecord::Schema.define(version: 20141101093927) do
   create_table "discovery_types", force: true do |t|
     t.string   "name"
     t.string   "description"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "documents", force: true do |t|
-    t.string   "name"
-    t.integer  "business_id"
-    t.string   "document"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -492,14 +460,6 @@ ActiveRecord::Schema.define(version: 20141101093927) do
   add_index "rep_dialers", ["email"], name: "index_rep_dialers_on_email", unique: true
   add_index "rep_dialers", ["reset_password_token"], name: "index_rep_dialers_on_reset_password_token", unique: true
 
-  create_table "representatives", force: true do |t|
-    t.string   "email"
-    t.string   "first_name"
-    t.string   "last_name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "routing_numbers", force: true do |t|
     t.string   "phone_number"
     t.text     "success_url",  limit: 255
@@ -559,24 +519,6 @@ ActiveRecord::Schema.define(version: 20141101093927) do
   create_table "transactions_type_codes", force: true do |t|
     t.integer "transaction_id", null: false
     t.integer "type_code_id",   null: false
-  end
-
-  create_table "translator_pages", force: true do |t|
-    t.string   "controller"
-    t.string   "page"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "section"
-    t.string   "action"
-  end
-
-  create_table "translator_values", force: true do |t|
-    t.string   "key"
-    t.string   "locale",             default: "en"
-    t.text     "value",              default: ""
-    t.integer  "translator_page_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
   end
 
   create_table "twimlet_url_for_businesses", force: true do |t|
