@@ -133,7 +133,7 @@ end
 # gem 'capistrano', group: :development
 
 # Use debugger
-gem 'debugger', group: [:development, :test]
+# gem 'debugger', group: [:development, :test]
 gem 'groupdate', :github => "mieko/groupdate"
 
 gem 'simple_form'
